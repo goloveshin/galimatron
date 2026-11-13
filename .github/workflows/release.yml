@@ -138,6 +138,8 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v5
+
       - name: Download packages
         uses: actions/download-artifact@v7
         with:
