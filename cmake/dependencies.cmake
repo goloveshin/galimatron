@@ -10,8 +10,12 @@ function(galimatron_patch_dependency dependency patch_file)
     # FetchContent records POPULATED only after MakeAvailable in this configure.
     # An already downloaded tree is patched here; a first download is patched
     # by PATCH_COMMAND before the dependency is configured.
+    # A third argument is a directory under the dependency source.
     string(TOLOWER "${dependency}" dependency_lower)
     set(source_dir "${CMAKE_BINARY_DIR}/_deps/${dependency_lower}-src")
+    if(ARGC GREATER 2)
+        set(source_dir "${source_dir}/${ARGV2}")
+    endif()
     if(IS_DIRECTORY "${source_dir}")
         execute_process(
             COMMAND ${CMAKE_COMMAND}
@@ -27,13 +31,20 @@ endfunction()
 
 set(BOOST_RUNTIME_LINK shared)
 
+# CMake 4.5 requires a source_group(TREE) root to be a directory prefix.
+# Boost 1.92 groups include/boost/locale.hpp under include/boost/locale.
+# Boost.Locale after 1.92 drops that header from the tree group.
+set(galimatron_boost_locale_patch ${CMAKE_CURRENT_LIST_DIR}/patches/boost-locale-source-group.patch)
+
 FetchContent_Declare(
     Boost
     GIT_REPOSITORY https://github.com/boostorg/boost.git
     GIT_TAG boost-1.92.0
     EXCLUDE_FROM_ALL
+    PATCH_COMMAND ${CMAKE_COMMAND} -DSOURCE_DIR=<SOURCE_DIR>/libs/locale -DPATCH_FILE=${galimatron_boost_locale_patch} -P ${galimatron_apply_patch}
     FIND_PACKAGE_ARGS
 )
+galimatron_patch_dependency(Boost ${galimatron_boost_locale_patch} libs/locale)
 FetchContent_MakeAvailable(Boost)
 
 # logme
