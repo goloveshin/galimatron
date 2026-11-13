@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<code:template
+    xmlns:code="galimatron-code-generation"
+>
+<code:when-uuid>uuid_t get_uuid(std::type_identity &lt;<code:struct-name/>&gt;)
+{
+    return uuid_gen("<code:uuid/>");
+}
+</code:when-uuid>
+</code:template>

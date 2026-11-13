@@ -1,0 +1,12 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    label important = dynamic { fresh };// bad: important is the built-in tag marker
+}

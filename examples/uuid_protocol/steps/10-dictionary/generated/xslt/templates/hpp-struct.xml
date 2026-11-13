@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<code:template
+    xmlns:code="galimatron-code-generation"
+>
+struct <code:struct-name/>
+{
+<code:hpp-fields/>};
+<code:when-uuid>uuid_t get_uuid(std::type_identity &lt;<code:struct-name/>&gt;);
+any_state_t create(std::type_identity &lt;<code:struct-name/>&gt;, const any_state_t &amp;);
+void handle_client(const <code:struct-name/>&amp;, const any_state_t &amp;);
+void handle_server(const <code:struct-name/>&amp;, const any_state_t &amp;);
+void log(const <code:struct-name/>&amp;);
+</code:when-uuid>
+</code:template>

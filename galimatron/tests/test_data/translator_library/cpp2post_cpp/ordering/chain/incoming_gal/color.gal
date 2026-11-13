@@ -1,0 +1,11 @@
+aggregate color
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+}

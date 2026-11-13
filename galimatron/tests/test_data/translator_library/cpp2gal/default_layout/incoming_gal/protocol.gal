@@ -1,0 +1,48 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    label role_mark = static { role };
+    note =
+        marker
+    {
+        "benchmark"
+    };// good: flat string and label, one line
+    title = { "Protocol" };// good: flat string, one line
+    published = once important { };// good: this version, including nested aggregates
+    private_note = local { "here" };// good: this version of this aggregate only
+    once field important { "std::string", "message" };// good: unnamed tag, this version including nested
+    payload = { };// good: empty record, one line
+    empty_list = { [ ] };// good: empty array, one line
+    marker { "bare" };// good: labels and no name, one line
+    { "only" };// good: no name and no labels, one line
+    roles = role_mark { [ "user", "global ws" ] };// good: flat array, one line
+    flags = { "a", "b" };// good: flat strings, one line
+    meta = { { "k": "v" } };// good: flat record, one line
+    item = kept { { "name": "live", "flags": [ "a", "b" ], "pack": { "box": "small" } }, [ "x", { "k": "v" } ] };// good: nested value, broken
+    bag = { [ "abcdefghij", "abcdefghij", "abcdefghij", "abcdefghij", "abcdefghij", "abcdefghij" ] };// good: flat line past 100 columns, broken
+    wide = marker { "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" };// good: string past 100 columns, broken
+    key = LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL { "x" };// good: header past 100 columns, brace on the next line
+    ordering precedes =
+        {
+        item, pong
+        };// good: flat part, one line
+    ordering chain =
+        {
+        item, live
+        },
+        {
+        protocol, item
+        };// good: flat parts, one line
+    ordering wide = { abcdefghij, abcdefghij, abcdefghij, abcdefghij, abcdefghij, abcdefghij, abcdefghij };// good: flat line past 100 columns, names stay together
+    ordering long = { abcdefghij, abcdefghij, abcdefghij, abcdefghij, abcdefghij, abcdefghij, abcdefghij, abcdefghij };// good: names past 100 columns, one name per line
+    ordering LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL = { item, pong };// good: header past 100 columns, brace on the next line
+    ordering parts = { abcdefghij, abcdefghij }, { abcdefghij, abcdefghij }, { abcdefghij, abcdefghij }, { abcdefghij, abcdefghij };// good: parts past 100 columns, one part per line
+    ordering mixed = { item, pong }, { abcdefghijabcdefghijabcdefghijabcdefghij, abcdefghijabcdefghijabcdefghijabcdefghij, abcdefghijabcdefghijabcdefghijabcdefghij };// good: a part past 100 columns, names one per line
+}

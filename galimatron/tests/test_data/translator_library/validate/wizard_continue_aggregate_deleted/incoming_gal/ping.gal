@@ -1,0 +1,7 @@
+aggregate ping
+{
+    versions
+    {
+        0 = deleted;// good
+    }
+}

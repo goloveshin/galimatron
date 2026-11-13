@@ -1,0 +1,162 @@
+name: Release
+
+# a pushed tag builds the packages and attaches them to a GitHub release for that tag.
+# Linux CI and Windows CI stay manual.
+
+on:
+  push:
+    tags:
+      - "**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  linux:
+    name: GCC, Release
+    # ubuntu-latest moves to Ubuntu 26.04 through 19 Nov 2026.
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: lukka/get-cmake@latest
+
+      - name: Install rpmbuild
+        run: sudo apt-get update && sudo apt-get install -y rpm
+
+      - name: Configure
+        env:
+          CC: gcc
+          CXX: g++
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Test
+        run: cmake --build build --config Release --target run_tests
+
+      - name: Package
+        run: |
+          cmake --build build --config Release --target package
+          missing=0
+          for pattern in build/galimatron-*.tar.gz build/galimatron-*.deb build/galimatron-*.rpm; do
+            compgen -G "$pattern" >/dev/null || missing=1
+          done
+          if [ "$missing" -ne 0 ]; then
+            echo "expected a tar.gz, a deb, and an rpm"
+            ls -la build
+            exit 1
+          fi
+
+      - name: Upload tar.gz
+        uses: actions/upload-artifact@v6
+        with:
+          name: galimatron-linux-tar-gz
+          path: build/galimatron-*.tar.gz
+          if-no-files-found: error
+
+      - name: Upload deb
+        uses: actions/upload-artifact@v6
+        with:
+          name: galimatron-linux-deb
+          path: build/galimatron-*.deb
+          if-no-files-found: error
+
+      - name: Upload rpm
+        uses: actions/upload-artifact@v6
+        with:
+          name: galimatron-linux-rpm
+          path: build/galimatron-*.rpm
+          if-no-files-found: error
+
+  windows:
+    name: MSVC, Release
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: lukka/get-cmake@latest
+
+      - uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Install NSIS
+        shell: pwsh
+        run: |
+          choco install nsis --yes --no-progress
+          $nsis = @("${env:ProgramFiles(x86)}\NSIS", "$env:ProgramFiles\NSIS") |
+            Where-Object { Test-Path (Join-Path $_ "makensis.exe") } |
+            Select-Object -First 1
+          if (-not $nsis) {
+            throw "NSIS installed but makensis.exe was not found"
+          }
+          Add-Content -Path $env:GITHUB_PATH -Value $nsis
+
+      - name: Configure
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Test
+        run: cmake --build build --config Release --target run_tests
+
+      - name: Package
+        shell: pwsh
+        run: |
+          cmake --build build --config Release --target package
+          $zip = @(Get-ChildItem build/galimatron-*.zip)
+          $exe = @(Get-ChildItem build/galimatron-*.exe)
+          if ($zip.Count -lt 1 -or $exe.Count -lt 1) {
+            Get-ChildItem build -Name
+            throw "expected a zip and an NSIS installer"
+          }
+
+      - name: Upload zip
+        uses: actions/upload-artifact@v6
+        with:
+          name: galimatron-windows-zip
+          path: build/galimatron-*.zip
+          if-no-files-found: error
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v6
+        with:
+          name: galimatron-windows-exe
+          path: build/galimatron-*.exe
+          if-no-files-found: error
+
+  publish:
+    name: GitHub release
+    needs: [linux, windows]
+    # ubuntu-latest moves to Ubuntu 26.04 through 19 Nov 2026.
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Download packages
+        uses: actions/download-artifact@v7
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Create the release and attach the packages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          shopt -s nullglob
+          files=(dist/*)
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "no packages to attach"
+            exit 1
+          fi
+          tag="${GITHUB_REF_NAME}"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" "${files[@]}" --clobber
+          else
+            gh release create "$tag" "${files[@]}" --title "$tag" --notes "Build of ${tag}"
+          fi

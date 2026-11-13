@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after parsing, before the wizard">
+    <language>
+        <chunk layout-mark="18">
+            <location />
+            <root-aggregate name="protocol" layout-mark="17">
+                <root-aggregate-version-declarations layout-mark="3">
+                    <root-aggregate-version-declaration index="0" layout-mark="1" />
+                    <root-aggregate-version-declaration index="1" layout-mark="2" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="14">
+                        <tag index="0" name="version_number" layout-mark="4">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[3]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace" layout-mark="5">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v3]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="enum_name" layout-mark="6">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0" template-engine="true"><![CDATA[sky_state_{{version_namespace}}_e]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" name="struct_name" layout-mark="7">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0" template-engine="true"><![CDATA[sky_{{version_namespace}}_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="field_enum" layout-mark="8">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0" template-engine="true"><![CDATA[sky_state_{{version_namespace}}_t]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[sky_state]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="nums" layout-mark="9">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[a]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[b]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[c]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="picked" layout-mark="10">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0" template-engine="true"><![CDATA[{{nums}} and {{nums.2}}]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="7" name="pack" layout-mark="11">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <record>
+                                        <key delimiter="0"><![CDATA[box]]><value>
+                                                <string delimiter="0"><![CDATA[small]]></string>
+                                            </value>
+                                        </key>
+                                    </record>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="8" name="note" layout-mark="12">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0" template-engine="true"><![CDATA[box {{pack.box}}]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="9" name="raw" layout-mark="13">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[keep {{version_namespace}}]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                    <root-aggregate-version-definition index="1" layout-mark="16">
+                        <tag index="0" name="version_namespace" layout-mark="15">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v4]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </language>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0">
+            <change aggregate="protocol" kind="add" name="version_number" index="0" root="true">
+                <after>
+                    <string>3</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="add" name="version_namespace" index="1" root="true">
+                <after>
+                    <string>v3</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="add" name="enum_name" index="2" root="true">
+                <after>
+                    <string>sky_state_{{version_namespace}}_e</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="add" name="struct_name" index="3" root="true">
+                <after>
+                    <string>sky_{{version_namespace}}_t</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="add" name="field_enum" index="4" root="true">
+                <after>
+                    <string>sky_state_{{version_namespace}}_t</string>
+                    <string>sky_state</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="add" name="nums" index="5" root="true">
+                <after>
+                    <string>a</string>
+                    <string>b</string>
+                    <string>c</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="add" name="picked" index="6" root="true">
+                <after>
+                    <string>{{nums}} and {{nums.2}}</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="add" name="pack" index="7" root="true">
+                <after />
+            </change>
+            <change aggregate="protocol" kind="add" name="note" index="8" root="true">
+                <after>
+                    <string>box {{pack.box}}</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="add" name="raw" index="9" root="true">
+                <after>
+                    <string>keep {{version_namespace}}</string>
+                </after>
+            </change>
+        </version>
+        <version index="1">
+            <change aggregate="protocol" kind="replace" name="version_namespace" index="0" root="true">
+                <before>
+                    <string>v3</string>
+                </before>
+                <after>
+                    <string>v4</string>
+                </after>
+            </change>
+        </version>
+    </history>
+</galimatron>

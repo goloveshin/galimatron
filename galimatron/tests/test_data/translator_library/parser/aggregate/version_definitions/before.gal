@@ -1,0 +1,12 @@
+// bad
+// good: after aggregate
+version 0
+{
+}
+
+aggregate test_aggregate
+{
+    versions
+    {
+    }
+}

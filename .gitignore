@@ -1,0 +1,49 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Antlr4
+.antlr
+
+# Bookmarks
+bookmarks.json
+
+# for clangd
+.cache
+compile_commands.json
+
+# local CMake presets
+CMakeUserPresets.json
+
+# Python
+__pycache__/
+*.pyc

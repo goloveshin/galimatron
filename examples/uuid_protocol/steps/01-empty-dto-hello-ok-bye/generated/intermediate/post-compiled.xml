@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <compiled>
+        <chunk layout-mark="1">
+            <location>
+            </location>
+        </chunk>
+        <chunk>
+            <location>
+            </location>
+            <root-aggregate name="protocol">
+                <root-aggregate-version-declarations>
+                    <root-aggregate-version-declaration index="0" hash="27025d7a1482f343d1f2f0bb2865d7055458e172a1ff90dd9b4cccfd4aba3035" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0">
+                        <tag index="0" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once">
+                            <values />
+                        </tag>
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+        <chunk>
+            <location>
+            </location>
+            <aggregate name="bye" index="0">
+                <aggregate-version-declarations>
+                    <aggregate-version-declaration index="0" hash="d5f1dd00eeeac105b35237d100ea6afa157465731cccdb0555403bf37758d0fa" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0">
+                        <tag index="0" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once">
+                            <values />
+                        </tag>
+                        <tag index="3" name="struct_name">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="group_name">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="uuid">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0002-0000-4000-8000-000000000001]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk>
+            <location>
+            </location>
+            <aggregate name="error" index="1">
+                <aggregate-version-declarations>
+                    <aggregate-version-declaration index="0" hash="1164f6793b8a5aa9156483dfda0f2fd2c739c3aeb4fb331e7b772a26222ff440" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0">
+                        <tag index="0" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once">
+                            <values />
+                        </tag>
+                        <tag index="3" name="struct_name">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="group_name">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="uuid">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0004-0000-4000-8000-000000000001]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk>
+            <location>
+            </location>
+            <aggregate name="hello" index="2">
+                <aggregate-version-declarations>
+                    <aggregate-version-declaration index="0" hash="40af0972ed3f306acd5490022ce560ffdc9b7ccbe3cd7a191fcfef06a6f12dfe" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0">
+                        <tag index="0" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once">
+                            <values />
+                        </tag>
+                        <tag index="3" name="struct_name">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="group_name">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="uuid">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0001-0000-4000-8000-000000000001]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk>
+            <location>
+            </location>
+            <aggregate name="ok" index="3">
+                <aggregate-version-declarations>
+                    <aggregate-version-declaration index="0" hash="47814c54be26cc5b421488df11f5d0961909a7f41b3ceb5ad169daf2ab80bc00" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0">
+                        <tag index="0" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once">
+                            <values />
+                        </tag>
+                        <tag index="3" name="struct_name">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="group_name">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="uuid">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0003-0000-4000-8000-000000000001]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+    </compiled>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0">
+            <change aggregate="protocol" kind="add" name="version_number" index="0" root="true">
+                <after>
+                    <string>1</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="add" name="version_namespace" index="1" root="true">
+                <after>
+                    <string>v1</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="add" name="published" index="2" root="true">
+                <after />
+            </change>
+            <change aggregate="bye" kind="create-aggregate" />
+            <change aggregate="bye" kind="add" name="struct_name" index="0">
+                <after>
+                    <string>bye_t</string>
+                </after>
+            </change>
+            <change aggregate="bye" kind="add" name="group_name" index="1">
+                <after>
+                    <string>bye_group</string>
+                </after>
+            </change>
+            <change aggregate="bye" kind="add" name="uuid" index="2">
+                <after>
+                    <string>6f1e0002-0000-4000-8000-000000000001</string>
+                </after>
+            </change>
+            <change aggregate="error" kind="create-aggregate" />
+            <change aggregate="error" kind="add" name="struct_name" index="0">
+                <after>
+                    <string>error_t</string>
+                </after>
+            </change>
+            <change aggregate="error" kind="add" name="group_name" index="1">
+                <after>
+                    <string>error_group</string>
+                </after>
+            </change>
+            <change aggregate="error" kind="add" name="uuid" index="2">
+                <after>
+                    <string>6f1e0004-0000-4000-8000-000000000001</string>
+                </after>
+            </change>
+            <change aggregate="hello" kind="create-aggregate" />
+            <change aggregate="hello" kind="add" name="struct_name" index="0">
+                <after>
+                    <string>hello_t</string>
+                </after>
+            </change>
+            <change aggregate="hello" kind="add" name="group_name" index="1">
+                <after>
+                    <string>hello_group</string>
+                </after>
+            </change>
+            <change aggregate="hello" kind="add" name="uuid" index="2">
+                <after>
+                    <string>6f1e0001-0000-4000-8000-000000000001</string>
+                </after>
+            </change>
+            <change aggregate="ok" kind="create-aggregate" />
+            <change aggregate="ok" kind="add" name="struct_name" index="0">
+                <after>
+                    <string>ok_t</string>
+                </after>
+            </change>
+            <change aggregate="ok" kind="add" name="group_name" index="1">
+                <after>
+                    <string>ok_group</string>
+                </after>
+            </change>
+            <change aggregate="ok" kind="add" name="uuid" index="2">
+                <after>
+                    <string>6f1e0003-0000-4000-8000-000000000001</string>
+                </after>
+            </change>
+        </version>
+    </history>
+</galimatron>

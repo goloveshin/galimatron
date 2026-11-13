@@ -1,0 +1,12 @@
+root aggregate test_aggregate
+{
+    versions
+    {
+    }
+}
+
+version 0
+{
+    // good
+    label field = static { id_1, id_2, id_3 };
+}

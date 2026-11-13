@@ -1,0 +1,7 @@
+aggregate item
+{
+    versions
+    {
+        0 = deleted;// good: absent from version 0
+    }
+}

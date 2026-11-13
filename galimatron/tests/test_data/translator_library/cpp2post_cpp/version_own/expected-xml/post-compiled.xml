@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <compiled>
+        <chunk layout-mark="11">
+            <location />
+            <aggregate name="dictionary" index="0" layout-mark="10">
+                <aggregate-version-declarations layout-mark="3">
+                    <aggregate-version-declaration index="0" layout-mark="1" />
+                    <aggregate-version-declaration index="1" layout-mark="2" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0" layout-mark="6">
+                        <tag index="0" name="kept" layout-mark="4">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[stay]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="early" layout-mark="5">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[past]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="1" mode="own" layout-mark="9">
+                        <tag index="0" name="early" layout-mark="7">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[past]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="spot" layout-mark="8">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[text]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[spot]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="21">
+            <location />
+            <root-aggregate name="protocol" layout-mark="20">
+                <root-aggregate-version-declarations layout-mark="14">
+                    <root-aggregate-version-declaration index="0" layout-mark="12" />
+                    <root-aggregate-version-declaration index="1" layout-mark="13" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="16">
+                        <tag index="0" name="kept" layout-mark="15">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[stay]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                    <root-aggregate-version-definition index="1" layout-mark="19">
+                        <tag index="0" name="kept" layout-mark="17">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[stay]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="fresh" layout-mark="18">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[root]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </compiled>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0">
+            <change aggregate="protocol" kind="add" name="kept" index="0" root="true">
+                <after>
+                    <string>stay</string>
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="create-aggregate" />
+            <change aggregate="dictionary" kind="label" name="field" index="0" />
+            <change aggregate="dictionary" kind="add" name="early" index="1">
+                <after>
+                    <string>past</string>
+                </after>
+            </change>
+        </version>
+        <version index="1">
+            <change aggregate="protocol" kind="add" name="fresh" index="0" root="true">
+                <after>
+                    <string>root</string>
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="spot" index="0">
+                <after>
+                    <string>text</string>
+                    <string>spot</string>
+                </after>
+            </change>
+        </version>
+    </history>
+</galimatron>

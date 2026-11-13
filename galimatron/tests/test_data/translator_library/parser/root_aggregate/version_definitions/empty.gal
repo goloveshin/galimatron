@@ -1,0 +1,16 @@
+root aggregate test_aggregate
+{
+    versions
+    {
+    }
+}
+
+version 0
+{
+    // good
+}
+
+version 1
+{
+    // good
+}

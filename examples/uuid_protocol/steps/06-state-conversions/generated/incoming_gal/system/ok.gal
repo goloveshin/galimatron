@@ -1,0 +1,27 @@
+aggregate ok
+{
+    versions
+    {
+        0 = { hash = '47814c54be26cc5b421488df11f5d0961909a7f41b3ceb5ad169daf2ab80bc00' };
+        1 = { hash = 'faf610ed2c9e3e0310434b9efabdde930e3545abf3a1e27f7c3070996270c80e' };
+        2 = { hash = '00282fb89e10e2d3359fab9920024385ca3231cc369320ade9b6c053be6a4ee7' };
+    }
+}
+
+version 0
+{
+    struct_name = { "ok_t" };
+    group_name = { "ok_group" };
+    uuid = need_new_uuid important { "6f1e0003-0000-4000-8000-000000000001" };
+}
+
+version 1
+{
+    system_message = { };
+    uuid = need_new_uuid important { "6f1e0003-0000-4000-8000-000000000002" };
+}
+
+version 2
+{
+    uuid = need_new_uuid important { "6f1e0003-0000-4000-8000-000000000003" };
+}

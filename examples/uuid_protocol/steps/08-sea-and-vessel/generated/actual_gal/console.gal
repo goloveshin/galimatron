@@ -1,0 +1,29 @@
+// version 2 of the lighthouse protocol. fog gains sea. vessel appears.
+// sea_state_e and vessel_kind_e are enums. versions 0, 1, 2, and 3 stay closed.
+//
+// wizard {
+//     create version;
+//     create label protocol enum_field = static { name, value }, tag-name-from { name };
+//     create aggregate sea_state_enum in payload;
+//     create tag sea_state_enum payload_message = { };
+//     create tag sea_state_enum enum_name = { "sea_state_e" };
+//     create tag sea_state_enum enum_field important { "calm", "0" };
+//     create tag sea_state_enum enum_field important { "swell" };
+//     create tag fog field important { "sea_state_e", "sea", "sea_state_e::calm" };
+//     create aggregate vessel_kind_enum in payload;
+//     create tag vessel_kind_enum payload_message = { };
+//     create tag vessel_kind_enum enum_name = { "vessel_kind_e" };
+//     create tag vessel_kind_enum enum_field important { "sail", "0" };
+//     create tag vessel_kind_enum enum_field important { "steamer" };
+//     create aggregate vessel in payload;
+//     create tag vessel payload_message = { };
+//     create tag vessel struct_name = { "vessel_t" };
+//     create tag vessel uuid = need_new_uuid important { "6f1e0007-0000-4000-8000-000000000001" };
+//     create tag vessel field important { "vessel_kind_e", "kind", "vessel_kind_e::sail" };
+//     create tag vessel field important { "int", "bearing", "0" };
+//     create ordering protocol enum_precedes_struct = { sea_state_enum, fog, vessel_kind_enum, vessel };
+//     create tag protocol version_number = { "5" };
+//     create tag protocol version_namespace = { "v5" };
+//     create tag protocol published = once important { };
+//     create hash;
+// }

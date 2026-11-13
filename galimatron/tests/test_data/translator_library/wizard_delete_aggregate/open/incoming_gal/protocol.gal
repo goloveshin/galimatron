@@ -1,0 +1,16 @@
+root aggregate protocol
+{
+    versions
+    {
+        0 = { hash = '21617fc829579c636c8a50f0d05e40154248a49a5579bcbaa2e280b836cb38b5' };
+        1;
+    }
+}
+
+version 0
+{
+}
+
+version 1
+{
+}

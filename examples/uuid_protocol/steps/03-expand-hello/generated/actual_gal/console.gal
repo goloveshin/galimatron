@@ -1,0 +1,12 @@
+// version 1 only proved the next uuid. remove it, then publish hello with a message.
+//
+// wizard {
+//     delete version;
+//     create version;
+//     create label protocol field = static { type, name, default }, tag-name-from { name };
+//     create tag hello field important { "std::string", "message" };
+//     create tag protocol version_number = { "2" };
+//     create tag protocol version_namespace = { "v2" };
+//     create tag protocol published = once important { };
+//     create hash;
+// }

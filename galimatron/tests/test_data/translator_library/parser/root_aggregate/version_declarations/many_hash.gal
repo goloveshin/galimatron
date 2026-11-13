@@ -1,0 +1,10 @@
+root aggregate test_aggregate
+{
+    versions
+    {
+        0 = {
+            hash = 'dsgsdgsdg',
+            hash = 'etsdfsd' // bad, one hash only
+        };
+    }
+}

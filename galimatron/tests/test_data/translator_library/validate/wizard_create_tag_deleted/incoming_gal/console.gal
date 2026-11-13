@@ -1,0 +1,1 @@
+wizard create tag item speed = field { "int" };// bad: version is deleted

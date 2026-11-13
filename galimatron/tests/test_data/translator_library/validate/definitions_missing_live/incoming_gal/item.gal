@@ -1,0 +1,13 @@
+aggregate item
+{
+    versions
+    {
+        0;// good
+        1;// bad: live declaration without a definition
+        2 = deleted;// good
+    }
+}
+
+version 0
+{
+}

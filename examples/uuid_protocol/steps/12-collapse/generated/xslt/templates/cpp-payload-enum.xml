@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<code:template
+    xmlns:code="galimatron-code-generation"
+>
+std::string print(const <code:enum-name/>&amp; value)
+{
+    using enum <code:enum-name/>;
+    switch (value)
+    {
+<code:cpp-enum-fields/>
+    }
+}
+
+</code:template>

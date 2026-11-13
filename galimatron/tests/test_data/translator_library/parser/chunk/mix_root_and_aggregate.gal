@@ -1,0 +1,14 @@
+root aggregate test_aggregate
+{
+    versions
+    {
+    }
+}
+
+// bad
+aggregate test_aggregate
+{
+    versions
+    {
+    }
+}

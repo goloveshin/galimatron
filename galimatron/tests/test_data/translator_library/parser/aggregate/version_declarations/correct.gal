@@ -1,0 +1,22 @@
+aggregate test_aggregate
+{
+    versions
+    {
+        // good
+        0 = deleted;
+        1;
+        2 = {};
+        3 = {
+            hash = "fjsdkjfkdsjf",
+            comment = 'this is comment'
+        };
+        4 = {
+            comment = 'this is comment',
+            hash = "fjsdkjfkdsjf"
+        };
+        5 = deleted {
+            hash = "fjsdkjfkdsjf",
+            comment = 'this is comment'
+        };
+    }
+}

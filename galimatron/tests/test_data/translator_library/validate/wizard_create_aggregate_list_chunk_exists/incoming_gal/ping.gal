@@ -1,0 +1,11 @@
+aggregate ping// good
+{
+    versions
+    {
+        0;// good
+    }
+}
+
+version 0
+{
+}

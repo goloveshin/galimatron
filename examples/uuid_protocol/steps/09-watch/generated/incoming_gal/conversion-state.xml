@@ -1,0 +1,11 @@
+<conversion-state>
+   <made from="v1" to="v3"/>
+   <made from="v2" to="v3"/>
+   <made from="v1" to="v4"/>
+   <made from="v2" to="v4"/>
+   <made from="v3" to="v4"/>
+   <made from="v1" to="v5"/>
+   <made from="v2" to="v5"/>
+   <made from="v3" to="v5"/>
+   <made from="v4" to="v5"/>
+</conversion-state>

@@ -1,0 +1,18 @@
+aggregate fog
+{
+    versions
+    {
+        0 = deleted;
+        1 = deleted;
+        2 = deleted;
+        3 = { hash = '63d4a5dc0502bdfc5855c031e2a285d0defadc173ef5e0b26a017d6cdb1e0e6c' };
+    }
+}
+
+version 3
+{
+    payload_message = { };
+    struct_name = { "fog_t" };
+    uuid = need_new_uuid important { "6f1e0006-0000-4000-8000-000000000001" };
+    field important { "int", "metres", "0" };
+}

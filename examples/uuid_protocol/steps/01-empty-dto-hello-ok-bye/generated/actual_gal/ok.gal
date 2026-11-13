@@ -1,0 +1,14 @@
+aggregate ok
+{
+    versions
+    {
+        0 = { hash = '47814c54be26cc5b421488df11f5d0961909a7f41b3ceb5ad169daf2ab80bc00' };
+    }
+}
+
+version 0
+{
+    struct_name = { "ok_t" };
+    group_name = { "ok_group" };
+    uuid = important { "6f1e0003-0000-4000-8000-000000000001" };
+}

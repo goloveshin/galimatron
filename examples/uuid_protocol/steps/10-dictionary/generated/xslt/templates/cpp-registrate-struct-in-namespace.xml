@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<code:template
+    xmlns:code="galimatron-code-generation"
+>
+<code:when-uuid>        registrate_t&lt;<code:struct-name/>&gt;{version, <code:group-name/>};
+</code:when-uuid>
+</code:template>

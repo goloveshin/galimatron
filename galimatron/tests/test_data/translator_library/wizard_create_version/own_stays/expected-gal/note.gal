@@ -1,0 +1,24 @@
+aggregate note
+{
+    versions
+    {
+        0;
+        1;
+        2;
+    }
+}
+
+version 0
+{
+}
+
+version local 1
+{
+    kept = { "note" };
+    spot = once { "no" };
+}
+
+version local 2
+{
+    kept = { "note" };
+}

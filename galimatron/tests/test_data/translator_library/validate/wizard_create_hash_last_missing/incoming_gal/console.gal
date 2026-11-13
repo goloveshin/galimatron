@@ -1,0 +1,4 @@
+wizard {// bad: last version does not exist
+    create root aggregate protocol;
+    create hash;
+}

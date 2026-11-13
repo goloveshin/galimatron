@@ -1,0 +1,18 @@
+// version 1 of the lighthouse protocol. the lamp gains candela. fog appears, in metres.
+// bye and error gain a text. hello already has that field. versions 0, 1, and 2 stay closed.
+//
+wizard {
+    create version;
+    create tag lamp field important { "int", "candela", "0" };
+    create aggregate fog in payload;
+    create tag fog payload_message = { };
+    create tag fog struct_name = { "fog_t" };
+    create tag fog uuid = need_new_uuid important { "6f1e0006-0000-4000-8000-000000000001" };
+    create tag fog field important { "int", "metres", "0" };
+    create tag bye field important { "std::string", "message" };
+    create tag error field important { "std::string", "message" };
+    create tag protocol version_number = { "4" };
+    create tag protocol version_namespace = { "v4" };
+    create tag protocol published = once important { };
+    create hash;
+}

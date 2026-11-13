@@ -1,0 +1,10 @@
+root aggregate protocol// bad: more than one root aggregate
+{
+    versions
+    {
+        0;
+    }
+}
+version 0
+{
+}

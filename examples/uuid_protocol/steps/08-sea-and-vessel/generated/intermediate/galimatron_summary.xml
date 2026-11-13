@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformations status="success">
+    <transformation index="0" name="gal2cpp" from="build-in" status="SUCCESS" />
+    <transformation index="1" name="cpp2cpp_validate" from="build-in" status="SUCCESS">
+        <produced-xml path="intermediate/lang-parsed.xml" />
+    </transformation>
+    <transformation index="2" name="cpp2cpp_wizard" from="build-in" status="SUCCESS" />
+    <transformation index="3" name="cpp2cpp_before_xslt" from="build-in" status="SUCCESS" />
+    <transformation index="4" name="cpp2xml" from="build-in" status="SUCCESS">
+        <produced-xml path="intermediate/lang-wizard.xml" />
+    </transformation>
+    <transformation index="5" name="xml2saxon" from="build-in" status="SUCCESS" />
+    <transformation index="6" name="next uuid for wizard copies" from="user" status="SUCCESS">
+        <user-data><![CDATA[uuid xslt unchanged: the message id stays and the version counter adds one]]></user-data>
+    </transformation>
+    <transformation index="7" name="xml2cpp" from="build-in" status="SUCCESS">
+        <produced-xml path="intermediate/lang-xslt.xml" />
+    </transformation>
+    <transformation index="8" name="cpp2cpp_after_xslt" from="build-in" status="SUCCESS" />
+    <transformation index="9" name="cpp2gal" from="build-in" status="SUCCESS">
+        <produced-xml path="intermediate/lang-final.xml" />
+        <produced-files count="11">
+            <file index="0" path="actual_gal/console.gal" />
+            <file index="1" path="actual_gal/payload/fog.gal" />
+            <file index="2" path="actual_gal/payload/lamp.gal" />
+            <file index="3" path="actual_gal/protocol.gal" />
+            <file index="4" path="actual_gal/system/bye.gal" />
+            <file index="5" path="actual_gal/system/error.gal" />
+            <file index="6" path="actual_gal/system/hello.gal" />
+            <file index="7" path="actual_gal/system/ok.gal" />
+            <file index="8" path="actual_gal/payload/sea_state_enum.gal" />
+            <file index="9" path="actual_gal/payload/vessel_kind_enum.gal" />
+            <file index="10" path="actual_gal/payload/vessel.gal" />
+        </produced-files>
+    </transformation>
+    <transformation index="10" name="gal2cpp" from="build-in" status="SKIPPED" />
+    <transformation index="11" name="cpp2post_cpp" from="build-in" status="SUCCESS" />
+    <transformation index="12" name="post_cpp2post_xml" from="build-in" status="SUCCESS">
+        <produced-xml path="intermediate/post-compiled.xml" />
+    </transformation>
+    <transformation index="13" name="post_xml2saxon" from="build-in" status="SUCCESS" />
+    <transformation index="14" name="generate .hpp/.cpp" from="user" status="SUCCESS">
+        <user-data><![CDATA[GaL publishes version 5: fog gains sea, vessel appears, an enum is ordered before the struct that uses it. the xslt keeps recorded conversions and adds empty ones into version 5]]></user-data>
+        <produced-files count="11">
+            <file index="0" path="actual_gal/conversion-state.xml" />
+            <file index="1" path="generated_dto/v1/v1.cpp" />
+            <file index="2" path="generated_dto/v1/v1.hpp" />
+            <file index="3" path="generated_dto/v2/v2.cpp" />
+            <file index="4" path="generated_dto/v2/v2.hpp" />
+            <file index="5" path="generated_dto/v3/v3.cpp" />
+            <file index="6" path="generated_dto/v3/v3.hpp" />
+            <file index="7" path="generated_dto/v4/v4.cpp" />
+            <file index="8" path="generated_dto/v4/v4.hpp" />
+            <file index="9" path="generated_dto/v5/v5.cpp" />
+            <file index="10" path="generated_dto/v5/v5.hpp" />
+        </produced-files>
+    </transformation>
+</transformations>

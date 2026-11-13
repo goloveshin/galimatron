@@ -1,0 +1,1741 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the wizard">
+    <language>
+        <chunk layout-mark="1">
+            <location>
+            </location>
+        </chunk>
+        <chunk layout-mark="36">
+            <location>
+            </location>
+            <aggregate name="dictionary" index="0" layout-mark="35">
+                <aggregate-version-declarations layout-mark="3">
+                    <aggregate-version-declaration index="0" status="deleted" />
+                    <aggregate-version-declaration index="1" status="deleted" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                    <aggregate-version-declaration index="3" status="deleted" />
+                    <aggregate-version-declaration index="4" status="deleted" />
+                    <aggregate-version-declaration index="5" status="deleted" />
+                    <aggregate-version-declaration index="6" layout-mark="2" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition owner="6">
+                        <dynamic wizard="new-version" />
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="6" mode="own" layout-mark="34">
+                        <tag index="0" name="service" layout-mark="4">
+                            <label-refs />
+                            <values />
+                        </tag>
+                        <label index="1" name="entry" layout-mark="5">
+                            <static>
+                                <values>
+                                    <value index="0" value="name" />
+                                    <value index="1" value="introduced" />
+                                    <value index="2" value="text" />
+                                </values>
+                                <tag-name-from value="name" />
+                            </static>
+                        </label>
+                        <tag index="2" layout-mark="6">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[uuid]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[stable id of a message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" layout-mark="7">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[struct_name]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[the C++ type of an aggregate]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" layout-mark="8">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[message]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[1]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[text carried by a system message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" layout-mark="9">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[payload_message]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[2]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[a user message, not a system message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" layout-mark="10">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[enum_name]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[4]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[the C++ enumeration type]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="7" layout-mark="11">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[name]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[a string the watch uses for a vessel]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="8" layout-mark="12">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[group_name]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="9" layout-mark="13">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[published]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="10" layout-mark="14">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[version_namespace]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="11" layout-mark="15">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[version_number]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="12" layout-mark="16">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[system_message]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[1]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="13" layout-mark="17">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[lit]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[2]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="14" layout-mark="18">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[candela]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[3]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="15" layout-mark="19">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[metres]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[3]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="16" layout-mark="20">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bearing]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[4]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="17" layout-mark="21">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[calm]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[4]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="18" layout-mark="22">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[kind]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[4]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="19" layout-mark="23">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[sail]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[4]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="20" layout-mark="24">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[sea]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[4]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="21" layout-mark="25">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[steamer]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[4]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="22" layout-mark="26">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[swell]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[4]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="23" layout-mark="27">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[day]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="24" layout-mark="28">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[fog]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="25" layout-mark="29">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[gale]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="26" layout-mark="30">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[lamp]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="27" layout-mark="31">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[launch]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="28" name="station" layout-mark="32">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[North Light]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="29" layout-mark="33">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="entry" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[greeting]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[6]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0" template-engine="true"><![CDATA[{{station}} on watch]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="46">
+            <location>
+            </location>
+            <aggregate name="fog" index="1" layout-mark="45">
+                <aggregate-version-declarations layout-mark="38">
+                    <aggregate-version-declaration index="0" status="deleted" />
+                    <aggregate-version-declaration index="1" status="deleted" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                    <aggregate-version-declaration index="3" status="deleted" />
+                    <aggregate-version-declaration index="4" status="deleted" />
+                    <aggregate-version-declaration index="5" status="deleted" />
+                    <aggregate-version-declaration index="6" layout-mark="37" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition owner="6">
+                        <dynamic wizard="new-version" />
+                        <tag index="0" name="payload_message" layout-mark="39">
+                            <label-refs />
+                            <values />
+                        </tag>
+                        <tag index="1" name="struct_name" layout-mark="40">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[fog_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" layout-mark="41">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[metres]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" layout-mark="42">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[sea_state_e]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[sea]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[sea_state_e::calm]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <delete index="4" name="uuid" layout-mark="43" />
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="6" layout-mark="44" />
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="56">
+            <location>
+            </location>
+            <aggregate name="lamp" index="2" layout-mark="55">
+                <aggregate-version-declarations layout-mark="48">
+                    <aggregate-version-declaration index="0" status="deleted" />
+                    <aggregate-version-declaration index="1" status="deleted" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                    <aggregate-version-declaration index="3" status="deleted" />
+                    <aggregate-version-declaration index="4" status="deleted" />
+                    <aggregate-version-declaration index="5" status="deleted" />
+                    <aggregate-version-declaration index="6" layout-mark="47" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition owner="6">
+                        <dynamic wizard="new-version" />
+                        <tag index="0" name="payload_message" layout-mark="49">
+                            <label-refs />
+                            <values />
+                        </tag>
+                        <tag index="1" name="struct_name" layout-mark="50">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[lamp_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" layout-mark="51">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bool]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[lit]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[false]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" layout-mark="52">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[candela]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <delete index="4" name="uuid" layout-mark="53" />
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="6" layout-mark="54" />
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="66">
+            <location>
+            </location>
+            <aggregate name="sea_state_enum" index="3" layout-mark="65">
+                <aggregate-version-declarations layout-mark="58">
+                    <aggregate-version-declaration index="0" status="deleted" />
+                    <aggregate-version-declaration index="1" status="deleted" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                    <aggregate-version-declaration index="3" status="deleted" />
+                    <aggregate-version-declaration index="4" status="deleted" />
+                    <aggregate-version-declaration index="5" status="deleted" />
+                    <aggregate-version-declaration index="6" layout-mark="57" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition owner="6">
+                        <dynamic wizard="new-version" />
+                        <tag index="0" name="payload_message" layout-mark="59">
+                            <label-refs />
+                            <values />
+                        </tag>
+                        <tag index="1" name="enum_name" layout-mark="60">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[sea_state_e]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" layout-mark="61">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="enum_field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[calm]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" layout-mark="62">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="enum_field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[swell]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" layout-mark="63">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="enum_field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[gale]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="6" layout-mark="64" />
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="78">
+            <location>
+            </location>
+            <aggregate name="vessel" index="4" layout-mark="77">
+                <aggregate-version-declarations layout-mark="68">
+                    <aggregate-version-declaration index="0" status="deleted" />
+                    <aggregate-version-declaration index="1" status="deleted" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                    <aggregate-version-declaration index="3" status="deleted" />
+                    <aggregate-version-declaration index="4" status="deleted" />
+                    <aggregate-version-declaration index="5" status="deleted" />
+                    <aggregate-version-declaration index="6" layout-mark="67" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition owner="6">
+                        <dynamic wizard="new-version" />
+                        <tag index="0" name="payload_message" layout-mark="69">
+                            <label-refs />
+                            <values />
+                        </tag>
+                        <tag index="1" name="struct_name" layout-mark="70">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[vessel_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" layout-mark="71">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[vessel_kind_e]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[kind]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[vessel_kind_e::sail]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" layout-mark="72">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[bearing]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="uuid" layout-mark="73">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0007-0000-4000-8000-000000000002]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" layout-mark="74">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[name]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="6" layout-mark="76">
+                        <tag index="0" name="uuid" layout-mark="75">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0007-0000-4000-8000-000000000003]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="88">
+            <location>
+            </location>
+            <aggregate name="vessel_kind_enum" index="5" layout-mark="87">
+                <aggregate-version-declarations layout-mark="80">
+                    <aggregate-version-declaration index="0" status="deleted" />
+                    <aggregate-version-declaration index="1" status="deleted" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                    <aggregate-version-declaration index="3" status="deleted" />
+                    <aggregate-version-declaration index="4" status="deleted" />
+                    <aggregate-version-declaration index="5" status="deleted" />
+                    <aggregate-version-declaration index="6" layout-mark="79" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition owner="6">
+                        <dynamic wizard="new-version" />
+                        <tag index="0" name="payload_message" layout-mark="81">
+                            <label-refs />
+                            <values />
+                        </tag>
+                        <tag index="1" name="enum_name" layout-mark="82">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[vessel_kind_e]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" layout-mark="83">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="enum_field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[sail]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" layout-mark="84">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="enum_field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[steamer]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" layout-mark="85">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="enum_field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[launch]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="6" layout-mark="86" />
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="100">
+            <location>
+            </location>
+            <aggregate name="watch" index="6" layout-mark="99">
+                <aggregate-version-declarations layout-mark="90">
+                    <aggregate-version-declaration index="0" status="deleted" />
+                    <aggregate-version-declaration index="1" status="deleted" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                    <aggregate-version-declaration index="3" status="deleted" />
+                    <aggregate-version-declaration index="4" status="deleted" />
+                    <aggregate-version-declaration index="5" status="deleted" />
+                    <aggregate-version-declaration index="6" layout-mark="89" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition owner="6">
+                        <dynamic wizard="new-version" />
+                        <tag index="0" name="payload_message" layout-mark="91">
+                            <label-refs />
+                            <values />
+                        </tag>
+                        <tag index="1" name="struct_name" layout-mark="92">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[watch_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="uuid" layout-mark="93">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0008-0000-4000-8000-000000000001]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" layout-mark="94">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[day]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" layout-mark="95">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[lamp_t]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[lamp]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[{}]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" layout-mark="96">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[fog_t]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[fog]]></string>
+                                </value>
+                                <value index="2">
+                                    <string delimiter="0"><![CDATA[{}]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="6" layout-mark="98">
+                        <tag index="0" name="uuid" layout-mark="97">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0008-0000-4000-8000-000000000002]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="112">
+            <location>
+            </location>
+            <root-aggregate name="protocol" layout-mark="111">
+                <root-aggregate-version-declarations layout-mark="102">
+                    <root-aggregate-version-declaration index="0" status="deleted" />
+                    <root-aggregate-version-declaration index="1" status="deleted" />
+                    <root-aggregate-version-declaration index="2" status="deleted" />
+                    <root-aggregate-version-declaration index="3" status="deleted" />
+                    <root-aggregate-version-declaration index="4" status="deleted" />
+                    <root-aggregate-version-declaration index="5" status="deleted" />
+                    <root-aggregate-version-declaration index="6" layout-mark="101" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition owner="6">
+                        <dynamic wizard="new-version" />
+                        <label index="0" name="need_new_uuid" layout-mark="103">
+                            <dynamic value="need_gen_uuid" />
+                        </label>
+                        <label index="1" name="field" layout-mark="104">
+                            <static>
+                                <values>
+                                    <value index="0" value="type" />
+                                    <value index="1" value="name" />
+                                    <value index="2" value="default" />
+                                </values>
+                                <tag-name-from value="name" />
+                            </static>
+                        </label>
+                        <label index="2" name="enum_field" layout-mark="105">
+                            <static>
+                                <values>
+                                    <value index="0" value="name" />
+                                    <value index="1" value="value" />
+                                </values>
+                                <tag-name-from value="name" />
+                            </static>
+                        </label>
+                        <ordering index="3" name="enum_precedes_struct" layout-mark="106">
+                            <ordering-parts>
+                                <ordering-part>
+                                    <aggregate-ref name="sea_state_enum" />
+                                    <aggregate-ref name="fog" />
+                                    <aggregate-ref name="vessel_kind_enum" />
+                                    <aggregate-ref name="vessel" />
+                                </ordering-part>
+                            </ordering-parts>
+                        </ordering>
+                        <tag index="4" name="version_number" layout-mark="107">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="version_namespace" layout-mark="108">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="published" mode="once" layout-mark="109">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="important" />
+                                </static>
+                            </label-refs>
+                            <values />
+                        </tag>
+                    </root-aggregate-version-definition>
+                    <root-aggregate-version-definition index="6" layout-mark="110">
+                        <tag index="0" name="published" mode="once">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="important" />
+                                </static>
+                            </label-refs>
+                            <values />
+                        </tag>
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+        <chunk layout-mark="123">
+            <location>
+            </location>
+            <aggregate name="bye" index="7" layout-mark="122">
+                <aggregate-version-declarations layout-mark="114">
+                    <aggregate-version-declaration index="0" status="deleted" />
+                    <aggregate-version-declaration index="1" status="deleted" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                    <aggregate-version-declaration index="3" status="deleted" />
+                    <aggregate-version-declaration index="4" status="deleted" />
+                    <aggregate-version-declaration index="5" status="deleted" />
+                    <aggregate-version-declaration index="6" layout-mark="113" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition owner="6">
+                        <dynamic wizard="new-version" />
+                        <tag index="0" name="struct_name" layout-mark="115">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="116">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="117">
+                            <label-refs />
+                            <values />
+                        </tag>
+                        <tag index="3" layout-mark="118">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="uuid" layout-mark="119">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0002-0000-4000-8000-000000000006]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="6" layout-mark="121">
+                        <tag index="0" name="uuid" layout-mark="120">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0002-0000-4000-8000-000000000007]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="134">
+            <location>
+            </location>
+            <aggregate name="error" index="8" layout-mark="133">
+                <aggregate-version-declarations layout-mark="125">
+                    <aggregate-version-declaration index="0" status="deleted" />
+                    <aggregate-version-declaration index="1" status="deleted" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                    <aggregate-version-declaration index="3" status="deleted" />
+                    <aggregate-version-declaration index="4" status="deleted" />
+                    <aggregate-version-declaration index="5" status="deleted" />
+                    <aggregate-version-declaration index="6" layout-mark="124" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition owner="6">
+                        <dynamic wizard="new-version" />
+                        <tag index="0" name="struct_name" layout-mark="126">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="127">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="128">
+                            <label-refs />
+                            <values />
+                        </tag>
+                        <tag index="3" layout-mark="129">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="uuid" layout-mark="130">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0004-0000-4000-8000-000000000006]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="6" layout-mark="132">
+                        <tag index="0" name="uuid" layout-mark="131">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0004-0000-4000-8000-000000000007]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="145">
+            <location>
+            </location>
+            <aggregate name="hello" index="9" layout-mark="144">
+                <aggregate-version-declarations layout-mark="136">
+                    <aggregate-version-declaration index="0" status="deleted" />
+                    <aggregate-version-declaration index="1" status="deleted" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                    <aggregate-version-declaration index="3" status="deleted" />
+                    <aggregate-version-declaration index="4" status="deleted" />
+                    <aggregate-version-declaration index="5" status="deleted" />
+                    <aggregate-version-declaration index="6" layout-mark="135" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition owner="6">
+                        <dynamic wizard="new-version" />
+                        <tag index="0" name="struct_name" layout-mark="137">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="138">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="139">
+                            <label-refs />
+                            <values />
+                        </tag>
+                        <tag index="3" layout-mark="140">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="uuid" layout-mark="141">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0001-0000-4000-8000-000000000006]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="6" layout-mark="143">
+                        <tag index="0" name="uuid" layout-mark="142">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0001-0000-4000-8000-000000000007]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="155">
+            <location>
+            </location>
+            <aggregate name="ok" index="10" layout-mark="154">
+                <aggregate-version-declarations layout-mark="147">
+                    <aggregate-version-declaration index="0" status="deleted" />
+                    <aggregate-version-declaration index="1" status="deleted" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                    <aggregate-version-declaration index="3" status="deleted" />
+                    <aggregate-version-declaration index="4" status="deleted" />
+                    <aggregate-version-declaration index="5" status="deleted" />
+                    <aggregate-version-declaration index="6" layout-mark="146" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition owner="6">
+                        <dynamic wizard="new-version" />
+                        <tag index="0" name="struct_name" layout-mark="148">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="149">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="150">
+                            <label-refs />
+                            <values />
+                        </tag>
+                        <tag index="3" name="uuid" layout-mark="151">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0003-0000-4000-8000-000000000006]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="6" layout-mark="153">
+                        <tag index="0" name="uuid" layout-mark="152">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0003-0000-4000-8000-000000000007]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+    </language>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0" />
+        <version index="1" />
+        <version index="2" />
+        <version index="3" />
+        <version index="4" />
+        <version index="5" />
+        <version index="6">
+            <change aggregate="protocol" kind="replace" name="published" index="0" root="true">
+                <before />
+                <after />
+            </change>
+            <change aggregate="dictionary" kind="create-aggregate" />
+            <change aggregate="dictionary" kind="add" name="service" index="0">
+                <after />
+            </change>
+            <change aggregate="dictionary" kind="label" name="entry" index="1" />
+            <change aggregate="dictionary" kind="add" name="uuid" index="2">
+                <after>
+                    <string>uuid</string>
+                    <string>0</string>
+                    <string>stable id of a message</string>
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="struct_name" index="3">
+                <after>
+                    <string>struct_name</string>
+                    <string>0</string>
+                    <string>the C++ type of an aggregate</string>
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="message" index="4">
+                <after>
+                    <string>message</string>
+                    <string>1</string>
+                    <string>text carried by a system message</string>
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="payload_message" index="5">
+                <after>
+                    <string>payload_message</string>
+                    <string>2</string>
+                    <string>a user message, not a system message</string>
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="enum_name" index="6">
+                <after>
+                    <string>enum_name</string>
+                    <string>4</string>
+                    <string>the C++ enumeration type</string>
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="name" index="7">
+                <after>
+                    <string>name</string>
+                    <string>5</string>
+                    <string>a string the watch uses for a vessel</string>
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="group_name" index="8">
+                <after>
+                    <string>group_name</string>
+                    <string>0</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="published" index="9">
+                <after>
+                    <string>published</string>
+                    <string>0</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="version_namespace" index="10">
+                <after>
+                    <string>version_namespace</string>
+                    <string>0</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="version_number" index="11">
+                <after>
+                    <string>version_number</string>
+                    <string>0</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="system_message" index="12">
+                <after>
+                    <string>system_message</string>
+                    <string>1</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="lit" index="13">
+                <after>
+                    <string>lit</string>
+                    <string>2</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="candela" index="14">
+                <after>
+                    <string>candela</string>
+                    <string>3</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="metres" index="15">
+                <after>
+                    <string>metres</string>
+                    <string>3</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="bearing" index="16">
+                <after>
+                    <string>bearing</string>
+                    <string>4</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="calm" index="17">
+                <after>
+                    <string>calm</string>
+                    <string>4</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="kind" index="18">
+                <after>
+                    <string>kind</string>
+                    <string>4</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="sail" index="19">
+                <after>
+                    <string>sail</string>
+                    <string>4</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="sea" index="20">
+                <after>
+                    <string>sea</string>
+                    <string>4</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="steamer" index="21">
+                <after>
+                    <string>steamer</string>
+                    <string>4</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="swell" index="22">
+                <after>
+                    <string>swell</string>
+                    <string>4</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="day" index="23">
+                <after>
+                    <string>day</string>
+                    <string>5</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="fog" index="24">
+                <after>
+                    <string>fog</string>
+                    <string>5</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="gale" index="25">
+                <after>
+                    <string>gale</string>
+                    <string>5</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="lamp" index="26">
+                <after>
+                    <string>lamp</string>
+                    <string>5</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="launch" index="27">
+                <after>
+                    <string>launch</string>
+                    <string>5</string>
+                    <string />
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="station" index="28">
+                <after>
+                    <string>North Light</string>
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="greeting" index="29">
+                <after>
+                    <string>greeting</string>
+                    <string>6</string>
+                    <string>{{station}} on watch</string>
+                </after>
+            </change>
+            <change aggregate="fog" kind="create-aggregate" />
+            <change aggregate="lamp" kind="create-aggregate" />
+            <change aggregate="sea_state_enum" kind="create-aggregate" />
+            <change aggregate="vessel" kind="create-aggregate" />
+            <change aggregate="vessel" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0007-0000-4000-8000-000000000002</string>
+                </before>
+                <after>
+                    <string>6f1e0007-0000-4000-8000-000000000003</string>
+                </after>
+            </change>
+            <change aggregate="vessel_kind_enum" kind="create-aggregate" />
+            <change aggregate="watch" kind="create-aggregate" />
+            <change aggregate="watch" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0008-0000-4000-8000-000000000001</string>
+                </before>
+                <after>
+                    <string>6f1e0008-0000-4000-8000-000000000002</string>
+                </after>
+            </change>
+            <change aggregate="bye" kind="create-aggregate" />
+            <change aggregate="bye" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0002-0000-4000-8000-000000000006</string>
+                </before>
+                <after>
+                    <string>6f1e0002-0000-4000-8000-000000000007</string>
+                </after>
+            </change>
+            <change aggregate="error" kind="create-aggregate" />
+            <change aggregate="error" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0004-0000-4000-8000-000000000006</string>
+                </before>
+                <after>
+                    <string>6f1e0004-0000-4000-8000-000000000007</string>
+                </after>
+            </change>
+            <change aggregate="hello" kind="create-aggregate" />
+            <change aggregate="hello" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0001-0000-4000-8000-000000000006</string>
+                </before>
+                <after>
+                    <string>6f1e0001-0000-4000-8000-000000000007</string>
+                </after>
+            </change>
+            <change aggregate="ok" kind="create-aggregate" />
+            <change aggregate="ok" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0003-0000-4000-8000-000000000006</string>
+                </before>
+                <after>
+                    <string>6f1e0003-0000-4000-8000-000000000007</string>
+                </after>
+            </change>
+        </version>
+    </history>
+</galimatron>

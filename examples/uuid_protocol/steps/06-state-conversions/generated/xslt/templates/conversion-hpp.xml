@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<code:template
+    xmlns:code="galimatron-code-generation"
+>
+#pragma once
+
+#include "<code:from-namespace/>/<code:from-namespace/>.hpp"
+
+
+namespace uuid_protocol
+{
+
+struct server_state_t;
+
+namespace conversion
+{
+
+<code:conversion-declarations/>
+}// namespace conversion
+
+}// namespace uuid_protocol
+</code:template>

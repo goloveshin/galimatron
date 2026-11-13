@@ -1,0 +1,1 @@
+wizard create aggregate ping, ping;// bad: ping is listed twice

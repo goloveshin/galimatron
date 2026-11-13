@@ -1,0 +1,11 @@
+aggregate live
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+}

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after parsing, before the wizard">
+    <language>
+        <chunk layout-mark="1">
+            <location />
+        </chunk>
+        <chunk layout-mark="10">
+            <location />
+            <aggregate name="ping" index="0" layout-mark="9">
+                <aggregate-version-declarations layout-mark="5">
+                    <aggregate-version-declaration index="0" status="deleted" layout-mark="2" />
+                    <aggregate-version-declaration index="1" status="deleted" layout-mark="3" />
+                    <aggregate-version-declaration index="2" layout-mark="4" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="2" layout-mark="8">
+                        <label index="0" name="field" layout-mark="6">
+                            <static>
+                                <values>
+                                    <value index="0" value="type" />
+                                </values>
+                            </static>
+                        </label>
+                        <tag index="1" name="speed" layout-mark="7">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="19">
+            <location />
+            <aggregate name="pong" index="1" layout-mark="18">
+                <aggregate-version-declarations layout-mark="14">
+                    <aggregate-version-declaration index="0" status="deleted" layout-mark="11" />
+                    <aggregate-version-declaration index="1" status="deleted" layout-mark="12" />
+                    <aggregate-version-declaration index="2" layout-mark="13" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="2" layout-mark="17">
+                        <label index="0" name="field" layout-mark="15">
+                            <static>
+                                <values>
+                                    <value index="0" value="type" />
+                                </values>
+                            </static>
+                        </label>
+                        <tag index="1" name="speed" layout-mark="16">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="28">
+            <location />
+            <root-aggregate name="protocol" layout-mark="27">
+                <root-aggregate-version-declarations layout-mark="23">
+                    <root-aggregate-version-declaration index="0" layout-mark="20" />
+                    <root-aggregate-version-declaration index="1" layout-mark="21" />
+                    <root-aggregate-version-declaration index="2" layout-mark="22" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="24" />
+                    <root-aggregate-version-definition index="1" layout-mark="25" />
+                    <root-aggregate-version-definition index="2" layout-mark="26" />
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </language>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0" />
+        <version index="1" />
+        <version index="2">
+            <change aggregate="ping" kind="create-aggregate" />
+            <change aggregate="ping" kind="label" name="field" index="0" />
+            <change aggregate="ping" kind="add" name="speed" index="1">
+                <after>
+                    <string>int</string>
+                </after>
+            </change>
+            <change aggregate="pong" kind="create-aggregate" />
+            <change aggregate="pong" kind="label" name="field" index="0" />
+            <change aggregate="pong" kind="add" name="speed" index="1">
+                <after>
+                    <string>int</string>
+                </after>
+            </change>
+        </version>
+    </history>
+</galimatron>

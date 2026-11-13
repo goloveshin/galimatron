@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<code:template
+    xmlns:code="galimatron-code-generation"
+>
+#pragma once
+
+#include "uuid_protocol/common/forward.hpp"
+
+namespace uuid_protocol::<code:namespace/>
+{
+
+constexpr version_t version = <code:version/>;
+<code:hpp-structs/>
+void registrate();
+
+}// namespace uuid_protocol::<code:namespace/>
+</code:template>

@@ -1,0 +1,21 @@
+// wizard {
+//     create root aggregate protocol;
+//     create version;
+//     create tag protocol version_number = { "1" };
+//     create tag protocol version_namespace = { "v1" };
+//     create tag protocol published = once important { };
+//     create aggregate bye, error, hello, ok;
+//     create tag bye struct_name = { "bye_t" };
+//     create tag bye group_name = { "bye_group" };
+//     create tag bye uuid = important { "6f1e0002-0000-4000-8000-000000000001" };
+//     create tag error struct_name = { "error_t" };
+//     create tag error group_name = { "error_group" };
+//     create tag error uuid = important { "6f1e0004-0000-4000-8000-000000000001" };
+//     create tag hello struct_name = { "hello_t" };
+//     create tag hello group_name = { "hello_group" };
+//     create tag hello uuid = important { "6f1e0001-0000-4000-8000-000000000001" };
+//     create tag ok struct_name = { "ok_t" };
+//     create tag ok group_name = { "ok_group" };
+//     create tag ok uuid = important { "6f1e0003-0000-4000-8000-000000000001" };
+//     create hash;
+// }

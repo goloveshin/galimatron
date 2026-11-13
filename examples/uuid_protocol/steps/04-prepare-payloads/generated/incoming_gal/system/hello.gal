@@ -1,0 +1,23 @@
+aggregate hello
+{
+    versions
+    {
+        0 = { hash = '40af0972ed3f306acd5490022ce560ffdc9b7ccbe3cd7a191fcfef06a6f12dfe' };
+        1 = { hash = 'ce76ca46b0050450ea01bd13402840b28da72f98319891038b5daa8849de7022' };
+    }
+}
+
+version 0
+{
+    struct_name = { "hello_t" };
+    group_name = { "hello_group" };
+    uuid = need_new_uuid important { "6f1e0001-0000-4000-8000-000000000001" };
+}
+
+version 1
+{
+    system_message = { };
+    uuid = need_new_uuid important { "6f1e0001-0000-4000-8000-000000000002" };
+    field important { "std::string", "message" };
+}
+

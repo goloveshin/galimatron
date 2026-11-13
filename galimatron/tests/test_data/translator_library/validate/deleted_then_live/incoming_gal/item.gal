@@ -1,0 +1,17 @@
+aggregate item
+{
+    versions
+    {
+        0 = deleted;// good: deleted prefix
+        1;// good
+        2;// good
+    }
+}
+
+version 1
+{
+}
+
+version 2
+{
+}

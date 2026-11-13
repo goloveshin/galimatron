@@ -1,0 +1,2 @@
+wizard create root aggregate a;// bad: more than one wizard command
+wizard create root aggregate b;// bad: more than one wizard command

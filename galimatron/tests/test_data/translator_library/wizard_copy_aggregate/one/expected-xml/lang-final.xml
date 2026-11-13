@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <language>
+        <chunk layout-mark="1">
+            <location />
+        </chunk>
+        <chunk layout-mark="17">
+            <location />
+            <aggregate name="ping" index="0" layout-mark="16">
+                <aggregate-version-declarations layout-mark="6">
+                    <aggregate-version-declaration index="0" status="deleted" layout-mark="2" />
+                    <aggregate-version-declaration index="1" layout-mark="3" />
+                    <aggregate-version-declaration index="2" layout-mark="4" />
+                    <aggregate-version-declaration index="3" layout-mark="5" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="1" layout-mark="9">
+                        <label index="0" name="field" layout-mark="7">
+                            <static>
+                                <values>
+                                    <value index="0" value="type" />
+                                </values>
+                            </static>
+                        </label>
+                        <tag index="1" name="speed" layout-mark="8">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="2" layout-mark="12">
+                        <label index="0" name="field" layout-mark="10">
+                            <static>
+                                <values>
+                                    <value index="0" value="type" />
+                                </values>
+                            </static>
+                        </label>
+                        <tag index="1" name="count" layout-mark="11">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="3" layout-mark="15">
+                        <label index="0" name="field" layout-mark="13">
+                            <static>
+                                <values>
+                                    <value index="0" value="type" />
+                                </values>
+                            </static>
+                        </label>
+                        <tag index="1" name="speed" layout-mark="14">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[long]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="28">
+            <location />
+            <root-aggregate name="protocol" layout-mark="27">
+                <root-aggregate-version-declarations layout-mark="22">
+                    <root-aggregate-version-declaration index="0" hash="21617fc829579c636c8a50f0d05e40154248a49a5579bcbaa2e280b836cb38b5" layout-mark="18" />
+                    <root-aggregate-version-declaration index="1" layout-mark="19" />
+                    <root-aggregate-version-declaration index="2" layout-mark="20" />
+                    <root-aggregate-version-declaration index="3" layout-mark="21" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="23" />
+                    <root-aggregate-version-definition index="1" layout-mark="24" />
+                    <root-aggregate-version-definition index="2" layout-mark="25" />
+                    <root-aggregate-version-definition index="3" layout-mark="26" />
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+        <chunk>
+            <location />
+            <aggregate name="pong" index="1">
+                <dynamic wizard="new-aggregate" />
+                <aggregate-version-declarations>
+                    <aggregate-version-declaration index="0" status="deleted" />
+                    <aggregate-version-declaration index="1" />
+                    <aggregate-version-declaration index="2" />
+                    <aggregate-version-declaration index="3" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="1">
+                        <label index="0" name="field" layout-mark="29">
+                            <static>
+                                <values>
+                                    <value index="0" value="type" />
+                                </values>
+                            </static>
+                        </label>
+                        <tag index="1" name="speed" layout-mark="30">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="2">
+                        <label index="0" name="field" layout-mark="31">
+                            <static>
+                                <values>
+                                    <value index="0" value="type" />
+                                </values>
+                            </static>
+                        </label>
+                        <tag index="1" name="count" layout-mark="32">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="3">
+                        <label index="0" name="field" layout-mark="33">
+                            <static>
+                                <values>
+                                    <value index="0" value="type" />
+                                </values>
+                            </static>
+                        </label>
+                        <tag index="1" name="speed" layout-mark="34">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[long]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+    </language>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0" />
+        <version index="1">
+            <change aggregate="ping" kind="create-aggregate" />
+            <change aggregate="ping" kind="label" name="field" index="0" />
+            <change aggregate="ping" kind="add" name="speed" index="1">
+                <after>
+                    <string>int</string>
+                </after>
+            </change>
+            <change aggregate="pong" kind="create-aggregate" />
+            <change aggregate="pong" kind="label" name="field" index="0" />
+            <change aggregate="pong" kind="add" name="speed" index="1">
+                <after>
+                    <string>int</string>
+                </after>
+            </change>
+        </version>
+        <version index="2">
+            <change aggregate="ping" kind="label" name="field" index="0" />
+            <change aggregate="ping" kind="add" name="count" index="1">
+                <after>
+                    <string>int</string>
+                </after>
+            </change>
+            <change aggregate="pong" kind="label" name="field" index="0" />
+            <change aggregate="pong" kind="add" name="count" index="1">
+                <after>
+                    <string>int</string>
+                </after>
+            </change>
+        </version>
+        <version index="3">
+            <change aggregate="ping" kind="label" name="field" index="0" />
+            <change aggregate="ping" kind="replace" name="speed" index="1">
+                <before>
+                    <string>int</string>
+                </before>
+                <after>
+                    <string>long</string>
+                </after>
+            </change>
+            <change aggregate="pong" kind="label" name="field" index="0" />
+            <change aggregate="pong" kind="replace" name="speed" index="1">
+                <before>
+                    <string>int</string>
+                </before>
+                <after>
+                    <string>long</string>
+                </after>
+            </change>
+        </version>
+    </history>
+</galimatron>

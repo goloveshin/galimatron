@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <compiled>
+        <chunk layout-mark="1">
+            <location />
+        </chunk>
+        <chunk layout-mark="9">
+            <location />
+            <aggregate name="item" index="0" layout-mark="8">
+                <aggregate-version-declarations layout-mark="3">
+                    <aggregate-version-declaration index="0" status="deleted" />
+                    <aggregate-version-declaration index="1" status="deleted" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                    <aggregate-version-declaration index="3" layout-mark="2" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition owner="3" />
+                    <aggregate-version-definition index="3" layout-mark="7">
+                        <tag index="0" name="speed" layout-mark="4">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[text]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="color" layout-mark="5">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[blue]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="kept" layout-mark="6">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[owner]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="16">
+            <location />
+            <root-aggregate name="protocol" layout-mark="15">
+                <root-aggregate-version-declarations layout-mark="11">
+                    <root-aggregate-version-declaration index="0" status="deleted" />
+                    <root-aggregate-version-declaration index="1" status="deleted" />
+                    <root-aggregate-version-declaration index="2" status="deleted" />
+                    <root-aggregate-version-declaration index="3" layout-mark="10" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition owner="3" />
+                    <root-aggregate-version-definition index="3" layout-mark="14">
+                        <tag index="0" name="speed" layout-mark="12">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[text]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="kept" layout-mark="13">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[owner]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </compiled>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0" />
+        <version index="1" />
+        <version index="2" />
+        <version index="3">
+            <change aggregate="protocol" kind="add" name="kept" index="0" root="true">
+                <after>
+                    <string>owner</string>
+                </after>
+            </change>
+            <change aggregate="item" kind="create-aggregate" />
+            <change aggregate="item" kind="replace" name="kept" index="0">
+                <before>
+                    <string>owner</string>
+                </before>
+                <after>
+                    <string>owner</string>
+                </after>
+            </change>
+        </version>
+    </history>
+</galimatron>

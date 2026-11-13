@@ -1,0 +1,20 @@
+aggregate item
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version 0
+{
+    speed = field { "int" };
+}
+
+version 1
+{
+    speed = field { "int" };
+    delete;// good
+    color = field { "text" };
+}

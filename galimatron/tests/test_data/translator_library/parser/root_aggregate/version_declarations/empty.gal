@@ -1,0 +1,7 @@
+root aggregate test_aggregate
+{
+    versions
+    {
+        // good
+    }
+}

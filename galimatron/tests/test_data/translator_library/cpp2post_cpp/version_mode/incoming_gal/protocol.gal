@@ -1,0 +1,19 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version 0
+{
+    kept = { "stay" };// good: a plain tag stays in an unmarked version
+    published = once { };// good: this version only
+}
+
+version 1
+{
+    fresh = { "root" };// good: written in this version
+}

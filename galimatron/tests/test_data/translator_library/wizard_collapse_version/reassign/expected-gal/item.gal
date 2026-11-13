@@ -1,0 +1,20 @@
+aggregate item
+{
+    versions
+    {
+        0 = deleted;
+        1 = deleted;
+        2 = deleted;
+        3;
+    }
+}
+
+version before 3
+{
+    color = { "blue" };
+}
+
+version 3
+{
+    kept = { "owner" };
+}

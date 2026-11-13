@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<code:template
+    xmlns:code="galimatron-code-generation"
+>
+#include "<code:file-stem/>.hpp"
+#include "uuid_protocol/steps/09-watch/by_hand/state_internal.hpp"
+
+
+namespace uuid_protocol::conversion
+{
+
+<code:conversion-definitions/>
+}// namespace uuid_protocol::conversion
+</code:template>

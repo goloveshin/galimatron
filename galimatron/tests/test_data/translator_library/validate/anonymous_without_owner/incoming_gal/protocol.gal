@@ -1,0 +1,15 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;// good
+    }
+}
+
+version 0
+{
+}
+
+version before 1// bad: no version follows this body
+{
+}

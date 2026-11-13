@@ -1,0 +1,11 @@
+aggregate item
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+}

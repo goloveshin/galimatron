@@ -1,0 +1,12 @@
+root aggregate protocol
+{
+    wizard create version;// bad: not in version declarations
+    versions
+    {
+        0;// good
+    }
+}
+
+version 0
+{
+}

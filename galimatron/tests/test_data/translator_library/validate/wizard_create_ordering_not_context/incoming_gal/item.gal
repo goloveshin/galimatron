@@ -1,0 +1,12 @@
+aggregate item
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    wizard create ordering precedes = { item, protocol };// bad: not a root version
+}

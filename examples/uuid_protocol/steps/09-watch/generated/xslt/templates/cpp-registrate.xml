@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<code:template
+    xmlns:code="galimatron-code-generation"
+>void registrate()
+{
+<code:cpp-registrate-structs/>
+<code:cpp-registrate-system/>
+<code:cpp-registrate-payload/>
+}
+</code:template>

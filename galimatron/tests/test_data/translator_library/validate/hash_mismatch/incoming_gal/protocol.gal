@@ -1,0 +1,17 @@
+root aggregate protocol
+{
+    versions
+    {
+        0 = { hash = 'wrong' };// bad: root only, listed after the aggregates
+        1 = { hash = 'wrong' };// bad: item differs, so protocol is not listed
+    }
+}
+
+version 0
+{
+    uuid = important { "65da7323-a0dc-4351-9465-61dc2abf87e5" };
+}
+
+version 1
+{
+}

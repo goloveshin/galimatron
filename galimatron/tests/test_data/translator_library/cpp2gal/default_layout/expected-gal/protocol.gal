@@ -1,0 +1,76 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    label role_mark = static { role };
+    note = marker { "benchmark" };
+    title = { "Protocol" };
+    published = once important { };
+    private_note = local { "here" };
+    once field important { "std::string", "message" };
+    payload = { };
+    empty_list = { [ ] };
+    marker { "bare" };
+    { "only" };
+    roles = role_mark { [ "user", "global ws" ] };
+    flags = { "a", "b" };
+    meta = { { "k": "v" } };
+    item = kept {
+        {
+            "name": "live",
+            "flags": [ "a", "b" ],
+            "pack": { "box": "small" }
+        },
+        [
+            "x",
+            { "k": "v" }
+        ]
+    };
+    bag = {
+        [ "abcdefghij", "abcdefghij", "abcdefghij", "abcdefghij", "abcdefghij", "abcdefghij" ]
+    };
+    wide = marker {
+        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    };
+    key = LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+    {
+        "x"
+    };
+    ordering precedes = { item, pong };
+    ordering chain = { item, live }, { protocol, item };
+    ordering wide = {
+        abcdefghij, abcdefghij, abcdefghij, abcdefghij, abcdefghij, abcdefghij, abcdefghij
+    };
+    ordering long = {
+        abcdefghij,
+        abcdefghij,
+        abcdefghij,
+        abcdefghij,
+        abcdefghij,
+        abcdefghij,
+        abcdefghij,
+        abcdefghij
+    };
+    ordering LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL =
+    {
+        item, pong
+    };
+    ordering parts =
+        { abcdefghij, abcdefghij },
+        { abcdefghij, abcdefghij },
+        { abcdefghij, abcdefghij },
+        { abcdefghij, abcdefghij };
+    ordering mixed =
+        { item, pong },
+        {
+            abcdefghijabcdefghijabcdefghijabcdefghij,
+            abcdefghijabcdefghijabcdefghijabcdefghij,
+            abcdefghijabcdefghijabcdefghijabcdefghij
+        };
+}

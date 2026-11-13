@@ -1,0 +1,33 @@
+aggregate ping
+{
+    versions
+    {
+        0 = { hash = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' };
+        1;
+        2;
+        3;
+    }
+}
+
+version 0
+{
+}
+
+version 1
+{
+    label field = static { type };
+    speed = field { "int" };
+    color = field { "text" };// good: still present in version 4
+}
+
+version 2
+{
+    label field = static { type };
+    count = field { "int" };
+}
+
+version 3
+{
+    label field = static { type };
+    speed = field { "long" };
+}

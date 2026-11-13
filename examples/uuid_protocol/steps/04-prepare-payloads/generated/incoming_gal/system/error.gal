@@ -1,0 +1,22 @@
+aggregate error
+{
+    versions
+    {
+        0 = { hash = '1164f6793b8a5aa9156483dfda0f2fd2c739c3aeb4fb331e7b772a26222ff440' };
+        1 = { hash = '207be25983cd1c9059c4abd6b21bbf78af083e7921748a89b0fa3f3e3cc0e045' };
+    }
+}
+
+version 0
+{
+    struct_name = { "error_t" };
+    group_name = { "error_group" };
+    uuid = need_new_uuid important { "6f1e0004-0000-4000-8000-000000000001" };
+}
+
+version 1
+{
+    system_message = { };
+    uuid = need_new_uuid important { "6f1e0004-0000-4000-8000-000000000002" };
+}
+

@@ -1,0 +1,58 @@
+// galimatron
+#include "galimatron/translator_library/translator/detail/translator_impl.hpp"
+#include "galimatron/translator_library/translator/builtin_transform_name.hpp"
+#include "galimatron/translator_library/translator/builtin_transform_xml.hpp"
+
+// global
+#include "global/common_library/log_subsystems.hpp"
+
+// Logme
+#include <Logme/SID.h>
+
+
+namespace galimatron::translator::translator
+{
+
+namespace
+{
+Logme::SID SUBSID = Logme::SID::Build(global::log_subsystems::tr_tsp);
+}
+
+
+// loads that pugixml document into Saxon. the sequence builder inserts this only before a post xslt
+//
+// testing: no
+//
+transform_t translator_t::get_post_xml2saxon_transform()
+{
+    using enum transform_sequence_builder::domain_et;
+    using enum transform_sequence_builder::state_type_et;
+
+    return {
+        .incoming_domain_and_state = {
+            .domain = POST_LANGUAGE,
+            .state_type = XML
+        },
+        .outgoing_domain_and_state = {
+            .domain = POST_LANGUAGE,
+            .state_type = SAXON
+        },
+        .config_transform = store_builtin_transform(builtin_transform_name::post_xml2saxon),
+        .job = [&](const transform_t&, tf::Subflow&) -> file_contents_with_paths_ot
+        {
+            auto& saxon = any_transform_states_.state_slot(state_slot_et::SAXON_SESSION);
+            saxon = transforms::xml2xml::prepare({ .config = args_.saxon_processor });
+            transforms::xml2xml::operation_t::adopt(saxon, translate_cpp2xml(
+                true,
+                builtin_transform_xml::sealed_description
+            ));
+            return {};
+        },
+        .is_skipping = [&](const transform_t&) -> bool
+        {
+            return !compiled_state_ || !language_state_;
+        }
+    };
+}
+
+}// namespace galimatron::translator::translator

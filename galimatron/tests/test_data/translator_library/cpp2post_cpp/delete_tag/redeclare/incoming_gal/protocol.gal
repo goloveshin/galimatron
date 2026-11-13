@@ -1,0 +1,20 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version 0
+{
+    label field = static { type };
+    speed = field { "int" };
+    delete speed;
+}
+
+version 1
+{
+    speed = field { "int" };// good: speed is present again
+}

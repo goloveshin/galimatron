@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <compiled>
+        <chunk layout-mark="1">
+            <location />
+        </chunk>
+        <chunk layout-mark="9">
+            <location />
+            <root-aggregate name="protocol" layout-mark="8">
+                <root-aggregate-version-declarations layout-mark="4">
+                    <root-aggregate-version-declaration index="0" layout-mark="2" />
+                    <root-aggregate-version-declaration index="1" layout-mark="3" />
+                    <root-aggregate-version-declaration index="2" />
+                    <root-aggregate-version-declaration index="3" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="6">
+                        <tag index="0" name="uuid" layout-mark="5">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[65da7323-a0dc-4351-9465-61dc2abf87e5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                    <root-aggregate-version-definition index="1" layout-mark="7" />
+                    <root-aggregate-version-definition index="2" />
+                    <root-aggregate-version-definition index="3" />
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </compiled>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0">
+            <change aggregate="protocol" kind="label" name="need_new_uuid" index="0" root="true" />
+            <change aggregate="protocol" kind="add" name="uuid" index="1" root="true">
+                <after>
+                    <string>65da7323-a0dc-4351-9465-61dc2abf87e5</string>
+                </after>
+            </change>
+        </version>
+        <version index="1">
+            <change aggregate="protocol" kind="replace" name="uuid" index="0" root="true">
+                <before>
+                    <string>65da7323-a0dc-4351-9465-61dc2abf87e5</string>
+                </before>
+                <after>
+                    <string>11111111-2222-4333-a444-555555555555</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="delete" name="uuid" index="1" root="true">
+                <before>
+                    <string>11111111-2222-4333-a444-555555555555</string>
+                </before>
+            </change>
+        </version>
+        <version index="2" />
+        <version index="3" />
+    </history>
+</galimatron>

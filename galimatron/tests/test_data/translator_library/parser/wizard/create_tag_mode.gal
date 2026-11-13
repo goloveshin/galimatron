@@ -1,0 +1,3 @@
+wizard create tag published = once important { };// good: this version, including nested aggregates
+wizard create tag note = local { "here" };// good: this version of this aggregate only
+wizard create tag once field important { "std::string", "message" };// good: unnamed tag

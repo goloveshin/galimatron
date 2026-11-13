@@ -1,0 +1,1 @@
+wizard delete aggregate protocol;// bad: protocol is the root aggregate

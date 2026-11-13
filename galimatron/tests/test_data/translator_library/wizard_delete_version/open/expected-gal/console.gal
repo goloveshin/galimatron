@@ -1,0 +1,1 @@
+// wizard { delete version; create version; }// good: the last open version is removed

@@ -1,0 +1,17 @@
+aggregate item
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version 0
+{
+    spot = once { "agg" };// good: absent from item version 1
+}
+
+version 1
+{
+}

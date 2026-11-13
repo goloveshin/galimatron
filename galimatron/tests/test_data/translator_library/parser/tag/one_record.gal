@@ -1,0 +1,21 @@
+aggregate test_aggregate
+{
+    versions
+    {
+    }
+}
+
+version 0
+{
+    // good
+    version_number = {
+        {
+            "1" : "2",
+            "2" : ['a','b','c'],
+            "3" : {
+                'aa' : 'bb',
+                'cc' : [ { 'dd' : 'ee' } ]
+            }
+        }
+    };
+}

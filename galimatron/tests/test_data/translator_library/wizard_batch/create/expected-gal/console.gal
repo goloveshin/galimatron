@@ -1,0 +1,9 @@
+// a comment above wizard ends with a blank //
+//
+// wizard {// good
+//     create root aggregate protocol;
+//     create aggregate ping;
+//     create aggregate pong;
+//     create version;
+//     create version;
+// }

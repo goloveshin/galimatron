@@ -1,0 +1,12 @@
+wizard delete hash 0;// bad: not in version declarations
+root aggregate protocol
+{
+    versions
+    {
+        0;// good
+    }
+}
+
+version 0
+{
+}

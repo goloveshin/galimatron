@@ -1,0 +1,31 @@
+root aggregate protocol
+{
+    versions
+    {
+        0 = {
+            comment = 'first',
+            hash = 'h0'
+        };
+        1;
+    }
+}
+
+version 0
+{
+    label need_new_uuid = dynamic { need_gen_uuid };
+    label kept = static { kept };
+    uuid = need_new_uuid important { "65da7323-a0dc-4351-9465-61dc2abf87e5" };
+    note = kept { "stay" };
+    item = kept {// good
+        {
+            "name": "live",
+            "flags": [ "a", "b" ]
+        },
+        [ "x", { "k": "v" } ]
+    };
+}
+
+version 1
+{
+    delete note;// good
+}

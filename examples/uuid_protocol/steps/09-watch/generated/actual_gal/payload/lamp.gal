@@ -1,0 +1,37 @@
+aggregate lamp
+{
+    versions
+    {
+        0 = deleted;
+        1 = deleted;
+        2 = { hash = '6d42f90c6e45323a8fa904a5a8b9ee2e0b11011351160dca286c9a719f06852c' };
+        3 = { hash = '43cd0182962dd439103eec5662a098a124ad01c5d49a5f372e5d687426f16abf' };
+        4 = { hash = '36a4338e9c0dacd8e3fb1a5ab66c06c79a436918febfeb4351fab8ef64f7c86c' };
+        5 = { hash = '4908ad01001d9992c6595de68a918b1527d06d353832ef9514117c27d55be2e4' };
+    }
+}
+
+version 2
+{
+    payload_message = { };
+    struct_name = { "lamp_t" };
+    uuid = need_new_uuid important { "6f1e0005-0000-4000-8000-000000000001" };
+    field important { "bool", "lit", "false" };
+}
+
+version 3
+{
+    uuid = need_new_uuid important { "6f1e0005-0000-4000-8000-000000000002" };
+    field important { "int", "candela", "0" };
+}
+
+version 4
+{
+    uuid = need_new_uuid important { "6f1e0005-0000-4000-8000-000000000003" };
+}
+
+version 5
+{
+    uuid = need_new_uuid important { "6f1e0005-0000-4000-8000-000000000004" };
+    delete uuid;
+}

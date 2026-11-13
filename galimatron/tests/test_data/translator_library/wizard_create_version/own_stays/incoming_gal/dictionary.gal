@@ -1,0 +1,20 @@
+aggregate dictionary
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version 0
+{
+    early = { "past" };
+}
+
+version own 1
+{// good: the next plain version stays own and does not copy this body
+    row = { "kept" };
+    spot = once { "no" };
+    label field = static { type };
+}

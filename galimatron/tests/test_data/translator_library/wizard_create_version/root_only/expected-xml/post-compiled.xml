@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <compiled>
+        <chunk layout-mark="1">
+            <location />
+        </chunk>
+        <chunk layout-mark="8">
+            <location />
+            <root-aggregate name="protocol" layout-mark="7">
+                <root-aggregate-version-declarations layout-mark="4">
+                    <root-aggregate-version-declaration index="0" layout-mark="2" />
+                    <root-aggregate-version-declaration index="1" layout-mark="3" />
+                    <root-aggregate-version-declaration index="2" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="5" />
+                    <root-aggregate-version-definition index="1" layout-mark="6" />
+                    <root-aggregate-version-definition index="2" />
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </compiled>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0" />
+        <version index="1" />
+        <version index="2" />
+    </history>
+</galimatron>

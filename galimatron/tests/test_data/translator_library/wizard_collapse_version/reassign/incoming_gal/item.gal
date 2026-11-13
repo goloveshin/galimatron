@@ -1,0 +1,28 @@
+aggregate item
+{
+    versions
+    {
+        0;
+        1;
+        2;
+        3;
+    }
+}
+
+version 0
+{
+    color = { "blue" };
+}
+
+version 1
+{
+}
+
+version 2
+{
+}
+
+version 3
+{
+    kept = { "owner" };
+}

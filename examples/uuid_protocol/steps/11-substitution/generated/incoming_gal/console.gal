@@ -1,0 +1,8 @@
+// the station name is substituted into the greeting.
+// the gal keeps {{station}}. the dictionary shows North Light on watch.
+// versions 0 through 5 stay closed. version 6 stays unpublished.
+//
+wizard {
+    create tag dictionary station = { "North Light" };
+    create tag dictionary entry { "greeting", "6", "{{station}} on watch"_te };
+}

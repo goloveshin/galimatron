@@ -1,0 +1,1 @@
+wizard create tag protocol speed = field { "int" };// bad: version 0 is closed

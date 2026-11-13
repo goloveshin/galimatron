@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <compiled>
+        <chunk layout-mark="1">
+            <location />
+        </chunk>
+        <chunk layout-mark="7">
+            <location />
+            <aggregate name="ping" index="0" layout-mark="6">
+                <aggregate-version-declarations layout-mark="4">
+                    <aggregate-version-declaration index="0" status="deleted" layout-mark="2" />
+                    <aggregate-version-declaration index="1" status="deleted" layout-mark="3" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="2" layout-mark="5" />
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="13">
+            <location />
+            <aggregate name="pong" index="1" layout-mark="12">
+                <aggregate-version-declarations layout-mark="10">
+                    <aggregate-version-declaration index="0" status="deleted" layout-mark="8" />
+                    <aggregate-version-declaration index="1" status="deleted" layout-mark="9" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="2" layout-mark="11" />
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="22">
+            <location />
+            <root-aggregate name="protocol" layout-mark="21">
+                <root-aggregate-version-declarations layout-mark="17">
+                    <root-aggregate-version-declaration index="0" layout-mark="14" />
+                    <root-aggregate-version-declaration index="1" layout-mark="15" />
+                    <root-aggregate-version-declaration index="2" layout-mark="16" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="18" />
+                    <root-aggregate-version-definition index="1" layout-mark="19" />
+                    <root-aggregate-version-definition index="2" layout-mark="20" />
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </compiled>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0" />
+        <version index="1" />
+        <version index="2" />
+    </history>
+</galimatron>

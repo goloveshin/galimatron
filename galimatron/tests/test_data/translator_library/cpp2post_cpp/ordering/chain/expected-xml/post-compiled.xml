@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <compiled>
+        <chunk layout-mark="5">
+            <location />
+            <aggregate name="color" index="0" layout-mark="4">
+                <aggregate-version-declarations layout-mark="2">
+                    <aggregate-version-declaration index="0" layout-mark="1" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0" layout-mark="3">
+                        <orderings>
+                            <ordering name="precedes" index="2" />
+                        </orderings>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="10">
+            <location />
+            <aggregate name="item" index="1" layout-mark="9">
+                <aggregate-version-declarations layout-mark="7">
+                    <aggregate-version-declaration index="0" layout-mark="6" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0" layout-mark="8">
+                        <orderings>
+                            <ordering name="precedes" index="0" />
+                        </orderings>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="15">
+            <location />
+            <aggregate name="live" index="2" layout-mark="14">
+                <aggregate-version-declarations layout-mark="12">
+                    <aggregate-version-declaration index="0" layout-mark="11" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0" layout-mark="13">
+                        <orderings>
+                            <ordering name="precedes" index="1" />
+                        </orderings>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="20">
+            <location />
+            <aggregate name="pong" index="3" layout-mark="19">
+                <aggregate-version-declarations layout-mark="17">
+                    <aggregate-version-declaration index="0" layout-mark="16" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0" layout-mark="18">
+                        <orderings>
+                            <ordering name="precedes" index="3" />
+                        </orderings>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="25">
+            <location />
+            <root-aggregate name="protocol" layout-mark="24">
+                <root-aggregate-version-declarations layout-mark="22">
+                    <root-aggregate-version-declaration index="0" layout-mark="21" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="23" />
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </compiled>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0">
+            <change aggregate="protocol" kind="ordering" name="precedes" index="0" root="true" />
+            <change aggregate="color" kind="create-aggregate" />
+            <change aggregate="item" kind="create-aggregate" />
+            <change aggregate="live" kind="create-aggregate" />
+            <change aggregate="pong" kind="create-aggregate" />
+        </version>
+    </history>
+</galimatron>

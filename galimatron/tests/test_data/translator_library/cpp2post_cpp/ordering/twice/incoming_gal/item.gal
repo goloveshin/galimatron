@@ -1,0 +1,11 @@
+aggregate item
+{
+    versions
+    {
+        0;// good: live in this version
+    }
+}
+
+version 0
+{
+}

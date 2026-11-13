@@ -1,0 +1,10 @@
+root aggregate protocol// good
+{
+    versions
+    {
+        0;// good
+    }
+}
+version 0
+{
+}

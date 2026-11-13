@@ -1,0 +1,23 @@
+// version 3 of the lighthouse protocol. lamp and fog lose their uuid and stay types.
+// watch carries the day, the lamp, and the fog. vessel gains a name.
+// sea_state_e gains gale. vessel_kind_e gains launch. versions 0, 1, 2, 3, and 4 stay closed.
+//
+wizard {
+    create version;
+    delete tag fog uuid;
+    delete tag lamp uuid;
+    create tag sea_state_enum enum_field important { "gale" };
+    create tag vessel_kind_enum enum_field important { "launch" };
+    create tag vessel field important { "std::string", "name" };
+    create aggregate watch in payload;
+    create tag watch payload_message = { };
+    create tag watch struct_name = { "watch_t" };
+    create tag watch uuid = need_new_uuid important { "6f1e0008-0000-4000-8000-000000000001" };
+    create tag watch field important { "std::string", "day" };
+    create tag watch field important { "lamp_t", "lamp", "{}" };
+    create tag watch field important { "fog_t", "fog", "{}" };
+    create tag protocol version_number = { "6" };
+    create tag protocol version_namespace = { "v6" };
+    create tag protocol published = once important { };
+    create hash;
+}

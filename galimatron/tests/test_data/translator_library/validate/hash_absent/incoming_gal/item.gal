@@ -1,0 +1,18 @@
+aggregate item
+{
+    versions
+    {
+        0;// bad: hash is absent
+        1;
+    }
+}
+
+version 0
+{
+    label field = static { type };
+    speed = field important { "int", "speed" };
+}
+
+version 1
+{
+}

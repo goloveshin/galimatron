@@ -1,0 +1,1 @@
+wizard create tag protocol speed = field important { "int", { "unit": "m/s" }, [ "a", "b" ] };

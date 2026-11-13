@@ -1,0 +1,23 @@
+root aggregate test_aggregate
+{
+    versions
+    {
+        // good
+        0;
+        1 = {};
+        2 = {
+            comment = 'this is comment'
+        };
+        3 = {
+            hash = "fjsdkjfkdsjf"
+        };
+        4 = {
+            comment = 'this is comment',
+            hash = 'fjsdkjfkdsjf'
+        };
+        5 = {
+            hash = 'fjsdkjfkdsjf',
+            comment = 'this is comment'
+        };
+    }
+}

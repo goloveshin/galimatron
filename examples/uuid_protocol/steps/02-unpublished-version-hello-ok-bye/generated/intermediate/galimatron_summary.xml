@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformations status="success">
+    <transformation index="0" name="gal2cpp" from="build-in" status="SUCCESS" />
+    <transformation index="1" name="cpp2cpp_validate" from="build-in" status="SUCCESS">
+        <produced-xml path="intermediate/lang-parsed.xml" />
+    </transformation>
+    <transformation index="2" name="cpp2cpp_wizard" from="build-in" status="SUCCESS" />
+    <transformation index="3" name="cpp2cpp_before_xslt" from="build-in" status="SUCCESS" />
+    <transformation index="4" name="cpp2xml" from="build-in" status="SUCCESS">
+        <produced-xml path="intermediate/lang-wizard.xml" />
+    </transformation>
+    <transformation index="5" name="xml2saxon" from="build-in" status="SUCCESS" />
+    <transformation index="6" name="next uuid for wizard copies" from="user" status="SUCCESS">
+        <user-data><![CDATA[new xslt: a copied uuid keeps the message id and adds one to the version counter]]></user-data>
+        <produced-xml path="intermediate/generate-uuid.xml" />
+    </transformation>
+    <transformation index="7" name="xml2cpp" from="build-in" status="SUCCESS">
+        <produced-xml path="intermediate/lang-xslt.xml" />
+    </transformation>
+    <transformation index="8" name="cpp2cpp_after_xslt" from="build-in" status="SUCCESS" />
+    <transformation index="9" name="cpp2gal" from="build-in" status="SUCCESS">
+        <produced-xml path="intermediate/lang-final.xml" />
+        <produced-files count="6">
+            <file index="0" path="actual_gal/bye.gal" />
+            <file index="1" path="actual_gal/console.gal" />
+            <file index="2" path="actual_gal/error.gal" />
+            <file index="3" path="actual_gal/hello.gal" />
+            <file index="4" path="actual_gal/ok.gal" />
+            <file index="5" path="actual_gal/protocol.gal" />
+        </produced-files>
+    </transformation>
+    <transformation index="10" name="gal2cpp" from="build-in" status="SKIPPED" />
+    <transformation index="11" name="cpp2post_cpp" from="build-in" status="SUCCESS" />
+    <transformation index="12" name="post_cpp2post_xml" from="build-in" status="SUCCESS">
+        <produced-xml path="intermediate/post-compiled.xml" />
+    </transformation>
+    <transformation index="13" name="post_xml2saxon" from="build-in" status="SUCCESS" />
+    <transformation index="14" name="generate .hpp/.cpp" from="user" status="SUCCESS">
+        <user-data><![CDATA[GaL adds unpublished version 1. the generation xslt is unchanged and still writes only a published version]]></user-data>
+        <produced-files count="2">
+            <file index="0" path="generated_dto/v1/v1.cpp" />
+            <file index="1" path="generated_dto/v1/v1.hpp" />
+        </produced-files>
+    </transformation>
+</transformations>

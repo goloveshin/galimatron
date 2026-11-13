@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after parsing, before the wizard">
+    <language>
+        <chunk layout-mark="9">
+            <location />
+            <root-aggregate name="protocol" layout-mark="8">
+                <root-aggregate-version-declarations layout-mark="2">
+                    <root-aggregate-version-declaration index="0" layout-mark="1" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="7">
+                        <label index="0" name="field" layout-mark="3">
+                            <static>
+                                <values>
+                                    <value index="0" value="type" />
+                                </values>
+                            </static>
+                        </label>
+                        <tag index="1" name="speed" layout-mark="4">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="color" layout-mark="5">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[text]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <delete index="3" name="speed" layout-mark="6" />
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </language>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0">
+            <change aggregate="protocol" kind="label" name="field" index="0" root="true" />
+            <change aggregate="protocol" kind="add" name="speed" index="1" root="true">
+                <after>
+                    <string>int</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="add" name="color" index="2" root="true">
+                <after>
+                    <string>text</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="delete" name="speed" index="3" root="true">
+                <before>
+                    <string>int</string>
+                </before>
+            </change>
+        </version>
+    </history>
+</galimatron>

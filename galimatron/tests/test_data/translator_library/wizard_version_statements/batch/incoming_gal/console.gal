@@ -1,0 +1,14 @@
+wizard {// good
+    create root aggregate protocol;
+    create version;
+    create aggregate item, pong;
+    create ordering protocol precedes = { item, pong };
+    create label protocol field = static { type };
+    create label protocol kind = dynamic { speed };
+    create label protocol titled = static { type, name }, tag-name-from { name };
+    create tag protocol speed = field { "int" };
+    create tag protocol pack = { { "box": "small" }, [ "a", "b" ] };
+    create label item field = static { type };
+    create tag item note = field { "int" };
+    delete tag item note;
+}

@@ -1,0 +1,24 @@
+root aggregate protocol
+{
+    versions
+    {
+        0 = { hash = '27025d7a1482f343d1f2f0bb2865d7055458e172a1ff90dd9b4cccfd4aba3035' };
+        1 = { hash = '704dd06e344f8b26bf000ed10194d6f0e856afec347f962900e05a15e1df091b' };
+    }
+}
+
+version 0
+{
+    version_number = { "1" };
+    version_namespace = { "v1" };
+    published = once important { };
+    label need_new_uuid = dynamic { need_gen_uuid };
+}
+
+version 1
+{
+    label field = static { type, name, default }, tag-name-from { name };
+    version_number = { "2" };
+    version_namespace = { "v2" };
+    published = once important { };
+}

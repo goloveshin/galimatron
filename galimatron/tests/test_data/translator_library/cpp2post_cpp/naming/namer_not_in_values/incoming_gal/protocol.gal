@@ -1,0 +1,13 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    label field = static { type }, tag-name-from { name };// bad: name is not among the label values
+    field { "int" };
+}

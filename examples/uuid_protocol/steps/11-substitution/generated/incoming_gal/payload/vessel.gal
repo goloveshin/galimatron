@@ -1,0 +1,33 @@
+aggregate vessel
+{
+    versions
+    {
+        0 = deleted;
+        1 = deleted;
+        2 = deleted;
+        3 = deleted;
+        4 = { hash = '19a1e21e8266d9f0e5ea0f486ae2ce61005dad95ca7329db5e8dc89f111111ed' };
+        5 = { hash = '75acf63fd90b63c2c3977477be3937556fd1340b5f7ae29e07be0f5514845cb7' };
+        6;
+    }
+}
+
+version 4
+{
+    payload_message = { };
+    struct_name = { "vessel_t" };
+    uuid = need_new_uuid important { "6f1e0007-0000-4000-8000-000000000001" };
+    field important { "vessel_kind_e", "kind", "vessel_kind_e::sail" };
+    field important { "int", "bearing", "0" };
+}
+
+version 5
+{
+    uuid = need_new_uuid important { "6f1e0007-0000-4000-8000-000000000002" };
+    field important { "std::string", "name" };
+}
+
+version 6
+{
+    uuid = need_new_uuid important { "6f1e0007-0000-4000-8000-000000000003" };
+}

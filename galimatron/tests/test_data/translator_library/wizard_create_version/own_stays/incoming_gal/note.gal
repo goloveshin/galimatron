@@ -1,0 +1,18 @@
+aggregate note
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version 0
+{
+}
+
+version local 1
+{// good: plain create version copies this body
+    kept = { "note" };
+    spot = once { "no" };
+}

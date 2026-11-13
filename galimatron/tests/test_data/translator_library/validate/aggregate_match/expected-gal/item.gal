@@ -1,0 +1,21 @@
+aggregate item
+{
+    versions
+    {
+        0;// good
+        1;// good
+        2;// good
+    }
+}
+
+version 0
+{
+}
+
+version 1
+{
+}
+
+version 2
+{
+}

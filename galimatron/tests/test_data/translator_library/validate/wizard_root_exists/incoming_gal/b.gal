@@ -1,0 +1,1 @@
+wizard create root aggregate other;// bad: root aggregate already exists

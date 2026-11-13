@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <language>
+        <chunk layout-mark="1">
+            <location />
+        </chunk>
+        <chunk layout-mark="5">
+            <location />
+            <aggregate name="item" index="0" layout-mark="4">
+                <aggregate-version-declarations layout-mark="3">
+                    <aggregate-version-declaration index="0" status="deleted" />
+                    <aggregate-version-declaration index="1" status="deleted" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                    <aggregate-version-declaration index="3" status="deleted" />
+                    <aggregate-version-declaration index="4" status="deleted" />
+                    <aggregate-version-declaration index="5" status="deleted" />
+                    <aggregate-version-declaration index="6" status="deleted" />
+                    <aggregate-version-declaration index="7" status="deleted" />
+                    <aggregate-version-declaration index="8" status="deleted" layout-mark="2" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions />
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="11">
+            <location />
+            <root-aggregate name="protocol" layout-mark="10">
+                <root-aggregate-version-declarations layout-mark="7">
+                    <root-aggregate-version-declaration index="0" status="deleted" />
+                    <root-aggregate-version-declaration index="1" status="deleted" />
+                    <root-aggregate-version-declaration index="2" status="deleted" />
+                    <root-aggregate-version-declaration index="3" status="deleted" />
+                    <root-aggregate-version-declaration index="4" status="deleted" />
+                    <root-aggregate-version-declaration index="5" status="deleted" />
+                    <root-aggregate-version-declaration index="6" status="deleted" />
+                    <root-aggregate-version-declaration index="7" status="deleted" />
+                    <root-aggregate-version-declaration index="8" layout-mark="6" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition owner="8">
+                        <dynamic wizard="new-version" />
+                        <tag index="0" name="kept" layout-mark="8">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[root]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                    <root-aggregate-version-definition index="8" layout-mark="9" />
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </language>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0" />
+        <version index="1" />
+        <version index="2" />
+        <version index="3" />
+        <version index="4" />
+        <version index="5" />
+        <version index="6" />
+        <version index="7" />
+        <version index="8" />
+    </history>
+</galimatron>

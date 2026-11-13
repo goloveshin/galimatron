@@ -1,0 +1,12 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;// good
+        1 = deleted;
+    }
+}
+
+version 0
+{
+}

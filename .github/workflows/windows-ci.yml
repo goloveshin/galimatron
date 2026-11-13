@@ -1,0 +1,99 @@
+name: Windows CI
+
+on:
+  # The Actions tab asks how to run the tests. full is the usual run.
+  workflow_dispatch:
+    inputs:
+      tests:
+        description: Test run
+        type: choice
+        required: true
+        default: full
+        options:
+          - full
+          - abort-after=1
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: windows-ci-${{ github.ref }}-${{ inputs.tests }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: ${{ matrix.name }}, ${{ inputs.tests }}
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Debug stays off. Packaging runs on this job.
+          # - name: MSVC, Debug
+          #   config: Debug
+          - name: MSVC, Release
+            config: Release
+            package: true
+
+    steps:
+      - uses: actions/checkout@v5
+
+      # CMake 4.0 or newer (cmake_minimum_required) and Ninja
+      - uses: lukka/get-cmake@latest
+
+      # cl.exe on PATH. single-config Ninja, so the Saxon DLL lands beside the executable
+      - uses: ilammy/msvc-dev-cmd@v1
+
+      # windows-latest does not ship NSIS. Chocolatey installs it off PATH.
+      - name: Install NSIS
+        if: matrix.package
+        shell: pwsh
+        run: |
+          choco install nsis --yes --no-progress
+          $nsis = @("${env:ProgramFiles(x86)}\NSIS", "$env:ProgramFiles\NSIS") |
+            Where-Object { Test-Path (Join-Path $_ "makensis.exe") } |
+            Select-Object -First 1
+          if (-not $nsis) {
+            throw "NSIS installed but makensis.exe was not found"
+          }
+          Add-Content -Path $env:GITHUB_PATH -Value $nsis
+
+      - name: Configure
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=${{ matrix.config }}
+
+      - name: Build
+        run: cmake --build build --config ${{ matrix.config }}
+
+      - name: Test
+        env:
+          GALIMATRON_ABORT_AFTER: ${{ inputs.tests == 'abort-after=1' && '1' || '' }}
+        run: cmake --build build --config ${{ matrix.config }} --target run_tests
+
+      - name: Package
+        if: matrix.package
+        shell: pwsh
+        run: |
+          cmake --build build --config ${{ matrix.config }} --target package
+          $zip = @(Get-ChildItem build/galimatron-*.zip)
+          $exe = @(Get-ChildItem build/galimatron-*.exe)
+          if ($zip.Count -lt 1 -or $exe.Count -lt 1) {
+            Get-ChildItem build -Name
+            throw "expected a zip and an NSIS installer"
+          }
+
+      - name: Upload zip
+        if: matrix.package
+        uses: actions/upload-artifact@v6
+        with:
+          name: galimatron-windows-zip
+          path: build/galimatron-*.zip
+          if-no-files-found: error
+
+      - name: Upload installer
+        if: matrix.package
+        uses: actions/upload-artifact@v6
+        with:
+          name: galimatron-windows-exe
+          path: build/galimatron-*.exe
+          if-no-files-found: error

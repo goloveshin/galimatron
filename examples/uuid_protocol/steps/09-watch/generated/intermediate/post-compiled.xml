@@ -1,0 +1,2904 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <compiled>
+        <chunk layout-mark="1">
+            <location>
+            </location>
+        </chunk>
+        <chunk>
+            <location>
+            </location>
+            <aggregate name="fog" index="0">
+                <aggregate-version-declarations layout-mark="7">
+                    <aggregate-version-declaration index="0" status="deleted" layout-mark="2" />
+                    <aggregate-version-declaration index="1" status="deleted" layout-mark="3" />
+                    <aggregate-version-declaration index="2" status="deleted" layout-mark="4" />
+                    <aggregate-version-declaration index="3" hash="63d4a5dc0502bdfc5855c031e2a285d0defadc173ef5e0b26a017d6cdb1e0e6c" layout-mark="5" />
+                    <aggregate-version-declaration index="4" hash="132397f3b57dbab7dcdc618de8f96e2167e1a187b1328c3410c7ccfe46ea1750" layout-mark="6" />
+                    <aggregate-version-declaration index="5" hash="4f4fea3265d7491ba2dbdf827c1227a5fc722a04cdf755167fc923df660c152a" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="3" layout-mark="15">
+                        <tag index="0" name="version_number" layout-mark="8">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[4]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace" layout-mark="9">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v4]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once" layout-mark="10">
+                            <values />
+                        </tag>
+                        <tag index="3" name="payload_message" layout-mark="11">
+                            <values />
+                        </tag>
+                        <tag index="4" name="struct_name" layout-mark="12">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[fog_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="uuid" layout-mark="13">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0006-0000-4000-8000-000000000001]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="metres" layout-mark="14">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[metres]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="4" layout-mark="24">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="1" />
+                        </orderings>
+                        <tag index="0" name="payload_message" layout-mark="16">
+                            <values />
+                        </tag>
+                        <tag index="1" name="struct_name" layout-mark="17">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[fog_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="metres" layout-mark="18">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[metres]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" name="version_number" layout-mark="19">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_namespace" layout-mark="20">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="published" mode="once" layout-mark="21">
+                            <values />
+                        </tag>
+                        <tag index="6" name="uuid" layout-mark="22">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0006-0000-4000-8000-000000000002]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="7" name="sea" layout-mark="23">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[sea_state_e]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[sea]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[sea_state_e::calm]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="5">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="1" />
+                        </orderings>
+                        <tag index="0" name="payload_message" layout-mark="25">
+                            <values />
+                        </tag>
+                        <tag index="1" name="struct_name" layout-mark="26">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[fog_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="metres" layout-mark="27">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[metres]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" name="sea" layout-mark="28">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[sea_state_e]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[sea]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[sea_state_e::calm]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="published" mode="once">
+                            <values />
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk>
+            <location>
+            </location>
+            <aggregate name="lamp" index="1">
+                <aggregate-version-declarations layout-mark="34">
+                    <aggregate-version-declaration index="0" status="deleted" layout-mark="29" />
+                    <aggregate-version-declaration index="1" status="deleted" layout-mark="30" />
+                    <aggregate-version-declaration index="2" hash="6d42f90c6e45323a8fa904a5a8b9ee2e0b11011351160dca286c9a719f06852c" layout-mark="31" />
+                    <aggregate-version-declaration index="3" hash="43cd0182962dd439103eec5662a098a124ad01c5d49a5f372e5d687426f16abf" layout-mark="32" />
+                    <aggregate-version-declaration index="4" hash="36a4338e9c0dacd8e3fb1a5ab66c06c79a436918febfeb4351fab8ef64f7c86c" layout-mark="33" />
+                    <aggregate-version-declaration index="5" hash="4908ad01001d9992c6595de68a918b1527d06d353832ef9514117c27d55be2e4" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="2" layout-mark="42">
+                        <tag index="0" name="version_number" layout-mark="35">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[3]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace" layout-mark="36">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v3]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once" layout-mark="37">
+                            <values />
+                        </tag>
+                        <tag index="3" name="payload_message" layout-mark="38">
+                            <values />
+                        </tag>
+                        <tag index="4" name="struct_name" layout-mark="39">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[lamp_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="uuid" layout-mark="40">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0005-0000-4000-8000-000000000001]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="lit" layout-mark="41">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[bool]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[lit]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[false]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="3" layout-mark="51">
+                        <tag index="0" name="payload_message" layout-mark="43">
+                            <values />
+                        </tag>
+                        <tag index="1" name="struct_name" layout-mark="44">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[lamp_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="lit" layout-mark="45">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[bool]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[lit]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[false]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" name="version_number" layout-mark="46">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[4]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_namespace" layout-mark="47">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v4]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="published" mode="once" layout-mark="48">
+                            <values />
+                        </tag>
+                        <tag index="6" name="uuid" layout-mark="49">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0005-0000-4000-8000-000000000002]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="7" name="candela" layout-mark="50">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[candela]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="4" layout-mark="60">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="4" />
+                        </orderings>
+                        <tag index="0" name="payload_message" layout-mark="52">
+                            <values />
+                        </tag>
+                        <tag index="1" name="struct_name" layout-mark="53">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[lamp_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="lit" layout-mark="54">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[bool]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[lit]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[false]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" name="candela" layout-mark="55">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[candela]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_number" layout-mark="56">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="version_namespace" layout-mark="57">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="published" mode="once" layout-mark="58">
+                            <values />
+                        </tag>
+                        <tag index="7" name="uuid" layout-mark="59">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0005-0000-4000-8000-000000000003]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="5">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="4" />
+                        </orderings>
+                        <tag index="0" name="payload_message" layout-mark="61">
+                            <values />
+                        </tag>
+                        <tag index="1" name="struct_name" layout-mark="62">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[lamp_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="lit" layout-mark="63">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[bool]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[lit]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[false]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" name="candela" layout-mark="64">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[candela]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="published" mode="once">
+                            <values />
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="84">
+            <location>
+            </location>
+            <aggregate name="sea_state_enum" index="2" layout-mark="83">
+                <aggregate-version-declarations layout-mark="70">
+                    <aggregate-version-declaration index="0" status="deleted" layout-mark="65" />
+                    <aggregate-version-declaration index="1" status="deleted" layout-mark="66" />
+                    <aggregate-version-declaration index="2" status="deleted" layout-mark="67" />
+                    <aggregate-version-declaration index="3" status="deleted" layout-mark="68" />
+                    <aggregate-version-declaration index="4" hash="f918d4eb174ba1701963bff3443143d17a5a995d66268b78d7573fbe4dbfc2de" layout-mark="69" />
+                    <aggregate-version-declaration index="5" hash="7e435896bdfa1c6198ee64b297b492252212453e37fb1990ad9a42f933d5fd2e" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="4" layout-mark="78">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="0" />
+                        </orderings>
+                        <tag index="0" name="version_number" layout-mark="71">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace" layout-mark="72">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once" layout-mark="73">
+                            <values />
+                        </tag>
+                        <tag index="3" name="payload_message" layout-mark="74">
+                            <values />
+                        </tag>
+                        <tag index="4" name="enum_name" layout-mark="75">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[sea_state_e]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="calm" layout-mark="76">
+                            <values>
+                                <value index="0" enum_field="name">
+                                    <string delimiter="0"><![CDATA[calm]]></string>
+                                </value>
+                                <value index="1" enum_field="value">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="swell" layout-mark="77">
+                            <values>
+                                <value index="0" enum_field="name">
+                                    <string delimiter="0"><![CDATA[swell]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="5">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="0" />
+                        </orderings>
+                        <tag index="0" name="payload_message" layout-mark="79">
+                            <values />
+                        </tag>
+                        <tag index="1" name="enum_name" layout-mark="80">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[sea_state_e]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="calm" layout-mark="81">
+                            <values>
+                                <value index="0" enum_field="name">
+                                    <string delimiter="0"><![CDATA[calm]]></string>
+                                </value>
+                                <value index="1" enum_field="value">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" name="swell" layout-mark="82">
+                            <values>
+                                <value index="0" enum_field="name">
+                                    <string delimiter="0"><![CDATA[swell]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="published" mode="once">
+                            <values />
+                        </tag>
+                        <tag index="7" name="gale">
+                            <values>
+                                <value index="0" enum_field="name">
+                                    <string delimiter="0"><![CDATA[gale]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk>
+            <location>
+            </location>
+            <aggregate name="vessel" index="3">
+                <aggregate-version-declarations layout-mark="90">
+                    <aggregate-version-declaration index="0" status="deleted" layout-mark="85" />
+                    <aggregate-version-declaration index="1" status="deleted" layout-mark="86" />
+                    <aggregate-version-declaration index="2" status="deleted" layout-mark="87" />
+                    <aggregate-version-declaration index="3" status="deleted" layout-mark="88" />
+                    <aggregate-version-declaration index="4" hash="19a1e21e8266d9f0e5ea0f486ae2ce61005dad95ca7329db5e8dc89f111111ed" layout-mark="89" />
+                    <aggregate-version-declaration index="5" hash="75acf63fd90b63c2c3977477be3937556fd1340b5f7ae29e07be0f5514845cb7" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="4" layout-mark="99">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="3" />
+                        </orderings>
+                        <tag index="0" name="version_number" layout-mark="91">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace" layout-mark="92">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once" layout-mark="93">
+                            <values />
+                        </tag>
+                        <tag index="3" name="payload_message" layout-mark="94">
+                            <values />
+                        </tag>
+                        <tag index="4" name="struct_name" layout-mark="95">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[vessel_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="uuid" layout-mark="96">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0007-0000-4000-8000-000000000001]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="kind" layout-mark="97">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[vessel_kind_e]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[kind]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[vessel_kind_e::sail]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="7" name="bearing" layout-mark="98">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[bearing]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="5">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="3" />
+                        </orderings>
+                        <tag index="0" name="payload_message" layout-mark="100">
+                            <values />
+                        </tag>
+                        <tag index="1" name="struct_name" layout-mark="101">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[vessel_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="kind" layout-mark="102">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[vessel_kind_e]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[kind]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[vessel_kind_e::sail]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" name="bearing" layout-mark="103">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[bearing]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="published" mode="once">
+                            <values />
+                        </tag>
+                        <tag index="7" name="uuid">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0007-0000-4000-8000-000000000002]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="8" name="name">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[name]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="123">
+            <location>
+            </location>
+            <aggregate name="vessel_kind_enum" index="4" layout-mark="122">
+                <aggregate-version-declarations layout-mark="109">
+                    <aggregate-version-declaration index="0" status="deleted" layout-mark="104" />
+                    <aggregate-version-declaration index="1" status="deleted" layout-mark="105" />
+                    <aggregate-version-declaration index="2" status="deleted" layout-mark="106" />
+                    <aggregate-version-declaration index="3" status="deleted" layout-mark="107" />
+                    <aggregate-version-declaration index="4" hash="ee434b91c0d1c7cf53049d32f81cb2074947a9d83e0f70b4c3bf6ce21581aa88" layout-mark="108" />
+                    <aggregate-version-declaration index="5" hash="4c71eebea73901c1bf71c637a1a2072029725ee82202041502e6f45bf4a2c777" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="4" layout-mark="117">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="2" />
+                        </orderings>
+                        <tag index="0" name="version_number" layout-mark="110">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace" layout-mark="111">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once" layout-mark="112">
+                            <values />
+                        </tag>
+                        <tag index="3" name="payload_message" layout-mark="113">
+                            <values />
+                        </tag>
+                        <tag index="4" name="enum_name" layout-mark="114">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[vessel_kind_e]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="sail" layout-mark="115">
+                            <values>
+                                <value index="0" enum_field="name">
+                                    <string delimiter="0"><![CDATA[sail]]></string>
+                                </value>
+                                <value index="1" enum_field="value">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="steamer" layout-mark="116">
+                            <values>
+                                <value index="0" enum_field="name">
+                                    <string delimiter="0"><![CDATA[steamer]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="5">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="2" />
+                        </orderings>
+                        <tag index="0" name="payload_message" layout-mark="118">
+                            <values />
+                        </tag>
+                        <tag index="1" name="enum_name" layout-mark="119">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[vessel_kind_e]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="sail" layout-mark="120">
+                            <values>
+                                <value index="0" enum_field="name">
+                                    <string delimiter="0"><![CDATA[sail]]></string>
+                                </value>
+                                <value index="1" enum_field="value">
+                                    <string delimiter="0"><![CDATA[0]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" name="steamer" layout-mark="121">
+                            <values>
+                                <value index="0" enum_field="name">
+                                    <string delimiter="0"><![CDATA[steamer]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="published" mode="once">
+                            <values />
+                        </tag>
+                        <tag index="7" name="launch">
+                            <values>
+                                <value index="0" enum_field="name">
+                                    <string delimiter="0"><![CDATA[launch]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="151">
+            <location>
+            </location>
+            <root-aggregate name="protocol" layout-mark="150">
+                <root-aggregate-version-declarations layout-mark="129">
+                    <root-aggregate-version-declaration index="0" hash="27025d7a1482f343d1f2f0bb2865d7055458e172a1ff90dd9b4cccfd4aba3035" layout-mark="124" />
+                    <root-aggregate-version-declaration index="1" hash="704dd06e344f8b26bf000ed10194d6f0e856afec347f962900e05a15e1df091b" layout-mark="125" />
+                    <root-aggregate-version-declaration index="2" hash="7028dc003680956ad1792ed10712f9b4783357fc7b1417cb8348da533d7958fe" layout-mark="126" />
+                    <root-aggregate-version-declaration index="3" hash="ec3b135feb29448bd18671fa97b8b33637afc58bf1d2c0c067c1af59d2fe21f9" layout-mark="127" />
+                    <root-aggregate-version-declaration index="4" hash="8cec0b01e85774a491248534f3f650db208eacfbb2c49e58ad9398c03c9065d8" layout-mark="128" />
+                    <root-aggregate-version-declaration index="5" hash="b099af2e8e5facd0a21ad216a5879c8fe464b4e4b41981371e4353ba71a85ebf" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="133">
+                        <tag index="0" name="version_number" layout-mark="130">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace" layout-mark="131">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once" layout-mark="132">
+                            <values />
+                        </tag>
+                    </root-aggregate-version-definition>
+                    <root-aggregate-version-definition index="1" layout-mark="137">
+                        <tag index="0" name="version_number" layout-mark="134">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[2]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace" layout-mark="135">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v2]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once" layout-mark="136">
+                            <values />
+                        </tag>
+                    </root-aggregate-version-definition>
+                    <root-aggregate-version-definition index="2" layout-mark="141">
+                        <tag index="0" name="version_number" layout-mark="138">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[3]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace" layout-mark="139">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v3]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once" layout-mark="140">
+                            <values />
+                        </tag>
+                    </root-aggregate-version-definition>
+                    <root-aggregate-version-definition index="3" layout-mark="145">
+                        <tag index="0" name="version_number" layout-mark="142">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[4]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace" layout-mark="143">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v4]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once" layout-mark="144">
+                            <values />
+                        </tag>
+                    </root-aggregate-version-definition>
+                    <root-aggregate-version-definition index="4" layout-mark="149">
+                        <tag index="0" name="version_number" layout-mark="146">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace" layout-mark="147">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once" layout-mark="148">
+                            <values />
+                        </tag>
+                    </root-aggregate-version-definition>
+                    <root-aggregate-version-definition index="5">
+                        <tag index="0" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once">
+                            <values />
+                        </tag>
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+        <chunk>
+            <location>
+            </location>
+            <aggregate name="bye" index="5">
+                <aggregate-version-declarations layout-mark="157">
+                    <aggregate-version-declaration index="0" hash="d5f1dd00eeeac105b35237d100ea6afa157465731cccdb0555403bf37758d0fa" layout-mark="152" />
+                    <aggregate-version-declaration index="1" hash="9f60a059bf8b2fab6e3e8459c33e17502ee30a761a0f2d4a6c6966a615d9d95c" layout-mark="153" />
+                    <aggregate-version-declaration index="2" hash="9cd49ed13e206cb71ec42b4afefd822469d88abe40f37d58d857011750e10c3b" layout-mark="154" />
+                    <aggregate-version-declaration index="3" hash="c00c28acc191e9f5540b42104504b45131feaf37bce4e7bcf53207b5e8f6cad2" layout-mark="155" />
+                    <aggregate-version-declaration index="4" hash="4e3e7fa573dc046a6e0e440d9a4e39308ed1eab89e87f635474a3eae0ae5d14b" layout-mark="156" />
+                    <aggregate-version-declaration index="5" hash="90698a2e93b4766dff43734b65a7cd64559ba7a077061e84af7b1945fee84cd6" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0" layout-mark="164">
+                        <tag index="0" name="version_number" layout-mark="158">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace" layout-mark="159">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once" layout-mark="160">
+                            <values />
+                        </tag>
+                        <tag index="3" name="struct_name" layout-mark="161">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="group_name" layout-mark="162">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="uuid" layout-mark="163">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0002-0000-4000-8000-000000000001]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="1" layout-mark="172">
+                        <tag index="0" name="struct_name" layout-mark="165">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="166">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="version_number" layout-mark="167">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[2]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" name="version_namespace" layout-mark="168">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v2]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="published" mode="once" layout-mark="169">
+                            <values />
+                        </tag>
+                        <tag index="5" name="system_message" layout-mark="170">
+                            <values />
+                        </tag>
+                        <tag index="6" name="uuid" layout-mark="171">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0002-0000-4000-8000-000000000002]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="2" layout-mark="180">
+                        <tag index="0" name="struct_name" layout-mark="173">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="174">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="175">
+                            <values />
+                        </tag>
+                        <tag index="3" name="version_number" layout-mark="176">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[3]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_namespace" layout-mark="177">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v3]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="published" mode="once" layout-mark="178">
+                            <values />
+                        </tag>
+                        <tag index="6" name="uuid" layout-mark="179">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0002-0000-4000-8000-000000000003]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="3" layout-mark="189">
+                        <tag index="0" name="struct_name" layout-mark="181">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="182">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="183">
+                            <values />
+                        </tag>
+                        <tag index="3" name="version_number" layout-mark="184">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[4]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_namespace" layout-mark="185">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v4]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="published" mode="once" layout-mark="186">
+                            <values />
+                        </tag>
+                        <tag index="6" name="uuid" layout-mark="187">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0002-0000-4000-8000-000000000004]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="7" name="message" layout-mark="188">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="4" layout-mark="198">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="5" />
+                        </orderings>
+                        <tag index="0" name="struct_name" layout-mark="190">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="191">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="192">
+                            <values />
+                        </tag>
+                        <tag index="3" name="message" layout-mark="193">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_number" layout-mark="194">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="version_namespace" layout-mark="195">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="published" mode="once" layout-mark="196">
+                            <values />
+                        </tag>
+                        <tag index="7" name="uuid" layout-mark="197">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0002-0000-4000-8000-000000000005]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="5">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="5" />
+                        </orderings>
+                        <tag index="0" name="struct_name" layout-mark="199">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="200">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[bye_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="201">
+                            <values />
+                        </tag>
+                        <tag index="3" name="message" layout-mark="202">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="published" mode="once">
+                            <values />
+                        </tag>
+                        <tag index="7" name="uuid">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0002-0000-4000-8000-000000000006]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk>
+            <location>
+            </location>
+            <aggregate name="error" index="6">
+                <aggregate-version-declarations layout-mark="208">
+                    <aggregate-version-declaration index="0" hash="1164f6793b8a5aa9156483dfda0f2fd2c739c3aeb4fb331e7b772a26222ff440" layout-mark="203" />
+                    <aggregate-version-declaration index="1" hash="207be25983cd1c9059c4abd6b21bbf78af083e7921748a89b0fa3f3e3cc0e045" layout-mark="204" />
+                    <aggregate-version-declaration index="2" hash="0737d8950ec14d4fe8031483afa7ccdfb08367cc948bf6ca693db6a50938afd6" layout-mark="205" />
+                    <aggregate-version-declaration index="3" hash="d382df49ee3aaff7dc50d476f5f0d0e92a23a63b56b7ec326318ebbe3c2f0a28" layout-mark="206" />
+                    <aggregate-version-declaration index="4" hash="5c0a8937cb8e463770e6c2bd6e9611ba6aa90fb51b33fa1b7cd0d1fe92fc30f8" layout-mark="207" />
+                    <aggregate-version-declaration index="5" hash="3c6575ae1c784fe9d7c13e38bde9041ada8be3ea5ef80c087600d72264145266" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0" layout-mark="215">
+                        <tag index="0" name="version_number" layout-mark="209">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace" layout-mark="210">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once" layout-mark="211">
+                            <values />
+                        </tag>
+                        <tag index="3" name="struct_name" layout-mark="212">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="group_name" layout-mark="213">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="uuid" layout-mark="214">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0004-0000-4000-8000-000000000001]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="1" layout-mark="223">
+                        <tag index="0" name="struct_name" layout-mark="216">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="217">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="version_number" layout-mark="218">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[2]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" name="version_namespace" layout-mark="219">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v2]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="published" mode="once" layout-mark="220">
+                            <values />
+                        </tag>
+                        <tag index="5" name="system_message" layout-mark="221">
+                            <values />
+                        </tag>
+                        <tag index="6" name="uuid" layout-mark="222">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0004-0000-4000-8000-000000000002]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="2" layout-mark="231">
+                        <tag index="0" name="struct_name" layout-mark="224">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="225">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="226">
+                            <values />
+                        </tag>
+                        <tag index="3" name="version_number" layout-mark="227">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[3]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_namespace" layout-mark="228">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v3]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="published" mode="once" layout-mark="229">
+                            <values />
+                        </tag>
+                        <tag index="6" name="uuid" layout-mark="230">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0004-0000-4000-8000-000000000003]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="3" layout-mark="240">
+                        <tag index="0" name="struct_name" layout-mark="232">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="233">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="234">
+                            <values />
+                        </tag>
+                        <tag index="3" name="version_number" layout-mark="235">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[4]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_namespace" layout-mark="236">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v4]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="published" mode="once" layout-mark="237">
+                            <values />
+                        </tag>
+                        <tag index="6" name="uuid" layout-mark="238">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0004-0000-4000-8000-000000000004]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="7" name="message" layout-mark="239">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="4" layout-mark="249">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="6" />
+                        </orderings>
+                        <tag index="0" name="struct_name" layout-mark="241">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="242">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="243">
+                            <values />
+                        </tag>
+                        <tag index="3" name="message" layout-mark="244">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_number" layout-mark="245">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="version_namespace" layout-mark="246">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="published" mode="once" layout-mark="247">
+                            <values />
+                        </tag>
+                        <tag index="7" name="uuid" layout-mark="248">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0004-0000-4000-8000-000000000005]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="5">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="6" />
+                        </orderings>
+                        <tag index="0" name="struct_name" layout-mark="250">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="251">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[error_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="252">
+                            <values />
+                        </tag>
+                        <tag index="3" name="message" layout-mark="253">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="published" mode="once">
+                            <values />
+                        </tag>
+                        <tag index="7" name="uuid">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0004-0000-4000-8000-000000000006]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk>
+            <location>
+            </location>
+            <aggregate name="hello" index="7">
+                <aggregate-version-declarations layout-mark="259">
+                    <aggregate-version-declaration index="0" hash="40af0972ed3f306acd5490022ce560ffdc9b7ccbe3cd7a191fcfef06a6f12dfe" layout-mark="254" />
+                    <aggregate-version-declaration index="1" hash="ce76ca46b0050450ea01bd13402840b28da72f98319891038b5daa8849de7022" layout-mark="255" />
+                    <aggregate-version-declaration index="2" hash="8489112cb2442b4a0b1c4caf0c0cbf2dd85d45e08e49dabf69cf7105fbea035b" layout-mark="256" />
+                    <aggregate-version-declaration index="3" hash="c8f705b1af379fb8efa6ba90c9cc888009d71c2151915177e14d67fe76a7be72" layout-mark="257" />
+                    <aggregate-version-declaration index="4" hash="3d3a8dde0edf447360b27cfed842d36a7f237ffb942a90a8f25424034bdea63c" layout-mark="258" />
+                    <aggregate-version-declaration index="5" hash="9ab82613462537c371ceb32dbaaa9cb8d87975e0fee61c0f8c4f00e672a09484" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0" layout-mark="266">
+                        <tag index="0" name="version_number" layout-mark="260">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace" layout-mark="261">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once" layout-mark="262">
+                            <values />
+                        </tag>
+                        <tag index="3" name="struct_name" layout-mark="263">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="group_name" layout-mark="264">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="uuid" layout-mark="265">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0001-0000-4000-8000-000000000001]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="1" layout-mark="275">
+                        <tag index="0" name="struct_name" layout-mark="267">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="268">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="version_number" layout-mark="269">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[2]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" name="version_namespace" layout-mark="270">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v2]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="published" mode="once" layout-mark="271">
+                            <values />
+                        </tag>
+                        <tag index="5" name="system_message" layout-mark="272">
+                            <values />
+                        </tag>
+                        <tag index="6" name="uuid" layout-mark="273">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0001-0000-4000-8000-000000000002]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="7" name="message" layout-mark="274">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="2" layout-mark="284">
+                        <tag index="0" name="struct_name" layout-mark="276">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="277">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="278">
+                            <values />
+                        </tag>
+                        <tag index="3" name="message" layout-mark="279">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_number" layout-mark="280">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[3]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="version_namespace" layout-mark="281">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v3]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="published" mode="once" layout-mark="282">
+                            <values />
+                        </tag>
+                        <tag index="7" name="uuid" layout-mark="283">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0001-0000-4000-8000-000000000003]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="3" layout-mark="293">
+                        <tag index="0" name="struct_name" layout-mark="285">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="286">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="287">
+                            <values />
+                        </tag>
+                        <tag index="3" name="message" layout-mark="288">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_number" layout-mark="289">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[4]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="version_namespace" layout-mark="290">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v4]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="published" mode="once" layout-mark="291">
+                            <values />
+                        </tag>
+                        <tag index="7" name="uuid" layout-mark="292">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0001-0000-4000-8000-000000000004]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="4" layout-mark="302">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="7" />
+                        </orderings>
+                        <tag index="0" name="struct_name" layout-mark="294">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="295">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="296">
+                            <values />
+                        </tag>
+                        <tag index="3" name="message" layout-mark="297">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_number" layout-mark="298">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="version_namespace" layout-mark="299">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="published" mode="once" layout-mark="300">
+                            <values />
+                        </tag>
+                        <tag index="7" name="uuid" layout-mark="301">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0001-0000-4000-8000-000000000005]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="5">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="7" />
+                        </orderings>
+                        <tag index="0" name="struct_name" layout-mark="303">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="304">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[hello_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="305">
+                            <values />
+                        </tag>
+                        <tag index="3" name="message" layout-mark="306">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[message]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="published" mode="once">
+                            <values />
+                        </tag>
+                        <tag index="7" name="uuid">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0001-0000-4000-8000-000000000006]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk>
+            <location>
+            </location>
+            <aggregate name="ok" index="8">
+                <aggregate-version-declarations layout-mark="312">
+                    <aggregate-version-declaration index="0" hash="47814c54be26cc5b421488df11f5d0961909a7f41b3ceb5ad169daf2ab80bc00" layout-mark="307" />
+                    <aggregate-version-declaration index="1" hash="faf610ed2c9e3e0310434b9efabdde930e3545abf3a1e27f7c3070996270c80e" layout-mark="308" />
+                    <aggregate-version-declaration index="2" hash="00282fb89e10e2d3359fab9920024385ca3231cc369320ade9b6c053be6a4ee7" layout-mark="309" />
+                    <aggregate-version-declaration index="3" hash="152941d5c9ee7f214a48b75956809f004ef709bc5235c967f0fddc56a6f7b39a" layout-mark="310" />
+                    <aggregate-version-declaration index="4" hash="d6dd37acbd1278d8774da6238fd5a68d5a9b70ec6a2d25e927e1519604bdd9a9" layout-mark="311" />
+                    <aggregate-version-declaration index="5" hash="21508f98c7d42a656ebb0677d06172dd5a087e27a40060e0a20ca651dc3242d5" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0" layout-mark="319">
+                        <tag index="0" name="version_number" layout-mark="313">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace" layout-mark="314">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v1]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once" layout-mark="315">
+                            <values />
+                        </tag>
+                        <tag index="3" name="struct_name" layout-mark="316">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="group_name" layout-mark="317">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="uuid" layout-mark="318">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0003-0000-4000-8000-000000000001]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="1" layout-mark="327">
+                        <tag index="0" name="struct_name" layout-mark="320">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="321">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="version_number" layout-mark="322">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[2]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" name="version_namespace" layout-mark="323">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v2]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="published" mode="once" layout-mark="324">
+                            <values />
+                        </tag>
+                        <tag index="5" name="system_message" layout-mark="325">
+                            <values />
+                        </tag>
+                        <tag index="6" name="uuid" layout-mark="326">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0003-0000-4000-8000-000000000002]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="2" layout-mark="335">
+                        <tag index="0" name="struct_name" layout-mark="328">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="329">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="330">
+                            <values />
+                        </tag>
+                        <tag index="3" name="version_number" layout-mark="331">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[3]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_namespace" layout-mark="332">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v3]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="published" mode="once" layout-mark="333">
+                            <values />
+                        </tag>
+                        <tag index="6" name="uuid" layout-mark="334">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0003-0000-4000-8000-000000000003]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="3" layout-mark="343">
+                        <tag index="0" name="struct_name" layout-mark="336">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="337">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="338">
+                            <values />
+                        </tag>
+                        <tag index="3" name="version_number" layout-mark="339">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[4]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_namespace" layout-mark="340">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v4]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="published" mode="once" layout-mark="341">
+                            <values />
+                        </tag>
+                        <tag index="6" name="uuid" layout-mark="342">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0003-0000-4000-8000-000000000004]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="4" layout-mark="351">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="8" />
+                        </orderings>
+                        <tag index="0" name="struct_name" layout-mark="344">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="345">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="346">
+                            <values />
+                        </tag>
+                        <tag index="3" name="version_number" layout-mark="347">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_namespace" layout-mark="348">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="published" mode="once" layout-mark="349">
+                            <values />
+                        </tag>
+                        <tag index="6" name="uuid" layout-mark="350">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0003-0000-4000-8000-000000000005]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="5">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="8" />
+                        </orderings>
+                        <tag index="0" name="struct_name" layout-mark="352">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="group_name" layout-mark="353">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[ok_group]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="system_message" layout-mark="354">
+                            <values />
+                        </tag>
+                        <tag index="3" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="published" mode="once">
+                            <values />
+                        </tag>
+                        <tag index="6" name="uuid">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0003-0000-4000-8000-000000000006]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk>
+            <location>
+            </location>
+            <aggregate name="watch" index="9">
+                <aggregate-version-declarations>
+                    <aggregate-version-declaration index="0" status="deleted" />
+                    <aggregate-version-declaration index="1" status="deleted" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                    <aggregate-version-declaration index="3" status="deleted" />
+                    <aggregate-version-declaration index="4" status="deleted" />
+                    <aggregate-version-declaration index="5" hash="ec449e308553495b3d01c8432e180a3738365943296e38094d30ab15a8f886e5" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="5">
+                        <orderings>
+                            <ordering name="enum_precedes_struct" index="9" />
+                        </orderings>
+                        <tag index="0" name="version_number">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="version_namespace">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[v6]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="2" name="published" mode="once">
+                            <values />
+                        </tag>
+                        <tag index="3" name="payload_message">
+                            <values />
+                        </tag>
+                        <tag index="4" name="struct_name">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[watch_t]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="5" name="uuid">
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[6f1e0008-0000-4000-8000-000000000001]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="6" name="day">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[std::string]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[day]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="7" name="lamp">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[lamp_t]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[lamp]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[{}]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="8" name="fog">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[fog_t]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[fog]]></string>
+                                </value>
+                                <value index="2" field="default">
+                                    <string delimiter="0"><![CDATA[{}]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+    </compiled>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0">
+            <change aggregate="protocol" kind="add" name="version_number" index="0" root="true">
+                <after>
+                    <string>1</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="add" name="version_namespace" index="1" root="true">
+                <after>
+                    <string>v1</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="add" name="published" index="2" root="true">
+                <after />
+            </change>
+            <change aggregate="protocol" kind="label" name="need_new_uuid" index="3" root="true" />
+            <change aggregate="bye" kind="create-aggregate" />
+            <change aggregate="bye" kind="add" name="struct_name" index="0">
+                <after>
+                    <string>bye_t</string>
+                </after>
+            </change>
+            <change aggregate="bye" kind="add" name="group_name" index="1">
+                <after>
+                    <string>bye_group</string>
+                </after>
+            </change>
+            <change aggregate="bye" kind="add" name="uuid" index="2">
+                <after>
+                    <string>6f1e0002-0000-4000-8000-000000000001</string>
+                </after>
+            </change>
+            <change aggregate="error" kind="create-aggregate" />
+            <change aggregate="error" kind="add" name="struct_name" index="0">
+                <after>
+                    <string>error_t</string>
+                </after>
+            </change>
+            <change aggregate="error" kind="add" name="group_name" index="1">
+                <after>
+                    <string>error_group</string>
+                </after>
+            </change>
+            <change aggregate="error" kind="add" name="uuid" index="2">
+                <after>
+                    <string>6f1e0004-0000-4000-8000-000000000001</string>
+                </after>
+            </change>
+            <change aggregate="hello" kind="create-aggregate" />
+            <change aggregate="hello" kind="add" name="struct_name" index="0">
+                <after>
+                    <string>hello_t</string>
+                </after>
+            </change>
+            <change aggregate="hello" kind="add" name="group_name" index="1">
+                <after>
+                    <string>hello_group</string>
+                </after>
+            </change>
+            <change aggregate="hello" kind="add" name="uuid" index="2">
+                <after>
+                    <string>6f1e0001-0000-4000-8000-000000000001</string>
+                </after>
+            </change>
+            <change aggregate="ok" kind="create-aggregate" />
+            <change aggregate="ok" kind="add" name="struct_name" index="0">
+                <after>
+                    <string>ok_t</string>
+                </after>
+            </change>
+            <change aggregate="ok" kind="add" name="group_name" index="1">
+                <after>
+                    <string>ok_group</string>
+                </after>
+            </change>
+            <change aggregate="ok" kind="add" name="uuid" index="2">
+                <after>
+                    <string>6f1e0003-0000-4000-8000-000000000001</string>
+                </after>
+            </change>
+        </version>
+        <version index="1">
+            <change aggregate="protocol" kind="label" name="field" index="0" root="true" />
+            <change aggregate="protocol" kind="replace" name="version_number" index="1" root="true">
+                <before>
+                    <string>1</string>
+                </before>
+                <after>
+                    <string>2</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="replace" name="version_namespace" index="2" root="true">
+                <before>
+                    <string>v1</string>
+                </before>
+                <after>
+                    <string>v2</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="replace" name="published" index="3" root="true">
+                <before />
+                <after />
+            </change>
+            <change aggregate="bye" kind="add" name="system_message" index="0">
+                <after />
+            </change>
+            <change aggregate="bye" kind="replace" name="uuid" index="1">
+                <before>
+                    <string>6f1e0002-0000-4000-8000-000000000001</string>
+                </before>
+                <after>
+                    <string>6f1e0002-0000-4000-8000-000000000002</string>
+                </after>
+            </change>
+            <change aggregate="error" kind="add" name="system_message" index="0">
+                <after />
+            </change>
+            <change aggregate="error" kind="replace" name="uuid" index="1">
+                <before>
+                    <string>6f1e0004-0000-4000-8000-000000000001</string>
+                </before>
+                <after>
+                    <string>6f1e0004-0000-4000-8000-000000000002</string>
+                </after>
+            </change>
+            <change aggregate="hello" kind="add" name="system_message" index="0">
+                <after />
+            </change>
+            <change aggregate="hello" kind="replace" name="uuid" index="1">
+                <before>
+                    <string>6f1e0001-0000-4000-8000-000000000001</string>
+                </before>
+                <after>
+                    <string>6f1e0001-0000-4000-8000-000000000002</string>
+                </after>
+            </change>
+            <change aggregate="hello" kind="add" name="message" index="2">
+                <after>
+                    <string>std::string</string>
+                    <string>message</string>
+                </after>
+            </change>
+            <change aggregate="ok" kind="add" name="system_message" index="0">
+                <after />
+            </change>
+            <change aggregate="ok" kind="replace" name="uuid" index="1">
+                <before>
+                    <string>6f1e0003-0000-4000-8000-000000000001</string>
+                </before>
+                <after>
+                    <string>6f1e0003-0000-4000-8000-000000000002</string>
+                </after>
+            </change>
+        </version>
+        <version index="2">
+            <change aggregate="protocol" kind="replace" name="version_number" index="0" root="true">
+                <before>
+                    <string>2</string>
+                </before>
+                <after>
+                    <string>3</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="replace" name="version_namespace" index="1" root="true">
+                <before>
+                    <string>v2</string>
+                </before>
+                <after>
+                    <string>v3</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="replace" name="published" index="2" root="true">
+                <before />
+                <after />
+            </change>
+            <change aggregate="lamp" kind="create-aggregate" />
+            <change aggregate="lamp" kind="add" name="payload_message" index="0">
+                <after />
+            </change>
+            <change aggregate="lamp" kind="add" name="struct_name" index="1">
+                <after>
+                    <string>lamp_t</string>
+                </after>
+            </change>
+            <change aggregate="lamp" kind="add" name="uuid" index="2">
+                <after>
+                    <string>6f1e0005-0000-4000-8000-000000000001</string>
+                </after>
+            </change>
+            <change aggregate="lamp" kind="add" name="lit" index="3">
+                <after>
+                    <string>bool</string>
+                    <string>lit</string>
+                    <string>false</string>
+                </after>
+            </change>
+            <change aggregate="bye" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0002-0000-4000-8000-000000000002</string>
+                </before>
+                <after>
+                    <string>6f1e0002-0000-4000-8000-000000000003</string>
+                </after>
+            </change>
+            <change aggregate="error" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0004-0000-4000-8000-000000000002</string>
+                </before>
+                <after>
+                    <string>6f1e0004-0000-4000-8000-000000000003</string>
+                </after>
+            </change>
+            <change aggregate="hello" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0001-0000-4000-8000-000000000002</string>
+                </before>
+                <after>
+                    <string>6f1e0001-0000-4000-8000-000000000003</string>
+                </after>
+            </change>
+            <change aggregate="ok" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0003-0000-4000-8000-000000000002</string>
+                </before>
+                <after>
+                    <string>6f1e0003-0000-4000-8000-000000000003</string>
+                </after>
+            </change>
+        </version>
+        <version index="3">
+            <change aggregate="protocol" kind="replace" name="version_number" index="0" root="true">
+                <before>
+                    <string>3</string>
+                </before>
+                <after>
+                    <string>4</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="replace" name="version_namespace" index="1" root="true">
+                <before>
+                    <string>v3</string>
+                </before>
+                <after>
+                    <string>v4</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="replace" name="published" index="2" root="true">
+                <before />
+                <after />
+            </change>
+            <change aggregate="fog" kind="create-aggregate" />
+            <change aggregate="fog" kind="add" name="payload_message" index="0">
+                <after />
+            </change>
+            <change aggregate="fog" kind="add" name="struct_name" index="1">
+                <after>
+                    <string>fog_t</string>
+                </after>
+            </change>
+            <change aggregate="fog" kind="add" name="uuid" index="2">
+                <after>
+                    <string>6f1e0006-0000-4000-8000-000000000001</string>
+                </after>
+            </change>
+            <change aggregate="fog" kind="add" name="metres" index="3">
+                <after>
+                    <string>int</string>
+                    <string>metres</string>
+                    <string>0</string>
+                </after>
+            </change>
+            <change aggregate="lamp" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0005-0000-4000-8000-000000000001</string>
+                </before>
+                <after>
+                    <string>6f1e0005-0000-4000-8000-000000000002</string>
+                </after>
+            </change>
+            <change aggregate="lamp" kind="add" name="candela" index="1">
+                <after>
+                    <string>int</string>
+                    <string>candela</string>
+                    <string>0</string>
+                </after>
+            </change>
+            <change aggregate="bye" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0002-0000-4000-8000-000000000003</string>
+                </before>
+                <after>
+                    <string>6f1e0002-0000-4000-8000-000000000004</string>
+                </after>
+            </change>
+            <change aggregate="bye" kind="add" name="message" index="1">
+                <after>
+                    <string>std::string</string>
+                    <string>message</string>
+                </after>
+            </change>
+            <change aggregate="error" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0004-0000-4000-8000-000000000003</string>
+                </before>
+                <after>
+                    <string>6f1e0004-0000-4000-8000-000000000004</string>
+                </after>
+            </change>
+            <change aggregate="error" kind="add" name="message" index="1">
+                <after>
+                    <string>std::string</string>
+                    <string>message</string>
+                </after>
+            </change>
+            <change aggregate="hello" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0001-0000-4000-8000-000000000003</string>
+                </before>
+                <after>
+                    <string>6f1e0001-0000-4000-8000-000000000004</string>
+                </after>
+            </change>
+            <change aggregate="ok" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0003-0000-4000-8000-000000000003</string>
+                </before>
+                <after>
+                    <string>6f1e0003-0000-4000-8000-000000000004</string>
+                </after>
+            </change>
+        </version>
+        <version index="4">
+            <change aggregate="protocol" kind="label" name="enum_field" index="0" root="true" />
+            <change aggregate="protocol" kind="ordering" name="enum_precedes_struct" index="1" root="true" />
+            <change aggregate="protocol" kind="replace" name="version_number" index="2" root="true">
+                <before>
+                    <string>4</string>
+                </before>
+                <after>
+                    <string>5</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="replace" name="version_namespace" index="3" root="true">
+                <before>
+                    <string>v4</string>
+                </before>
+                <after>
+                    <string>v5</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="replace" name="published" index="4" root="true">
+                <before />
+                <after />
+            </change>
+            <change aggregate="fog" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0006-0000-4000-8000-000000000001</string>
+                </before>
+                <after>
+                    <string>6f1e0006-0000-4000-8000-000000000002</string>
+                </after>
+            </change>
+            <change aggregate="fog" kind="add" name="sea" index="1">
+                <after>
+                    <string>sea_state_e</string>
+                    <string>sea</string>
+                    <string>sea_state_e::calm</string>
+                </after>
+            </change>
+            <change aggregate="lamp" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0005-0000-4000-8000-000000000002</string>
+                </before>
+                <after>
+                    <string>6f1e0005-0000-4000-8000-000000000003</string>
+                </after>
+            </change>
+            <change aggregate="sea_state_enum" kind="create-aggregate" />
+            <change aggregate="sea_state_enum" kind="add" name="payload_message" index="0">
+                <after />
+            </change>
+            <change aggregate="sea_state_enum" kind="add" name="enum_name" index="1">
+                <after>
+                    <string>sea_state_e</string>
+                </after>
+            </change>
+            <change aggregate="sea_state_enum" kind="add" name="calm" index="2">
+                <after>
+                    <string>calm</string>
+                    <string>0</string>
+                </after>
+            </change>
+            <change aggregate="sea_state_enum" kind="add" name="swell" index="3">
+                <after>
+                    <string>swell</string>
+                </after>
+            </change>
+            <change aggregate="vessel" kind="create-aggregate" />
+            <change aggregate="vessel" kind="add" name="payload_message" index="0">
+                <after />
+            </change>
+            <change aggregate="vessel" kind="add" name="struct_name" index="1">
+                <after>
+                    <string>vessel_t</string>
+                </after>
+            </change>
+            <change aggregate="vessel" kind="add" name="uuid" index="2">
+                <after>
+                    <string>6f1e0007-0000-4000-8000-000000000001</string>
+                </after>
+            </change>
+            <change aggregate="vessel" kind="add" name="kind" index="3">
+                <after>
+                    <string>vessel_kind_e</string>
+                    <string>kind</string>
+                    <string>vessel_kind_e::sail</string>
+                </after>
+            </change>
+            <change aggregate="vessel" kind="add" name="bearing" index="4">
+                <after>
+                    <string>int</string>
+                    <string>bearing</string>
+                    <string>0</string>
+                </after>
+            </change>
+            <change aggregate="vessel_kind_enum" kind="create-aggregate" />
+            <change aggregate="vessel_kind_enum" kind="add" name="payload_message" index="0">
+                <after />
+            </change>
+            <change aggregate="vessel_kind_enum" kind="add" name="enum_name" index="1">
+                <after>
+                    <string>vessel_kind_e</string>
+                </after>
+            </change>
+            <change aggregate="vessel_kind_enum" kind="add" name="sail" index="2">
+                <after>
+                    <string>sail</string>
+                    <string>0</string>
+                </after>
+            </change>
+            <change aggregate="vessel_kind_enum" kind="add" name="steamer" index="3">
+                <after>
+                    <string>steamer</string>
+                </after>
+            </change>
+            <change aggregate="bye" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0002-0000-4000-8000-000000000004</string>
+                </before>
+                <after>
+                    <string>6f1e0002-0000-4000-8000-000000000005</string>
+                </after>
+            </change>
+            <change aggregate="error" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0004-0000-4000-8000-000000000004</string>
+                </before>
+                <after>
+                    <string>6f1e0004-0000-4000-8000-000000000005</string>
+                </after>
+            </change>
+            <change aggregate="hello" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0001-0000-4000-8000-000000000004</string>
+                </before>
+                <after>
+                    <string>6f1e0001-0000-4000-8000-000000000005</string>
+                </after>
+            </change>
+            <change aggregate="ok" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0003-0000-4000-8000-000000000004</string>
+                </before>
+                <after>
+                    <string>6f1e0003-0000-4000-8000-000000000005</string>
+                </after>
+            </change>
+        </version>
+        <version index="5">
+            <change aggregate="protocol" kind="replace" name="version_number" index="0" root="true">
+                <before>
+                    <string>5</string>
+                </before>
+                <after>
+                    <string>6</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="replace" name="version_namespace" index="1" root="true">
+                <before>
+                    <string>v5</string>
+                </before>
+                <after>
+                    <string>v6</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="replace" name="published" index="2" root="true">
+                <before />
+                <after />
+            </change>
+            <change aggregate="fog" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0006-0000-4000-8000-000000000002</string>
+                </before>
+                <after>
+                    <string>6f1e0006-0000-4000-8000-000000000003</string>
+                </after>
+            </change>
+            <change aggregate="fog" kind="delete" name="uuid" index="1">
+                <before>
+                    <string>6f1e0006-0000-4000-8000-000000000003</string>
+                </before>
+            </change>
+            <change aggregate="lamp" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0005-0000-4000-8000-000000000003</string>
+                </before>
+                <after>
+                    <string>6f1e0005-0000-4000-8000-000000000004</string>
+                </after>
+            </change>
+            <change aggregate="lamp" kind="delete" name="uuid" index="1">
+                <before>
+                    <string>6f1e0005-0000-4000-8000-000000000004</string>
+                </before>
+            </change>
+            <change aggregate="sea_state_enum" kind="add" name="gale" index="0">
+                <after>
+                    <string>gale</string>
+                </after>
+            </change>
+            <change aggregate="vessel" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0007-0000-4000-8000-000000000001</string>
+                </before>
+                <after>
+                    <string>6f1e0007-0000-4000-8000-000000000002</string>
+                </after>
+            </change>
+            <change aggregate="vessel" kind="add" name="name" index="1">
+                <after>
+                    <string>std::string</string>
+                    <string>name</string>
+                </after>
+            </change>
+            <change aggregate="vessel_kind_enum" kind="add" name="launch" index="0">
+                <after>
+                    <string>launch</string>
+                </after>
+            </change>
+            <change aggregate="bye" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0002-0000-4000-8000-000000000005</string>
+                </before>
+                <after>
+                    <string>6f1e0002-0000-4000-8000-000000000006</string>
+                </after>
+            </change>
+            <change aggregate="error" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0004-0000-4000-8000-000000000005</string>
+                </before>
+                <after>
+                    <string>6f1e0004-0000-4000-8000-000000000006</string>
+                </after>
+            </change>
+            <change aggregate="hello" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0001-0000-4000-8000-000000000005</string>
+                </before>
+                <after>
+                    <string>6f1e0001-0000-4000-8000-000000000006</string>
+                </after>
+            </change>
+            <change aggregate="ok" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>6f1e0003-0000-4000-8000-000000000005</string>
+                </before>
+                <after>
+                    <string>6f1e0003-0000-4000-8000-000000000006</string>
+                </after>
+            </change>
+            <change aggregate="watch" kind="create-aggregate" />
+            <change aggregate="watch" kind="add" name="payload_message" index="0">
+                <after />
+            </change>
+            <change aggregate="watch" kind="add" name="struct_name" index="1">
+                <after>
+                    <string>watch_t</string>
+                </after>
+            </change>
+            <change aggregate="watch" kind="add" name="uuid" index="2">
+                <after>
+                    <string>6f1e0008-0000-4000-8000-000000000001</string>
+                </after>
+            </change>
+            <change aggregate="watch" kind="add" name="day" index="3">
+                <after>
+                    <string>std::string</string>
+                    <string>day</string>
+                </after>
+            </change>
+            <change aggregate="watch" kind="add" name="lamp" index="4">
+                <after>
+                    <string>lamp_t</string>
+                    <string>lamp</string>
+                    <string>{}</string>
+                </after>
+            </change>
+            <change aggregate="watch" kind="add" name="fog" index="5">
+                <after>
+                    <string>fog_t</string>
+                    <string>fog</string>
+                    <string>{}</string>
+                </after>
+            </change>
+        </version>
+    </history>
+</galimatron>

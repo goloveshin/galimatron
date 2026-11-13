@@ -1,0 +1,17 @@
+// version 6 stays the published protocol. the dictionary records each tag name
+// in the version where that name first appears. service is its own history group.
+// these entries carry the text. a name already written here stays, and the xslt fills the rest.
+// the dictionary version is own, so it keeps its own entries and does not inherit the protocol.
+//
+wizard {
+    create version;
+    create aggregate own dictionary;
+    create tag dictionary service = { };
+    create label dictionary entry = static { name, introduced, text }, tag-name-from { name };
+    create tag dictionary entry { "uuid", "0", "stable id of a message" };
+    create tag dictionary entry { "struct_name", "0", "the C++ type of an aggregate" };
+    create tag dictionary entry { "message", "1", "text carried by a system message" };
+    create tag dictionary entry { "payload_message", "2", "a user message, not a system message" };
+    create tag dictionary entry { "enum_name", "4", "the C++ enumeration type" };
+    create tag dictionary entry { "name", "5", "a string the watch uses for a vessel" };
+}

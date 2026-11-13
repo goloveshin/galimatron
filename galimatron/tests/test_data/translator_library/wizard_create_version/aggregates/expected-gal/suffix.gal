@@ -1,0 +1,13 @@
+aggregate suffix
+{
+    versions
+    {
+        0;
+        1 = deleted;
+        2 = deleted;
+    }
+}
+
+version 0
+{
+}

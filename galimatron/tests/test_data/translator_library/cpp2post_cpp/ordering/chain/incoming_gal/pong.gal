@@ -1,0 +1,11 @@
+aggregate pong
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+}

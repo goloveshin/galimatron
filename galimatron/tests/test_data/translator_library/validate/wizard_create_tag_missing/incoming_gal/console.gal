@@ -1,0 +1,1 @@
+wizard create tag missing speed = field { "int" };// bad: missing does not exist

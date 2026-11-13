@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the wizard">
+    <language>
+        <chunk>
+            <location>
+            </location>
+            <aggregate name="live" index="0">
+                <aggregate-version-declarations>
+                    <aggregate-version-declaration index="0" />
+                    <aggregate-version-declaration index="1" status="deleted" hash="abc" />
+                    <aggregate-version-declaration index="2" status="deleted" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0">
+                        <tag index="0" name="uuid">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string><![CDATA[65da7323-a0dc-4351-9465-61dc2abf87e5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="2">
+                        <delete index="0" />
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk>
+            <location>
+            </location>
+            <root-aggregate name="protocol">
+                <root-aggregate-version-declarations>
+                    <root-aggregate-version-declaration index="0" comment="first" hash="h0" />
+                    <root-aggregate-version-declaration index="1" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0">
+                        <label index="0" name="need_new_uuid">
+                            <dynamic value="need_gen_uuid" />
+                        </label>
+                        <label index="1" name="kept">
+                            <static>
+                                <values>
+                                    <value index="0" value="kept" />
+                                </values>
+                            </static>
+                        </label>
+                        <tag index="2" name="uuid">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string><![CDATA[65da7323-a0dc-4351-9465-61dc2abf87e5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="3" name="note">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="kept" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string><![CDATA[stay]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="item">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="kept" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <record>
+                                        <key><![CDATA[name]]><value>
+                                                <string><![CDATA[live]]></string>
+                                            </value>
+                                        </key>
+                                        <key><![CDATA[flags]]><value>
+                                                <array>
+                                                    <value>
+                                                        <string><![CDATA[a]]></string>
+                                                    </value>
+                                                    <value>
+                                                        <string><![CDATA[b]]></string>
+                                                    </value>
+                                                </array>
+                                            </value>
+                                        </key>
+                                    </record>
+                                </value>
+                                <value index="1">
+                                    <array>
+                                        <value>
+                                            <string><![CDATA[x]]></string>
+                                        </value>
+                                        <value>
+                                            <record>
+                                                <key><![CDATA[k]]><value>
+                                                        <string><![CDATA[v]]></string>
+                                                    </value>
+                                                </key>
+                                            </record>
+                                        </value>
+                                    </array>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                    <root-aggregate-version-definition index="1">
+                        <delete index="0" name="note" />
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </language>
+</galimatron>

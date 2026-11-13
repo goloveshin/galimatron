@@ -1,0 +1,48 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+        1;
+        2;
+        3;
+    }
+}
+
+version 0
+{
+    label need_new_uuid = dynamic { need_gen_uuid };
+    label need_new_name = dynamic { need_gen_name };
+    uuid = need_new_uuid need_new_name important { "65da7323-a0dc-4351-9465-61dc2abf87e5" };// good: one line
+    kept = { "after" };
+}
+
+version 1
+{
+    label need_new_uuid = dynamic { need_gen_uuid };
+    label need_new_name = dynamic { need_gen_name };
+    uuid = need_new_uuid need_new_name important {
+        "65da7323-a0dc-4351-9465-61dc2abf87e5"
+    };// good: brace on the value line
+    kept = { "after" };
+}
+
+version 2
+{
+    label need_new_uuid = dynamic { need_gen_uuid };
+    label need_new_name = dynamic { need_gen_name };
+    uuid = need_new_uuid need_new_name important
+    {
+        "65da7323-a0dc-4351-9465-61dc2abf87e5"
+    };// good: brace on its own line
+    kept = { "after" };
+}
+
+version 3
+{
+    label need_new_uuid = dynamic { need_gen_uuid };
+    label need_new_name = dynamic { need_gen_name };
+    uuid = need_new_uuid need_new_name important { "65da7323-a0dc-4351-9465-61dc2abf87e5" }; /* good: block comment
+        on several lines */
+    kept = { "after" };
+}

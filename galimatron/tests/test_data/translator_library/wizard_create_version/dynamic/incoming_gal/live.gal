@@ -1,0 +1,13 @@
+aggregate live
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    uuid = need_new_uuid important { "65da7323-a0dc-4351-9465-61dc2abf87e5" };
+    note = kept { "stay" };
+}

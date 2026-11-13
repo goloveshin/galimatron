@@ -1,0 +1,12 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    ordering precedes = { item, live }, { color, pong };// bad: color does not precede live
+}

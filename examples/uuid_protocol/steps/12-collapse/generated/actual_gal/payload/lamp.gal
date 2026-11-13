@@ -1,0 +1,26 @@
+aggregate lamp
+{
+    versions
+    {
+        0 = deleted;
+        1 = deleted;
+        2 = deleted;
+        3 = deleted;
+        4 = deleted;
+        5 = deleted;
+        6;
+    }
+}
+
+version before 6
+{
+    payload_message = { };
+    struct_name = { "lamp_t" };
+    field important { "bool", "lit", "false" };
+    field important { "int", "candela", "0" };
+    delete uuid;
+}
+
+version 6
+{
+}

@@ -1,0 +1,11 @@
+aggregate test_aggregate
+{
+    versions
+    {
+        0;
+    }
+}
+
+version own 0
+{// good: this aggregate's earlier versions, not the root
+}

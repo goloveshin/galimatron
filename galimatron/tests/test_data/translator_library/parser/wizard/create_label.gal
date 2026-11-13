@@ -1,0 +1,2 @@
+wizard create label protocol field = static { type, name }, tag-name-from { name };
+wizard create label kind = dynamic { speed };

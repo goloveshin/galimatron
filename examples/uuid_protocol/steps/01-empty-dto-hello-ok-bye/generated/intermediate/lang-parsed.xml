@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after parsing, before the wizard">
+    <language>
+        <chunk layout-mark="1">
+            <location>
+            </location>
+        </chunk>
+    </language>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history />
+</galimatron>

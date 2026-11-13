@@ -1,0 +1,17 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    ordering precedes = { item, pong };
+    label field = static { type };
+    label kind = dynamic { speed };
+    label titled = static { type, name }, tag-name-from { name };
+    speed = field { "int" };
+    pack = { { "box": "small" }, [ "a", "b" ] };
+}

@@ -1,0 +1,6 @@
+wizard {// good: create hash inside the batch
+    create root aggregate protocol;
+    create version;
+    create tag protocol published = once important { };
+    create hash 0;
+}

@@ -1,0 +1,21 @@
+root aggregate test_aggregate
+{
+    versions
+    {
+    }
+}
+
+version 0
+{
+    // these are the simplest elements; we only check that they are possible here
+
+    // good
+
+    version_number = { "1" };
+
+    label field = static { type };
+
+    ordering precedes = { agg_1, agg_2 };
+
+    delete version_number;
+}

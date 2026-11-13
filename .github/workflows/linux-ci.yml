@@ -1,0 +1,112 @@
+name: Linux CI
+
+on:
+  # The Actions tab asks how to run the tests. full is the usual run.
+  workflow_dispatch:
+    inputs:
+      tests:
+        description: Test run
+        type: choice
+        required: true
+        default: full
+        options:
+          - full
+          - abort-after=1
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: linux-ci-${{ github.ref }}-${{ inputs.tests }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: ${{ matrix.name }}, ${{ inputs.tests }}
+    # ubuntu-latest moves to Ubuntu 26.04 through 19 Nov 2026.
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Debug stays off. Packaging runs on the GCC job.
+          # - name: GCC, Debug
+          #   cc: gcc
+          #   cxx: g++
+          #   config: Debug
+          - name: GCC, Release
+            cc: gcc
+            cxx: g++
+            config: Release
+            package: true
+          # - name: Clang, Debug
+          #   cc: clang
+          #   cxx: clang++
+          #   config: Debug
+          - name: Clang, Release
+            cc: clang
+            cxx: clang++
+            config: Release
+
+    steps:
+      - uses: actions/checkout@v5
+
+      # CMake 4.0 or newer (cmake_minimum_required) and Ninja
+      - uses: lukka/get-cmake@latest
+
+      - name: Install rpmbuild
+        if: matrix.package
+        run: sudo apt-get update && sudo apt-get install -y rpm
+
+      - name: Configure
+        env:
+          CC: ${{ matrix.cc }}
+          CXX: ${{ matrix.cxx }}
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=${{ matrix.config }}
+
+      - name: Build
+        run: cmake --build build --config ${{ matrix.config }}
+
+      - name: Test
+        env:
+          GALIMATRON_ABORT_AFTER: ${{ inputs.tests == 'abort-after=1' && '1' || '' }}
+        run: cmake --build build --config ${{ matrix.config }} --target run_tests
+
+      - name: Package
+        if: matrix.package
+        run: |
+          cmake --build build --config ${{ matrix.config }} --target package
+          missing=0
+          for pattern in build/galimatron-*.tar.gz build/galimatron-*.deb build/galimatron-*.rpm; do
+            compgen -G "$pattern" >/dev/null || missing=1
+          done
+          if [ "$missing" -ne 0 ]; then
+            echo "expected a tar.gz, a deb, and an rpm"
+            ls -la build
+            exit 1
+          fi
+
+      - name: Upload tar.gz
+        if: matrix.package
+        uses: actions/upload-artifact@v6
+        with:
+          name: galimatron-linux-tar-gz
+          path: build/galimatron-*.tar.gz
+          if-no-files-found: error
+
+      - name: Upload deb
+        if: matrix.package
+        uses: actions/upload-artifact@v6
+        with:
+          name: galimatron-linux-deb
+          path: build/galimatron-*.deb
+          if-no-files-found: error
+
+      - name: Upload rpm
+        if: matrix.package
+        uses: actions/upload-artifact@v6
+        with:
+          name: galimatron-linux-rpm
+          path: build/galimatron-*.rpm
+          if-no-files-found: error

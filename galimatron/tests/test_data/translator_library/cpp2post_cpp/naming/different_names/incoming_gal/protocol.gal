@@ -1,0 +1,14 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    label a = static { name }, tag-name-from { name };
+    label b = static { kind, title }, tag-name-from { title };
+    a b { "speed", "other" };// bad: a names it speed, b names it other
+}

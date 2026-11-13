@@ -1,0 +1,6 @@
+root aggregate protocol
+{
+    versions
+    {
+    }// good: empty declarations
+}

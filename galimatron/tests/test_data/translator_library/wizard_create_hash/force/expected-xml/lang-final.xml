@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <language>
+        <chunk layout-mark="1">
+            <location />
+        </chunk>
+        <chunk layout-mark="9">
+            <location />
+            <aggregate name="item" index="0" layout-mark="8">
+                <aggregate-version-declarations layout-mark="3">
+                    <aggregate-version-declaration index="0" hash="2ce31c3056795e2664c57501cd6fcdf4f461cbfc0727800f0edda2b6ce1ee066" />
+                    <aggregate-version-declaration index="1" layout-mark="2" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0" layout-mark="6">
+                        <label index="0" name="field" layout-mark="4">
+                            <static>
+                                <values>
+                                    <value index="0" value="type" />
+                                </values>
+                            </static>
+                        </label>
+                        <tag index="1" name="speed" layout-mark="5">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[speed]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="1" layout-mark="7" />
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="17">
+            <location />
+            <root-aggregate name="protocol" layout-mark="16">
+                <root-aggregate-version-declarations layout-mark="11">
+                    <root-aggregate-version-declaration index="0" hash="5ff14884e3d01467b01a4702ae6d47ac288893669a4161b281ce74f482ff559b" />
+                    <root-aggregate-version-declaration index="1" layout-mark="10" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="13">
+                        <tag index="0" name="uuid" layout-mark="12">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[65da7323-a0dc-4351-9465-61dc2abf87e5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                    <root-aggregate-version-definition index="1" layout-mark="15">
+                        <tag index="0" name="uuid" layout-mark="14">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[other]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </language>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0">
+            <change aggregate="protocol" kind="add" name="uuid" index="0" root="true">
+                <after>
+                    <string>65da7323-a0dc-4351-9465-61dc2abf87e5</string>
+                </after>
+            </change>
+            <change aggregate="item" kind="create-aggregate" />
+            <change aggregate="item" kind="label" name="field" index="0" />
+            <change aggregate="item" kind="add" name="speed" index="1">
+                <after>
+                    <string>int</string>
+                    <string>speed</string>
+                </after>
+            </change>
+        </version>
+        <version index="1">
+            <change aggregate="protocol" kind="replace" name="uuid" index="0" root="true">
+                <before>
+                    <string>65da7323-a0dc-4351-9465-61dc2abf87e5</string>
+                </before>
+                <after>
+                    <string>other</string>
+                </after>
+            </change>
+        </version>
+    </history>
+</galimatron>

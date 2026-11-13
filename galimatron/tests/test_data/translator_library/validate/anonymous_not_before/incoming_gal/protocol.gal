@@ -1,0 +1,25 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;// good
+        1;
+        2;
+    }
+}
+
+version 0
+{
+}
+
+version before 2// bad: version 1 is the next body
+{
+}
+
+version 1
+{
+}
+
+version 2
+{
+}

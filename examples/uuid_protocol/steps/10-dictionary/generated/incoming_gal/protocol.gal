@@ -1,0 +1,58 @@
+root aggregate protocol
+{
+    versions
+    {
+        0 = { hash = '27025d7a1482f343d1f2f0bb2865d7055458e172a1ff90dd9b4cccfd4aba3035' };
+        1 = { hash = '704dd06e344f8b26bf000ed10194d6f0e856afec347f962900e05a15e1df091b' };
+        2 = { hash = '7028dc003680956ad1792ed10712f9b4783357fc7b1417cb8348da533d7958fe' };
+        3 = { hash = 'ec3b135feb29448bd18671fa97b8b33637afc58bf1d2c0c067c1af59d2fe21f9' };
+        4 = { hash = '8cec0b01e85774a491248534f3f650db208eacfbb2c49e58ad9398c03c9065d8' };
+        5 = { hash = 'b099af2e8e5facd0a21ad216a5879c8fe464b4e4b41981371e4353ba71a85ebf' };
+    }
+}
+
+version 0
+{
+    version_number = { "1" };
+    version_namespace = { "v1" };
+    published = once important { };
+    label need_new_uuid = dynamic { need_gen_uuid };
+}
+
+version 1
+{
+    label field = static { type, name, default }, tag-name-from { name };
+    version_number = { "2" };
+    version_namespace = { "v2" };
+    published = once important { };
+}
+
+version 2
+{
+    version_number = { "3" };
+    version_namespace = { "v3" };
+    published = once important { };
+}
+
+version 3
+{
+    version_number = { "4" };
+    version_namespace = { "v4" };
+    published = once important { };
+}
+
+version 4
+{
+    label enum_field = static { name, value }, tag-name-from { name };
+    ordering enum_precedes_struct = { sea_state_enum, fog, vessel_kind_enum, vessel };
+    version_number = { "5" };
+    version_namespace = { "v5" };
+    published = once important { };
+}
+
+version 5
+{
+    version_number = { "6" };
+    version_namespace = { "v6" };
+    published = once important { };
+}

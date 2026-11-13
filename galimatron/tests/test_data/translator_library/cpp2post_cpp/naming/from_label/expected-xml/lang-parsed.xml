@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after parsing, before the wizard">
+    <language>
+        <chunk layout-mark="7">
+            <location />
+            <root-aggregate name="protocol" layout-mark="6">
+                <root-aggregate-version-declarations layout-mark="2">
+                    <root-aggregate-version-declaration index="0" layout-mark="1" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="5">
+                        <label index="0" name="field" layout-mark="3">
+                            <static>
+                                <values>
+                                    <value index="0" value="type" />
+                                    <value index="1" value="name" />
+                                </values>
+                                <tag-name-from value="name" />
+                            </static>
+                        </label>
+                        <tag index="1" layout-mark="4">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="field" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                                <value index="1">
+                                    <string delimiter="0"><![CDATA[speed]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </language>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0">
+            <change aggregate="protocol" kind="label" name="field" index="0" root="true" />
+            <change aggregate="protocol" kind="add" name="speed" index="1" root="true">
+                <after>
+                    <string>int</string>
+                    <string>speed</string>
+                </after>
+            </change>
+        </version>
+    </history>
+</galimatron>

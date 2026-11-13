@@ -1,0 +1,39 @@
+root aggregate protocol
+{
+    versions
+    {
+        0 = {
+            comment = 'first',
+            hash = 'h0'
+        };
+        1;
+        2 = {
+            comment = 'closed',
+            hash = 'h2'
+        };
+    }
+}
+
+version 0
+{
+    label need_new_uuid = dynamic { need_gen_uuid };
+    label need_new_name = dynamic { need_gen_name };
+    label kept = static { kept, spare }, tag-name-from { note };
+    uuid = need_new_uuid need_new_name important { "65da7323-a0dc-4351-9465-61dc2abf87e5" };// good: labels and the string on one line
+    note = kept { "stay" };
+    item = kept {
+        {
+            "name": "live",
+            "flags": [ "a", "b" ]
+        },
+        [ "x", { "k": "v" } ]
+    };
+    ordering precedes = { item, live }, { protocol, item };// good: one line when it fits
+    delete note;
+}
+
+version 1
+{
+    uuid = need_new_uuid important { "11111111-2222-4333-a444-555555555555" };// good: one label and the string on one line
+    kept_note = { "after" };
+}

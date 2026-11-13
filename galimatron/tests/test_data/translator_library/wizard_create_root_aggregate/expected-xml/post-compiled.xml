@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <compiled>
+        <chunk layout-mark="1">
+            <location />
+        </chunk>
+        <chunk>
+            <location />
+            <root-aggregate name="protocol">
+                <root-aggregate-version-declarations />
+                <root-aggregate-version-definitions />
+            </root-aggregate>
+        </chunk>
+    </compiled>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history />
+</galimatron>

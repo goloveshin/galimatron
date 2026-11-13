@@ -1,0 +1,20 @@
+root aggregate test_root_aggregate
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version once 0
+{// good: this version replaces earlier root versions
+}
+
+version local before 1
+{// good: parsed here, refused later because the root has no outer aggregate
+}
+
+version local 1
+{// good: parsed here, refused later because the root has no outer aggregate
+}

@@ -1,0 +1,1 @@
+wizard { create version; create version; }// good: the deleted uuid stays deleted in both new versions

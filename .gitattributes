@@ -1,0 +1,6 @@
+# git apply rejects a patch checked out with CR LF
+*.patch text eol=lf
+
+# the chunk end is a byte index into this file, and that index counts CR.
+# cpp2gal prints \n. the file write stores those bytes, so expected-gal stays LF.
+galimatron/tests/test_data/translator_library/cpp2gal/template_engine/incoming_gal/protocol.gal text eol=crlf

@@ -1,0 +1,14 @@
+aggregate bye
+{
+    versions
+    {
+        0 = { hash = 'd5f1dd00eeeac105b35237d100ea6afa157465731cccdb0555403bf37758d0fa' };
+    }
+}
+
+version 0
+{
+    struct_name = { "bye_t" };
+    group_name = { "bye_group" };
+    uuid = need_new_uuid important { "6f1e0002-0000-4000-8000-000000000001" };
+}

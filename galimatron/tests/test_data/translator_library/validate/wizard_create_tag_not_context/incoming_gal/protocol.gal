@@ -1,0 +1,12 @@
+root aggregate protocol
+{
+    wizard create label field = static { type };// bad: not in a version
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+}

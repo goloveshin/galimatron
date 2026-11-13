@@ -1,0 +1,15 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    plain = { R'(hello)' };// good: raw string
+    quoted = { R"(say "hi")" };// good: raw string with a quote
+    dashed = { R"---(hello)---" };// good: raw string with a dash delimiter
+    mixed = { R'---(say "hi")---' };// good: raw string, single quotes and dashes
+}

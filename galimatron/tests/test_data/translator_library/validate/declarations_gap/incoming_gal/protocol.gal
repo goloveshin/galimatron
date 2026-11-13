@@ -1,0 +1,15 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;// good
+        2;// bad: gap, 1 is missing
+    }
+}
+version 0
+{
+}
+
+version 2
+{
+}

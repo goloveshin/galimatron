@@ -1,0 +1,26 @@
+aggregate ok
+{
+    versions
+    {
+        0 = deleted;
+        1 = deleted;
+        2 = deleted;
+        3 = deleted;
+        4 = deleted;
+        5 = deleted;
+        6;
+    }
+}
+
+version before 6
+{
+    struct_name = { "ok_t" };
+    group_name = { "ok_group" };
+    system_message = { };
+    uuid = need_new_uuid important { "6f1e0003-0000-4000-8000-000000000006" };
+}
+
+version 6
+{
+    uuid = need_new_uuid important { "6f1e0003-0000-4000-8000-000000000007" };
+}

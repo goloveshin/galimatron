@@ -1,0 +1,7 @@
+// not a command
+root aggregate test_aggregate
+{
+    versions
+    {
+    }
+}

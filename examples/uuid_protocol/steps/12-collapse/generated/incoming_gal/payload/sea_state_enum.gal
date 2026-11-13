@@ -1,0 +1,30 @@
+aggregate sea_state_enum
+{
+    versions
+    {
+        0 = deleted;
+        1 = deleted;
+        2 = deleted;
+        3 = deleted;
+        4 = { hash = 'f918d4eb174ba1701963bff3443143d17a5a995d66268b78d7573fbe4dbfc2de' };
+        5 = { hash = '7e435896bdfa1c6198ee64b297b492252212453e37fb1990ad9a42f933d5fd2e' };
+        6;
+    }
+}
+
+version 4
+{
+    payload_message = { };
+    enum_name = { "sea_state_e" };
+    enum_field important { "calm", "0" };
+    enum_field important { "swell" };
+}
+
+version 5
+{
+    enum_field important { "gale" };
+}
+
+version 6
+{
+}

@@ -1,0 +1,16 @@
+// good: comment before the aggregate
+aggregate ping
+{
+    versions
+    {
+        /* good: block comment inside versions */
+        0;
+    }
+}
+
+// good: comment before the version
+version 0
+{
+    // good: comment before the tag
+    name = { };
+}

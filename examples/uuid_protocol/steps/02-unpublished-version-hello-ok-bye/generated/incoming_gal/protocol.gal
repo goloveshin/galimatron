@@ -1,0 +1,15 @@
+root aggregate protocol
+{
+    versions
+    {
+        0 = { hash = '27025d7a1482f343d1f2f0bb2865d7055458e172a1ff90dd9b4cccfd4aba3035' };
+    }
+}
+
+version 0
+{
+    version_number = { "1" };
+    version_namespace = { "v1" };
+    published = once important { };
+    label need_new_uuid = dynamic { need_gen_uuid };
+}

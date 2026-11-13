@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<code:template
+    xmlns:code="galimatron-code-generation"
+>
+enum class <code:enum-name/>
+{
+<code:hpp-enum-fields/>};
+std::string print(const <code:enum-name/> &amp;);
+
+</code:template>

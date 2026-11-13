@@ -1,0 +1,25 @@
+aggregate dictionary
+{
+    versions
+    {
+        0;
+        1;
+        2;
+    }
+}
+
+version 0
+{
+    early = { "past" };
+}
+
+version own 1
+{
+    row = { "kept" };
+    spot = once { "no" };
+    label field = static { type };
+}
+
+version own 2
+{
+}

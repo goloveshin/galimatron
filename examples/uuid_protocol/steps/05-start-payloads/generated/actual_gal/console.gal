@@ -1,0 +1,14 @@
+// lamp is the first payload. it starts on a new version. version 0 and version 1 stay closed.
+//
+// wizard {
+//     create version;
+//     create aggregate lamp in payload;
+//     create tag lamp payload_message = { };
+//     create tag lamp struct_name = { "lamp_t" };
+//     create tag lamp uuid = need_new_uuid important { "6f1e0005-0000-4000-8000-000000000001" };
+//     create tag lamp field important { "bool", "lit", "false" };
+//     create tag protocol version_number = { "3" };
+//     create tag protocol version_namespace = { "v3" };
+//     create tag protocol published = once important { };
+//     create hash;
+// }

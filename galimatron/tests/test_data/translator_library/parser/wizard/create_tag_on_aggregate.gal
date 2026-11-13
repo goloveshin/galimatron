@@ -1,0 +1,2 @@
+wizard create tag hello field important { "std::string", "message" };// good: two labels on the aggregate
+wizard create tag dictionary entry { "uuid", "0", "stable id of a message" };// good: one label on the aggregate

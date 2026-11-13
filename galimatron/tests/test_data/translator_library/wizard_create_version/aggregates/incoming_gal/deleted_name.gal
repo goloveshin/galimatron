@@ -1,0 +1,8 @@
+aggregate deleted_name
+{
+    versions
+    {
+        0 = deleted;
+        1 = deleted;
+    }
+}

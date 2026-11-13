@@ -1,0 +1,22 @@
+aggregate item
+{
+    versions
+    {
+        0;
+        1;
+        2;
+    }
+}
+
+version 0
+{
+}
+
+version 1
+{
+    owned = { "item" };
+}
+
+version 2
+{
+}

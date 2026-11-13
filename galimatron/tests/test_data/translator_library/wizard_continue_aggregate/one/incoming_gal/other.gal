@@ -1,0 +1,25 @@
+aggregate other
+{
+    versions
+    {
+        0 = deleted;
+        1;
+        2;
+        3;
+    }
+}
+
+version 1
+{
+    note = { "one" };
+}
+
+version 2
+{
+    note = { "two" };
+}
+
+version 3
+{
+    note = { "three" };
+}

@@ -1,0 +1,17 @@
+aggregate item
+{
+    versions
+    {
+        0;// good
+        1 = deleted;// good: deleted suffix
+        2 = deleted;// good
+    }
+}
+
+version 0
+{
+}
+
+version 1// bad: definition of a deleted declaration
+{
+}

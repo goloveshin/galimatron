@@ -1,0 +1,6 @@
+// hashing 0, 1, and 2 closes them. collapse still rewrites 1 and 2.
+//
+wizard {// good: closed versions 1 and 2 collapse into the anonymous body owned by version 3
+    create hash 0, 1, 2;
+    collapse version 1-2;
+}

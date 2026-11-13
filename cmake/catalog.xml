@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri name="https://github.com/goloveshin/galimatron/xslt/gal-functions.xsl" uri="xslt/gal-functions.xsl"/>
+</catalog>

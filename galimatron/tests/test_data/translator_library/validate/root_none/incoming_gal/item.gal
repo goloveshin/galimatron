@@ -1,0 +1,10 @@
+aggregate item// bad: no root aggregate
+{
+    versions
+    {
+        0;
+    }
+}
+version 0
+{
+}

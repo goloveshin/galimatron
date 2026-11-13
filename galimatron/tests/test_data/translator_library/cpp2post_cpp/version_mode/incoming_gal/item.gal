@@ -1,0 +1,18 @@
+aggregate item
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version 0
+{
+    owned = { "item" };// good: absent from the once version
+}
+
+version once 1
+{
+    now = { "cut" };// good: this version replaces earlier versions of item and still receives the root
+}

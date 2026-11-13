@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<code:template
+    xmlns:code="galimatron-code-generation"
+>
+namespace system
+{
+<code:cpp-system-structs/>
+}// namespace system
+
+</code:template>

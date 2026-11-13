@@ -1,0 +1,28 @@
+aggregate pong
+{
+    versions
+    {
+        0 = deleted;
+        1;
+        2;
+        3;
+    }
+}
+
+version 1
+{
+    label field = static { type };
+    speed = field { "int" };
+}
+
+version 2
+{
+    label field = static { type };
+    count = field { "int" };
+}
+
+version 3
+{
+    label field = static { type };
+    speed = field { "long" };
+}

@@ -1,0 +1,22 @@
+aggregate item
+{
+    versions
+    {
+        0;
+        1 = deleted;
+    }
+}
+
+version 0
+{
+}
+
+version before 1// bad: owner 1 is deleted
+{
+    kept = { "x" };
+}
+
+version 1
+{
+    delete;
+}

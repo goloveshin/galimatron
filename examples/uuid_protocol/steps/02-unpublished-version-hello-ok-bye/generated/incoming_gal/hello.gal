@@ -1,0 +1,14 @@
+aggregate hello
+{
+    versions
+    {
+        0 = { hash = '40af0972ed3f306acd5490022ce560ffdc9b7ccbe3cd7a191fcfef06a6f12dfe' };
+    }
+}
+
+version 0
+{
+    struct_name = { "hello_t" };
+    group_name = { "hello_group" };
+    uuid = need_new_uuid important { "6f1e0001-0000-4000-8000-000000000001" };
+}

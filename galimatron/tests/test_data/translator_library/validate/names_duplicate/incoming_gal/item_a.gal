@@ -1,0 +1,11 @@
+aggregate item// bad: same name
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+}

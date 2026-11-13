@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the user xslt, before the seal">
+    <language>
+        <chunk layout-mark="1">
+            <location />
+        </chunk>
+        <chunk>
+            <location />
+            <aggregate name="live" index="0">
+                <aggregate-version-declarations layout-mark="3">
+                    <aggregate-version-declaration index="0" layout-mark="2" />
+                    <aggregate-version-declaration index="1" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0" layout-mark="6">
+                        <tag index="0" name="uuid" layout-mark="4">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[65da7323-a0dc-4351-9465-61dc2abf87e5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="note" layout-mark="5">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="kept" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[stay]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="1">
+                        <tag index="0" name="uuid">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[11111111-2222-4333-a444-555555555555]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk>
+            <location />
+            <root-aggregate name="protocol">
+                <root-aggregate-version-declarations layout-mark="8">
+                    <root-aggregate-version-declaration index="0" layout-mark="7" />
+                    <root-aggregate-version-declaration index="1" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="14">
+                        <label index="0" name="need_new_uuid" layout-mark="9">
+                            <dynamic value="need_gen_uuid" />
+                        </label>
+                        <label index="1" name="need_new_name" layout-mark="10">
+                            <dynamic value="need_gen_name" />
+                        </label>
+                        <label index="2" name="kept" layout-mark="11">
+                            <static>
+                                <values>
+                                    <value index="0" value="kept" />
+                                </values>
+                            </static>
+                        </label>
+                        <tag index="3" name="uuid" layout-mark="12">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="need_new_name" />
+                                    <label-ref index="2" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[65da7323-a0dc-4351-9465-61dc2abf87e5]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="4" name="note" layout-mark="13">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="kept" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[stay]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                    <root-aggregate-version-definition index="1">
+                        <tag index="0" name="uuid">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="need_new_uuid" />
+                                    <label-ref index="1" name="need_new_name" />
+                                    <label-ref index="2" name="important" />
+                                </static>
+                            </label-refs>
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[11111111-2222-4333-a444-555555555555]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </language>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0">
+            <change aggregate="protocol" kind="label" name="need_new_uuid" index="0" root="true" />
+            <change aggregate="protocol" kind="label" name="need_new_name" index="1" root="true" />
+            <change aggregate="protocol" kind="label" name="kept" index="2" root="true" />
+            <change aggregate="protocol" kind="add" name="uuid" index="3" root="true">
+                <after>
+                    <string>65da7323-a0dc-4351-9465-61dc2abf87e5</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="add" name="note" index="4" root="true">
+                <after>
+                    <string>stay</string>
+                </after>
+            </change>
+            <change aggregate="live" kind="create-aggregate" />
+            <change aggregate="live" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>65da7323-a0dc-4351-9465-61dc2abf87e5</string>
+                </before>
+                <after>
+                    <string>65da7323-a0dc-4351-9465-61dc2abf87e5</string>
+                </after>
+            </change>
+            <change aggregate="live" kind="replace" name="note" index="1">
+                <before>
+                    <string>stay</string>
+                </before>
+                <after>
+                    <string>stay</string>
+                </after>
+            </change>
+        </version>
+        <version index="1">
+            <change aggregate="protocol" kind="replace" name="uuid" index="0" root="true">
+                <before>
+                    <string>65da7323-a0dc-4351-9465-61dc2abf87e5</string>
+                </before>
+                <after>
+                    <string>11111111-2222-4333-a444-555555555555</string>
+                </after>
+            </change>
+            <change aggregate="live" kind="replace" name="uuid" index="0">
+                <before>
+                    <string>11111111-2222-4333-a444-555555555555</string>
+                </before>
+                <after>
+                    <string>11111111-2222-4333-a444-555555555555</string>
+                </after>
+            </change>
+        </version>
+    </history>
+</galimatron>

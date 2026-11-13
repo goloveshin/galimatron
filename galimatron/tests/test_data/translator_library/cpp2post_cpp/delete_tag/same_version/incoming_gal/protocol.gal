@@ -1,0 +1,15 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    label field = static { type };
+    speed = field { "int" };
+    color = field { "text" };
+    delete speed;// good: speed is absent from this version
+}

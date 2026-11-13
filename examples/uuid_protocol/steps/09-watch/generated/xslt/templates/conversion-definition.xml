@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<code:template
+    xmlns:code="galimatron-code-generation"
+>
+void apply(server_state_t&amp; state, const <code:from-namespace/>::<code:type-name/>&amp; from)
+{
+}
+
+</code:template>

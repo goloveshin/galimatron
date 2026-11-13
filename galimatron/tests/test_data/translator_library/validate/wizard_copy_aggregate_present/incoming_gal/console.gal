@@ -1,0 +1,1 @@
+wizard copy aggregate ping to pong;// bad: pong already exists

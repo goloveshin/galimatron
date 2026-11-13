@@ -1,0 +1,17 @@
+#pragma once
+
+#include "global/common_library/type_declaration.hpp"
+
+
+namespace galimatron
+{
+
+inline const global::path_t path_to_galimatron_test_data = "@CMAKE_RUNTIME_OUTPUT_DIRECTORY@/galimatron_test_data";
+
+inline const global::path_t path_to_galimatron_crash_child = "@CMAKE_RUNTIME_OUTPUT_DIRECTORY@/galimatron_crash_child@CMAKE_EXECUTABLE_SUFFIX@";
+
+inline const global::path_t path_to_xslt_catalog = "@CMAKE_SOURCE_DIR@/cmake/catalog.xml";
+
+inline const global::path_t path_to_gal_functions_xsl = "@CMAKE_SOURCE_DIR@/galimatron/translator_library/xslt/gal-functions.xsl";
+
+}// namespace galimatron

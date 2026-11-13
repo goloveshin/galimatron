@@ -1,0 +1,51 @@
+aggregate dictionary
+{
+    versions
+    {
+        0 = deleted;
+        1 = deleted;
+        2 = deleted;
+        3 = deleted;
+        4 = deleted;
+        5 = deleted;
+        6;
+    }
+}
+
+version before 6
+{
+}
+
+version own 6
+{
+    service = { };
+    label entry = static { name, introduced, text }, tag-name-from { name };
+    entry { "uuid", "0", "stable id of a message" };
+    entry { "struct_name", "0", "the C++ type of an aggregate" };
+    entry { "message", "1", "text carried by a system message" };
+    entry { "payload_message", "2", "a user message, not a system message" };
+    entry { "enum_name", "4", "the C++ enumeration type" };
+    entry { "name", "5", "a string the watch uses for a vessel" };
+    entry { "group_name", "0", "" };
+    entry { "published", "0", "" };
+    entry { "version_namespace", "0", "" };
+    entry { "version_number", "0", "" };
+    entry { "system_message", "1", "" };
+    entry { "lit", "2", "" };
+    entry { "candela", "3", "" };
+    entry { "metres", "3", "" };
+    entry { "bearing", "4", "" };
+    entry { "calm", "4", "" };
+    entry { "kind", "4", "" };
+    entry { "sail", "4", "" };
+    entry { "sea", "4", "" };
+    entry { "steamer", "4", "" };
+    entry { "swell", "4", "" };
+    entry { "day", "5", "" };
+    entry { "fog", "5", "" };
+    entry { "gale", "5", "" };
+    entry { "lamp", "5", "" };
+    entry { "launch", "5", "" };
+    station = { "North Light" };
+    entry { "greeting", "6", "{{station}} on watch"_te };
+}

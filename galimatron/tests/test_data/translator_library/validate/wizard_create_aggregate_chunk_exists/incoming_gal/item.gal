@@ -1,0 +1,11 @@
+aggregate other// good
+{
+    versions
+    {
+        0;// good
+    }
+}
+
+version 0
+{
+}

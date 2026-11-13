@@ -1,0 +1,14 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;// good
+    }
+}
+version 0
+{
+}
+
+version 1// bad: definition without a declaration
+{
+}

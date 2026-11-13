@@ -1,0 +1,10 @@
+aggregate test_aggregate
+{
+    versions
+    {
+    }
+}
+
+version// bad: a parked body names its owner
+{
+}

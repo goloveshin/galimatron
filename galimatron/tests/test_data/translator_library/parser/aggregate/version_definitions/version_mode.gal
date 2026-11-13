@@ -1,0 +1,20 @@
+aggregate test_aggregate
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version local 0
+{// good: this version does not inherit
+}
+
+version once before 1
+{// good: parked body, this version only, still receives the root
+}
+
+version once 1
+{// good: this version replaces earlier versions of this aggregate
+}

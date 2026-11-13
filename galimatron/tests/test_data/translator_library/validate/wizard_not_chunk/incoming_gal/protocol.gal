@@ -1,0 +1,12 @@
+root aggregate protocol
+{
+    wizard create root aggregate other;// bad: not in a chunk
+    versions
+    {
+        0;// good
+    }
+}
+
+version 0
+{
+}

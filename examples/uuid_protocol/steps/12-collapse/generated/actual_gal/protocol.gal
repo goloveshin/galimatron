@@ -1,0 +1,29 @@
+root aggregate protocol
+{
+    versions
+    {
+        0 = deleted;
+        1 = deleted;
+        2 = deleted;
+        3 = deleted;
+        4 = deleted;
+        5 = deleted;
+        6;
+    }
+}
+
+version before 6
+{
+    label need_new_uuid = dynamic { need_gen_uuid };
+    label field = static { type, name, default }, tag-name-from { name };
+    label enum_field = static { name, value }, tag-name-from { name };
+    ordering enum_precedes_struct = { sea_state_enum, fog, vessel_kind_enum, vessel };
+    version_number = { "6" };
+    version_namespace = { "v6" };
+    published = once important { };
+}
+
+version 6
+{
+    published = once important { };
+}

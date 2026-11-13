@@ -1,0 +1,28 @@
+aggregate item
+{
+    versions
+    {
+        0;
+        1 = deleted;
+        2 = deleted;
+        3 = deleted;
+        4;
+    }
+}
+
+version 0
+{
+    kept = { "zero" };
+}
+
+version before 4
+{
+    parked = { "old" };
+    from_two = { "two" };
+    from_three = { "three" };
+}
+
+version 4
+{
+    owner = { "four" };
+}

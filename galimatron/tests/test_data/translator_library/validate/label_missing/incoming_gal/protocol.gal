@@ -1,0 +1,12 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    speed = field unit { "int" };// bad: field is the first missing label
+}

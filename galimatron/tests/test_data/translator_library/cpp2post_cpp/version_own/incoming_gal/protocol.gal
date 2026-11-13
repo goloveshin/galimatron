@@ -1,0 +1,18 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version 0
+{
+    kept = { "stay" };// good: absent from the own version
+}
+
+version 1
+{
+    fresh = { "root" };// good: absent from the own version
+}

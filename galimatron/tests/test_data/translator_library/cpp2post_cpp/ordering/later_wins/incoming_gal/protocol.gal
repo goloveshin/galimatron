@@ -1,0 +1,18 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version 0
+{
+    ordering precedes = { item, live };// good: item is before live
+}
+
+version 1
+{
+    ordering precedes = { live, item };// good: the later ordering of this name is kept
+}

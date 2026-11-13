@@ -1,0 +1,30 @@
+aggregate item
+{
+    versions
+    {
+        0 = deleted;// good: deleted prefix
+        1 = deleted;
+        2 = deleted;
+        3;
+        4;
+        5 = deleted;// good: historical deletion
+        6 = deleted;
+        7 = deleted;
+        8 = deleted;
+    }
+}
+
+version 3
+{
+    kept = { "live" };
+}
+
+version 4
+{
+    kept = { "still" };
+}
+
+version 5
+{
+    delete;
+}

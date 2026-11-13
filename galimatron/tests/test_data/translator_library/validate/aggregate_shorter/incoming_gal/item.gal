@@ -1,0 +1,16 @@
+aggregate item
+{
+    versions
+    {
+        0;// good
+        1;// bad: declarations shorter than the root
+    }
+}
+
+version 0
+{
+}
+
+version 1
+{
+}

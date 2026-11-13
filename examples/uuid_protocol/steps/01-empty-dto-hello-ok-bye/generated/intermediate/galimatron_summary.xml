@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformations status="success">
+    <transformation index="0" name="gal2cpp" from="build-in" status="SUCCESS" />
+    <transformation index="1" name="cpp2cpp_validate" from="build-in" status="SUCCESS">
+        <produced-xml path="intermediate/lang-parsed.xml" />
+    </transformation>
+    <transformation index="2" name="cpp2cpp_wizard" from="build-in" status="SUCCESS" />
+    <transformation index="3" name="cpp2gal" from="build-in" status="SUCCESS">
+        <produced-xml path="intermediate/lang-final.xml" />
+        <produced-files count="6">
+            <file index="0" path="actual_gal/console.gal" />
+            <file index="1" path="actual_gal/protocol.gal" />
+            <file index="2" path="actual_gal/bye.gal" />
+            <file index="3" path="actual_gal/error.gal" />
+            <file index="4" path="actual_gal/hello.gal" />
+            <file index="5" path="actual_gal/ok.gal" />
+        </produced-files>
+    </transformation>
+    <transformation index="4" name="gal2cpp" from="build-in" status="SKIPPED" />
+    <transformation index="5" name="cpp2post_cpp" from="build-in" status="SUCCESS" />
+    <transformation index="6" name="post_cpp2post_xml" from="build-in" status="SUCCESS">
+        <produced-xml path="intermediate/post-compiled.xml" />
+    </transformation>
+    <transformation index="7" name="post_xml2saxon" from="build-in" status="SUCCESS" />
+    <transformation index="8" name="generate .hpp/.cpp" from="user" status="SUCCESS">
+        <user-data><![CDATA[new GaL: published empty hello, bye, ok, and error. the xslt writes a published version, and the structs stand in the version namespace]]></user-data>
+        <produced-files count="2">
+            <file index="0" path="generated_dto/v1/v1.cpp" />
+            <file index="1" path="generated_dto/v1/v1.hpp" />
+        </produced-files>
+    </transformation>
+</transformations>

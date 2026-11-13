@@ -1,0 +1,7 @@
+// versions 0 through 5 collapse into the anonymous body owned by version 6.
+// version 6 is published. it is the only version the server speaks.
+//
+// wizard {
+//     create tag protocol published = once important { };
+//     collapse version 0-5;
+// }

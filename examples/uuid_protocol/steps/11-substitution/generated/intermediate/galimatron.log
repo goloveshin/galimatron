@@ -1,0 +1,55 @@
+  #RT-TRN crash log: 'intermediate/galimatron.crash.log'
+  #RT-TRN begin of Galimatron
+  #RT-TRN separate directories - incoming_gal is only read. Those .gal files stay on disk as they were.
+  #RT-TRN separate directories - actual_gal receives the unparsed .gal. At the start every .gal already in that folder is deleted. Each file this run produces is written there immediately, once.
+  #TR-TSP GaL version: 1
+  #TR-TSP begin of transformations:
+  #TR-TSP begin of transformation: 0, 'gal2cpp'
+  #TR-TSP end   of transformation: 0, 'gal2cpp'
+  #TR-TSP begin of transformation: 1, 'cpp2cpp_validate'
+  #TR-TSP end   of transformation: 1, 'cpp2cpp_validate'
+  #TR-TSP begin of transformation: 2, 'cpp2cpp_wizard'
+  #TR-TSP end   of transformation: 2, 'cpp2cpp_wizard'
+  #TR-TSP begin of transformation: 3, 'cpp2cpp_before_xslt'
+  #TR-TSP end   of transformation: 3, 'cpp2cpp_before_xslt'
+  #TR-TSP begin of transformation: 4, 'cpp2xml'
+  #TR-TSP end   of transformation: 4, 'cpp2xml'
+  #TR-TSP begin of transformation: 5, 'xml2saxon'
+  #TR-XSLT xslt processor: SaxonC-HE 13.0 from Saxonica
+  #TR-TSP end   of transformation: 5, 'xml2saxon'
+  #TR-TSP begin of transformation: 6, 'next uuid for wizard copies'
+  #TR-TSP end   of transformation: 6, 'next uuid for wizard copies'
+  #TR-TSP begin of transformation: 7, 'fill the dictionary'
+  #TR-TSP end   of transformation: 7, 'fill the dictionary'
+  #TR-TSP begin of transformation: 8, 'xml2cpp'
+  #TR-TSP end   of transformation: 8, 'xml2cpp'
+  #TR-TSP begin of transformation: 9, 'cpp2cpp_after_xslt'
+  #TR-TSP end   of transformation: 9, 'cpp2cpp_after_xslt'
+  #TR-TSP begin of transformation: 10, 'cpp2gal'
+  #TR-TSP end   of transformation: 10, 'cpp2gal'
+  #TR-TSP begin of transformation: 11, 'gal2cpp'
+  #TR-TSP skip transformation
+  #TR-TSP end   of transformation: 11, 'gal2cpp'
+  #TR-TSP begin of transformation: 12, 'cpp2post_cpp'
+  #TR-TSP end   of transformation: 12, 'cpp2post_cpp'
+  #TR-TSP begin of transformation: 13, 'post_cpp2post_xml'
+  #TR-TSP end   of transformation: 13, 'post_cpp2post_xml'
+  #TR-TSP begin of transformation: 14, 'post_xml2saxon'
+  #TR-XSLT xslt processor: SaxonC-HE 13.0 from Saxonica
+  #TR-TSP end   of transformation: 14, 'post_xml2saxon'
+  #TR-TSP begin of transformation: 15, 'generate history.html'
+  #TR-TSP end   of transformation: 15, 'generate history.html'
+  #TR-TSP begin of transformation: 16, 'generate dictionary.md'
+  #TR-TSP end   of transformation: 16, 'generate dictionary.md'
+  #TR-TSP begin of transformation: 17, 'generate .hpp/.cpp'
+  #TR-XSLT begin messages from Saxon
+  #TR-XSLT Protocol name: UUID Protocol 11
+  #TR-XSLT conversion v1 to v6: kept
+  #TR-XSLT conversion v2 to v6: kept
+  #TR-XSLT conversion v3 to v6: kept
+  #TR-XSLT conversion v4 to v6: kept
+  #TR-XSLT conversion v5 to v6: kept
+  #TR-XSLT end messages from Saxon
+  #TR-TSP end   of transformation: 17, 'generate .hpp/.cpp'
+  #TR-TSP end of transformations
+  #RT-TRN end of Galimatron

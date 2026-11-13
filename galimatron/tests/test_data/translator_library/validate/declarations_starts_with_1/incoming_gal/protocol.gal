@@ -1,0 +1,15 @@
+root aggregate protocol
+{
+    versions
+    {
+        1;// bad: does not start with 0
+        2;// bad
+    }
+}
+version 1
+{
+}
+
+version 2
+{
+}

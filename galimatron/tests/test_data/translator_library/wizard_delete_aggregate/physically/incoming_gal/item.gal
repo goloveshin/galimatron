@@ -1,0 +1,12 @@
+aggregate item
+{
+    versions
+    {
+        0 = deleted;
+        1;
+    }
+}
+
+version 1
+{
+}

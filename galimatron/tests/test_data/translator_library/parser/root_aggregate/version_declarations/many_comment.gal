@@ -1,0 +1,10 @@
+root aggregate test_aggregate
+{
+    versions
+    {
+        0 = {
+            comment = 'this is comment',
+            comment = 'this is comment' // bad, one comment only
+        };
+    }
+}

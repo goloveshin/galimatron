@@ -1,0 +1,17 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version 0
+{
+}
+
+version 1
+{
+    kept = { "no" };
+}

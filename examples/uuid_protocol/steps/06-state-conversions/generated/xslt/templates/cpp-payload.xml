@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<code:template
+    xmlns:code="galimatron-code-generation"
+>
+namespace payload
+{
+<code:cpp-payload-structs/>
+}// namespace payload
+
+</code:template>

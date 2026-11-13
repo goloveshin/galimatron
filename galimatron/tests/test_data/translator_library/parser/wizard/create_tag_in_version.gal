@@ -1,0 +1,13 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    wizard create tag speed = field { "int" };
+    wizard create tag marker { "bare" };
+}

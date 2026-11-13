@@ -1,0 +1,2 @@
+wizard create ordering protocol precedes = { item, pong }, { pong, item };
+wizard create ordering precedes = { item, pong };

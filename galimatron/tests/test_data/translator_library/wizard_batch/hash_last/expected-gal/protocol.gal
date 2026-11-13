@@ -1,0 +1,12 @@
+root aggregate protocol
+{
+    versions
+    {
+        0 = { hash = '1e1e532bab3f415e05efc133bafb81d11df9a2e52b0df056fd9399a587f04f82' };
+    }
+}
+
+version 0
+{
+    published = once important { };
+}

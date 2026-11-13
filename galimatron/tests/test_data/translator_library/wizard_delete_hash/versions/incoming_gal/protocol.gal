@@ -1,0 +1,17 @@
+root aggregate protocol
+{
+    versions
+    {
+        0 = { hash = '37235ef7987947135d44af18d3af9cfdaec8a97f95ff50d9834bc7be47b90cb2' };
+        1 = { hash = 'b8cbe54494c93df647cf8983eddc49b3964e601de67def685d57e0bee148f659' };
+    }
+}
+
+version 0
+{
+    uuid = important { "65da7323-a0dc-4351-9465-61dc2abf87e5" };
+}
+
+version 1
+{
+}

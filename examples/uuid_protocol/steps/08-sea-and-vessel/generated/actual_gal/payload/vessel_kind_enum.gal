@@ -1,0 +1,19 @@
+aggregate vessel_kind_enum
+{
+    versions
+    {
+        0 = deleted;
+        1 = deleted;
+        2 = deleted;
+        3 = deleted;
+        4 = { hash = 'ee434b91c0d1c7cf53049d32f81cb2074947a9d83e0f70b4c3bf6ce21581aa88' };
+    }
+}
+
+version 4
+{
+    payload_message = { };
+    enum_name = { "vessel_kind_e" };
+    enum_field important { "sail", "0" };
+    enum_field important { "steamer" };
+}

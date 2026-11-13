@@ -1,0 +1,25 @@
+aggregate live
+{
+    versions
+    {
+        0;
+        1 = deleted {
+            hash = "gone"
+        };
+    }
+}
+
+version 0
+{
+    label need_new_uuid = dynamic { need_gen_uuid };
+    label need_new_name = dynamic { need_gen_name };
+    label kept = static { kept, spare };
+    uuid = need_new_uuid need_new_name important { "65da7323-a0dc-4351-9465-61dc2abf87e5" };// good: labels and the string on one line
+    note = kept {
+        "stay",
+        {
+            "extra": "line",
+            "flags": [ "visible", "named" ]
+        }
+    };
+}

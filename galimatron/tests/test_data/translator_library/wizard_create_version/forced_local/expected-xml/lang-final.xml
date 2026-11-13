@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <language>
+        <chunk layout-mark="1">
+            <location />
+        </chunk>
+        <chunk layout-mark="14">
+            <location />
+            <aggregate name="dictionary" index="0" layout-mark="13">
+                <aggregate-version-declarations layout-mark="4">
+                    <aggregate-version-declaration index="0" layout-mark="2" />
+                    <aggregate-version-declaration index="1" layout-mark="3" />
+                    <aggregate-version-declaration index="2" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0" layout-mark="6">
+                        <tag index="0" name="early" layout-mark="5">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[past]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="1" mode="local" layout-mark="10">
+                        <tag index="0" name="row" layout-mark="7">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[kept]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <tag index="1" name="spot" mode="once" layout-mark="8">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[no]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <label index="2" name="field" layout-mark="9">
+                            <static>
+                                <values>
+                                    <value index="0" value="type" />
+                                </values>
+                            </static>
+                        </label>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="2" mode="local">
+                        <dynamic wizard="new-version" />
+                        <tag index="0" name="row" layout-mark="11">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[kept]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                        <label index="1" name="field" layout-mark="12">
+                            <static>
+                                <values>
+                                    <value index="0" value="type" />
+                                </values>
+                            </static>
+                        </label>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="23">
+            <location />
+            <aggregate name="item" index="1" layout-mark="22">
+                <aggregate-version-declarations layout-mark="17">
+                    <aggregate-version-declaration index="0" layout-mark="15" />
+                    <aggregate-version-declaration index="1" layout-mark="16" />
+                    <aggregate-version-declaration index="2" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0" layout-mark="18" />
+                    <aggregate-version-definition index="1" layout-mark="20">
+                        <tag index="0" name="owned" layout-mark="19">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[item]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                    <aggregate-version-definition index="2" mode="local">
+                        <dynamic wizard="new-version" />
+                        <tag index="0" name="owned" layout-mark="21">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[item]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="30">
+            <location />
+            <root-aggregate name="protocol" layout-mark="29">
+                <root-aggregate-version-declarations layout-mark="26">
+                    <root-aggregate-version-declaration index="0" layout-mark="24" />
+                    <root-aggregate-version-declaration index="1" layout-mark="25" />
+                    <root-aggregate-version-declaration index="2" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="27" />
+                    <root-aggregate-version-definition index="1" layout-mark="28" />
+                    <root-aggregate-version-definition index="2" mode="once">
+                        <dynamic wizard="new-version" />
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </language>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0">
+            <change aggregate="dictionary" kind="create-aggregate" />
+            <change aggregate="dictionary" kind="add" name="early" index="0">
+                <after>
+                    <string>past</string>
+                </after>
+            </change>
+            <change aggregate="item" kind="create-aggregate" />
+        </version>
+        <version index="1">
+            <change aggregate="dictionary" kind="add" name="row" index="0">
+                <after>
+                    <string>kept</string>
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="add" name="spot" index="1">
+                <after>
+                    <string>no</string>
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="label" name="field" index="2" />
+            <change aggregate="item" kind="add" name="owned" index="0">
+                <after>
+                    <string>item</string>
+                </after>
+            </change>
+        </version>
+        <version index="2">
+            <change aggregate="dictionary" kind="add" name="row" index="0">
+                <after>
+                    <string>kept</string>
+                </after>
+            </change>
+            <change aggregate="dictionary" kind="label" name="field" index="2" />
+            <change aggregate="item" kind="add" name="owned" index="0">
+                <after>
+                    <string>item</string>
+                </after>
+            </change>
+        </version>
+    </history>
+</galimatron>

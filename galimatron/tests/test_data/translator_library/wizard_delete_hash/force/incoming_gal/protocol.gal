@@ -1,0 +1,19 @@
+root aggregate protocol
+{
+    versions
+    {
+        0 = { hash = 'wrong' };
+        1;
+    }
+}
+
+version 0
+{
+    uuid = important { "65da7323-a0dc-4351-9465-61dc2abf87e5" };
+    note = { "skip" };
+}
+
+version 1
+{
+    uuid = important { "other" };
+}

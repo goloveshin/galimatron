@@ -1,0 +1,12 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    wizard create tag protocol speed = field { "int" };// bad: the enclosing version names the aggregate
+}

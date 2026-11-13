@@ -1,0 +1,27 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version 0
+{
+    version_number = { "3" };
+    version_namespace = { "v3" };
+    enum_name = { "sky_state_{{version_namespace}}_e"_te };// good: version 1 inherits this template
+    struct_name = { "sky_{{version_namespace}}_t"_te };// good: same namespace
+    field_enum = { "sky_state_{{version_namespace}}_t"_te, "sky_state" };// good: only the marked string
+    nums = { "a", "b", "c" };
+    picked = { "{{nums}} and {{nums.2}}"_te };// good: first value and index 2
+    pack = { { "box": "small" } };
+    note = { "box {{pack.box}}"_te };// good: field of a record
+    raw = { "keep {{version_namespace}}" };// good: no _te, left as written
+}
+
+version 1
+{
+    version_namespace = { "v4" };// good: inherited templates render with v4
+}

@@ -1,0 +1,4 @@
+wizard {// bad: delete hash is not a create command
+    create root aggregate other;
+    delete hash 0;
+}

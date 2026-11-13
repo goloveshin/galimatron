@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <compiled>
+        <chunk layout-mark="6">
+            <location />
+            <root-aggregate name="protocol" layout-mark="5">
+                <root-aggregate-version-declarations layout-mark="2">
+                    <root-aggregate-version-declaration index="0" layout-mark="1" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="4">
+                        <tag index="0" name="speed" layout-mark="3">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                                <value index="1" field="name">
+                                    <string delimiter="0"><![CDATA[speed]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </compiled>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0">
+            <change aggregate="protocol" kind="label" name="field" index="0" root="true" />
+            <change aggregate="protocol" kind="add" name="speed" index="1" root="true">
+                <after>
+                    <string>int</string>
+                    <string>speed</string>
+                </after>
+            </change>
+        </version>
+    </history>
+</galimatron>

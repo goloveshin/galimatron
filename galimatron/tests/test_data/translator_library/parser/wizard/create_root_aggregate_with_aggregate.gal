@@ -1,0 +1,8 @@
+wizard create root aggregate protocol;
+
+root aggregate protocol
+{
+    versions
+    {
+    }
+}

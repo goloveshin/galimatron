@@ -1,0 +1,28 @@
+aggregate vessel
+{
+    versions
+    {
+        0 = deleted;
+        1 = deleted;
+        2 = deleted;
+        3 = deleted;
+        4 = deleted;
+        5 = deleted;
+        6;
+    }
+}
+
+version before 6
+{
+    payload_message = { };
+    struct_name = { "vessel_t" };
+    field important { "vessel_kind_e", "kind", "vessel_kind_e::sail" };
+    field important { "int", "bearing", "0" };
+    uuid = need_new_uuid important { "6f1e0007-0000-4000-8000-000000000002" };
+    field important { "std::string", "name" };
+}
+
+version 6
+{
+    uuid = need_new_uuid important { "6f1e0007-0000-4000-8000-000000000003" };
+}

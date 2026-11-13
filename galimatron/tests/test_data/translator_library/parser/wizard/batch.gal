@@ -1,0 +1,5 @@
+wizard {
+    create root aggregate protocol;
+    create aggregate ping;
+    create version;
+}

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <compiled>
+        <chunk layout-mark="8">
+            <location />
+            <root-aggregate name="protocol" layout-mark="7">
+                <root-aggregate-version-declarations layout-mark="3">
+                    <root-aggregate-version-declaration index="0" layout-mark="1" />
+                    <root-aggregate-version-declaration index="1" layout-mark="2" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="4" />
+                    <root-aggregate-version-definition index="1" layout-mark="6">
+                        <tag index="0" name="speed" layout-mark="5">
+                            <values>
+                                <value index="0" field="type">
+                                    <string delimiter="0"><![CDATA[int]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </compiled>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0">
+            <change aggregate="protocol" kind="label" name="field" index="0" root="true" />
+            <change aggregate="protocol" kind="add" name="speed" index="1" root="true">
+                <after>
+                    <string>int</string>
+                </after>
+            </change>
+            <change aggregate="protocol" kind="delete" name="speed" index="2" root="true">
+                <before>
+                    <string>int</string>
+                </before>
+            </change>
+        </version>
+        <version index="1">
+            <change aggregate="protocol" kind="add" name="speed" index="0" root="true">
+                <after>
+                    <string>int</string>
+                </after>
+            </change>
+        </version>
+    </history>
+</galimatron>

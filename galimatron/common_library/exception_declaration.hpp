@@ -1,0 +1,221 @@
+#pragma once
+
+// galimatron
+#include "galimatron/common_library/type_declaration.hpp"
+
+
+// exception definitions
+// the _t suffix is not used (boost.LEAF style)
+//
+namespace exception
+{
+
+// domain - mark exceptions by where they originate
+// usually this is a library or an application
+//
+namespace domain
+{
+
+struct executable{};
+
+struct executable_library{};
+
+struct runtime_library{};
+
+struct translator_library{};
+
+}// namespace domain
+
+// subdomain - mark exceptions by where they originate in more detail
+// - an exception from a dedicated part of the library runtime_library/filesystem_decorator
+// - an exception from another domain, but from code related to this subdomain - for example, from a callback passed to runtime_library/filesystem_decorator
+//
+namespace subdomain
+{
+
+namespace runtime_library
+{
+
+struct filesystem{};
+
+struct filesystem_decorator{};
+
+struct galimatron_config{};
+
+struct translate{};
+
+struct translate_summary_xml{};
+
+}// namespace runtime_library
+
+namespace translator_library
+{
+
+struct parser{};
+
+struct builder{};
+
+struct cpp2post_cpp{};
+
+struct gal2cpp{};
+
+struct holder{};
+
+struct cpp2gal{};
+
+struct cpp2xml{};
+
+struct xml2cpp{};
+
+struct template_engine{};
+
+struct translator{};
+
+struct wizard{};
+
+}// namespace translator_library
+
+}// namespace subdomain
+
+// clarifying details
+//
+namespace details
+{
+
+enum class io_operation_et
+{
+    NON_EXIST,
+    OPEN,
+    READ,
+    WRITE
+};
+
+enum class validation_error_code_et
+{
+    ROOT_AGGREGATE_MISSED,
+    ROOT_AGGREGATE_MUST_BE_ONE_ONLY,
+    ROOT_AGGREGATE_VERSION_DECLARATIONS_MUST_START_WITH_ZERO,
+    ROOT_AGGREGATE_VERSION_DECLARATIONS_MUST_BE_CONTINUOUS,
+    ROOT_AGGREGATE_VERSION_DEFINITIONS_MUST_REPEAT_DECLARATIONS,
+    ROOT_AGGREGATE_VERSION_CANNOT_BE_LOCAL,
+    ROOT_AGGREGATE_VERSION_CANNOT_BE_OWN,
+    AGGREGATE_VERSION_DECLARATIONS_MUST_MATCH_ROOT,
+    AGGREGATE_VERSION_DECLARATIONS_DELETED_MUST_BE_CONTINUOUS,
+    AGGREGATE_VERSION_DEFINITIONS_MUST_REPEAT_DECLARATIONS,
+    AGGREGATE_VERSION_DEFINITIONS_MUST_NOT_BE_DELETED,
+    AGGREGATE_NAMES_MUST_BE_UNIQUE,
+    AGGREGATE_INDICES_MUST_BE_UNIQUE_CONTINUOUS,
+    WIZARD_COMMAND_MUST_BE_ONE,
+    WIZARD_CREATE_ROOT_AGGREGATE_ROOT_AGGREGATE_MUST_BE_ABSENT,
+    WIZARD_CREATE_ROOT_AGGREGATE_CONTEXT_MUST_BE_CHUNK,
+    WIZARD_CREATE_ROOT_AGGREGATE_COMMAND_FILE_IS_THE_AGGREGATE,
+    WIZARD_CREATE_ROOT_AGGREGATE_CHUNK_MUST_BE_ABSENT,
+    WIZARD_CREATE_AGGREGATE_CONTEXT_MUST_BE_CHUNK,
+    WIZARD_CREATE_AGGREGATE_ROOT_AGGREGATE_MUST_EXIST,
+    WIZARD_CREATE_AGGREGATE_NAMES_MUST_BE_UNIQUE,
+    WIZARD_CREATE_AGGREGATE_COMMAND_FILE_IS_THE_AGGREGATE,
+    WIZARD_CREATE_AGGREGATE_CHUNK_MUST_BE_ABSENT,
+    WIZARD_CREATE_AGGREGATE_LAST_VERSION_MUST_BE_OPEN,
+    WIZARD_COPY_AGGREGATE_CONTEXT_MUST_BE_CHUNK,
+    WIZARD_COPY_AGGREGATE_ROOT_AGGREGATE_MUST_EXIST,
+    WIZARD_COPY_AGGREGATE_SOURCE_MUST_EXIST,
+    WIZARD_COPY_AGGREGATE_CANNOT_COPY_ROOT_AGGREGATE,
+    WIZARD_COPY_AGGREGATE_NAMES_MUST_BE_UNIQUE,
+    WIZARD_COPY_AGGREGATE_AGGREGATE_MUST_BE_ABSENT,
+    WIZARD_COPY_AGGREGATE_COMMAND_FILE_IS_THE_AGGREGATE,
+    WIZARD_COPY_AGGREGATE_CHUNK_MUST_BE_ABSENT,
+    WIZARD_COPY_AGGREGATE_SOURCE_IN_CLOSED_VERSION,
+    WIZARD_CONTINUE_AGGREGATE_CONTEXT_MUST_BE_CHUNK,
+    WIZARD_CONTINUE_AGGREGATE_ROOT_AGGREGATE_MUST_EXIST,
+    WIZARD_CONTINUE_AGGREGATE_SOURCE_MUST_EXIST,
+    WIZARD_CONTINUE_AGGREGATE_CANNOT_CONTINUE_ROOT_AGGREGATE,
+    WIZARD_CONTINUE_AGGREGATE_NAMES_MUST_BE_UNIQUE,
+    WIZARD_CONTINUE_AGGREGATE_AGGREGATE_MUST_BE_ABSENT,
+    WIZARD_CONTINUE_AGGREGATE_COMMAND_FILE_IS_THE_AGGREGATE,
+    WIZARD_CONTINUE_AGGREGATE_CHUNK_MUST_BE_ABSENT,
+    WIZARD_CONTINUE_AGGREGATE_LAST_VERSION_MUST_EXIST,
+    WIZARD_CONTINUE_AGGREGATE_LAST_VERSION_IS_ALREADY_DELETED,
+    WIZARD_DELETE_AGGREGATE_CONTEXT_MUST_BE_CHUNK,
+    WIZARD_DELETE_AGGREGATE_ROOT_AGGREGATE_MUST_EXIST,
+    WIZARD_DELETE_AGGREGATE_NAMES_MUST_BE_UNIQUE,
+    WIZARD_DELETE_AGGREGATE_AGGREGATE_MUST_EXIST,
+    WIZARD_DELETE_AGGREGATE_CANNOT_DELETE_ROOT_AGGREGATE,
+    WIZARD_DELETE_AGGREGATE_LAST_VERSION_MUST_EXIST,
+    WIZARD_DELETE_AGGREGATE_LAST_VERSION_IS_ALREADY_DELETED,
+    WIZARD_DELETE_AGGREGATE_CANNOT_DELETE_CLOSED_VERSION,
+    WIZARD_DELETE_AGGREGATE_VERSION_DEFINITION_MUST_EXIST,
+    WIZARD_DELETE_AGGREGATE_ORDERING_NAMES_AGGREGATE,
+    WIZARD_CREATE_VERSION_CONTEXT_MUST_BE_CHUNK,
+    WIZARD_CREATE_VERSION_ROOT_AGGREGATE_MUST_EXIST,
+    WIZARD_DELETE_VERSION_CONTEXT_MUST_BE_CHUNK,
+    WIZARD_DELETE_VERSION_ROOT_AGGREGATE_MUST_EXIST,
+    WIZARD_DELETE_VERSION_LAST_VERSION_MUST_EXIST,
+    WIZARD_DELETE_VERSION_VERSION_MUST_EXIST,
+    WIZARD_DELETE_VERSION_CANNOT_DELETE_CLOSED_VERSION,
+    WIZARD_DELETE_VERSION_MUST_STAY_CONTINUOUS,
+    WIZARD_COLLAPSE_VERSION_CONTEXT_MUST_BE_CHUNK,
+    WIZARD_COLLAPSE_VERSION_ROOT_AGGREGATE_MUST_EXIST,
+    WIZARD_COLLAPSE_VERSION_VERSION_MUST_EXIST,
+    WIZARD_COLLAPSE_VERSION_OWNER_MUST_BE_PRESENT,
+    WIZARD_COLLAPSE_VERSION_RANGE_MUST_ASCEND,
+    ANONYMOUS_VERSION_MUST_HAVE_OWNER,
+    ANONYMOUS_VERSION_MUST_PRECEDE_OWNER,
+    ANONYMOUS_VERSION_MUST_BE_DELETED,
+    WIZARD_BATCH_CONTEXT_MUST_BE_CHUNK,
+    WIZARD_BATCH_COMMAND_MUST_BE_CREATE,
+    WIZARD_VERSION_STATEMENT_CONTEXT_MUST_BE_CHUNK,
+    WIZARD_VERSION_STATEMENT_AGGREGATE_MUST_BE_NAMED,
+    WIZARD_VERSION_STATEMENT_ROOT_AGGREGATE_MUST_EXIST,
+    WIZARD_VERSION_STATEMENT_AGGREGATE_MUST_EXIST,
+    WIZARD_VERSION_STATEMENT_AGGREGATE_MUST_BE_ROOT,
+    WIZARD_VERSION_STATEMENT_LAST_VERSION_MUST_EXIST,
+    WIZARD_VERSION_STATEMENT_VERSION_MUST_BE_OPEN,
+    WIZARD_VERSION_STATEMENT_VERSION_IS_DELETED,
+    WIZARD_VERSION_STATEMENT_DEFINITION_MUST_EXIST,
+    WIZARD_CREATE_HASH_CONTEXT_MUST_BE_CHUNK,
+    WIZARD_CREATE_HASH_VERSION_MUST_EXIST,
+    WIZARD_DELETE_HASH_CONTEXT_MUST_BE_CHUNK,
+    WIZARD_DELETE_HASH_VERSION_MUST_EXIST,
+    HASH_DOES_NOT_MATCH,
+    HASH_MUST_BE_ON_EVERY_AGGREGATE
+};
+
+}// namespace details
+
+// short description of the exception
+struct e_what_info
+{
+    std::string what;
+};
+
+// file in which the exception occurred. empty when the file is unknown.
+// committed_report and config_dir are copies so the catch spells the path from this payload.
+// empty means spell the path as stored
+//
+struct e_path_info
+{
+    galimatron::path_ot path;
+    galimatron::bool_ot committed_report;
+    galimatron::path_ot config_dir;
+};
+
+// name of the aggregate in which the exception occurred
+//
+struct e_aggregate_info
+{
+    galimatron::name_t name;
+};
+
+// version number in which the exception occurred
+//
+struct e_version_info
+{
+    galimatron::index_t version;
+};
+
+struct e_stacktrace_info
+{
+    std::string stacktrace = std::to_string(std::stacktrace::current());
+};
+
+}// namespace exception

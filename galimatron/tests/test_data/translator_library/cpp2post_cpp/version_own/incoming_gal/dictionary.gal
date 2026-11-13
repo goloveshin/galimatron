@@ -1,0 +1,19 @@
+aggregate dictionary
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version 0
+{
+    label field = static { type, name }, tag-name-from { name };// good: names a tag in the own version
+    early = { "past" };// good: still visible
+}
+
+version own 1
+{
+    field { "text", "spot" };// good: the label from version 0, and not the root
+}

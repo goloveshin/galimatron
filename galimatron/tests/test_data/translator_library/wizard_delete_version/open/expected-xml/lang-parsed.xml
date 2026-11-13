@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after parsing, before the wizard">
+    <language>
+        <chunk layout-mark="1">
+            <location />
+        </chunk>
+        <chunk layout-mark="9">
+            <location />
+            <aggregate name="item" index="0" layout-mark="8">
+                <aggregate-version-declarations layout-mark="4">
+                    <aggregate-version-declaration index="0" layout-mark="2" />
+                    <aggregate-version-declaration index="1" layout-mark="3" />
+                </aggregate-version-declarations>
+                <aggregate-version-definitions>
+                    <aggregate-version-definition index="0" layout-mark="5" />
+                    <aggregate-version-definition index="1" layout-mark="7">
+                        <tag index="0" name="kept" layout-mark="6">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[no]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </aggregate-version-definition>
+                </aggregate-version-definitions>
+            </aggregate>
+        </chunk>
+        <chunk layout-mark="17">
+            <location />
+            <root-aggregate name="protocol" layout-mark="16">
+                <root-aggregate-version-declarations layout-mark="12">
+                    <root-aggregate-version-declaration index="0" layout-mark="10" />
+                    <root-aggregate-version-declaration index="1" layout-mark="11" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0" layout-mark="13" />
+                    <root-aggregate-version-definition index="1" layout-mark="15">
+                        <tag index="0" name="kept" layout-mark="14">
+                            <label-refs />
+                            <values>
+                                <value index="0">
+                                    <string delimiter="0"><![CDATA[no]]></string>
+                                </value>
+                            </values>
+                        </tag>
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </language>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0">
+            <change aggregate="item" kind="create-aggregate" />
+        </version>
+        <version index="1">
+            <change aggregate="protocol" kind="add" name="kept" index="0" root="true">
+                <after>
+                    <string>no</string>
+                </after>
+            </change>
+            <change aggregate="item" kind="replace" name="kept" index="0">
+                <before>
+                    <string>no</string>
+                </before>
+                <after>
+                    <string>no</string>
+                </after>
+            </change>
+        </version>
+    </history>
+</galimatron>

@@ -1,0 +1,26 @@
+aggregate item
+{
+    versions
+    {
+        0;
+        1 = deleted;
+        2 = deleted;
+        3;
+    }
+}
+
+version 0
+{
+    kept = { "zero" };
+}
+
+version before 3
+{
+    from_one = { "one" };
+    from_two = { "two" };
+}
+
+version 3
+{
+    owner = { "three" };
+}

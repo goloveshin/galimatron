@@ -1,0 +1,9 @@
+#pragma once
+
+
+namespace global
+{
+
+inline const path_t path_to_global_test_data = "@CMAKE_RUNTIME_OUTPUT_DIRECTORY@/global_test_data";
+
+}// namespace global

@@ -1,0 +1,11 @@
+root aggregate test_root_aggregate
+{
+    versions
+    {
+        0;
+    }
+}
+
+version own 0
+{// good: parsed here, refused later because the root has no outer aggregate
+}

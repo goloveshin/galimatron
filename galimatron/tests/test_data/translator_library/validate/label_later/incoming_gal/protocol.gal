@@ -1,0 +1,13 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    speed = field { "int" };// bad: field is declared after the tag
+    label field = static { type };
+}

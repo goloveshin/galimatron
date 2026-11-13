@@ -1,0 +1,4 @@
+wizard {// bad: more than one wizard command
+    create root aggregate protocol;
+}
+wizard create aggregate extra;// bad: more than one wizard command

@@ -1,0 +1,6 @@
+// wizard {// good: create hash of the last version
+//     create root aggregate protocol;
+//     create version;
+//     create tag protocol published = once important { };
+//     create hash;
+// }

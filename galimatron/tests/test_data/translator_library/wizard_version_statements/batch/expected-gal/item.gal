@@ -1,0 +1,14 @@
+aggregate item
+{
+    versions
+    {
+        0;
+    }
+}
+
+version 0
+{
+    label field = static { type };
+    note = field { "int" };
+    delete note;
+}

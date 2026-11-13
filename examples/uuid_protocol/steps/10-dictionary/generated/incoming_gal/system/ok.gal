@@ -1,0 +1,45 @@
+aggregate ok
+{
+    versions
+    {
+        0 = { hash = '47814c54be26cc5b421488df11f5d0961909a7f41b3ceb5ad169daf2ab80bc00' };
+        1 = { hash = 'faf610ed2c9e3e0310434b9efabdde930e3545abf3a1e27f7c3070996270c80e' };
+        2 = { hash = '00282fb89e10e2d3359fab9920024385ca3231cc369320ade9b6c053be6a4ee7' };
+        3 = { hash = '152941d5c9ee7f214a48b75956809f004ef709bc5235c967f0fddc56a6f7b39a' };
+        4 = { hash = 'd6dd37acbd1278d8774da6238fd5a68d5a9b70ec6a2d25e927e1519604bdd9a9' };
+        5 = { hash = '21508f98c7d42a656ebb0677d06172dd5a087e27a40060e0a20ca651dc3242d5' };
+    }
+}
+
+version 0
+{
+    struct_name = { "ok_t" };
+    group_name = { "ok_group" };
+    uuid = need_new_uuid important { "6f1e0003-0000-4000-8000-000000000001" };
+}
+
+version 1
+{
+    system_message = { };
+    uuid = need_new_uuid important { "6f1e0003-0000-4000-8000-000000000002" };
+}
+
+version 2
+{
+    uuid = need_new_uuid important { "6f1e0003-0000-4000-8000-000000000003" };
+}
+
+version 3
+{
+    uuid = need_new_uuid important { "6f1e0003-0000-4000-8000-000000000004" };
+}
+
+version 4
+{
+    uuid = need_new_uuid important { "6f1e0003-0000-4000-8000-000000000005" };
+}
+
+version 5
+{
+    uuid = need_new_uuid important { "6f1e0003-0000-4000-8000-000000000006" };
+}

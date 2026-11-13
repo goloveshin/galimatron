@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<code:template
+    xmlns:code="galimatron-code-generation"
+>
+#include "<code:namespace/>.hpp"
+#include "uuid_protocol/common/protocol.hpp"
+#include "uuid_protocol/common/protocol_forward.hpp"
+#include "uuid_protocol/common/registrate.hpp"
+
+namespace uuid_protocol::<code:namespace/>
+{
+<code:cpp-structs/>
+<code:cpp-registrate/>
+}// namespace uuid_protocol::<code:namespace/>
+</code:template>

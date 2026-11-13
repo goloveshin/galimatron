@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galimatron description="after the seal">
+    <language>
+        <chunk layout-mark="1">
+            <location />
+        </chunk>
+        <chunk>
+            <location />
+            <root-aggregate name="protocol">
+                <dynamic wizard="new-root-aggregate" />
+                <root-aggregate-version-declarations>
+                    <root-aggregate-version-declaration index="0" hash="1e1e532bab3f415e05efc133bafb81d11df9a2e52b0df056fd9399a587f04f82" />
+                </root-aggregate-version-declarations>
+                <root-aggregate-version-definitions>
+                    <root-aggregate-version-definition index="0">
+                        <dynamic wizard="new-version" />
+                        <tag index="0" name="published" mode="once">
+                            <label-refs>
+                                <static>
+                                    <label-ref index="0" name="important" />
+                                </static>
+                            </label-refs>
+                            <values />
+                        </tag>
+                    </root-aggregate-version-definition>
+                </root-aggregate-version-definitions>
+            </root-aggregate>
+        </chunk>
+    </language>
+    <string-delimiters>
+        <string-delimiter raw="false" quote="&quot;" />
+    </string-delimiters>
+    <history>
+        <version index="0">
+            <change aggregate="protocol" kind="add" name="published" index="0" root="true">
+                <after />
+            </change>
+        </version>
+    </history>
+</galimatron>

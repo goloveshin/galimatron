@@ -1,0 +1,17 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version 0
+{
+    label field = static { type };
+}
+
+version 1
+{
+}

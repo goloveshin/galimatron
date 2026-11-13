@@ -1,0 +1,19 @@
+root aggregate protocol
+{
+    versions
+    {
+        0;
+        1;
+    }
+}
+
+version 0
+{
+    kept = { "stay" };// good: a plain tag is still in version 1
+    published = once { };// good: this version, and the nested aggregate of this version
+    note = local { "here" };// good: this version of protocol only
+}
+
+version 1
+{
+}
