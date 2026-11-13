@@ -59,8 +59,9 @@ void use_named_channel(const std::string& name, const std::string& log_file);
 //
 void flush_log();
 
-// drop backends, then apply native logme JSON
-// a relative home-directory.path is resolved from the config file's directory
+// drop backends, then apply native logme JSON.
+// a relative home-directory.path is resolved from the config file's directory.
+// the previous file log releases its lock before the next open of that path
 //
 // testing: yes (unit)
 //

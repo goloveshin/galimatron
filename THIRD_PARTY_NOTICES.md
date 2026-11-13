@@ -15,15 +15,15 @@ Every dependency is under a permissive license: the Boost license, MIT, BSD, Apa
 
 | | Library | License | Used for |
 |---|---|---|---|
-| | [Boost](https://www.boost.org) 1.92.0 | BSL-1.0 | exceptions (LEAF), string algorithms, and other utilities |
-| | [ANTLR 4](https://www.antlr.org) 4.13.2 | BSD-3-Clause | the parser of the GaL language (the C++ runtime is linked in, the generator is used at build time) |
-| | [SaxonC-HE](https://www.saxonica.com) 13.0.0 | MPL-2.0, with the James Clark notice (MIT) and the JLine2 notice (BSD) | XSLT 3.0 processor |
+| <img src="art/third_party/boost.svg" width="48" alt="Boost"> | [Boost](https://www.boost.org) 1.92.0 | BSL-1.0 | exceptions (LEAF), string algorithms, and other utilities |
+| <img src="art/third_party/antlr.png" width="48" alt="ANTLR"> | [ANTLR 4](https://www.antlr.org) 4.13.2 | BSD-3-Clause | the parser of the GaL language (the C++ runtime is linked in, the generator is used at build time) |
+| <img src="art/third_party/saxon.gif" width="160" alt="Saxonica"> | [SaxonC-HE](https://www.saxonica.com) 13.0.0 | MPL-2.0, with the James Clark notice (MIT) and the JLine2 notice (BSD) | XSLT 3.0 processor |
 | <img src="art/third_party/taskflow.png" width="48" alt="Taskflow"> | [Taskflow](https://github.com/taskflow/taskflow) 4.0.0 | MIT | the chain of translation steps |
 | | [range-v3](https://github.com/ericniebler/range-v3) | BSL-1.0 | ranges, views and actions |
 | | [pugixml](https://pugixml.org) | MIT | reading and writing XML |
 | | [nlohmann/json](https://github.com/nlohmann/json) | MIT | parsing the JSON of the logging configuration |
 | <img src="art/third_party/inja.svg" width="64" alt="inja"> | [inja](https://github.com/pantor/inja) 3.4.0 | MIT | the text templates of the post step |
-| | [alpaca](https://github.com/p-ranav/alpaca) | MIT | serialization in the UUID protocol example only, not in the installers |
+| <img src="art/third_party/alpaca.png" width="112" alt="alpaca"> | [alpaca](https://github.com/p-ranav/alpaca) | MIT | serialization in the UUID protocol example only, not in the installers |
 | | [magic_enum](https://github.com/Neargye/magic_enum) | MIT | names of enumerations |
 | <img src="art/third_party/logme.png" width="48" alt="logme"> | [logme](https://github.com/efmsoft/logme) | Apache-2.0 | logging |
 | | [JsonCpp](https://github.com/open-source-parsers/jsoncpp) 1.9.6 | MIT or public domain | reading the JSON of the logging configuration (inside logme) |

@@ -12,6 +12,7 @@ TEST_SUITE("galimatron/runtime_library/translate" * galimatron::test_axes::mark(
 
 // a relative home-directory.path is the directory of log.cfg
 // the intermediate folder, galimatron.log, and galimatron.crash.log are created there
+// a second apply reopens the same log file
 //
 TEST_CASE("relative home creates the intermediate logs")
 {
@@ -38,6 +39,7 @@ TEST_CASE("relative home creates the intermediate logs")
 
     CHECK_FALSE(fs::exists(intermediate));
 
+    apply_log_config(translate_t::get_log_config_from_file(config_path));
     apply_log_config(translate_t::get_log_config_from_file(config_path));
     const auto crash_log = crash::arm_log();
 

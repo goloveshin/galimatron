@@ -73,7 +73,9 @@ std::vector<Logme::ChannelPtr> channels_except(const Logme::ChannelPtr& skip)
     Logme::Instance->IterateChannels([&](const std::string&, const Logme::ChannelPtr& channel)
     {
         if (channel && channel != skip)
+        {
             channels.push_back(channel);
+        }
     });
     return channels;
 }
@@ -100,7 +102,9 @@ void use_named_channel(const name_t& name, const name_t& log_file)
 
     const auto path = path_t(log_file);
     if (path.has_parent_path())
+    {
         fs::create_directories(path.parent_path());
+    }
 
     Logme::OutputFlags flags;
     flags.Value = 0;
@@ -124,7 +128,9 @@ void use_named_channel(const name_t& name, const name_t& log_file)
     auto backend = std::make_shared<Logme::FileBackend>(channel);
     backend->SetAppend(false);
     if (!backend->CreateLog(log_file.c_str()))
+    {
         throw std::runtime_error("cannot open log file: " + log_file);
+    }
     channel->AddBackend(backend);
 
     Logme::Instance->SetThreadChannel(&id);
@@ -182,9 +188,33 @@ void apply_log_config(const file_content_with_path_t& cwp)
 
     Logme::Instance->DeleteAllChannels();
 
+    // Linux flock stays until the previous file backend is destroyed.
+    // the file manager drops that backend before the destructor closes it,
+    // so the next open retries until the lock is gone
     content_t error;
-    if (!Logme::Instance->LoadConfiguration(*cwp.content, content_t(), &error))
-        throw std::runtime_error(error.empty() ? "cannot load log configuration" : error);
+    const auto deadline = std::chrono::steady_clock::now() + std::chrono::seconds(2);
+    for (;;)
+    {
+        error.clear();
+        if (Logme::Instance->LoadConfiguration(*cwp.content, content_t(), &error))
+        {
+            break;
+        }
+
+        // a parse error is final. an apply error is the file lock, and it clears on retry
+        if (error != "configuration was parsed but could not be applied" || std::chrono::steady_clock::now() >= deadline)
+        {
+            throw std::runtime_error(error.empty() ? "cannot load log configuration" : error);
+        }
+
+        Logme::Instance->DeleteAllChannels();
+        if (home_path)
+        {
+            Logme::Instance->SetHomeDirectory(home_path->string());
+        }
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    }
 
     if (home_path)
     {
@@ -202,14 +232,18 @@ void apply_log_config(const file_content_with_path_t& cwp)
         const auto configured = def->GetFilterLevel();
         auto gate = configured;
         for (const auto& channel : others)
+        {
             gate = std::min(gate, channel->GetFilterLevel());
+        }
         def->SetFilterLevel(gate);
 
         def->SetDisplayFilter([others, configured](Logme::Context& context, const char*)
         {
             prefix_indent(context);
             for (const auto& channel : others)
+            {
                 channel->Display(context);
+            }
             return context.ErrorLevel >= configured;
         });
     }
