@@ -80,9 +80,10 @@ bool is_carried_dynamic_tag(
     return tag_uses_dynamic_label(state, vd);
 }
 
-// statements directly under a version definition. empty when the definition is absent
+// statements directly under a version definition
+// empty when the definition is absent
 //
-std::vector<vertex_descriptor_t> definition_children(
+vertex_descriptors_vector_t definition_children(
     const holder::language_part_t& state,
     const vertex_descriptor_ot vd
 )
@@ -110,7 +111,7 @@ struct copied_body_t
     index_ot index;
     index_ot owner;
     tag_mode_et mode = tag_mode_et::INHERIT;
-    std::vector<vertex_descriptor_t> children;
+    vertex_descriptors_vector_t children;
 };
 
 // version bodies of the source, in file order, including a parked version before N
@@ -154,7 +155,8 @@ std::vector<copied_body_t> bodies_of(
         ;
 }
 
-// every declaration of this aggregate is deleted. an aggregate with no declaration is not
+// every declaration of this aggregate is deleted
+// an aggregate with no declaration is not
 //
 bool every_version_deleted(
     const holder::language_part_t& state,
@@ -188,7 +190,8 @@ bool chunk_keeps_an_aggregate(
     return state.aggregates().keeps_other(vd_chunk, vd_aggregate);
 }
 
-// the aggregate leaves its file. an empty file leaves the root
+// the aggregate leaves its file
+// an empty file leaves the root
 //
 void remove_aggregate_chunk(
     holder::language_part_t& state,
@@ -330,9 +333,10 @@ void cpp2cpp_wizard_t::apply_wizard_create_aggregate()
     }
 }
 
-// a fully deleted aggregate loses its chunk.
-// an aggregate that still has a live version gets delete; in the last version.
-// no name removes every fully deleted aggregate
+// applies wizard delete aggregate
+// - a fully deleted aggregate loses its chunk
+// - an aggregate that still has a live version gets delete; in the last version
+// - no name removes every fully deleted aggregate
 //
 void cpp2cpp_wizard_t::apply_wizard_delete_aggregate()
 {
@@ -402,7 +406,8 @@ void cpp2cpp_wizard_t::apply_wizard_delete_aggregate()
     }
 }
 
-// the new aggregate receives the source declarations and bodies. the source stays
+// the new aggregate receives the source declarations and bodies
+// the source stays
 //
 void cpp2cpp_wizard_t::apply_wizard_copy_aggregate()
 {
@@ -503,7 +508,7 @@ void cpp2cpp_wizard_t::apply_wizard_copy_aggregate()
 // moves this statement to the end, replacing an earlier one of the same name
 //
 void place_named(
-    std::vector<vertex_descriptor_t>& chosen,
+    vertex_descriptors_vector_t& chosen,
     const name_t& name,
     const vertex_descriptor_t vd,
     const auto& name_of
@@ -516,13 +521,14 @@ void place_named(
     chosen.push_back(vd);
 }
 
-// labels and tags still in effect on the last version.
-// a later statement of the same name replaces the earlier one. a delete removes that tag.
-// once and local stay in the version where they are written.
-// a local or once version does not keep earlier statements.
-// a dynamic tag carried into the new version is left out here
+// labels and tags still in effect on the last version
+// - a later statement of the same name replaces the earlier one
+// - a delete removes that tag
+// - once and local stay in the version where they are written
+// - a local or once version does not keep earlier statements
+// - a dynamic tag carried into the new version is left out here
 //
-std::vector<vertex_descriptor_t> statements_in_effect(
+vertex_descriptors_vector_t statements_in_effect(
     const holder::language_part_t& state,
     const vertex_descriptor_t vd_aggregate,
     const index_t previous_index
@@ -533,9 +539,9 @@ std::vector<vertex_descriptor_t> statements_in_effect(
         || previous_mode == tag_mode_et::OWN;
     const auto& graph = state.graph();
 
-    std::vector<vertex_descriptor_t> labels;
-    std::vector<vertex_descriptor_t> tags;
-    std::vector<vertex_descriptor_t> other;
+    vertex_descriptors_vector_t labels;
+    vertex_descriptors_vector_t tags;
+    vertex_descriptors_vector_t other;
 
     for (const auto& declaration : state.versions().declarations_in_order(vd_aggregate))
     {
@@ -627,7 +633,8 @@ std::vector<vertex_descriptor_t> statements_in_effect(
     return ranges::views::concat(labels, kept_tags, other) | ranges::to_vector;
 }
 
-// the source ends in the new version. each new aggregate continues there, with the earlier versions deleted
+// the source ends in the new version
+// each new aggregate continues there, with the earlier versions deleted
 //
 void cpp2cpp_wizard_t::apply_wizard_continue_aggregate()
 {

@@ -45,7 +45,12 @@ namespace
 Logme::SID SUBSID = Logme::SID::Build(global::log_subsystems::tr_tsp);
 }
 
-// delete aggregate runs in the chunk context, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// a check here that fails throws exception::domain::translator_library,
+// exception::subdomain::translator_library::translator.
+// a function names only its rule, a validation_error_code_et value, on its throws: line.
+
+// delete aggregate runs in the chunk context
+// throws: WIZARD_DELETE_AGGREGATE_CONTEXT_MUST_BE_CHUNK
 //
 bool cpp2cpp_validate_t::is_wizard_delete_aggregate_context_chunk()
 {
@@ -73,7 +78,8 @@ bool cpp2cpp_validate_t::is_wizard_delete_aggregate_context_chunk()
     );
 }
 
-// delete aggregate needs the root aggregate, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// delete aggregate needs the root aggregate
+// throws: WIZARD_DELETE_AGGREGATE_ROOT_AGGREGATE_MUST_EXIST
 //
 bool cpp2cpp_validate_t::is_wizard_delete_aggregate_root_aggregate_present()
 {
@@ -100,8 +106,8 @@ bool cpp2cpp_validate_t::is_wizard_delete_aggregate_root_aggregate_present()
     );
 }
 
-// names in one delete aggregate command differ, ignoring case,
-// otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// names in one delete aggregate command differ, ignoring case
+// throws: WIZARD_DELETE_AGGREGATE_NAMES_MUST_BE_UNIQUE
 //
 bool cpp2cpp_validate_t::is_wizard_delete_aggregate_names_unique()
 {
@@ -156,7 +162,8 @@ bool cpp2cpp_validate_t::is_wizard_delete_aggregate_names_unique()
     );
 }
 
-// each listed aggregate exists, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// each listed aggregate exists
+// throws: WIZARD_DELETE_AGGREGATE_AGGREGATE_MUST_EXIST
 //
 bool cpp2cpp_validate_t::is_wizard_delete_aggregate_aggregates_exist()
 {
@@ -201,7 +208,8 @@ bool cpp2cpp_validate_t::is_wizard_delete_aggregate_aggregates_exist()
     );
 }
 
-// the root aggregate is not a delete target, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// the root aggregate is not a delete target
+// throws: WIZARD_DELETE_AGGREGATE_CANNOT_DELETE_ROOT_AGGREGATE
 //
 bool cpp2cpp_validate_t::is_wizard_delete_aggregate_not_root()
 {
@@ -250,7 +258,9 @@ bool cpp2cpp_validate_t::is_wizard_delete_aggregate_not_root()
 // the last version of each listed aggregate is live,
 // unless every version of that aggregate is already deleted.
 // a fully deleted aggregate is removed as a chunk and is not an error here.
-// otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// throws:
+// - WIZARD_DELETE_AGGREGATE_LAST_VERSION_MUST_EXIST
+// - WIZARD_DELETE_AGGREGATE_LAST_VERSION_IS_ALREADY_DELETED
 //
 bool cpp2cpp_validate_t::is_wizard_delete_aggregate_last_version_live()
 {
@@ -352,8 +362,9 @@ bool cpp2cpp_validate_t::is_wizard_delete_aggregate_last_version_live()
     );
 }
 
-// the last version is open. a root version that stores a hash is closed, and so is every version up to that index.
-// otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// the last version is open.
+// a root version that stores a hash is closed, and so is every version up to that index.
+// throws: WIZARD_DELETE_AGGREGATE_CANNOT_DELETE_CLOSED_VERSION
 //
 bool cpp2cpp_validate_t::is_wizard_delete_aggregate_last_version_open()
 {
@@ -433,7 +444,8 @@ bool cpp2cpp_validate_t::is_wizard_delete_aggregate_last_version_open()
     );
 }
 
-// the last live version has a definition to receive delete;, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// the last live version has a definition to receive delete;
+// throws: WIZARD_DELETE_AGGREGATE_VERSION_DEFINITION_MUST_EXIST
 //
 bool cpp2cpp_validate_t::is_wizard_delete_aggregate_version_definition_present()
 {
@@ -502,8 +514,9 @@ bool cpp2cpp_validate_t::is_wizard_delete_aggregate_version_definition_present()
     );
 }
 
-// physically removes the chunk. an aggregate still present in a closed version is refused,
-// otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// physically removes the chunk.
+// an aggregate still present in a closed version is refused.
+// throws: WIZARD_DELETE_AGGREGATE_CANNOT_DELETE_CLOSED_VERSION
 //
 bool cpp2cpp_validate_t::is_wizard_delete_aggregate_physically_closed()
 {
@@ -587,8 +600,9 @@ bool ordering_names_aggregate(
     return language.ordering_names(name);
 }
 
-// physically removes the chunk. a version whose ordering names the aggregate is refused,
-// otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// physically removes the chunk.
+// a version whose ordering names the aggregate is refused.
+// throws: WIZARD_DELETE_AGGREGATE_ORDERING_NAMES_AGGREGATE
 //
 bool cpp2cpp_validate_t::is_wizard_delete_aggregate_physically_not_ordered()
 {

@@ -58,7 +58,8 @@ struct root_aggregate_version_definition_t
     index_ot owner;
     // the wizard added this version to a root aggregate that already existed
     bool created_by_wizard = false;
-    // once drops earlier root versions. local is refused on the root
+    // once drops earlier root versions
+    // local is refused on the root
     tag_mode_et mode = tag_mode_et::INHERIT;
 };
 
@@ -97,8 +98,9 @@ struct aggregate_version_definition_t
     index_ot owner;
     // the wizard added this version to an aggregate that already existed
     bool created_by_wizard = false;
-    // once drops earlier versions of this aggregate and still receives the root.
-    // local drops both. an absent mode inherits
+    // once drops earlier versions of this aggregate and still receives the root
+    // local drops both
+    // an absent mode inherits
     tag_mode_et mode = tag_mode_et::INHERIT;
 };
 
@@ -132,7 +134,8 @@ struct tag_record_t
 {
 };
 
-// the quotes a source string was written with. the text itself stays unquoted
+// the quotes a source string was written with
+// the text itself stays unquoted
 //
 struct string_delimiter_t
 {
@@ -201,10 +204,11 @@ struct ordering_statement_t
 // Operation
 //------------------------------------------------------------------------------
 
-// historical deletion.
-// delete <name>; — a tag: from this point the tag is absent from the compiled state.
-// delete; — an aggregate version: the rest of the version contents are removed, the version is deleted.
-// physical deletion is different.
+// historical deletion
+// - delete <name>; in a tag: from this point the tag is absent from the compiled state
+// - delete; in an aggregate version: the rest of the version contents are removed,
+//   the version is deleted
+// physical deletion is different
 // included in xml: this is a GaL element, unparse prints it
 //
 struct operation_statement_t
@@ -219,7 +223,8 @@ struct operation_statement_t
 // Wizard
 //------------------------------------------------------------------------------
 
-// a wizard command. after it runs, its text stays on the chunk as // comments.
+// a wizard command
+// after it runs, its text stays on the chunk as // comments
 // the statement itself is absent from xml
 //
 struct wizard_statement_t

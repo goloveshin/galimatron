@@ -160,7 +160,8 @@ public:
         );
     }
 
-    // entities of this type and name with index_in_versions from 0 up to and including index_in_versions
+    // entities of this type and name,
+    // with index_in_versions from 0 up to and including index_in_versions
     //
     decltype(auto) range_by_entity_type_and_name_up_to_index_in_versions(
         const entity_et entity_type,

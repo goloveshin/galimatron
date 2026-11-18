@@ -35,16 +35,18 @@ struct fill_state_from_content_t
     using get_listener_ft = std::function<antlr_listener_sptr_t (global_parse_state_at&, const path_t&)>;
     using walk_ft = std::function<void (single_parse_state_at&, antlr_listener_t*)>;
 
-    // this is a set of contents - paths to files with their contents
+    // this is a set of contents: paths to files with their contents
     deferred_file_contents_with_paths_t view_deferred_file_content_with_path;
 
-    // we ask the user to create the global state where we accumulate parse results of all contents
+    // we ask the user to create the global state
+    // where we accumulate parse results of all contents
     get_global_state_ft get_global_state;
 
     // we ask the user to parse one content and return its result
     parse_content_ft parse_content;
 
-    // we get something castable to ParseTreeListener, with the global state and the content path attached to it
+    // we get something castable to ParseTreeListener
+    // with the global state and the content path attached to it
     get_listener_ft get_listener;
 
     // we walk the listener over one parse result and fill the global state

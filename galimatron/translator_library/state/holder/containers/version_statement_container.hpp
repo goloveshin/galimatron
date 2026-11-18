@@ -80,7 +80,19 @@ struct by_entity
     }
 };
 
+struct by_entity_type
+{
+    using result_type = const entity_et&;
+    result_type operator()(const record_t& record) const
+    {
+        return record.entity_type;
+    }
+};
+
 struct by_aggregate_version_and_index
+{};
+
+struct by_type_and_name
 {};
 
 struct by_aggregate_version_and_name
@@ -128,6 +140,15 @@ using container_t = multi_index_container
                 record_t,
                 by_definition,
                 by_index_in_version
+            >
+        >,
+        ordered_non_unique
+        <
+            tag<by_type_and_name>,
+            composite_key<
+                record_t,
+                by_entity_type,
+                by_name
             >
         >
     >
@@ -247,6 +268,22 @@ public:
         return false;
     }
 
+    // the statements of one kind with one written name, in every aggregate and version.
+    // an unnamed tag has no written name, so a name search does not find it
+    //
+    vertex_descriptors_vector_t entities_named(const entity_et type, const name_t& name) const
+    {
+        auto named = equal_range_by<detail::by_type_and_name>(boost::make_tuple(type, name_ot{ name }));
+        return
+            named
+            | ranges::views::transform([](const detail::record_t& record)
+            {
+                return record.vd_entity;
+            })
+            | ranges::to_vector
+            ;
+    }
+
     index_t next_index(const vertex_descriptor_t vd_aggregate, const index_t version_index) const
     {
         const auto range = statements(vd_aggregate, version_index);
@@ -261,7 +298,7 @@ public:
     //
     // testing: no
     //
-    void collect_vertex_descriptors(std::vector<vertex_descriptor_t>& held) const
+    void collect_vertex_descriptors(vertex_descriptors_vector_t& held) const
     {
         for (const auto& record : *this)
         {
@@ -271,17 +308,17 @@ public:
         }
     }
 
-    // descriptors above a removed vertex move down by one
+    // descriptors above the removed vertices move down
     //
     // testing: no
     //
-    void note_vertex_removed(const vertex_descriptor_t removed)
+    void note_vertices_removed(const vertex_shift_t& shift)
     {
-        rewrite_descriptors(*this, removed, [&](detail::record_t& record)
+        rewrite_descriptors(*this, [&](detail::record_t& record)
         {
-            pull_down(record.vd_aggregate, removed);
-            pull_down(record.vd_definition, removed);
-            pull_down(record.vd_entity, removed);
+            pull_down(record.vd_aggregate, shift);
+            pull_down(record.vd_definition, shift);
+            pull_down(record.vd_entity, shift);
         });
     }
 };

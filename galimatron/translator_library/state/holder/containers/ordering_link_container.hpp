@@ -116,7 +116,7 @@ public:
     //
     // testing: no
     //
-    void collect_vertex_descriptors(std::vector<vertex_descriptor_t>& held) const
+    void collect_vertex_descriptors(vertex_descriptors_vector_t& held) const
     {
         for (const auto& record : *this)
         {
@@ -124,15 +124,15 @@ public:
         }
     }
 
-    // descriptors above a removed vertex move down by one
+    // descriptors above the removed vertices move down
     //
     // testing: no
     //
-    void note_vertex_removed(const vertex_descriptor_t removed)
+    void note_vertices_removed(const vertex_shift_t& shift)
     {
-        rewrite_descriptors(*this, removed, [&](detail::record_t& record)
+        rewrite_descriptors(*this, [&](detail::record_t& record)
         {
-            pull_down(record.vd_ordering, removed);
+            pull_down(record.vd_ordering, shift);
         });
     }
 };

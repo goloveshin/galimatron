@@ -100,8 +100,10 @@ public:
     };
     printout_result_t printout_by_alias(const printout_by_alias_t&);
 
-    // writes a file by the place alias and the relative path.
-    // the alias must name exactly one place, otherwise exception::domain::runtime_library, exception::subdomain::runtime_library::filesystem_decorator
+    // writes a file by the place alias and the relative path
+    // the alias must name exactly one place, otherwise it throws:
+    // - exception::domain::runtime_library
+    // - exception::subdomain::runtime_library::filesystem_decorator
     //
     // testing: yes (unit)
     //
@@ -120,8 +122,8 @@ public:
     //
     using unmangled_saxon_uri_t = std::variant<unmangle_saxon_uri_t, path_t>;
     // parses @@alias@@relative_path@@
-    // a file URI is returned as the path without the file: prefix
-    // any other string is returned as a path unchanged
+    // - a file URI is returned as the path without the file: prefix
+    // - any other string is returned as a path unchanged
     //
     // testing: yes (unit)
     //

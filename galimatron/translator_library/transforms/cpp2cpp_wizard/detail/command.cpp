@@ -38,7 +38,11 @@ strings_t lines_of(std::string text)
 cpp2cpp_wizard_t::cpp2cpp_wizard_t(holder::language_part_t& language_state)
     : language_state_(&language_state)
     , validate_memo_(std::make_unique<cpp2cpp_validate::validate_memo_t>())
-    , validate_(std::make_unique<cpp2cpp_validate::cpp2cpp_validate_t>(language_state, *validate_memo_))
+    , validate_(std::make_unique<cpp2cpp_validate::cpp2cpp_validate_t>(
+        language_state,
+        *validate_memo_,
+        cpp2cpp_validate::snapshot_et::LAZY
+    ))
 {}
 
 void cpp2cpp_wizard_t::apply_one(const wizard::command_et type)
@@ -95,7 +99,11 @@ void cpp2cpp_wizard_t::apply_one(const wizard::command_et type)
 void cpp2cpp_wizard_t::refresh_checks()
 {
     auto memo = std::make_unique<cpp2cpp_validate::validate_memo_t>();
-    auto validate = std::make_unique<cpp2cpp_validate::cpp2cpp_validate_t>(*language_state_, *memo);
+    auto validate = std::make_unique<cpp2cpp_validate::cpp2cpp_validate_t>(
+        *language_state_,
+        *memo,
+        cpp2cpp_validate::snapshot_et::LAZY
+    );
     validate_ = std::move(validate);
     validate_memo_ = std::move(memo);
 }
@@ -146,7 +154,8 @@ void cpp2cpp_wizard_t::comment_executed_command()
 
     if (vertex.user_formatting && !vertex.user_formatting->empty())
     {
-        // a description above wizard ends with a blank //, the same way a comment above a function does
+        // a description above wizard ends with a blank //,
+        // the same way a comment above a function does
         if (has_description && vertex.user_comments.back() != GaL::CPP_COMMENT)
         {
             chunk.user_comments.push_back(std::string{ GaL::CPP_COMMENT });

@@ -223,7 +223,8 @@ constexpr known_t known[] =
 
 string_ot explain(const strings_t& stack, const std::string& message)
 {
-    // the failing rule is first. a known rule keeps its own sentence, so a parent does not replace it.
+    // the failing rule is first
+    // a known rule keeps its own sentence, so a parent does not replace it
     for (const auto& rule : stack)
     {
         bool known_rule = false;

@@ -71,9 +71,9 @@ std::string printout_native_saxon_exception(SaxonApiException& e)
     return ss.str();
 }
 
-// reads the Saxon exception, then throws translator.
-// the path is empty when the xslt has no file.
-// the caller catches while newXslt30Processor is still alive.
+// reads the Saxon exception, then throws translator
+// the path is empty when the xslt has no file
+// the caller catches while newXslt30Processor is still alive
 //
 [[noreturn]] void throw_translator(SaxonApiException& e, const path_ot& path)
 {
@@ -102,10 +102,11 @@ path_t executable_directory()
     return location.parent_path();
 }
 
-// maps https://github.com/goloveshin/galimatron/xslt/gal-functions.xsl to the installed file.
-// a build that has not been installed has no catalog, and a local include still resolves.
-// the debug log names the result. none means this process has no catalog.
-// Saxon receives the absolute file when the catalog is present
+// maps https://github.com/goloveshin/galimatron/xslt/gal-functions.xsl to the installed file
+// - a build that has not been installed has no catalog, and a local include still resolves
+// - the debug log names the result
+// - none means this process has no catalog
+// - Saxon receives the absolute file when the catalog is present
 //
 void load_installed_catalog(SaxonProcessor& processor)
 {
@@ -223,7 +224,10 @@ pugi_document_with_meanful_node_t saxon_session_t::to_pugi() const
 
     // XdmValue::size() is the item count. The serialized document is longer than that.
     const char* xml = document_->toString();
-    if (auto result = doc->load_buffer(xml, std::strlen(xml)))
+    const auto result = doc->load_buffer(xml, std::strlen(xml));
+    // load_buffer copies the text, and Saxon allocated this one
+    operator delete(const_cast<char*>(xml));
+    if (result)
     {
         return {
             .document = doc
@@ -295,7 +299,8 @@ file_contents_with_paths_ot saxon_session_t::apply(const galimatron_config::tran
             | ranges::views::transform([&](const auto& pair) -> file_content_with_path_t
                 {
                     const auto& [path, node] = pair;
-                    // the result document already has its method. the XML serializer would prefix a text file with an XML declaration
+                    // the result document already has its method
+                    // the XML serializer would prefix a text file with an XML declaration
                     const auto content = make_file_content(node->toString());
                     delete node;
                     return {

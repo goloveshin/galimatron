@@ -43,9 +43,14 @@ namespace
 Logme::SID SUBSID = Logme::SID::Build(global::log_subsystems::tr_tsp);
 }
 
-// the root aggregate is exactly one, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
-// none — validation_error_code_et::ROOT_AGGREGATE_MISSED
-// more than one — validation_error_code_et::ROOT_AGGREGATE_MUST_BE_ONE_ONLY
+// a check here that fails throws exception::domain::translator_library,
+// exception::subdomain::translator_library::translator.
+// a function names only its rule, a validation_error_code_et value, on its throws: line.
+
+// the root aggregate is exactly one
+// throws:
+// - none: ROOT_AGGREGATE_MISSED
+// - more than one: ROOT_AGGREGATE_MUST_BE_ONE_ONLY
 //
 bool cpp2cpp_validate_t::is_root_aggregate_single()
 {
@@ -54,7 +59,7 @@ bool cpp2cpp_validate_t::is_root_aggregate_single()
         return *cached;
     }
 
-    const auto root_count = std::ranges::count(aggregate_versions_, true, &aggregate_versions_t::is_root);
+    const auto root_count = std::ranges::count(every_row(), true, &aggregate_versions_t::is_root);
     if (root_count == 1)
     {
         memo_.store_is_root_aggregate_single(true);
@@ -74,7 +79,10 @@ bool cpp2cpp_validate_t::is_root_aggregate_single()
     ));
 }
 
-// root aggregate version declarations run from 0 without gaps, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// root aggregate version declarations run from 0 without gaps
+// throws:
+// - ROOT_AGGREGATE_VERSION_DECLARATIONS_MUST_START_WITH_ZERO
+// - ROOT_AGGREGATE_VERSION_DECLARATIONS_MUST_BE_CONTINUOUS
 //
 bool cpp2cpp_validate_t::is_root_aggregate_version_declarations_from_zero_continuous()
 {
@@ -112,7 +120,11 @@ bool cpp2cpp_validate_t::is_root_aggregate_version_declarations_from_zero_contin
     return true;
 }
 
-// root aggregate version definition indices repeat the live declaration indices, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// root aggregate version definition indices repeat the live declaration indices
+// throws:
+// - ROOT_AGGREGATE_VERSION_DEFINITIONS_MUST_REPEAT_DECLARATIONS
+// - ROOT_AGGREGATE_VERSION_CANNOT_BE_LOCAL
+// - ROOT_AGGREGATE_VERSION_CANNOT_BE_OWN
 //
 bool cpp2cpp_validate_t::is_root_aggregate_version_definitions_repeat_declarations()
 {
@@ -173,13 +185,14 @@ bool cpp2cpp_validate_t::is_root_aggregate_version_definitions_repeat_declaratio
     return true;
 }
 
-// each aggregate's version declarations repeat the root declarations, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// each aggregate's version declarations repeat the root declarations
+// throws: AGGREGATE_VERSION_DECLARATIONS_MUST_MATCH_ROOT
 //
 bool cpp2cpp_validate_t::is_aggregate_version_declarations_match_root()
 {
     const auto root_indices = version_declaration_indices();
 
-    for (const auto& aggregate : aggregate_versions_)
+    for (const auto& aggregate : every_row())
     {
         if (aggregate.is_root)
         {
@@ -208,11 +221,15 @@ bool cpp2cpp_validate_t::is_aggregate_version_declarations_match_root()
     return true;
 }
 
-// deleted is a prefix, a suffix, or an interior span owned by the next live version's anonymous body, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// deleted versions of an aggregate are one of:
+// - a prefix
+// - a suffix
+// - an interior span owned by the next live version's anonymous body
+// throws: AGGREGATE_VERSION_DECLARATIONS_DELETED_MUST_BE_CONTINUOUS
 //
 bool cpp2cpp_validate_t::is_aggregate_version_declarations_deleted_continuous()
 {
-    for (const auto& aggregate : aggregate_versions_)
+    for (const auto& aggregate : every_row())
     {
         const auto& declarations = aggregate.declarations;
 
@@ -275,11 +292,12 @@ bool cpp2cpp_validate_t::is_aggregate_version_declarations_deleted_continuous()
     return true;
 }
 
-// a definition of a deleted version is forbidden, except a body of a single delete;, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// a definition of a deleted version is forbidden, except a body of a single delete;
+// throws: AGGREGATE_VERSION_DEFINITIONS_MUST_NOT_BE_DELETED
 //
 bool cpp2cpp_validate_t::is_aggregate_version_definitions_not_deleted()
 {
-    for (const auto& aggregate : aggregate_versions_)
+    for (const auto& aggregate : every_row())
     {
         const auto& definitions = aggregate.definition_indices;
 
@@ -317,11 +335,12 @@ bool cpp2cpp_validate_t::is_aggregate_version_definitions_not_deleted()
     return true;
 }
 
-// aggregate version definitions repeat the declarations without deleted, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// aggregate version definitions repeat the declarations without deleted
+// throws: AGGREGATE_VERSION_DEFINITIONS_MUST_REPEAT_DECLARATIONS
 //
 bool cpp2cpp_validate_t::is_aggregate_version_definitions_repeat_declarations()
 {
-    for (const auto& aggregate : aggregate_versions_)
+    for (const auto& aggregate : every_row())
     {
         if (aggregate.is_root)
         {
@@ -331,7 +350,8 @@ bool cpp2cpp_validate_t::is_aggregate_version_definitions_repeat_declarations()
         const auto& definitions = aggregate.definition_indices;
         const auto& live_declarations = aggregate.live_indices;
 
-        // an illegal deleted definition is reported by is_aggregate_version_definitions_not_deleted.
+        // an illegal deleted definition is reported by
+        // is_aggregate_version_definitions_not_deleted.
         // the checks run in parallel, so we do not throw the same error here.
         // delete; of a deleted version is not included in the comparison with live declarations
         indices_t comparable;
@@ -378,7 +398,7 @@ bool cpp2cpp_validate_t::is_aggregate_version_definitions_repeat_declarations()
 
 bool cpp2cpp_validate_t::is_anonymous_versions_owned()
 {
-    for (const auto& aggregate : aggregate_versions_)
+    for (const auto& aggregate : every_row())
     {
         const auto bodies = language_part_.versions().bodies_in_order(aggregate.vd);
 
@@ -480,18 +500,18 @@ bool cpp2cpp_validate_t::is_anonymous_versions_owned()
 
 // aggregate names are unique, including the root.
 // no single root aggregate is left to is_root_aggregate_single.
-// otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// throws: AGGREGATE_NAMES_MUST_BE_UNIQUE
 //
 bool cpp2cpp_validate_t::is_aggregate_names_unique()
 {
-    const auto root_count = std::ranges::count(aggregate_versions_, true, &aggregate_versions_t::is_root);
+    const auto root_count = std::ranges::count(every_row(), true, &aggregate_versions_t::is_root);
     if (root_count != 1)
     {
         return true;
     }
 
     auto names =
-        aggregate_versions_
+        every_row()
         | ranges::views::transform([](const aggregate_versions_t& aggregate)
         {
             return aggregate.name;
@@ -527,14 +547,14 @@ bool cpp2cpp_validate_t::is_aggregate_names_unique()
     ));
 }
 
-// non-root aggregate indices are 0 .. n-1 without gaps or duplicates,
-// otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// non-root aggregate indices are 0 .. n-1 without gaps or duplicates
+// throws: AGGREGATE_INDICES_MUST_BE_UNIQUE_CONTINUOUS
 //
 bool cpp2cpp_validate_t::is_aggregate_indices_unique_continuous()
 {
     const auto& graph = language_part_.graph();
     auto indices =
-        aggregate_versions_
+        every_row()
         | ranges::views::filter([](const aggregate_versions_t& aggregate)
         {
             return !aggregate.is_root;

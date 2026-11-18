@@ -17,7 +17,9 @@ namespace galimatron::translator::transforms::cpp2cpp_validate
 
 using namespace galimatron::translator::state;
 
-// memoization of check results; reads and writes are concurrent
+// memoization of check results.
+// reads and writes are concurrent
+//
 class validate_memo_t
 {
 public:
@@ -46,9 +48,11 @@ private:
 };
 
 // the checks that run after gal2cpp, and again after a user xslt.
-// a user xslt does not rewrite a hash. a hash that no longer matches fails here.
-// compilation stops at the first error. no language — nothing is checked.
-// the returned compile is empty when there is no root aggregate
+// - a user xslt does not rewrite a hash
+// - a hash that no longer matches fails here
+// - compilation stops at the first error
+// - no language: nothing is checked
+// - the returned compile is empty when there is no root aggregate
 //
 // testing: yes (integration)
 //
@@ -57,7 +61,20 @@ holder::compiled_part_sptr_ot validate_language(
     tf::Subflow&
 );
 
-// check of the Language state
+// when the checks take the rows of the aggregates.
+// ALL reads every aggregate when the object is created, so the checks may run on several threads.
+// LAZY reads one aggregate when a check asks for it, and every aggregate when a check needs all.
+// one thread uses a LAZY object, as the Wizard does for each command
+//
+enum class snapshot_et
+{
+    ALL,
+    LAZY
+};
+
+// check of the Language state.
+// a check that fails throws exception::domain::translator_library,
+// exception::subdomain::translator_library::translator
 //
 // testing: yes (unit), yes (integration)
 //
@@ -66,7 +83,8 @@ class cpp2cpp_validate_t
 public:
     cpp2cpp_validate_t(
         const state::holder::language_part_t&,
-        validate_memo_t&
+        validate_memo_t&,
+        snapshot_et = snapshot_et::ALL
     );
     cpp2cpp_validate_t(const cpp2cpp_validate_t&) = delete;
     cpp2cpp_validate_t(cpp2cpp_validate_t&&) = delete;
@@ -74,86 +92,81 @@ public:
     cpp2cpp_validate_t& operator=(cpp2cpp_validate_t&&) = delete;
 
 public:
-    // the root aggregate is exactly one, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
-    // and the list of files that contain it
+    // checks that the root aggregate is exactly one
+    // throws: the message names the list of files that contain it
     //
     bool is_root_aggregate_single();
 
-    // root aggregate version declarations run from 0 without gaps,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // checks that root aggregate version declarations run from 0 without gaps
     //
     bool is_root_aggregate_version_declarations_from_zero_continuous();
 
-    // root aggregate version definition indices repeat the live declaration indices,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // checks that root aggregate version definition indices repeat the live declaration indices
     //
     bool is_root_aggregate_version_definitions_repeat_declarations();
 
-    // each aggregate's version declarations repeat the root declarations,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // checks that each aggregate's version declarations repeat the root declarations
     //
     bool is_aggregate_version_declarations_match_root();
 
-    // deleted is a prefix, a suffix, or an interior span owned by the next live version's anonymous body,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // checks that deleted is a prefix, a suffix, or an interior span
+    // owned by the next live version's anonymous body
     //
     bool is_aggregate_version_declarations_deleted_continuous();
 
-    // aggregate version definitions do not refer to a deleted declaration,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // checks that aggregate version definitions do not refer to a deleted declaration
     //
     bool is_aggregate_version_definitions_not_deleted();
 
-    // aggregate version definitions repeat the declarations without deleted,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // checks that aggregate version definitions repeat the declarations without deleted
     //
     bool is_aggregate_version_definitions_repeat_declarations();
 
-    // aggregate names are unique, including the root.
-    // no single root aggregate is left to is_root_aggregate_single.
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // checks that aggregate names are unique, including the root
+    // no single root aggregate is left to is_root_aggregate_single
     //
     bool is_aggregate_names_unique();
 
-    // non-root aggregate indices are 0 .. n-1 without gaps or duplicates,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // checks that non-root aggregate indices are 0 .. n-1 without gaps or duplicates
     //
     bool is_aggregate_indices_unique_continuous();
 
-    // the stored hash of a version declaration matches the one computed the same way as wizard create hash.
-    // a deleted declaration is left out. aggregate names are not part of the root hash.
-    // checked per version and against the root hash. no hash — the declaration is not checked.
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator.
-    // the message names the aggregates of each differing version, then a version that differs only in the root.
-    // a version that already names an aggregate does not name the root
+    // checks that the stored hash of a version declaration matches the one
+    // computed the same way as wizard create hash
+    // - a deleted declaration is left out
+    // - aggregate names are not part of the root hash
+    // - the hash is checked per version and against the root hash
+    // - a declaration with no hash is not checked
+    // throws: the message names the aggregates of each differing version,
+    //   then a version that differs only in the root.
+    //   a version that already names an aggregate does not name the root
     //
     bool is_version_hashes_match();
 
-    // a version that stores a hash stores it on the root and on every aggregate that is not deleted.
-    // a deleted declaration stays without a hash.
-    // a version with no hashes is not checked.
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
-    // and every declaration where the hash is absent
+    // checks that a version that stores a hash stores it on the root
+    // and on every aggregate that is not deleted
+    // - a deleted declaration stays without a hash
+    // - a version with no hashes is not checked
+    // throws: the message names every declaration where the hash is absent
     //
     bool is_version_hashes_present();
 
-    // among all commands there is exactly one wizard command, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // checks that among all commands there is exactly one wizard command
     //
     bool is_wizard_command_single();
 
-    // a command inside a wizard batch is a create command, including create hash, delete tag, delete version, or collapse version,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // checks that a command inside a wizard batch is a create command,
+    // including create hash, delete tag, delete version, or collapse version
     //
     bool is_wizard_batch_command_create();
 
     // create tag, delete tag, create label, and create ordering write into the open version.
-    // a chunk names the aggregate. a version definition does not.
-    // ordering writes only into the root aggregate.
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // - a chunk names the aggregate, a version definition does not
+    // - ordering writes only into the root aggregate
     //
     bool is_wizard_version_statement();
 
-    // checks of the current wizard command, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // checks of the current wizard command
     //
     bool may_execute_wizard_command();
 
@@ -195,7 +208,7 @@ private:
     bool is_wizard_create_aggregate_root_aggregate_present();
 
     // create aggregate writes a definition of the last root version.
-    // that version is open, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // that version is open
     //
     bool is_wizard_create_aggregate_last_version_open();
 
@@ -238,96 +251,85 @@ private:
     bool is_wizard_delete_aggregate_last_version_open();
     bool is_wizard_delete_aggregate_version_definition_present();
 
-    // physically removes the chunk. an aggregate still present in a closed version is refused,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // physically removes the chunk.
+    // an aggregate still present in a closed version is refused
     //
     bool is_wizard_delete_aggregate_physically_closed();
 
-    // physically removes the chunk. a version whose ordering names the aggregate is refused,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // physically removes the chunk.
+    // a version whose ordering names the aggregate is refused
     //
     bool is_wizard_delete_aggregate_physically_not_ordered();
 
-    // create version runs in an empty chunk,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // create version runs in an empty chunk
     //
     bool is_wizard_create_version_context();
 
-    // create version needs the root aggregate, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // create version needs the root aggregate
     //
     bool is_wizard_create_version_root_present();
 
-    // delete version runs in an empty chunk,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // delete version runs in an empty chunk
     //
     bool is_wizard_delete_version_context();
 
-    // delete version needs the root aggregate, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // delete version needs the root aggregate
     //
     bool is_wizard_delete_version_root_present();
 
     // each listed version is present in the root aggregate declarations.
-    // no version means the last version, and that version must exist.
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // no version means the last version, and that version must exist
     //
     bool is_wizard_delete_version_present();
 
-    // each listed version is open. a root version that stores a hash is closed, and so is every version up to that index.
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // each listed version is open.
+    // a root version that stores a hash is closed, and so is every version up to that index
     //
     bool is_wizard_delete_version_open();
 
-    // the versions that remain run from 0 without gaps.
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // the versions that remain run from 0 without gaps
     //
     bool is_wizard_delete_version_continuous();
 
-    // collapse version runs in an empty chunk,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // collapse version runs in an empty chunk
     //
     bool is_wizard_collapse_version_context();
 
-    // collapse version needs the root aggregate,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // collapse version needs the root aggregate
     //
     bool is_wizard_collapse_version_root_present();
 
-    // each version in the range is declared, and the range ascends,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // each version in the range is declared, and the range ascends
     //
     bool is_wizard_collapse_version_present();
 
-    // a version after the range is declared and live. it owns the anonymous body.
-    // a range that ends on the last version creates a new version instead.
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // a version after the range is declared and live.
+    // it owns the anonymous body.
+    // a range that ends on the last version creates a new version instead
     //
     bool is_wizard_collapse_version_owner_present();
 
     // version before N names the owner, and the next numbered body is that version.
-    // a deleted owner keeps only delete; in that body.
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // a deleted owner keeps only delete; in that body
     //
     bool is_anonymous_versions_owned();
 
     bool wizard_create_version_context_is_allowed(wizard::context_et) const;
 
-    // a wizard batch runs in the chunk context, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // a wizard batch runs in the chunk context
     //
     bool is_wizard_batch_context_chunk();
 
-    // create hash runs in an empty chunk,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // create hash runs in an empty chunk
     //
     bool is_wizard_create_hash_context();
 
-    // delete hash runs in an empty chunk,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // delete hash runs in an empty chunk
     //
     bool is_wizard_delete_hash_context();
 
     // each listed version is present in the root aggregate declarations.
-    // no version means the last version, and that version must exist.
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+    // no version means the last version, and that version must exist
     //
     bool is_wizard_hash_version_present();
 
@@ -445,6 +447,15 @@ private:
     {
     };
 
+    // the row of one aggregate, read from the language state
+    //
+    aggregate_versions_t make_row(const state::holder::aggregate_container::detail::record_t&) const;
+
+    // the rows of every aggregate. a LAZY object reads the missing ones here, after the rows
+    // that checks asked for, and keeps the rows it already gave out
+    //
+    const aggregate_rows_t& every_row() const;
+
     indices_t declaration_indices(const aggregate_versions_t&) const;
     const aggregate_version_declaration_t* declaration_at(const aggregate_versions_t&, index_t) const;
     version_status_oet declaration_status(const aggregate_versions_t&, index_t) const;
@@ -457,7 +468,9 @@ private:
 
     const state::holder::language_part_t& language_part_;
     validate_memo_t& memo_;
-    aggregate_rows_t aggregate_versions_;
+    // a LAZY object adds rows while the checks read it
+    mutable aggregate_rows_t aggregate_versions_;
+    mutable bool has_every_row_ = false;
     state::vertex_descriptor_ot root_vd_;
 };
 

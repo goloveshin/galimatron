@@ -3,7 +3,9 @@
 namespace global::log_subsystems
 {
 
-// Logme subsystem ids. SID::Build takes const char*. every log.cfg subsystems.allowed lists these same ids
+// Logme subsystem ids.
+// SID::Build takes const char*.
+// every log.cfg subsystems.allowed lists these same ids
 
 // brief: program entry
 // part: galimatron/executable
@@ -80,7 +82,8 @@ inline constexpr const char* tr_hld = "TR-HLD";
 //
 inline constexpr const char* tr_s2g = "TR-S2G";
 
-// brief: from the language cpp presentation to the language cpp presentation; applies the wizard command
+// brief: from the language cpp presentation to the language cpp presentation.
+//   applies the wizard command
 // part: galimatron/translator_library/transforms/cpp2cpp_wizard
 //
 inline constexpr const char* tr_s2s = "TR-S2S";
@@ -100,8 +103,10 @@ inline constexpr const char* tr_x2s = "TR-X2S";
 //
 inline constexpr const char* tr_xslt = "TR-XSLT";
 
-// brief: cpp2cpp_validate checks the language cpp presentation and leaves that presentation. wrappers in galimatron/translator_library/translator/detail/transforms stay on this id
-// part: galimatron/translator_library/translator, galimatron/translator_library/transforms/cpp2cpp_validate
+// brief: cpp2cpp_validate checks the language cpp presentation and leaves that presentation.
+//   wrappers in galimatron/translator_library/translator/detail/transforms stay on this id
+// part: galimatron/translator_library/translator,
+//   galimatron/translator_library/transforms/cpp2cpp_validate
 //
 inline constexpr const char* tr_tsp = "TR-TSP";
 

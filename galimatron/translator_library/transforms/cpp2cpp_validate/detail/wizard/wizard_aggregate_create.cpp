@@ -45,7 +45,11 @@ namespace
 Logme::SID SUBSID = Logme::SID::Build(global::log_subsystems::tr_tsp);
 }
 
-// create aggregate runs in the chunk context, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// every check in this file throws with
+// exception::domain::translator_library, exception::subdomain::translator_library::translator
+
+// checks that create aggregate runs in the chunk context
+// throws: WIZARD_CREATE_AGGREGATE_CONTEXT_MUST_BE_CHUNK
 //
 bool cpp2cpp_validate_t::is_wizard_create_aggregate_context_chunk()
 {
@@ -73,8 +77,9 @@ bool cpp2cpp_validate_t::is_wizard_create_aggregate_context_chunk()
     );
 }
 
-// the last root version is open. create aggregate writes a definition of that version,
-// otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// checks that the last root version is open
+// create aggregate writes a definition of that version
+// throws: WIZARD_CREATE_AGGREGATE_LAST_VERSION_MUST_BE_OPEN
 //
 bool cpp2cpp_validate_t::is_wizard_create_aggregate_last_version_open()
 {
@@ -106,7 +111,8 @@ bool cpp2cpp_validate_t::is_wizard_create_aggregate_last_version_open()
     );
 }
 
-// for create aggregate the root aggregate already exists, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// checks that for create aggregate the root aggregate already exists
+// throws: WIZARD_CREATE_AGGREGATE_ROOT_AGGREGATE_MUST_EXIST
 //
 bool cpp2cpp_validate_t::is_wizard_create_aggregate_root_aggregate_present()
 {
@@ -133,8 +139,10 @@ bool cpp2cpp_validate_t::is_wizard_create_aggregate_root_aggregate_present()
     );
 }
 
-// create aggregate writes each name.gal next to the command file, or under the named directory.
-// the command file is not one of those files, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// checks that the command file is not one of the files create aggregate writes
+// create aggregate writes each name.gal next to the command file, or under the named directory
+// throws: WIZARD_CREATE_AGGREGATE_COMMAND_FILE_IS_THE_AGGREGATE.
+// the message names the command file path
 //
 bool cpp2cpp_validate_t::is_wizard_create_aggregate_command_file()
 {
@@ -180,8 +188,9 @@ bool cpp2cpp_validate_t::is_wizard_create_aggregate_command_file()
     );
 }
 
-// names in one create aggregate command differ, ignoring case,
-// otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// checks that names in one create aggregate command differ, ignoring case
+// throws: WIZARD_CREATE_AGGREGATE_NAMES_MUST_BE_UNIQUE.
+// the message names the duplicated names
 //
 bool cpp2cpp_validate_t::is_wizard_create_aggregate_names_unique()
 {
@@ -236,7 +245,9 @@ bool cpp2cpp_validate_t::is_wizard_create_aggregate_names_unique()
     );
 }
 
-// each new chunk file does not exist yet, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// checks that each new chunk file does not exist yet
+// throws: WIZARD_CREATE_AGGREGATE_CHUNK_MUST_BE_ABSENT.
+// the message names the paths of the files that exist
 //
 bool cpp2cpp_validate_t::is_wizard_create_aggregate_chunk_absent()
 {

@@ -54,10 +54,10 @@ endif()
 file(MAKE_DIRECTORY "${benchmark_log_dir}")
 
 file(WRITE "${benchmark_table}"
-"| agg | ver | tags | total s | wizard s | cpp2xml s | xslt s | xml2cpp s | cpp2gal s | post xml s | state |\n"
+"| agg | ver | tags | total s | wizard s | cpp2xml s | xslt s | xml2cpp s | seal s | cpp2gal s | post xml s | state |\n"
 )
 file(APPEND "${benchmark_table}"
-"| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n"
+"| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n"
 )
 
 function(benchmark_seconds ms out_text)
@@ -101,8 +101,10 @@ function(benchmark_read_log log_path out_row)
     set(total "")
     set(wizard "")
     set(cpp2xml "")
+    set(xml2saxon "")
     set(xslt "")
     set(xml2cpp "")
+    set(seal "")
     set(cpp2gal "")
     set(post_xml "")
     set(state "")
@@ -120,10 +122,14 @@ function(benchmark_read_log log_path out_row)
                 set(wizard "${step_ms}")
             elseif(step STREQUAL "cpp2xml")
                 set(cpp2xml "${step_ms}")
+            elseif(step STREQUAL "xml2saxon")
+                set(xml2saxon "${step_ms}")
             elseif(step STREQUAL "suffix fresh tags")
                 set(xslt "${step_ms}")
             elseif(step STREQUAL "xml2cpp")
                 set(xml2cpp "${step_ms}")
+            elseif(step STREQUAL "cpp2cpp_after_xslt")
+                set(seal "${step_ms}")
             elseif(step STREQUAL "cpp2gal")
                 set(cpp2gal "${step_ms}")
             elseif(step STREQUAL "post_cpp2post_xml")
@@ -131,18 +137,23 @@ function(benchmark_read_log log_path out_row)
             endif()
         endif()
     endforeach()
+    # the xslt column is Saxon at work: it parses the document, then runs the xslt
+    if(NOT xml2saxon STREQUAL "" AND NOT xslt STREQUAL "")
+        math(EXPR xslt "${xml2saxon} + ${xslt}")
+    endif()
     benchmark_seconds("${total}" total_s)
     benchmark_seconds("${wizard}" wizard_s)
     benchmark_seconds("${cpp2xml}" cpp2xml_s)
     benchmark_seconds("${xslt}" xslt_s)
     benchmark_seconds("${xml2cpp}" xml2cpp_s)
+    benchmark_seconds("${seal}" seal_s)
     benchmark_seconds("${cpp2gal}" cpp2gal_s)
     benchmark_seconds("${post_xml}" post_xml_s)
     if(state STREQUAL "")
         set(state "-")
     endif()
     set(${out_row}
-        "| ${benchmark_cell_agg} | ${benchmark_cell_ver} | ${benchmark_cell_tags} | ${total_s} | ${wizard_s} | ${cpp2xml_s} | ${xslt_s} | ${xml2cpp_s} | ${cpp2gal_s} | ${post_xml_s} | ${state} |"
+        "| ${benchmark_cell_agg} | ${benchmark_cell_ver} | ${benchmark_cell_tags} | ${total_s} | ${wizard_s} | ${cpp2xml_s} | ${xslt_s} | ${xml2cpp_s} | ${seal_s} | ${cpp2gal_s} | ${post_xml_s} | ${state} |"
         PARENT_SCOPE
     )
 endfunction()

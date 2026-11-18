@@ -35,9 +35,11 @@ enum class cardinality_et
     MANY
 };
 
-// physical changes the graph: a file, an aggregate, a version, a statement, or a hash.
-// historical writes delete into a version. the history stays, and compilation drops what was deleted.
-// none is a batch: it runs other commands
+// the kind of change a command makes:
+// - physical changes the graph: a file, an aggregate, a version, a statement, or a hash
+// - historical writes delete into a version
+//   the history stays, and compilation drops what was deleted
+// - none is a batch: it runs other commands
 //
 enum class edit_et
 {
@@ -69,169 +71,226 @@ using enum edit_et;
 enum class command_et
 {
     // wizard create root aggregate <name>
-    //   mode: none
-    //   context: chunk
+    // mode: none
+    // context: chunk
+    // examples:
     //     wizard create root aggregate protocol;
-    //   writes protocol.gal next to the file that runs the command.
-    //   that file is not filled, and it cannot be protocol.gal
+    // rules:
+    // - writes protocol.gal next to the file that runs the command
+    // - that file is not filled, and it cannot be protocol.gal
     CREATE_ROOT_AGGREGATE,
 
     // wizard create aggregate [once|local|own] <name> [, <name>]*
-    //   mode: once, local, own
-    //   context: chunk
+    // mode: once, local, own
+    // context: chunk
+    // examples:
     //     wizard create aggregate ping, pong;
     //     wizard create aggregate local dictionary;
     //     wizard create aggregate own dictionary;
-    //   writes ping.gal and pong.gal next to the file that runs the command.
-    //   that file is not filled, and it cannot be one of those names.
-    //   once, local, and own mark the last version of each new aggregate.
-    //   the names differ, ignoring case
+    // rules:
+    // - writes ping.gal and pong.gal next to the file that runs the command
+    // - that file is not filled, and it cannot be one of those names
+    // - once, local, and own mark the last version of each new aggregate
+    // - the names differ, ignoring case
     CREATE_AGGREGATE,
 
     // wizard copy aggregate <source> to <name> [, <name>]* [in <directory>]
-    //   mode: none
-    //   context: chunk
+    // mode: none
+    // context: chunk
+    // examples:
     //     wizard copy aggregate ping to pong;
     //     wizard copy aggregate ping to pong, pang in payload;
-    //   the source already exists. each name is a new aggregate.
-    //   the new aggregate receives the source declarations and bodies, including a deleted version and a stored hash.
-    //   the source stays. ordering is left alone.
-    //   a source that is still present in a closed version is refused: the copy would change that version's root hash.
-    //   a deleted declaration in a closed version is copied as deleted.
-    //   the names differ, ignoring case, and differ from the source.
-    //   the command file is not one of the new names. the root aggregate is neither source nor target
+    // rules:
+    // - the source already exists
+    // - each name is a new aggregate
+    // - the new aggregate receives the source declarations and bodies,
+    //   including a deleted version and a stored hash
+    // - the source stays
+    // - ordering is left alone
+    // - a source that is still present in a closed version is refused:
+    //   the copy would change that version's root hash
+    // - a deleted declaration in a closed version is copied as deleted
+    // - the names differ, ignoring case, and differ from the source
+    // - the command file is not one of the new names
+    // - the root aggregate is neither source nor target
     COPY_AGGREGATE,
 
     // wizard continue aggregate <source> to <name> [, <name>]* [in <directory>]
-    //   mode: none
-    //   context: chunk
+    // mode: none
+    // context: chunk
+    // examples:
     //     wizard continue aggregate ping to pong;
     //     wizard continue aggregate ping to pong, pang in payload;
-    //   adds the next version on the root and on every aggregate, the same way wizard create version does.
-    //   the source keeps its versions. that new version of the source is delete;.
-    //   each new aggregate is deleted in the earlier versions and live in the new one.
-    //   the new version holds the statements of the source's last version, and the dynamic tags create version carries forward.
-    //   a closed version of the source stays. the new aggregate is deleted there, so the root hash stays.
-    //   the source's last version is live. the names differ, ignoring case, and differ from the source.
-    //   the command file is not one of the new names. the root aggregate is neither source nor target.
-    //   an ordering that names the source stays
+    // rules:
+    // - adds the next version on the root and on every aggregate,
+    //   the same way wizard create version does
+    // - the source keeps its versions
+    // - that new version of the source is delete;
+    // - each new aggregate is deleted in the earlier versions and live in the new one
+    // - the new version holds the statements of the source's last version,
+    //   and the dynamic tags create version carries forward
+    // - a closed version of the source stays
+    // - the new aggregate is deleted in a closed version, so the root hash stays
+    // - the source's last version is live
+    // - the names differ, ignoring case, and differ from the source
+    // - the command file is not one of the new names
+    // - the root aggregate is neither source nor target
+    // - an ordering that names the source stays
     CONTINUE_AGGREGATE,
 
     // wizard delete aggregate <name> [, <name>]* [physically]
-    //   mode: physically
-    //   context: chunk
+    // mode: physically
+    // context: chunk
+    // examples:
     //     wizard delete aggregate ping, pong;
     //     wizard delete aggregate ping physically;
-    //   writes delete; into the last version of each named aggregate.
-    //   that version is then historically deleted.
-    //   the last version is open: a root version that stores a hash is closed, and so is every version up to that index.
-    //   physically removes the named chunks. the name can be created again.
-    //   an aggregate present in a closed version is refused.
-    //   a version whose ordering names the aggregate is refused.
-    //   no name removes every aggregate whose versions are already all deleted, and takes no mode.
-    //   the names differ, ignoring case. the root aggregate is not a target
+    // rules:
+    // - writes delete; into the last version of each named aggregate
+    // - that version is then historically deleted
+    // - the last version is open: a root version that stores a hash is closed,
+    //   and so is every version up to that index
+    // - physically removes the named chunks
+    // - the name can be created again after physically
+    // - an aggregate present in a closed version is refused
+    // - a version whose ordering names the aggregate is refused
+    // - no name removes every aggregate whose versions are already all deleted,
+    //   and takes no mode
+    // - the names differ, ignoring case
+    // - the root aggregate is not a target
     DELETE_AGGREGATE,
 
     // wizard create version [once|local|own]
-    //   mode: once, local, own
-    //   context: an empty chunk, with no aggregates in that file
+    // mode: once, local, own
+    // context: an empty chunk, with no aggregates in that file
+    // examples:
     //     wizard create version;
     //     wizard create version once;
     //     wizard create version local;
     //     wizard create version own;
-    //   plain keeps local on an aggregate whose previous version is local and copies that body.
-    //   plain keeps own and does not copy the body: the next version sees the earlier one.
-    //   once does not carry forward: the next version is unmarked.
-    //   once writes version once on the root and on every live aggregate.
-    //   local writes version local on every live nested aggregate and version once on the root.
-    //   own writes version own on every live nested aggregate and leaves the root unmarked.
-    //   a local body copies the previous version's ordinary tags, labels, and orderings
+    // rules:
+    // - plain keeps local on an aggregate whose previous version is local,
+    //   and copies that body
+    // - plain keeps own and does not copy the body: the next version sees the earlier one
+    // - once does not carry forward: the next version is unmarked
+    // - once writes version once on the root and on every live aggregate
+    // - local writes version local on every live nested aggregate,
+    //   and version once on the root
+    // - own writes version own on every live nested aggregate and leaves the root unmarked
+    // - a local body copies the previous version's ordinary tags, labels, and orderings
     CREATE_VERSION,
 
     // wizard delete version [<version> [, <version>]*]
-    //   mode: none
-    //   context: an empty chunk, with no aggregates in that file
-    //   no version means the last version of the root aggregate
+    // mode: none
+    // context: an empty chunk, with no aggregates in that file
+    // examples:
     //     wizard delete version;
     //     wizard delete version 10, 11;
-    //   removes those versions from every aggregate. each version is open.
-    //   the versions that remain run from 0 without gaps.
-    //   a root version that stores a hash is closed, and so is every version up to that index
+    // rules:
+    // - no version means the last version of the root aggregate
+    // - removes those versions from every aggregate
+    // - each version is open
+    // - the versions that remain run from 0 without gaps
+    // - a root version that stores a hash is closed, and so is every version up to that index
     DELETE_VERSION,
 
     // wizard collapse version <first>-<last>
-    //   mode: none
-    //   context: an empty chunk, with no aggregates in that file
+    // mode: none
+    // context: an empty chunk, with no aggregates in that file
+    // examples:
     //     wizard collapse version 1-4;
-    //   one inclusive range. when a version follows the range, that version owns
-    //   version before <owner>, and the statements move there.
-    //   when the range ends on the last version, a new version is created and the
-    //   statements move there. an aggregate whose last version is already deleted
-    //   gets a deleted declaration and no body.
-    //   marks the range deleted, drops its hashes, and deletes its bodies,
+    // rules:
+    // - one inclusive range
+    // - when a version follows the range, that version owns
+    //   version before <owner>, and the statements move there
+    // - when the range ends on the last version, a new version is created,
+    //   and the statements move there
+    // - an aggregate whose last version is already deleted
+    //   gets a deleted declaration and no body
+    // - marks the range deleted, drops its hashes, and deletes its bodies,
     //   on the root and on every aggregate, including a closed version
     COLLAPSE_VERSION,
 
     // wizard create label [aggregate] <name> = static|dynamic ...
-    //   mode: none
-    //   context: an empty chunk, with no aggregates in that file
+    // mode: none
+    // context: an empty chunk, with no aggregates in that file
+    // examples:
     //     wizard create label protocol field = static { type };
-    //   the command names the aggregate. the version is that aggregate's last version, and it is open
+    // rules:
+    // - the command names the aggregate
+    // - the version is that aggregate's last version, and it is open
     CREATE_LABEL,
 
     // wizard create tag [aggregate] [name =] <labels> { <values> }
-    //   mode: none
-    //   context: an empty chunk, with no aggregates in that file
+    // mode: none
+    // context: an empty chunk, with no aggregates in that file
+    // examples:
     //     wizard create tag protocol speed = field { "int" };
     //     wizard create tag hello field important { "std::string", "message" };
     //     wizard create tag dictionary entry { "uuid", "0", "stable id of a message" };
-    //   the command names the aggregate. the version is that aggregate's last version, and it is open
+    // rules:
+    // - the command names the aggregate
+    // - the version is that aggregate's last version, and it is open
     CREATE_TAG,
 
     // wizard delete tag [aggregate] <name>
-    //   mode: none
-    //   context: an empty chunk, with no aggregates in that file
+    // mode: none
+    // context: an empty chunk, with no aggregates in that file
+    // examples:
     //     wizard delete tag item speed;
-    //   writes delete <name>; into the open version. the tag stays absent there and in later versions. it does not delete the version
+    // rules:
+    // - writes delete <name>; into the open version
+    // - the tag stays absent there and in later versions
+    // - it does not delete the version
     DELETE_TAG,
 
     // wizard create ordering [aggregate] <name> = { <name>, <name> } [, { ... }]*
-    //   mode: none
-    //   context: an empty chunk, with no aggregates in that file
+    // mode: none
+    // context: an empty chunk, with no aggregates in that file
+    // examples:
     //     wizard create ordering protocol precedes = { item, pong };
-    //   the aggregate is the root aggregate. the version is its last version, and it is open
+    // rules:
+    // - the aggregate is the root aggregate
+    // - the version is its last version, and it is open
     CREATE_ORDERING,
 
     // wizard create hash [<version> [, <version>]*] [force]
-    //   mode: force
-    //   context: an empty chunk, with no aggregates in that file
-    //   no version means the last version of the root aggregate
+    // mode: force
+    // context: an empty chunk, with no aggregates in that file
+    // examples:
     //     wizard create hash;
     //     wizard create hash 10, 11;
     //     wizard create hash 10 force;
-    //   force stores the hash of the important tags as they are now.
-    //   the validation before the wizard does not check the hash of those versions.
-    //   a version the command does not name is still checked.
-    //   the validation after a user xslt checks the hash the command stored
+    // rules:
+    // - no version means the last version of the root aggregate
+    // - force stores the hash of the important tags as they are now
+    // - the validation before the wizard does not check the hash of those versions
+    // - a version the command does not name is still checked
+    // - the validation after a user xslt checks the hash the command stored
     CREATE_HASH,
 
     // wizard delete hash [<version> [, <version>]*] [force]
-    //   mode: force
-    //   context: an empty chunk, with no aggregates in that file
-    //   no version means the last version of the root aggregate
+    // mode: force
+    // context: an empty chunk, with no aggregates in that file
+    // examples:
     //     wizard delete hash;
     //     wizard delete hash 10, 11;
     //     wizard delete hash 10 force;
-    //   force removes the hash when the stored hash does not match.
-    //   the validation before the wizard does not check the hash of those versions.
-    //   a version the command does not name is still checked
+    // rules:
+    // - no version means the last version of the root aggregate
+    // - force removes the hash when the stored hash does not match
+    // - the validation before the wizard does not check the hash of those versions
+    // - a version the command does not name is still checked
     DELETE_HASH,
 
     // wizard { <create command>; ... }
-    //   mode: none
-    //   context: an empty chunk, with no aggregates in that file
+    // mode: none
+    // context: an empty chunk, with no aggregates in that file
+    // examples:
     //     wizard { create root aggregate protocol; create version; create hash 0; }
-    //   the commands run one by one: create commands, including create hash, delete tag, delete version, and collapse version
+    // rules:
+    // - the commands run one by one
+    // - the commands are create commands, including create hash,
+    //   delete tag, delete version, and collapse version
     BATCH
 };
 
@@ -303,12 +362,15 @@ using entities_t = std::tuple<
     ordering_lifetime_t
 >;
 
-// copy aggregate is C of an aggregate.
-// continue aggregate is C of an aggregate, D of the source, and the same version C and updates as create version.
-// create version is C of a version and U of the root and of an aggregate.
-// create tag, create label, and create ordering are C and U: a later statement of the same name is the update.
-// create hash and delete hash are U of a version.
-// delete version and collapse version are D of a version.
+// the actions each command lists:
+// - copy aggregate is C of an aggregate
+// - continue aggregate is C of an aggregate, D of the source,
+//   and the same version C and updates as create version
+// - create version is C of a version and U of the root and of an aggregate
+// - create tag, create label, and create ordering are C and U:
+//   a later statement of the same name is the update
+// - create hash and delete hash are U of a version
+// - delete version and collapse version are D of a version
 //
 using commands_t = std::tuple<
     command_declaration_t<cmd::CREATE_ROOT_AGGREGATE, ed::PHYSICAL,
@@ -402,7 +464,8 @@ static_assert(entity_fits<tag_lifetime_t>(), "tag lifetime does not match its co
 static_assert(entity_fits<label_lifetime_t>(), "label lifetime does not match its commands");
 static_assert(entity_fits<ordering_lifetime_t>(), "ordering lifetime does not match its commands");
 
-// historical writes a delete, so the command lists D. a batch is the command with edit none and no action
+// historical writes a delete, so the command lists D
+// a batch is the command with edit none and no action
 //
 template <command_et Command, edit_et Edit, typename ... Act>
 constexpr bool declaration_edit_fits()

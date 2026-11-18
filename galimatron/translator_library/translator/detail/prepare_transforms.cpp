@@ -92,11 +92,13 @@ void translator_t::prepare_prod_transforms()
 {
     // builder_t completes transform_sequence in place.
     // state_transforms is the catalog of edges between representations.
-    // the seed is validating, the wizard, and the enabled user transforms; those stay, in that order.
+    // the seed is validating, the wizard, and the enabled user transforms.
+    // those stay, in that order.
     // edges from the catalog are inserted so each step's outgoing domain and state_type
     // match the next step's incoming ones.
-    // the sequence starts at language GaL, the language part ends with CPP -> GaL,
-    // and the sequence ends at post-language XML.
+    // the sequence starts at language GaL.
+    // the language part ends with CPP -> GaL.
+    // the sequence ends at post-language XML.
     namespace tsb = transform_sequence_builder;
 
     tsb::builder_t::container_t transform_sequence;

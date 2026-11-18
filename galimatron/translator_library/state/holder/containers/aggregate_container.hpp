@@ -98,6 +98,9 @@ using container_t = multi_index_container
 
 }// namespace detail
 
+// a function that throws here uses one domain and one subdomain:
+// exception::domain::translator_library, exception::subdomain::translator_library::holder
+//
 class container_t : public multi_index_lookup::container_extended_t<detail::container_t>
 {
 public:
@@ -155,8 +158,8 @@ public:
         return &found->get();
     }
 
-    // the declarations list of this aggregate,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::holder
+    // the declarations list of this aggregate
+    // throws when the aggregate is not found
     //
     void note_declarations(const vertex_descriptor_t vd_aggregate, const vertex_descriptor_t vd_declarations)
     {
@@ -166,8 +169,8 @@ public:
         });
     }
 
-    // the definitions list of this aggregate,
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::holder
+    // the definitions list of this aggregate
+    // throws when the aggregate is not found
     //
     void note_definitions(const vertex_descriptor_t vd_aggregate, const vertex_descriptor_t vd_definitions)
     {
@@ -276,7 +279,7 @@ public:
     //
     // testing: no
     //
-    void collect_vertex_descriptors(std::vector<vertex_descriptor_t>& held) const
+    void collect_vertex_descriptors(vertex_descriptors_vector_t& held) const
     {
         for (const auto& record : *this)
         {
@@ -287,20 +290,20 @@ public:
         }
     }
 
-    // descriptors above a removed vertex move down by one
+    // descriptors above the removed vertices move down
     //
     // testing: no
     //
-    void note_vertex_removed(const vertex_descriptor_t removed)
+    void note_vertices_removed(const vertex_shift_t& shift)
     {
-        rewrite_descriptors(*this, removed, [&](detail::record_t& record)
+        rewrite_descriptors(*this, [&](detail::record_t& record)
         {
-            pull_down(record.vd, removed);
-            pull_down(record.vd_chunk, removed);
-            pull_down(record.vd_declarations, removed);
-            pull_down(record.vd_definitions, removed);
+            pull_down(record.vd, shift);
+            pull_down(record.vd_chunk, shift);
+            pull_down(record.vd_declarations, shift);
+            pull_down(record.vd_definitions, shift);
         });
-        pull_down(root_, removed);
+        pull_down(root_, shift);
     }
 
 private:

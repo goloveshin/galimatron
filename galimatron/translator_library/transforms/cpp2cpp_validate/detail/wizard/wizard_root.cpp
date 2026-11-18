@@ -37,6 +37,9 @@
 namespace galimatron::translator::transforms::cpp2cpp_validate
 {
 
+// every check in this file that fails throws:
+// - exception::domain::translator_library
+// - exception::subdomain::translator_library::translator
 using namespace galimatron::translator::state;
 using galimatron::translator::galimatron_config::report_path;
 
@@ -56,10 +59,10 @@ bool cpp2cpp_validate_t::wizard_create_root_aggregate_context_is_chunk(const wiz
 //
 bool cpp2cpp_validate_t::wizard_create_root_aggregate_root_aggregate_is_absent() const
 {
-    return std::ranges::none_of(aggregate_versions_, &aggregate_versions_t::is_root);
+    return std::ranges::none_of(every_row(), &aggregate_versions_t::is_root);
 }
 
-// checks of the current wizard command, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// runs the checks of the current wizard command
 //
 bool cpp2cpp_validate_t::may_execute_wizard_command()
 {
@@ -180,7 +183,9 @@ bool cpp2cpp_validate_t::skips_root_aggregate_checks() const
     return false;
 }
 
-// among all commands there is exactly one wizard command, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// checks that there is exactly one wizard command among all commands
+// throws: WIZARD_COMMAND_MUST_BE_ONE
+// the message names the count
 //
 bool cpp2cpp_validate_t::is_wizard_command_single()
 {
@@ -195,7 +200,9 @@ bool cpp2cpp_validate_t::is_wizard_command_single()
     fail(WIZARD_COMMAND_MUST_BE_ONE, std::format("{}: {}", wizard::tags::command::must_be_one, count));
 }
 
-// create root aggregate runs in the chunk context, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// checks that create root aggregate runs in the chunk context
+// throws: WIZARD_CREATE_ROOT_AGGREGATE_CONTEXT_MUST_BE_CHUNK
+// the message names the context
 //
 bool cpp2cpp_validate_t::is_wizard_create_root_aggregate_context_chunk()
 {
@@ -223,8 +230,10 @@ bool cpp2cpp_validate_t::is_wizard_create_root_aggregate_context_chunk()
     );
 }
 
-// create root aggregate writes name.gal next to the command file.
-// the command file is not that file, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// checks that the command file is not the file that create root aggregate writes.
+// create root aggregate writes name.gal next to the command file
+// throws: WIZARD_CREATE_ROOT_AGGREGATE_COMMAND_FILE_IS_THE_AGGREGATE
+// the message names the command file
 //
 bool cpp2cpp_validate_t::is_wizard_create_root_aggregate_command_file()
 {
@@ -255,8 +264,9 @@ bool cpp2cpp_validate_t::is_wizard_create_root_aggregate_command_file()
     );
 }
 
-// the new root aggregate file is not already loaded,
-// otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// checks that the new root aggregate file is not already loaded
+// throws: WIZARD_CREATE_ROOT_AGGREGATE_CHUNK_MUST_BE_ABSENT
+// the message names the new chunk file
 //
 bool cpp2cpp_validate_t::is_wizard_create_root_aggregate_chunk_absent()
 {
@@ -287,7 +297,9 @@ bool cpp2cpp_validate_t::is_wizard_create_root_aggregate_chunk_absent()
     );
 }
 
-// there is no root aggregate, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// checks that there is no root aggregate yet
+// throws: WIZARD_CREATE_ROOT_AGGREGATE_ROOT_AGGREGATE_MUST_BE_ABSENT
+// the message names the root chunk files
 //
 bool cpp2cpp_validate_t::is_wizard_create_root_aggregate_root_aggregate_absent()
 {

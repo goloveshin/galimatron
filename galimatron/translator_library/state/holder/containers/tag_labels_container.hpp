@@ -18,7 +18,7 @@ struct record_t
     vertex_descriptor_t vd_tag;
 
     // its labels
-    vertex_descriptors_ot vd_labels;
+    vertex_descriptors_deque_ot vd_labels;
     aggregated_labels_static_ot aggregated_labels_static;
 };
 

@@ -21,7 +21,7 @@ Logme::SID SUBSID = Logme::SID::Build(global::log_subsystems::tr_s2x);
 }
 
 
-vertex_descriptors_t cpp2xml_t::childs_of(const vertex_descriptor_t vd) const
+vertex_descriptors_deque_t cpp2xml_t::childs_of(const vertex_descriptor_t vd) const
 {
     const auto& graph = language_state_->graph();
     const auto entity_type = graph[vd].entity_type;
@@ -39,7 +39,7 @@ vertex_descriptors_t cpp2xml_t::childs_of(const vertex_descriptor_t vd) const
             {
                 return record.vd_tag;
             })
-            | ranges::to<vertex_descriptors_t>()
+            | ranges::to<vertex_descriptors_deque_t>()
             ;
     }
 
@@ -53,7 +53,7 @@ vertex_descriptors_t cpp2xml_t::childs_of(const vertex_descriptor_t vd) const
             {
                 return statement.vd;
             })
-            | ranges::to<vertex_descriptors_t>()
+            | ranges::to<vertex_descriptors_deque_t>()
             ;
     }
 
@@ -76,7 +76,7 @@ vertex_descriptors_t cpp2xml_t::childs_of(const vertex_descriptor_t vd) const
             }
             return true;
         })
-        | ranges::to<vertex_descriptors_t>()
+        | ranges::to<vertex_descriptors_deque_t>()
         ;
 }
 

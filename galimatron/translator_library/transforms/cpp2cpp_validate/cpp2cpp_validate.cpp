@@ -33,8 +33,11 @@ Logme::SID SUBSID = Logme::SID::Build(global::log_subsystems::tr_tsp);
 namespace
 {
 
-// compilation checks the language, including that a tag has every label it uses by the time it is declared.
-// stops at the first error. no root aggregate — nothing to compile.
+// compilation checks the language, including that a tag has every label it uses
+// by the time it is declared.
+// it stops at the first error.
+// with no root aggregate there is nothing to compile.
+//
 holder::compiled_part_sptr_ot compile_for_validation(const holder::language_part_sptr_t& language)
 {
     if (!language || !language->aggregates().has_root())
@@ -55,10 +58,12 @@ holder::compiled_part_sptr_ot compile_for_validation(const holder::language_part
 
 }// namespace
 
-// the checks that run after gal2cpp, and again after a user xslt.
-// a user xslt does not rewrite a hash. a hash that no longer matches fails here.
-// compilation stops at the first error. no language — nothing is checked.
-// the returned compile is empty when there is no root aggregate
+// the checks that run after gal2cpp, and again after a user xslt
+// - a user xslt does not rewrite a hash
+// - a hash that no longer matches fails here
+// - compilation stops at the first error
+// - with no language, nothing is checked
+// - the returned compile is empty when there is no root aggregate
 //
 // testing: yes (integration)
 //

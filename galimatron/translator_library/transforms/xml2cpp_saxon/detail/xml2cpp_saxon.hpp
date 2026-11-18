@@ -42,7 +42,8 @@ private:
     index_ot attribute_index_if(const node_t&) const;
 
     // once and local. an absent mode inherits
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::xml2cpp
+    // throws: an unknown mode, with exception::domain::translator_library,
+    // exception::subdomain::translator_library::xml2cpp
     //
     tag_mode_et attribute_mode(const node_t&) const;
 
@@ -82,6 +83,8 @@ private:
 
 private:
     layout::table_t* layout_table_ = nullptr;
+    // the layout marks whose element did not change, found in one walk before the read
+    layout::layout_marks_t unchanged_marks_;
     holder::language_part_sptr_t state_;
     builder::builder_t builder_;
     index_t next_aggregate_index_ = 0;

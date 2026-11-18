@@ -111,7 +111,7 @@ private:
     // every other node lists its graph edges.
     // a wizard statement is never printed. a compiled print drops labels
     //
-    vertex_descriptors_t childs_of(vertex_descriptor_t) const;
+    vertex_descriptors_deque_t childs_of(vertex_descriptor_t) const;
 
 private:
     const translate_t args_;

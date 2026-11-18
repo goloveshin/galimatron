@@ -22,7 +22,7 @@ namespace
 //
 void drop_tag_name(
     const holder::language_part_t& state,
-    std::vector<vertex_descriptor_t>& chosen,
+    vertex_descriptors_vector_t& chosen,
     const name_t& name
 )
 {
@@ -33,8 +33,9 @@ void drop_tag_name(
     });
 }
 
-// a local version does not inherit, so the new body is a copy of the previous body.
-// once and local tags stay in the previous version
+// copies the previous body into the new body of a local version
+// - a local version does not inherit, so the new body is a copy of the previous body
+// - once and local tags stay in the previous version
 //
 void copy_local_version_body(
     state::holder::language_part_t& state,
@@ -102,8 +103,9 @@ void copy_local_version_body(
     }
 }
 
-// tags that use a dynamic label are copied into the new version definition.
-// a delete <name>; in the previous version keeps that tag out of this version and the ones after it
+// copies the tags that use a dynamic label into the new version definition
+// - a delete <name>; in the previous version keeps that tag out of this version
+//   and the ones after it
 //
 void copy_dynamic_tags(
     state::holder::language_part_t& state,
@@ -137,7 +139,7 @@ void copy_dynamic_tags(
     }
 
     const auto statements = state.statements_in_order(vd_aggregate, *previous_index);
-    std::vector<vertex_descriptor_t> chosen;
+    vertex_descriptors_vector_t chosen;
     for (const auto& statement : statements)
     {
         const auto& entity = state.graph()[statement.vd].entity;
@@ -187,8 +189,10 @@ void copy_dynamic_tags(
 }
 }// namespace
 
-// the next version: in the root, a declaration and a definition,
-// in the other aggregates a declaration like the previous one, a definition only if it is not deleted
+// adds the next version
+// - in the root: a declaration and a definition
+// - in the other aggregates: a declaration like the previous one,
+//   and a definition only if it is not deleted
 //
 index_t add_next_version(
     holder::language_part_t& state,

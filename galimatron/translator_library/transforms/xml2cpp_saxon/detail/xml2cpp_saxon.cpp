@@ -42,6 +42,10 @@ holder::language_part_sptr_t xml2cpp_saxon_t::translate()
     );
 
     read_string_delimiters(source_);
+    if (layout_table_)
+    {
+        unchanged_marks_ = unchanged_layout_marks(source_, *layout_table_);
+    }
     walk(source_, builder_.root_node());
     state_->drop_detached_vertices();
     return state_;
@@ -274,7 +278,7 @@ void xml2cpp_saxon_t::restore_layout(const node_t& node, const vertex_descriptor
 
     auto& vertex = builder_.graph()[vd];
     vertex.user_comments = found->second.user_comments;
-    if (fingerprint(node) == found->second.fingerprint)
+    if (unchanged_marks_.contains(mark))
     {
         vertex.user_formatting = found->second.user_formatting;
     }

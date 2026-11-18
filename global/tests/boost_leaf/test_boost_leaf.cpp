@@ -84,7 +84,8 @@ template <typename TestFunc>
 void test(
     // run
     TestFunc&& test_func,
-    // if this expectation is set (a non-empty string), only check it; if it is not set, write the actual result to the log
+    // if this expectation is set (a non-empty string), only check it
+    // if it is not set, write the actual result to the log
     const std::string& expected_diagnostic_details
 )
 {
@@ -103,7 +104,8 @@ void test(
     CHECK(actual_info == expected_diagnostic_details);
 }
 
-// run test_func, try to catch with catch_func, and globally catch everything with leaf::diagnostic_details
+// run test_func, try to catch with catch_func,
+// and globally catch everything with leaf::diagnostic_details
 //
 template <typename TestFunc, typename CatchFunc>
 void test(
@@ -113,7 +115,8 @@ void test(
     CatchFunc&& catch_func,
     // whether the handler is expected to fire
     const bool is_expected_catched,
-    // if this expectation is set (a non-empty string), only check it; if it is not set, write the actual result to the log
+    // if this expectation is set (a non-empty string), only check it
+    // if it is not set, write the actual result to the log
     const std::string& expected_diagnostic_details
 )
 {
@@ -162,7 +165,8 @@ void test(
 TEST_SUITE("global/leaf_spy_library/boost.leaf")
 {
 
-// below, contexts are listed in creation order: a(1) -> b(1) - a was created first, then b
+// below, contexts are listed in creation order.
+// a(1) -> b(1) means a was created first, then b
 
 // one augmentation of different types at one level
 // a(1) -> b(1) -> c(1) => { c(1), b(1), a(1) }
@@ -207,7 +211,8 @@ Diagnostic details:
     );
 }
 
-// two augmentations of the same type at one level -> the first one from the exception side is taken
+// two augmentations of the same type at one level:
+// the first one from the exception side is taken
 // a(1) -> a(2) -> b(1) -> b(2) -> c(1) -> c(2) => { c(2), b(2), a(2) }
 //
 TEST_CASE("augmenting 2")
@@ -253,7 +258,8 @@ Diagnostic details:
     );
 }
 
-// two augmentations of the same type at different levels -> the first one from the exception side is taken
+// two augmentations of the same type at different levels:
+// the first one from the exception side is taken
 // a(2) -> b(1) -> a(1) -> c(1) => { c(1), a(1), b(1) }
 //
 TEST_CASE("augmenting 3")
@@ -553,7 +559,7 @@ Diagnostic details:
     }
 }
 
-// catching does not depend on where the type came from - throw_exception or on_error
+// catching does not depend on where the type came from: throw_exception or on_error
 //
 TEST_CASE("types in throw_exception() and on_error() are equivalent")
 {

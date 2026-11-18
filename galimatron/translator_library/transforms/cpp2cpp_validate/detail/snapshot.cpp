@@ -46,49 +46,85 @@ Logme::SID SUBSID = Logme::SID::Build(global::log_subsystems::tr_tsp);
 
 cpp2cpp_validate_t::cpp2cpp_validate_t(
     const state::holder::language_part_t& language_part,
-    validate_memo_t& memo
+    validate_memo_t& memo,
+    const snapshot_et snapshot
 )
     : language_part_(language_part)
     , memo_(memo)
 {
+    if (snapshot == snapshot_et::LAZY)
+    {
+        if (language_part_.aggregates().has_root())
+        {
+            root_vd_ = language_part_.aggregates().root().vd;
+        }
+        return;
+    }
+
     for (const auto& aggregate : language_part_.aggregates())
     {
-        const auto declarations = language_part_.versions().declarations_in_order(aggregate.vd);
-
-        aggregate_versions_t row{
-            .name = aggregate.name,
-            .vd = aggregate.vd,
-            .is_root = aggregate.is_root,
-            .chunk_path = aggregate.chunk_path
-        };
-
-        for (const auto& declaration : declarations)
+        if (aggregate.is_root && !root_vd_)
         {
-            row.declarations.push_back({
-                .index = declaration.index
-            });
-
-            if (is_deleted(declaration.status))
-            {
-                row.deleted_indices.push_back(declaration.index);
-            }
-            else
-            {
-                row.live_indices.push_back(declaration.index);
-            }
+            root_vd_ = aggregate.vd;
         }
-
-        row.definition_indices = language_part_.versions().definition_indices(aggregate.vd);
-        if (aggregate.is_root)
-        {
-            row.last_hashed_index = aggregate.last_hashed;
-            if (!root_vd_)
-            {
-                root_vd_ = aggregate.vd;
-            }
-        }
-        aggregate_versions_.push_back(std::move(row));
+        aggregate_versions_.push_back(make_row(aggregate));
     }
+    has_every_row_ = true;
+}
+
+cpp2cpp_validate_t::aggregate_versions_t cpp2cpp_validate_t::make_row(
+    const state::holder::aggregate_container::detail::record_t& aggregate
+) const
+{
+    const auto declarations = language_part_.versions().declarations_in_order(aggregate.vd);
+
+    aggregate_versions_t row{
+        .name = aggregate.name,
+        .vd = aggregate.vd,
+        .is_root = aggregate.is_root,
+        .chunk_path = aggregate.chunk_path
+    };
+
+    for (const auto& declaration : declarations)
+    {
+        row.declarations.push_back({
+            .index = declaration.index
+        });
+
+        if (is_deleted(declaration.status))
+        {
+            row.deleted_indices.push_back(declaration.index);
+        }
+        else
+        {
+            row.live_indices.push_back(declaration.index);
+        }
+    }
+
+    row.definition_indices = language_part_.versions().definition_indices(aggregate.vd);
+    if (aggregate.is_root)
+    {
+        row.last_hashed_index = aggregate.last_hashed;
+    }
+    return row;
+}
+
+const cpp2cpp_validate_t::aggregate_rows_t& cpp2cpp_validate_t::every_row() const
+{
+    if (has_every_row_)
+    {
+        return aggregate_versions_;
+    }
+
+    for (const auto& aggregate : language_part_.aggregates())
+    {
+        if (!aggregate_versions_.try_find_by<by_aggregate_vd>(aggregate.vd))
+        {
+            aggregate_versions_.push_back(make_row(aggregate));
+        }
+    }
+    has_every_row_ = true;
+    return aggregate_versions_;
 }
 
 indices_t cpp2cpp_validate_t::declaration_indices(const aggregate_versions_t& aggregate) const
@@ -127,6 +163,21 @@ version_status_oet cpp2cpp_validate_t::declaration_status(
 
 const cpp2cpp_validate_t::aggregate_versions_t* cpp2cpp_validate_t::try_aggregate(const name_t& name) const
 {
+    if (!has_every_row_)
+    {
+        const auto* record = language_part_.aggregates().try_by_name(name);
+        if (!record)
+        {
+            return nullptr;
+        }
+        if (const auto found = aggregate_versions_.try_find_by<by_aggregate_vd>(record->vd))
+        {
+            return &found->get();
+        }
+        aggregate_versions_.push_back(make_row(*record));
+        return &aggregate_versions_.back();
+    }
+
     for (const auto& aggregate : aggregate_versions_.equal_range_by<by_aggregate_name>(name))
     {
         return &aggregate;
@@ -150,14 +201,18 @@ index_ot cpp2cpp_validate_t::root_last_hashed_index() const
 
 const cpp2cpp_validate_t::aggregate_versions_t& cpp2cpp_validate_t::root_versions() const
 {
-    const auto found = aggregate_versions_.try_find_by<by_aggregate_vd>(*root_vd_);
-    return found->get();
+    if (const auto found = aggregate_versions_.try_find_by<by_aggregate_vd>(*root_vd_))
+    {
+        return found->get();
+    }
+    aggregate_versions_.push_back(make_row(*language_part_.aggregates().try_by_vd(*root_vd_)));
+    return aggregate_versions_.back();
 }
 
 std::string cpp2cpp_validate_t::join_root_chunk_paths(const bool filename_only) const
 {
     strings_t files;
-    for (const auto& aggregate : aggregate_versions_)
+    for (const auto& aggregate : every_row())
     {
         if (!aggregate.is_root || !aggregate.chunk_path)
         {

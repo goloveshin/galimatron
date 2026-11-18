@@ -33,8 +33,11 @@ struct endpoint_args_t
     global::name_ot log_file;
 };
 
-// --help prints the options and sets help. the other options are then ignored.
-// an unknown argument, or --log-file without a path, throws boost::program_options::error
+// parses the command line into endpoint_args_t
+// - --help prints the options and sets help
+// - the other options are then ignored
+// throws: boost::program_options::error for an unknown argument,
+// or for --log-file without a path
 //
 // testing: no
 //

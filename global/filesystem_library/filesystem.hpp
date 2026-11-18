@@ -38,7 +38,8 @@ using path_by_parts_ot = std::optional<path_by_parts_t>;
 using split_path_by_parts_ft = std::function<path_by_parts_ot (const path_t&)>;
 
 // git diff --no-index of two directories.
-// same is true when the trees match. diff is the unified diff when they do not
+// - same is true when the trees match
+// - diff is the unified diff when they do not
 //
 struct directory_compare_result_t
 {

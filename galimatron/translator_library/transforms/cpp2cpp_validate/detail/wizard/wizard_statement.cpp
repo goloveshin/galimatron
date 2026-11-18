@@ -300,8 +300,10 @@ bool cpp2cpp_validate_t::is_wizard_batch_command_create()
     );
 }
 
-// create tag, delete tag, create label, and create ordering write into the open version,
-// otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// checks that these commands write into the open version:
+// create tag, delete tag, create label, and create ordering
+// throws:
+// exception::domain::translator_library, exception::subdomain::translator_library::translator
 //
 bool cpp2cpp_validate_t::is_wizard_version_statement()
 {

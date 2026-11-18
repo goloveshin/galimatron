@@ -12,11 +12,13 @@ namespace galimatron::translator::state::wizard
 struct create_aggregate_data_t
 {
     strings_t names;
-    // create aggregate in <directory> writes name.gal there. empty means next to the command file
+    // create aggregate in <directory> writes name.gal there
+    // empty means next to the command file
     name_ot directory;
     // delete aggregate physically removes the named chunks
     bool physically = false;
-    // create aggregate once or local marks the last version. an absent mode inherits
+    // create aggregate once or local marks the last version
+    // an absent mode inherits
     tag_mode_et mode = tag_mode_et::INHERIT;
 };
 
@@ -42,22 +44,28 @@ struct continue_aggregate_data_t
 
 struct create_version_data_t
 {
-    // delete version <list>. empty means the last version. create version leaves this empty
+    // delete version <list>
+    // - empty means the last version
+    // - create version leaves this empty
     indices_t version_indexes;
-    // create version once or local. an absent mode follows the previous version of each aggregate
+    // create version once or local
+    // an absent mode follows the previous version of each aggregate
     tag_mode_et mode = tag_mode_et::INHERIT;
 };
 
 struct hash_data_t
 {
     indices_t version_indexes;
-    // create hash force stores the hash as the important tags are now.
-    // delete hash force removes it. the validation before the wizard skips that version
+    // - create hash force stores the hash as the important tags are now
+    // - delete hash force removes it
+    // - the validation before the wizard skips that version
     bool force = false;
 };
 
-// wizard collapse version <first>-<last>.
-// a following version owns version before. the last version parks into a new version
+// wizard collapse version <first>-<last>
+// rules:
+// - a following version owns version before
+// - the last version parks into a new version
 //
 struct collapse_version_data_t
 {
@@ -125,7 +133,8 @@ using command_data_t = std::variant<
     delete_tag_data_t
 >;
 
-// one command inside a wizard batch. command_data_t stays non-recursive: the batch holds these beside it
+// one command inside a wizard batch
+// command_data_t stays non-recursive: the batch holds these beside it
 //
 struct batch_command_t
 {

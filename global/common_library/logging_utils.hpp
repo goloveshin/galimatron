@@ -20,7 +20,8 @@ namespace global::logging_utils
 {
 
 // a live object adds 4 spaces to a logme record until the end of the scope.
-// indent_backend_t or the channel display-filter inserts the spaces, before the string is formatted.
+// indent_backend_t or the channel display-filter inserts the spaces,
+// before the string is formatted.
 //
 // testing: will (unit)
 //
@@ -47,7 +48,8 @@ private:
 void use_console();
 
 // named channel with ConsoleBackend and FileBackend, OutputFlags::Channel.
-// the calling thread logs there; other threads are forwarded from the default channel.
+// the calling thread logs there.
+// other threads are forwarded from the default channel.
 //
 // testing: no
 //

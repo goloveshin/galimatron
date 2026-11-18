@@ -13,9 +13,11 @@ struct vertex_t
     entity_et entity_type;
     entity_t entity;
     location_ot location;
-    vertex_descriptor_t vd_parent = vertex_descriptor_not_present;// not optional, because every vertex except one has it
+    // not optional, because every vertex except one has it
+    vertex_descriptor_t vd_parent = vertex_descriptor_not_present;
     vertex_descriptor_t vd_self = vertex_descriptor_not_present;
-    // // and /* */ to the left of this vertex; a version's keyword comment lives in the entity itself
+    // // and /* */ to the left of this vertex
+    // a version's keyword comment lives in the entity itself
     strings_t user_comments;
     // source text from the first token through the last, including spaces and line breaks
     // empty when the wizard created the vertex, or changed it after parsing

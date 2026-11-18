@@ -62,8 +62,10 @@ void cpp2post_cpp_t::check_labels_in_version(const check_labels_in_version_t& ar
     }
 }
 
-// the parts are a strict weak order, and each name is a child aggregate of this version
-// otherwise exception::domain::translator_library, exception::subdomain::translator_library::cpp2post_cpp
+// checks that the parts are a strict weak order,
+// and that each name is a child aggregate of this version
+// throws: exception::domain::translator_library,
+// exception::subdomain::translator_library::cpp2post_cpp
 //
 void cpp2post_cpp_t::check_ordering_names(const check_ordering_names_t& args)
 {

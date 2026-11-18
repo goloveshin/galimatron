@@ -6,9 +6,9 @@
 namespace galimatron::translator::transforms::cpp2gal
 {
 
-std::deque<vertex_descriptor_t> tag_printer_t::children(const vertex_descriptor_t vd) const
+vertex_descriptors_deque_t tag_printer_t::children(const vertex_descriptor_t vd) const
 {
-    std::deque<vertex_descriptor_t> result;
+    vertex_descriptors_deque_t result;
     for (const auto vd_child : subrange(boost::adjacent_vertices(vd, graph)))
     {
         result.push_back(vd_child);

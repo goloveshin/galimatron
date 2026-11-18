@@ -99,7 +99,7 @@ void append_vertex(std::string& out, const vertex_graph::graph_t& graph, const v
         }
     }
 
-    std::vector<vertex_descriptor_t> child_vertices;
+    vertex_descriptors_vector_t child_vertices;
     for (const auto vd_child : ::subrange(boost::adjacent_vertices(vd, graph)))
     {
         child_vertices.push_back(vd_child);
@@ -126,7 +126,7 @@ std::string children(const vertex_graph::graph_t& graph, const vertex_descriptor
     }
 
     std::string text;
-    std::vector<vertex_descriptor_t> child_vertices;
+    vertex_descriptors_vector_t child_vertices;
     for (const auto vd_child : ::subrange(boost::adjacent_vertices(*vd, graph)))
     {
         child_vertices.push_back(vd_child);

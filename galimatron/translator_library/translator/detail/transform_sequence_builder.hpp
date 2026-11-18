@@ -32,33 +32,53 @@ struct domain_and_state_t
 // Takes a set of state transforms and a seed of the transform sequence.
 // Completes the transform sequence.
 //
-// check_state_transforms() checks that state_transforms contains the transitions:
-// LANGUAGE GaL -> LANGUAGE CPP, LANGUAGE CPP -> LANGUAGE GaL,
-// LANGUAGE CPP -> LANGUAGE XML, LANGUAGE XML -> LANGUAGE SAXON, LANGUAGE SAXON -> LANGUAGE CPP,
-// LANGUAGE CPP -> POST_LANGUAGE CPP, POST_LANGUAGE CPP -> POST_LANGUAGE XML.
-// If a transition is missing — exception::domain::translator_library, exception::subdomain::translator_library::translator.
+// A function here that fails throws exception::domain::translator_library,
+// exception::subdomain::translator_library::translator.
 //
-// check_transform_sequence() checks transform_sequence: first a contiguous
-// LANGUAGE-domain set, then a contiguous POST_LANGUAGE-domain set.
-// Either set may be absent. The LANGUAGE -> POST_LANGUAGE transition is allowed
-// once between the sets. A return to LANGUAGE — exception::domain::translator_library, exception::subdomain::translator_library::translator.
+// check_state_transforms() checks that state_transforms contains the transitions:
+// - LANGUAGE GaL -> LANGUAGE CPP
+// - LANGUAGE CPP -> LANGUAGE GaL
+// - LANGUAGE CPP -> LANGUAGE XML
+// - LANGUAGE XML -> LANGUAGE SAXON
+// - LANGUAGE SAXON -> LANGUAGE CPP
+// - LANGUAGE CPP -> POST_LANGUAGE CPP
+// - POST_LANGUAGE CPP -> POST_LANGUAGE XML
+// throws: a transition is missing.
+//
+// check_transform_sequence() checks transform_sequence:
+// first a contiguous LANGUAGE-domain set, then a contiguous POST_LANGUAGE-domain set.
+// Either set may be absent.
+// The LANGUAGE -> POST_LANGUAGE transition is allowed once between the sets.
+// throws: a return to LANGUAGE.
 //
 // check_transform_sequence_state_types() checks that each transform
 // in transform_sequence has matching incoming and outgoing state_type.
-// Domain is ignored. If they do not match — exception::domain::translator_library, exception::subdomain::translator_library::translator.
+// Domain is ignored.
+// throws: they do not match.
 //
 // complete_transform_sequence() completes transform_sequence by inserting from state_transforms.
 // The original transforms are not removed and do not change order.
-// finish_sequence: the result has LANGUAGE and POST_LANGUAGE domains, the outgoing state_type matches
-// the next incoming one, the first transform comes in from GaL, and the last one goes out to XML.
-// finish_sequence false: the seed stays the whole sequence. an edge is inserted only where two
-// seed steps do not meet, and only from the catalog that was passed.
-// When finish_sequence: a language xslt comes in from SAXON. The adopt step LANGUAGE XML -> LANGUAGE SAXON is inserted before it,
-// and xml2cpp brings SAXON back to CPP. No language xslt means that step is absent.
-// A post xslt comes in from SAXON. The adopt step POST XML -> POST SAXON is inserted before it,
-// and the sequence then ends in SAXON. No post xslt means that step is absent.
+//
+// When finish_sequence is true:
+// - the result has LANGUAGE and POST_LANGUAGE domains
+// - the outgoing state_type matches the next incoming one
+// - the first transform comes in from GaL, and the last one goes out to XML
+// - a language xslt comes in from SAXON.
+//   The adopt step LANGUAGE XML -> LANGUAGE SAXON is inserted before it,
+//   and xml2cpp brings SAXON back to CPP.
+//   No language xslt means that step is absent.
+// - a post xslt comes in from SAXON.
+//   The adopt step POST XML -> POST SAXON is inserted before it,
+//   and the sequence then ends in SAXON.
+//   No post xslt means that step is absent.
+//
+// When finish_sequence is false:
+// - the seed stays the whole sequence
+// - an edge is inserted only where two seed steps do not meet,
+//   and only from the catalog that was passed
+//
 // Before the transition to POST_LANGUAGE, the LANGUAGE section ends with CPP -> GaL.
-// If it cannot be completed — exception::domain::translator_library, exception::subdomain::translator_library::translator.
+// throws: it cannot be completed.
 //
 // testing: yes (unit)
 //

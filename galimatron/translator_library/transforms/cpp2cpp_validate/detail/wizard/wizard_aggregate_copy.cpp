@@ -45,7 +45,11 @@ namespace
 Logme::SID SUBSID = Logme::SID::Build(global::log_subsystems::tr_tsp);
 }
 
-// copy aggregate runs in the chunk context, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// every check in this file throws
+// exception::domain::translator_library, exception::subdomain::translator_library::translator
+
+// copy aggregate runs in the chunk context
+// throws: WIZARD_COPY_AGGREGATE_CONTEXT_MUST_BE_CHUNK
 //
 bool cpp2cpp_validate_t::is_wizard_copy_aggregate_context_chunk()
 {
@@ -73,7 +77,8 @@ bool cpp2cpp_validate_t::is_wizard_copy_aggregate_context_chunk()
     );
 }
 
-// for copy aggregate the root aggregate already exists, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// for copy aggregate the root aggregate already exists
+// throws: WIZARD_COPY_AGGREGATE_ROOT_AGGREGATE_MUST_EXIST
 //
 bool cpp2cpp_validate_t::is_wizard_copy_aggregate_root_aggregate_present()
 {
@@ -100,7 +105,8 @@ bool cpp2cpp_validate_t::is_wizard_copy_aggregate_root_aggregate_present()
     );
 }
 
-// the source aggregate already exists, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// the source aggregate already exists
+// throws: WIZARD_COPY_AGGREGATE_SOURCE_MUST_EXIST
 //
 bool cpp2cpp_validate_t::is_wizard_copy_aggregate_source_present()
 {
@@ -130,7 +136,8 @@ bool cpp2cpp_validate_t::is_wizard_copy_aggregate_source_present()
     );
 }
 
-// the source is not the root aggregate, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// the source is not the root aggregate
+// throws: WIZARD_COPY_AGGREGATE_CANNOT_COPY_ROOT_AGGREGATE
 //
 bool cpp2cpp_validate_t::is_wizard_copy_aggregate_not_root()
 {
@@ -161,8 +168,8 @@ bool cpp2cpp_validate_t::is_wizard_copy_aggregate_not_root()
     );
 }
 
-// the new names differ, ignoring case, and differ from the source.
-// otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// the new names differ, ignoring case, and differ from the source
+// throws: WIZARD_COPY_AGGREGATE_NAMES_MUST_BE_UNIQUE
 //
 bool cpp2cpp_validate_t::is_wizard_copy_aggregate_names_unique()
 {
@@ -214,7 +221,8 @@ bool cpp2cpp_validate_t::is_wizard_copy_aggregate_names_unique()
     );
 }
 
-// each new name is not an aggregate yet, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// each new name is not an aggregate yet
+// throws: WIZARD_COPY_AGGREGATE_AGGREGATE_MUST_BE_ABSENT
 //
 bool cpp2cpp_validate_t::is_wizard_copy_aggregate_aggregates_absent()
 {
@@ -259,7 +267,8 @@ bool cpp2cpp_validate_t::is_wizard_copy_aggregate_aggregates_absent()
     );
 }
 
-// the command file is not one of the new files, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// the command file is not one of the new files
+// throws: WIZARD_COPY_AGGREGATE_COMMAND_FILE_IS_THE_AGGREGATE
 //
 bool cpp2cpp_validate_t::is_wizard_copy_aggregate_command_file()
 {
@@ -304,7 +313,8 @@ bool cpp2cpp_validate_t::is_wizard_copy_aggregate_command_file()
     );
 }
 
-// each new chunk file does not exist yet, otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// each new chunk file does not exist yet
+// throws: WIZARD_COPY_AGGREGATE_CHUNK_MUST_BE_ABSENT
 //
 bool cpp2cpp_validate_t::is_wizard_copy_aggregate_chunk_absent()
 {
@@ -350,7 +360,8 @@ bool cpp2cpp_validate_t::is_wizard_copy_aggregate_chunk_absent()
 }
 
 // a source still present in a closed version would add a live aggregate to that version
-// and change the root hash. otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
+// and change the root hash
+// throws: WIZARD_COPY_AGGREGATE_SOURCE_IN_CLOSED_VERSION
 //
 bool cpp2cpp_validate_t::is_wizard_copy_aggregate_source_open()
 {

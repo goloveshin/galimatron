@@ -1,9 +1,10 @@
 #pragma once
 
 // directory names of a Galimatron test case
-// production gal.cfg chooses its own directories, so these names are the test layout only
-// expected-* is the oracle and exists only in tests
-// test gal.cfg repeats incoming_gal, actual_gal, actual_xml, actual_log, intermediate, and actual_summary
+// - production gal.cfg chooses its own directories, so these names are the test layout only
+// - expected-* is the oracle and exists only in tests
+// - test gal.cfg repeats incoming_gal, actual_gal, actual_xml, actual_log,
+//   intermediate, and actual_summary
 //
 namespace galimatron::test_folders
 {

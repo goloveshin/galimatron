@@ -58,7 +58,7 @@ file_contents_with_paths_t cpp2gal_t::translate()
         exception::subdomain::translator_library::cpp2gal{}
     );
 
-    // root and the walk of its children — 2 levels until the chunk text
+    // root and the walk of its children: 2 levels until the chunk text
     tab_count_.push_back(-static_cast<int>(tab_size) * 2);
     walk_children({
         .vd = args_.language_state->root_node()

@@ -7,6 +7,7 @@
 #include "galimatron/translator_library/state/holder/ordering_rank.hpp"
 #include "galimatron/translator_library/state/holder/graph/vertex_payload.hpp"
 #include "galimatron/translator_library/state/forward.hpp"
+#include "galimatron/translator_library/state/tag_name_part.hpp"
 #include "galimatron/common_library/exception_augment.hpp"
 #include "galimatron/translator_library/galimatron_config_declaration.hpp"
 
@@ -31,14 +32,14 @@ namespace
 Logme::SID SUBSID = Logme::SID::Build(global::log_subsystems::tr_cmp);
 }
 
-vertex_descriptors_ot cpp2post_cpp_t::resolve_tag_name_labels_to_vd_labels(const resolve_tag_name_labels_to_vd_labels_t& args)
+vertex_descriptors_deque_ot cpp2post_cpp_t::resolve_tag_name_labels_to_vd_labels(const resolve_tag_name_labels_to_vd_labels_t& args)
 {
     const auto where = exception::augment_where({
         .path = args.file_path,
         .version = args.version_index
     });
 
-    vertex_descriptors_t vd_labels;
+    vertex_descriptors_deque_t vd_labels;
 
     for (const auto& label_name : args.tag_labels)
     {
@@ -116,22 +117,19 @@ void cpp2post_cpp_t::name_tag_from_label(const name_tag_from_label_t& args)
                 continue;
             }
 
-            // find the index among the values
-            auto it = ranges::find(label.values, label.tag_name_from.value());
-            if (it == ranges::end(label.values))
+            // the tag's first-level value at the position of the name part
+            const auto part = tag_name_part(args.graph, label, args.tag);
+            if (part.status == tag_name_part_t::status_et::NOT_AMONG_VALUES)
             {
                 throw_compiler(std::format("label '{}' has tag-name-from but it is not among its values", aggregated_label.name));
             }
-
-            const auto index = ranges::distance(ranges::begin(label.values), it);
-            // get the tag's first-level values
-            auto it2 = args.tag.string_values_at_zero_level.find(index);
-            if (it2 == args.tag.string_values_at_zero_level.end())
+            if (part.status == tag_name_part_t::status_et::NO_VALUE)
             {
-                throw_compiler(std::format("tag '{}' has no value with index {} for tag's name", args.vd_tag, index));
+                throw_compiler(std::format("tag '{}' has no value with index {} for tag's name", args.vd_tag, part.index));
             }
 
-            const auto& value = get_entity<tag_string_t>(args.graph[it2->second]).value;
+            const auto index = part.index;
+            const auto& value = *part.value;
 
             if (!std::regex_match(value, identifier_pattern))
             {

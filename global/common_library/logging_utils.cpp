@@ -152,7 +152,8 @@ void flush_log()
 
 void apply_log_config(const file_content_with_path_t& cwp)
 {
-    // here we manually fix the working-directory path, making it relative to the config path, not to the .exe
+    // here we manually fix the working-directory path,
+    // making it relative to the config path, not to the .exe
     const path_ot home_path = [&] -> path_ot
     {
         try
@@ -178,9 +179,10 @@ void apply_log_config(const file_content_with_path_t& cwp)
         return {};
     }();
 
-    // a relative "file" is opened under the home directory.
-    // LoadConfiguration then stores the raw home-directory.path, so "." would mean the process directory.
-    // the resolved path is applied before the open, and again after the load
+    // a relative "file" is opened under the home directory
+    // - LoadConfiguration then stores the raw home-directory.path,
+    //   so "." would mean the process directory
+    // - the resolved path is applied before the open, and again after the load
     if (home_path)
     {
         Logme::Instance->SetHomeDirectory(home_path->string());
@@ -221,7 +223,8 @@ void apply_log_config(const file_content_with_path_t& cwp)
         Logme::Instance->SetHomeDirectory(home_path->string());
     }
 
-    // fLogme* first asks the default channel's level and, if refused, does not write the record at all.
+    // fLogme* first asks the default channel's level
+    // and, if refused, does not write the record at all.
     // So the default threshold is lowered to the most verbose level among the channels,
     // and its own level from the config is applied later in the filter, after forwarding.
     // RemoveBackends() freezes FileBackend, so the indent backend is not inserted here.

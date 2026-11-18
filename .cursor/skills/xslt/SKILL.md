@@ -1,50 +1,49 @@
 ---
 name: xslt
 description: >-
-  Write Galimatron XSLT 3.0 for SaxonC-HE. Say xslt, not stylesheet. Prefer an
-  XML template for generated text. Reuse and extend gal-functions.xsl. Use when
-  adding or changing a .xsl file, an xsl:function, a match or select, a user
-  xslt, edit.xsl, generate-sources.xsl, or a code template.
+  Write Galimatron XSLT 3.0 for SaxonC-HE. Say xslt, not stylesheet. Prefer an XML
+  template for generated text. Reuse gal-functions.xsl. Use when changing a .xsl
+  file, an xsl:function, a match or select, a user xslt, or a code template.
 ---
 
 # XSLT
 
-Say xslt. Do not say stylesheet. The processor is SaxonC-HE 13. The xslt is `version="3.0"`.
+Say xslt, not stylesheet. The processor is SaxonC-HE 13 and the xslt is `version="3.0"`.
 
 ## Templates
 
-Prefer an XML template when the xslt writes a generated file. It reads like the result. Use `xsl:text` when a template does not fit.
+Prefer an XML template for a generated file: it reads like the result. Use `xsl:text` when a template does not fit.
 
-A template is `templates/<name>.xml`. The root is `code:template` in `xmlns:code="galimatron-code-generation"`. Load each file once with `document(concat('templates/', $name, '.xml'))`. `xsl:apply-templates` on that document fills the `code:*` marks. An empty `code:*` prints the tunnel map entry of the same local name. A hyphen in that name is an underscore in the tag: `struct-name` reads `struct_name`.
+A template is `templates/<name>.xml`. Its root is `code:template` in `xmlns:code="galimatron-code-generation"`. Load each file once with `document(concat('templates/', $name, '.xml'))`. `xsl:apply-templates` on that document fills the `code:*` marks. An empty `code:*` prints the tunnel map entry of the same local name, with a hyphen in the name read as an underscore in the tag: `struct-name` reads `struct_name`.
 
-Match the compiled document with `$primary_xml_root`. Fill the templates in their own mode, `on-no-match="text-only-copy"`. A match on `/` also matches a loaded template, and that match replaces the generated text.
+Match the compiled document with `$primary_xml_root`. Fill the templates in their own mode, `on-no-match="text-only-copy"`. A match on `/` also matches a loaded template and replaces the generated text.
 
 ## Namespace
 
-Functions live in `xmlns:gal="https://github.com/goloveshin/galimatron"`. A typed parameter also needs `xmlns:xs`. When the xslt writes XML, set `exclude-result-prefixes="gal xs"` so those prefixes stay off the result elements.
+Functions live in `xmlns:gal="https://github.com/goloveshin/galimatron"`. A typed parameter also needs `xmlns:xs`. When the xslt writes XML, set `exclude-result-prefixes="gal xs"` to keep those prefixes off the result elements.
 
 ## Functions
 
-Use a function from `galimatron/translator_library/xslt/gal-functions.xsl` before writing a path inline. A new selector becomes an `xsl:function` there, and a row in the table below. The caller includes the file. Do not paste the function into the caller.
+Use a function from `galimatron/translator_library/xslt/gal-functions.xsl` before writing a path inline. A new selector becomes an `xsl:function` there and a row in the table below. The caller includes the file; never paste the function into it.
 
 ```xml
 <!-- with an installed Galimatron use <xsl:include href="https://github.com/goloveshin/galimatron/xslt/gal-functions.xsl"/> -->
 <xsl:include href="gal-functions.xsl"/>
 ```
 
-The comment sits above every include of this library. An installed Galimatron loads `share/galimatron/catalog.xml`, and that catalog maps the address to the installed file. The source tree keeps a relative `href`: Saxon resolves it against the cwd, `saxon-processor.working-dir` (`xslt/`). A user xslt keeps `gal-functions.xsl` in that directory. The MQTT and UUID `generate-sources.xsl` include the library by a relative path from their own `xslt/` directory. The seal cases are copied into the build tree, so CMake copies `gal-functions.xsl` beside `edit.xsl` and that include uses `href="gal-functions.xsl"`. A second function with the same name and arity is a compile error.
+The comment sits above every include of this library. An installed Galimatron loads `share/galimatron/catalog.xml`, which maps the address to the installed file. The source tree keeps a relative `href`: Saxon resolves it against the cwd, `saxon-processor.working-dir` (`xslt/`). A user xslt keeps `gal-functions.xsl` in that directory. The MQTT and UUID `generate-sources.xsl` include it by a relative path from their own `xslt/` directory. The seal cases are copied into the build tree, so CMake copies `gal-functions.xsl` beside `edit.xsl`, and that include uses `href="gal-functions.xsl"`. Two functions with the same name and arity are a compile error.
 
-A function has no context item. Start the path at a parameter. A leading `//` has nothing to start from; use `root($anchor)//` or `$parent//`.
+A function has no context item: start the path at a parameter. A leading `//` has nothing to start from, so use `root($anchor)//` or `$parent//`.
 
-Saxon rejects a function as the whole `match` (`XTSE0340`). Put the call in a predicate: `match="array[gal:array-has-label(., 'role_mark')]"`. A `select` may call the function directly.
+Saxon rejects a function as the whole `match` (`XTSE0340`). Call it in a predicate: `match="array[gal:array-has-label(., 'role_mark')]"`. A `select` may call it directly.
 
 ## Two documents
 
-A user xslt in production runs on the language XML from `cpp2xml`. A static label there is `tag/label-refs/static/label-ref/@name`. `cpp2xml` writes `label-ref` only under `label-refs/static`. `gal:tags-labeled` and `gal:array-has-label` read that path.
+A user xslt in production runs on the language XML from `cpp2xml`. A static label there is `tag/label-refs/static/label-ref/@name`: `cpp2xml` writes `label-ref` only under `label-refs/static`, and `gal:tags-labeled` and `gal:array-has-label` read that path.
 
-The language document carries `history` beside `language`, under `galimatron`. That history is the state before the language xslt. `gal:history($anchor)` returns it. A `version/change[@kind='add']` is a tag introduced in that version's `@index`. `xml2cpp` reads `language` and leaves `history` unread.
+The language document carries `history` beside `language`, under `galimatron`: the state before the language xslt. `gal:history($anchor)` returns it. A `version/change[@kind='add']` is a tag introduced in that version's `@index`. `xml2cpp` reads `language` and leaves `history` unread.
 
-The compiled XML, after `cpp2post_cpp`, puts the label on the value as an attribute (`field="type"`, `enum_field="name"`). `gal:labeled-string` and `gal:tags-with-label` read that attribute. The MQTT and UUID `generate-sources.xsl` run on the compiled XML.
+In the compiled XML, after `cpp2post_cpp`, the label is an attribute on the value (`field="type"`, `enum_field="name"`), which `gal:labeled-string` and `gal:tags-with-label` read. The MQTT and UUID `generate-sources.xsl` run on the compiled XML.
 
 ## Names
 

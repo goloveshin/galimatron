@@ -28,7 +28,8 @@ struct translator_library{};
 
 // subdomain - mark exceptions by where they originate in more detail
 // - an exception from a dedicated part of the library runtime_library/filesystem_decorator
-// - an exception from another domain, but from code related to this subdomain - for example, from a callback passed to runtime_library/filesystem_decorator
+// - an exception from another domain, but from code related to this subdomain
+//   for example, from a callback passed to runtime_library/filesystem_decorator
 //
 namespace subdomain
 {

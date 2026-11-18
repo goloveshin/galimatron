@@ -26,7 +26,7 @@ struct tag_printer_t
     };
     using printed_lines_t = std::deque<printed_line_t>;
 
-    std::deque<vertex_descriptor_t> children(vertex_descriptor_t) const;
+    vertex_descriptors_deque_t children(vertex_descriptor_t) const;
     vertex_descriptor_t unwrap(vertex_descriptor_t) const;
     bool fits(int, std::string_view) const;
     string_delimiter_t delimiter_at(index_t) const;

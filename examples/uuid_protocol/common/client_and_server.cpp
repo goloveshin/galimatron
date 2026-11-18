@@ -49,7 +49,8 @@ void log_exchange(
     }
     const auto tab = log_tabulator_t();
     operations.log(message);
-    // the file backend queues the line. flush it before the next read, so a killed process still has it
+    // the file backend queues the line.
+    // flush it before the next read, so a killed process still has it
     flush_log();
 }
 
@@ -62,11 +63,11 @@ struct incoming_t
     any_message_t message;
 };
 
-// reads one frame: uuid, uint32 length, then the body.
-// a body is accepted only when the message reads one.
-// an unknown uuid leaves operations null and is not logged.
-// throws std::runtime_error when the length is above message_max_size,
+// reads one frame: uuid, uint32 length, then the body
+// throws: std::runtime_error when the length is above message_max_size,
 // or when bytes arrive and the message has no read_body
+// - a body is accepted only when the message reads one
+// - an unknown uuid leaves operations null and is not logged
 //
 // testing: no
 //
@@ -126,8 +127,9 @@ incoming_t read_message(client_and_server_t::tcp::socket& socket)
     return incoming;
 }
 
-// the cross-test closes a connection that sends no bytes. that ends the server.
-// any other failure still throws.
+// reads one frame, and treats a connection that sends no bytes as the end of the server
+// - the cross-test closes such a connection
+// - any other failure still throws
 //
 // testing: no
 //
@@ -157,9 +159,9 @@ incoming_t read_message_or_end(
     }
 }
 
-// writes one frame: uuid, uint32 length, then the body.
-// the body is empty unless the message writes one.
-// throws std::runtime_error when the body is above message_max_size
+// writes one frame: uuid, uint32 length, then the body
+// throws: std::runtime_error when the body is above message_max_size
+// - the body is empty unless the message writes one
 //
 // testing: no
 //
@@ -204,8 +206,9 @@ void write_message(
     }
 }
 
-// sends operations.create(state) when it is set, otherwise an empty value.
-// state is the text io_notify stored, which error create copies into the message
+// sends operations.create(state) when it is set, otherwise an empty value
+// - state is the text io_notify stored
+// - create of the error message copies that text into the message
 //
 // testing: no
 //
@@ -223,9 +226,9 @@ void write_created(
     write_message(socket, operations, message);
 }
 
-// sends the first registered message of this group.
-// a later version of the same group is not selected.
-// throws std::logic_error when the group is not registered
+// sends the first registered message of this group
+// throws: std::logic_error when the group is not registered
+// - a later version of the same group is not selected
 //
 // testing: no
 //
@@ -238,8 +241,8 @@ void write_group(
     write_created(socket, messages().find_by_group(group), state);
 }
 
-// sends the message registered for this version and group.
-// throws std::logic_error when that pair is not registered
+// sends the message registered for this version and group
+// throws: std::logic_error when that pair is not registered
 //
 // testing: no
 //
@@ -253,7 +256,8 @@ void write_group(
     write_created(socket, messages().find_by_version_and_group(version, group), state);
 }
 
-// the highest version this endpoint registered. no messages: std::logic_error
+// the highest version this endpoint registered
+// throws: std::logic_error when there are no messages
 //
 // testing: no
 //
@@ -279,6 +283,7 @@ client_and_server_t::client_and_server_t(params_t params)
     use_named_channel(params_.log_prefix, params_.log_file_name);
 }
 
+// runs the job and returns true when it did not throw
 // false: the job threw. the exception text is logged, then "stop"
 //
 // testing: no
@@ -322,9 +327,10 @@ bool client_and_server_t::run_server()
     return run([&]{ run_server_sessions(); });
 }
 
-// no cases: one connection, the first registered hello, then ok, then bye.
-// cases: one connection per version. hello, each case value, then bye.
-// throws std::runtime_error when a reply uuid is unknown, the group is not ok,
+// runs the client side of the exchange
+// - no cases: one connection, the first registered hello, then ok, then bye
+// - cases: one connection per version. hello, each case value, then bye
+// throws: std::runtime_error when a reply uuid is unknown, the group is not ok,
 // or, once a version is in use, the reply version differs
 //
 // testing: no
@@ -425,12 +431,15 @@ void client_and_server_t::run_client_sessions()
     }
 }
 
-// no cases: one connection. cases: one connection per version.
-// accept_until_stopped ignores that count and keeps accepting until the process is stopped.
-// the first message sets the version and must be hello.
-// later messages must be that version. bye ends the connection.
-// a payload is answered with that version's ok. another system group is refused.
-// throws std::runtime_error on those failures.
+// runs the server side of the exchange
+// - no cases: one connection. cases: one connection per version
+// - accept_until_stopped ignores that count and keeps accepting until the process is stopped
+// - the first message sets the version and must be hello
+// - later messages must be that version
+// - bye ends the connection
+// - a payload is answered with that version's ok
+// - another system group is refused
+// throws: std::runtime_error on those failures.
 // an unknown uuid throws too, and an error is sent only after a version is known
 //
 // testing: no
@@ -440,7 +449,8 @@ void client_and_server_t::run_server_sessions()
     boost::asio::io_context io_context;
     tcp::acceptor acceptor(io_context, tcp::endpoint(tcp::v4(), params_.port));
 
-    // records the refusal reason on the endpoint state. the caller then sends that version's error
+    // records the refusal reason on the endpoint state.
+    // the caller then sends that version's error
     auto notify = [&](const std::string& msg)
     {
         params_.state_operations.io_notify(params_.state_operations.any_state, msg);

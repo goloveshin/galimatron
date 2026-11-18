@@ -105,7 +105,7 @@ struct version_data_t
 //
 version_data_t version_data(
     const holder::language_part_t::graph_t& graph,
-    const vertex_descriptors_t& tags
+    const vertex_descriptors_deque_t& tags
 )
 {
     version_data_t result;
@@ -154,7 +154,7 @@ version_data_t version_data(
 void collect_templates(
     const holder::language_part_t::graph_t& graph,
     const vertex_descriptor_t vd,
-    vertex_descriptors_t& templates
+    vertex_descriptors_deque_t& templates
 )
 {
     if (graph[vd].entity_type == entity_et::TAG_STRING)
@@ -190,7 +190,7 @@ std::string first_value_syntax(std::string text, const strings_t& several)
 
 std::deque<rendered_string_t> render(
     const holder::language_part_t::graph_t& graph,
-    const vertex_descriptors_t& tags
+    const vertex_descriptors_deque_t& tags
 )
 {
     const auto part = exception::augment_domain(
@@ -198,7 +198,7 @@ std::deque<rendered_string_t> render(
         exception::subdomain::translator_library::template_engine{}
     );
 
-    vertex_descriptors_t templates;
+    vertex_descriptors_deque_t templates;
     for (const auto vd_tag : tags)
     {
         collect_templates(graph, vd_tag, templates);

@@ -79,7 +79,10 @@ public:
 
     record_t& find_by_place(const place_id_t&);
 
-    // the alias names exactly one place, otherwise exception::domain::runtime_library, exception::subdomain::runtime_library::filesystem_decorator
+    // the alias names exactly one place
+    // throws: when it does not
+    // exception::domain::runtime_library,
+    // exception::subdomain::runtime_library::filesystem_decorator
     //
     record_t& find_by_alias(const place_t::string_alias_t&);
     detail::record_ot try_find_by_path(const path_t&);

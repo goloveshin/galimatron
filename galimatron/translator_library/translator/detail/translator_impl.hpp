@@ -42,10 +42,11 @@ struct transform_t
 
     detail::origin_et origin = detail::origin_et::BUILD_IN;
 
-    // post xml prints the compiled document. language xml stays the language document
+    // post xml prints the compiled document
+    // language xml stays the language document
     bool print_as_compiled_document = false;
 
-    // the static description of the principal xml this step prints.
+    // the static description of the principal xml this step prints
     // empty leaves <galimatron> node without the attribute
     std::string_view description = {};
 };
@@ -75,8 +76,8 @@ private:
     void prepare_prod_transforms();
     void execute_transform(index_t, const transform_t&, tf::Subflow&);
 
-    // stores a builtin step as if it came from gal.cfg.
-    // an empty principal_xml means the step prints no file.
+    // stores a builtin step as if it came from gal.cfg
+    // an empty principal_xml means the step prints no file
     // the reference stays valid: config_transforms_ is a list
     //
     const galimatron_config::transform_t& store_builtin_transform(
@@ -102,8 +103,8 @@ private:
     transform_t get_post_xml2saxon_transform();
     transform_t get_post_xml2post_xml_transform(const galimatron_config::transform_t&);
 
-    // compiles the current graph when the cache is empty.
-    // no root aggregate — nothing to compile
+    // compiles the current graph when the cache is empty
+    // no root aggregate: nothing to compile
     //
     void ensure_compiled();
 
@@ -111,8 +112,9 @@ private:
     //
     bool language_xml_compiles() const;
 
-    // the language document, or the compiled document when as_compiled_document is set.
-    // <history> node is a child of <galimatron> node. description is the <galimatron> node attribute
+    // the language document, or the compiled document when as_compiled_document is set
+    // <history> node is a child of <galimatron> node
+    // description is the <galimatron> node attribute
     //
     pugi_document_with_meanful_node_t document_cpp2xml(
         const bool as_compiled_document,
@@ -140,18 +142,20 @@ private:
     galimatron_config::transforms_t config_transforms_;
 
     state::holder::language_part_sptr_t language_state_;
-    // language graph as it was before the language xslt. cpp2xml drops language_state_
+    // language graph as it was before the language xslt
+    // cpp2xml drops language_state_
     state::holder::language_part_sptr_t language_before_xslt_;
-    // compile of language_state_. dropped when that graph is replaced or edited in place
+    // compile of language_state_
+    // dropped when that graph is replaced or edited in place
     state::holder::compiled_part_sptr_ot compiled_state_;
     any_states_t any_transform_states_;
 
     tf::Taskflow taskflow_;
 
-    // one executor for the process. each task attaches its worker to Saxon
-    // and detaches that worker on the way out. the thread that created
-    // the isolate stays attached. a worker left attached dies later
-    // with StackOverflowError
+    // one executor for the process
+    // each task attaches its worker to Saxon and detaches that worker on the way out
+    // the thread that created the isolate stays attached
+    // a worker left attached dies later with StackOverflowError
     //
     static tf::Executor& executor();
 };

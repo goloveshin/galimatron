@@ -19,7 +19,8 @@ namespace uuid_protocol
 namespace
 {
 
-// run_tests starts in bin/. a step's client and server are bin/uuid_protocol/steps/<step>/
+// run_tests starts in bin/.
+// a step's client and server are bin/uuid_protocol/steps/<step>/
 //
 // testing: no
 //
@@ -105,7 +106,8 @@ std::vector<history_step_t> history_steps()
     return steps;
 }
 
-// one client, already aimed at the shared port. returns its exit code
+// runs one client, already aimed at the shared port.
+// returns its exit code
 //
 // testing: no
 //
@@ -144,8 +146,10 @@ std::string cross_log(
     ).string();
 }
 
+// returns the step of the converting server.
 // a step whose folder contains "collapse" speaks one version.
-// the converting server is the step before that. with no collapse step, it is the last step.
+// the converting server is the step before that.
+// with no collapse step, it is the last step.
 //
 // testing: no
 //
@@ -163,9 +167,9 @@ history_step_t converting_step(const std::vector<history_step_t>& steps)
 }
 
 // runs every client against this server.
-// a client that does not reach it exits non-zero, and that refusal stops the server.
-// the next client starts the server again.
-// a server left accepting is ended by an empty connection and exits 0
+// - a client that does not reach it exits non-zero, and that refusal stops the server
+// - the next client starts the server again
+// - a server left accepting is ended by an empty connection and exits 0
 //
 // testing: no
 //
@@ -348,7 +352,8 @@ TEST_CASE("client connects and disconnects")
 TEST_SUITE("uuid_protocol/steps/05-start-payloads")
 {
 
-// v2 hello is "hello client version v2!". v3 hello is "hello client version v3!", then lamp_t{ lit: true }
+// v2 hello is "hello client version v2!".
+// v3 hello is "hello client version v3!", then lamp_t{ lit: true }
 //
 TEST_CASE("client connects and disconnects")
 {
@@ -380,7 +385,8 @@ TEST_CASE("client connects and disconnects")
 TEST_SUITE("uuid_protocol/steps/07-candela-and-fog")
 {
 
-// v4 hello is "hello client version v4!", then lamp_t{ lit: true, candela: 1500 } and fog_t{ metres: 250 }
+// v4 hello is "hello client version v4!",
+// then lamp_t{ lit: true, candela: 1500 } and fog_t{ metres: 250 }
 //
 TEST_CASE("client connects and disconnects")
 {
@@ -461,9 +467,11 @@ TEST_SUITE("uuid_protocol/cross")
 {
 
 // the converting server stays up across clients it can read.
-// step 0 registers 6f1e0000 uuids, so that client and this server both exit non-zero.
-// a client after this server speaks the uuid advanced past it, so that pair exits non-zero too.
-// every other client exits 0. logs are uuid_protocol/cross/, so a paired run keeps the step logs.
+// - step 0 registers 6f1e0000 uuids, so that client and this server both exit non-zero
+// - a client after this server speaks the uuid advanced past it,
+//   so that pair exits non-zero too
+// - every other client exits 0
+// - logs are uuid_protocol/cross/, so a paired run keeps the step logs
 //
 TEST_CASE("every client meets the converting server")
 {

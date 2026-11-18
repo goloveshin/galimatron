@@ -13,7 +13,8 @@ namespace galimatron::translator::content_hash
 //
 std::string sha256_hex(std::string_view bytes);
 
-// hash of the contents of the version's tags that carry the important label. the name and the labels are not part of the hash.
+// hash of the contents of the version's tags that carry the important label.
+// the name and the labels are not part of the hash.
 // no definition means the hash of empty text
 //
 // testing: no
@@ -23,7 +24,8 @@ std::string important_tags_hash(
     state::vertex_descriptor_ot vd_definition
 );
 
-// hash of the content hashes. they are sorted first, so the file path and the aggregate order are not part of it
+// hash of the content hashes.
+// they are sorted first, so the file path and the aggregate order are not part of it
 //
 // testing: no
 //

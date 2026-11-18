@@ -29,8 +29,10 @@ void disable_all_logging()
 // at each test case, and again when doctest reenters it for the next subcase,
 // drops every Logme backend and disables the channels.
 // this closes the previous case's file log before the next subcase writes
-// its default-console line, the read of the next log.cfg, and the reconfig line
-// into that intermediate/galimatron.log.
+// into that intermediate/galimatron.log:
+// - its default-console line
+// - the read of the next log.cfg
+// - the reconfig line
 // translate() turns logging back on for the case that is about to run.
 // the default channel stays: use_console() crashes if it is gone.
 //

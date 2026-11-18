@@ -28,7 +28,7 @@ namespace
 Logme::SID SUBSID = Logme::SID::Build(global::log_subsystems::tr_cmp);
 }
 
-vertex_descriptors_t cpp2post_cpp_t::compile_tags_in_version(const compile_tags_in_version_t& args)
+vertex_descriptors_deque_t cpp2post_cpp_t::compile_tags_in_version(const compile_tags_in_version_t& args)
 {
     const auto version_info = exception::augment_version(args.version_index);
     const auto& graph = args.graph;
@@ -210,7 +210,7 @@ vertex_descriptors_t cpp2post_cpp_t::compile_tags_in_version(const compile_tags_
         }
     }
 
-    auto tag_refs = vertex_descriptors_t{};
+    auto tag_refs = vertex_descriptors_deque_t{};
 
     // walk from the end: the last declaration of a name wins, a deletion removes the tag
     find_and_process_unique(

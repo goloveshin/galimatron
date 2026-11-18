@@ -108,7 +108,9 @@ using container_t = multi_index_container
     >
 >;
 
-// an anonymous version body. it has no declaration index. owner is the version named by version before N
+// an anonymous version body.
+// it has no declaration index.
+// owner is the version named by version before N
 //
 struct anonymous_record_t
 {
@@ -665,7 +667,9 @@ public:
             ;
     }
 
-    // definition links of this aggregate are dropped. declarations stay. anonymous bodies are dropped
+    // definition links of this aggregate are dropped.
+    // declarations stay.
+    // anonymous bodies are dropped
     //
     void drop_definitions(const vertex_descriptor_t vd_aggregate)
     {
@@ -709,7 +713,7 @@ public:
     //
     // testing: no
     //
-    void collect_vertex_descriptors(std::vector<vertex_descriptor_t>& held) const
+    void collect_vertex_descriptors(vertex_descriptors_vector_t& held) const
     {
         for (const auto& record : *this)
         {
@@ -724,22 +728,22 @@ public:
         }
     }
 
-    // descriptors above a removed vertex move down by one
+    // descriptors above the removed vertices move down
     //
     // testing: no
     //
-    void note_vertex_removed(const vertex_descriptor_t removed)
+    void note_vertices_removed(const vertex_shift_t& shift)
     {
-        rewrite_descriptors(*this, removed, [&](detail::record_t& record)
+        rewrite_descriptors(*this, [&](detail::record_t& record)
         {
-            pull_down(record.vd_aggregate, removed);
-            pull_down(record.vd_declaration, removed);
-            pull_down(record.vd_definition, removed);
+            pull_down(record.vd_aggregate, shift);
+            pull_down(record.vd_declaration, shift);
+            pull_down(record.vd_definition, shift);
         });
-        rewrite_descriptors(anonymous_, removed, [&](detail::anonymous_record_t& record)
+        rewrite_descriptors(anonymous_, [&](detail::anonymous_record_t& record)
         {
-            pull_down(record.vd_aggregate, removed);
-            pull_down(record.vd_definition, removed);
+            pull_down(record.vd_aggregate, shift);
+            pull_down(record.vd_definition, shift);
         });
     }
 

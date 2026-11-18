@@ -20,7 +20,8 @@ struct ordering_ranks_t
     std::optional<ordering_rank_problem_t> problem;
 };
 
-// the rank of each aggregate the parts name. problem is set when the parts are not a strict weak order
+// the rank of each aggregate the parts name
+// problem is set when the parts are not a strict weak order
 //
 ordering_ranks_t ranks_of_ordering(const ordering_statement_t::ordering_parts_t& parts);
 

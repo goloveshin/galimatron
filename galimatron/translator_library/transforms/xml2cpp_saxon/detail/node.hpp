@@ -1,5 +1,8 @@
 #pragma once
 
+// galimatron
+#include "galimatron/translator_library/transforms/layout_table.hpp"
+
 
 class XdmNode;
 
@@ -69,11 +72,14 @@ private:
     bool owns_ = false;
 };
 
-// names, attributes, and text, without the layout mark.
-// whitespace the serializer inserts between nodes is ignored
+// the layout marks of the elements under the node, and of the node, whose fingerprint
+// equals the one cpp2xml stored for that mark.
+// a fingerprint is the names, attributes, and text of an element and its children, without
+// the layout mark. whitespace the serializer inserts between nodes is ignored.
+// one walk over the tree: each element is read once, however many marked parents it has
 //
 // testing: no
 //
-std::string fingerprint(const node_t& node);
+layout::layout_marks_t unchanged_layout_marks(const node_t& root, const layout::table_t& table);
 
 }// namespace galimatron::translator::transforms::xml2cpp_saxon

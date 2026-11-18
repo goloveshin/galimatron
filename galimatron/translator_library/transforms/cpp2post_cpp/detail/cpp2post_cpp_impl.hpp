@@ -61,7 +61,7 @@ private:
         index_t version_index;
         path_ot file_path;
     };
-    static vertex_descriptors_ot resolve_tag_name_labels_to_vd_labels(const resolve_tag_name_labels_to_vd_labels_t&);
+    static vertex_descriptors_deque_ot resolve_tag_name_labels_to_vd_labels(const resolve_tag_name_labels_to_vd_labels_t&);
 
     struct name_tag_from_label_t
     {
@@ -124,7 +124,7 @@ private:
         index_t version_index;
         std::function<void (const std::string&)> log_func;
     };
-    static vertex_descriptors_t compile_tags_in_version(const compile_tags_in_version_t&);
+    static vertex_descriptors_deque_t compile_tags_in_version(const compile_tags_in_version_t&);
 
     struct compile_orderings_in_version_t
     {

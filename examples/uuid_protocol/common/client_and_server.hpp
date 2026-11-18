@@ -65,7 +65,8 @@ private:
     //
     void run_client_sessions();
 
-    // one connection per test case. accept_until_stopped keeps accepting until the process is stopped
+    // one connection per test case.
+    // accept_until_stopped keeps accepting until the process is stopped
     //
     // testing: no
     //

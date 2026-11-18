@@ -191,7 +191,8 @@ cpp2post_cpp_t::merged_versions_t& cpp2post_cpp_t::create_merged_versions_entiti
             });
         }
 
-        // parked statements follow the root labels of this version, so a collapsed tag still sees its label
+        // parked statements follow the root labels of this version,
+        // so a collapsed tag still sees its label
         append_anonymous(version_index);
 
         // add from the current version, if it exists

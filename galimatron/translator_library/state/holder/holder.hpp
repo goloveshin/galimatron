@@ -51,7 +51,7 @@ public:
     auto& graph_container(){ return graph_container_; }
     const auto& graph_container() const { return graph_container_; }
 
-    vertex_descriptors_t wizard_statements() const;
+    vertex_descriptors_deque_t wizard_statements() const;
 
     // recorded when the wizard statement vertex is created
     //
@@ -104,6 +104,10 @@ public:
         const name_t& name
     ) const;
 
+    // every label statement with this name, in any aggregate and version
+    //
+    vertex_descriptors_vector_t label_statements_named(const name_t& name) const;
+
     index_t next_version_statement_index(vertex_descriptor_t vd_aggregate, index_t version_index) const;
 
     // direct statements of one version, in index order
@@ -134,7 +138,8 @@ public:
     void replace_string_delimiters(std::vector<string_delimiter_t>);
 
 private:
-    // smallest live declaration index, and the highest hashed declaration, stored on the aggregate record
+    // smallest live declaration index, and the highest hashed declaration,
+    // stored on the aggregate record
     //
     void refresh_live_and_hashed(vertex_descriptor_t vd_aggregate);
 
@@ -145,7 +150,7 @@ private:
     version_container::container_t versions_;
     version_statement_container::container_t version_statements_;
     ordering_link_container::container_t ordering_links_;
-    vertex_descriptors_t wizard_statements_;
+    vertex_descriptors_deque_t wizard_statements_;
     std::vector<string_delimiter_t> string_delimiters_;
 };
 using language_part_sptr_t = std::shared_ptr<language_part_t>;
@@ -176,7 +181,7 @@ public:
     struct notify_labels_for_tag_t
     {
         vertex_descriptor_t vd_tag;
-        using get_vd_labels_ft = std::function<vertex_descriptors_ot ()>;
+        using get_vd_labels_ft = std::function<vertex_descriptors_deque_ot ()>;
         get_vd_labels_ft get_vd_labels;
     };
     aggregated_labels_static_ot notify_labels_for_tag(const notify_labels_for_tag_t&);
@@ -265,7 +270,7 @@ public:
 
 private:
     aggregated_label_static_rt find_or_get_static_label(const vertex_descriptor_t& /* vd_label */);
-    aggregated_labels_static_ot get_static_labels(const vertex_descriptors_ot&);
+    aggregated_labels_static_ot get_static_labels(const vertex_descriptors_deque_ot&);
 
 private:
     tag_container::container_t tag_container_;

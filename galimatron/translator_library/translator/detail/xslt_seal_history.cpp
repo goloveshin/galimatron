@@ -153,7 +153,7 @@ void restore_one_version(
         after.detach_children(*vd_after_def);
     }
 
-    std::vector<vertex_descriptor_t> children;
+    vertex_descriptors_vector_t children;
     for (const auto vd_child : subrange(boost::adjacent_vertices(*vd_before_def, before.graph())))
     {
         children.push_back(vd_child);

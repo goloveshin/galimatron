@@ -26,7 +26,8 @@ bool indexes_stay_continuous(const indices_t& indices);
 
 bool is_deleted(const version_status_oet& status);
 
-// the definition consists only of delete; — a historical version deletion
+// the definition consists only of delete;
+// that is a historical version deletion
 //
 bool definition_is_only_version_delete(
     const holder::language_part_t& language,

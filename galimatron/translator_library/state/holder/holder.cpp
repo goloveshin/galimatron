@@ -4,6 +4,7 @@
 #include "galimatron/translator_library/state/holder/containers/tag_container.hpp"
 #include "galimatron/translator_library/state/holder/graph/vertex_payload.hpp"
 #include "galimatron/translator_library/state/entity/entity.hpp"
+#include "galimatron/translator_library/state/statement_facts.hpp"
 
 // global
 #include "global/common_library/utils.hpp"
@@ -54,7 +55,8 @@ index_t language_part_t::intern_string_delimiter(const string_delimiter_t& delim
     return string_delimiters_.size() - 1;
 }
 
-// the document's delimiter list. an empty list keeps the plain double quote
+// replaces the document's delimiter list.
+// an empty list keeps the plain double quote
 //
 void language_part_t::replace_string_delimiters(std::vector<string_delimiter_t> delimiters)
 {
@@ -142,7 +144,8 @@ void language_part_t::refresh_version_records()
     {
         for (const auto& definition : versions_.definitions_in_order(aggregate.vd))
         {
-            // anonymous bodies sit before their owner. their text is part of that sealed version
+            // anonymous bodies sit before their owner.
+            // their text is part of that sealed version
             std::string payload;
             for (const auto& anonymous : versions_.anonymous_owned_by(aggregate.vd, definition.index))
             {
@@ -171,7 +174,7 @@ void language_part_t::refresh_version_records()
 
 void language_part_t::bind_anonymous_owners(const vertex_descriptor_t vd_definitions)
 {
-    std::vector<vertex_descriptor_t> pending;
+    vertex_descriptors_vector_t pending;
     for (const auto vd_child : ::subrange(boost::adjacent_vertices(vd_definitions, graph_)))
     {
         if (!is_version_definition(graph_[vd_child].entity_type))
@@ -206,7 +209,7 @@ void language_part_t::rebind_version_definitions(const vertex_descriptor_t vd_ag
     const auto vd_definitions = *record->vd_definitions;
     versions_.drop_definitions(vd_aggregate);
 
-    std::vector<vertex_descriptor_t> pending;
+    vertex_descriptors_vector_t pending;
     for (const auto vd_child : ::subrange(boost::adjacent_vertices(vd_definitions, graph_)))
     {
         if (!is_version_definition(graph_[vd_child].entity_type))
@@ -249,34 +252,8 @@ void language_part_t::note_version_child(const vertex_descriptor_t vd_child)
     const auto vd_definitions = definition.vd_parent;
     const auto vd_aggregate = graph_[vd_definitions].vd_parent;
 
-    name_ot name;
-    index_t index_in_version = 0;
-    bool names_tag = false;
-    const ordering_statement_t* ordering = nullptr;
-    if (const auto* tag = std::get_if<tag_statement_t>(&child.entity))
-    {
-        name = tag->name;
-        index_in_version = tag->index_in_version;
-        names_tag = tag->name.has_value();
-    }
-    else if (const auto* label = std::get_if<label_statement_t>(&child.entity))
-    {
-        name = label->name;
-        index_in_version = label->index_in_version;
-    }
-    else if (const auto* found = std::get_if<ordering_statement_t>(&child.entity))
-    {
-        ordering = found;
-        name = found->name;
-        index_in_version = found->index_in_version;
-    }
-    else if (const auto* operation = std::get_if<operation_statement_t>(&child.entity))
-    {
-        name = operation->name;
-        index_in_version = operation->index_in_version;
-        names_tag = !operation->is_version;
-    }
-    else
+    const auto facts = statement_facts(child.entity);
+    if (!facts)
     {
         return;
     }
@@ -286,11 +263,12 @@ void language_part_t::note_version_child(const vertex_descriptor_t vd_child)
         .version_index = version_index,
         .vd_definition = vd_definition,
         .vd_entity = vd_child,
-        .name = name,
-        .index_in_version = index_in_version,
-        .names_tag = names_tag,
+        .name = facts->name,
+        .index_in_version = facts->index_in_version,
+        .names_tag = facts->names_tag,
         .entity_type = child.entity_type
     });
+    const auto* ordering = std::get_if<ordering_statement_t>(&child.entity);
     if (!inserted || !ordering)
     {
         return;
@@ -336,7 +314,7 @@ namespace drop_detached
 void hold_kept_entities(
     const language_part_t& state,
     const std::vector<char>& kept,
-    std::vector<vertex_descriptor_t>& held
+    vertex_descriptors_vector_t& held
 )
 {
     const auto count = kept.size();
@@ -372,7 +350,7 @@ std::vector<char> vertices_to_keep(
     const auto root = state.root_node();
     if (root != vertex_descriptor_not_present && root < count)
     {
-        std::vector<vertex_descriptor_t> pending{ root };
+        vertex_descriptors_vector_t pending{ root };
         while (!pending.empty())
         {
             const auto vd = pending.back();
@@ -389,7 +367,7 @@ std::vector<char> vertices_to_keep(
         }
     }
 
-    std::vector<vertex_descriptor_t> held;
+    vertex_descriptors_vector_t held;
     state.aggregates().collect_vertex_descriptors(held);
     state.versions().collect_vertex_descriptors(held);
     statements.collect_vertex_descriptors(held);
@@ -419,44 +397,71 @@ std::vector<char> vertices_to_keep(
     return kept;
 }
 
-void pull_graph(language_part_t& state, const vertex_descriptor_t removed)
+// the graph is rebuilt from the kept vertices in one pass: their order, their child order,
+// and the descriptors inside them follow the shift.
+// removing the vertices one at a time would renumber the whole graph for each of them
+//
+void rebuild_graph(
+    language_part_t& state,
+    const std::vector<char>& kept,
+    const vertex_shift_t& shift
+)
 {
-    auto& vertices = state.graph_container();
-    const auto count = boost::num_vertices(state.graph());
+    auto& graph = state.graph();
+    const auto count = kept.size();
+
+    std::vector<vertex_t> vertices;
+    std::vector<std::pair<vertex_descriptor_t, vertex_descriptor_t>> edges;
     for (vertex_descriptor_t vd = 0; vd < count; ++vd)
     {
-        const auto modified = vertices.modify_at(vd, [&](auto& stored)
+        if (!kept[vd])
         {
-            auto& property = stored.m_property;
-            property.vd_self = vd;
-            pull_down(property.vd_parent, removed);
-            if (auto* tag = std::get_if<tag_statement_t>(&property.entity))
-            {
-                for (auto& value : tag->string_values_at_zero_level)
-                {
-                    pull_down(value.second, removed);
-                }
-            }
-            if (auto* wizard = std::get_if<wizard_statement_t>(&property.entity))
-            {
-                pull_down(wizard->chunk_node, removed);
-            }
-        });
-        if (!modified)
-        {
-            leaf::throw_exception(
-                exception::domain::translator_library{},
-                exception::subdomain::translator_library::holder{},
-                exception::e_what_info{ "a vertex descriptor collided after a vertex was removed" }
-            );
+            continue;
         }
+        for (const auto child : ::subrange(boost::adjacent_vertices(vd, graph)))
+        {
+            if (kept[child])
+            {
+                edges.emplace_back(shift(vd), shift(child));
+            }
+        }
+        vertices.push_back(std::move(graph[vd]));
+    }
+
+    for (vertex_descriptor_t vd = 0; vd < vertices.size(); ++vd)
+    {
+        auto& property = vertices[vd];
+        property.vd_self = vd;
+        pull_down(property.vd_parent, shift);
+        if (auto* tag = std::get_if<tag_statement_t>(&property.entity))
+        {
+            for (auto& value : tag->string_values_at_zero_level)
+            {
+                pull_down(value.second, shift);
+            }
+        }
+        if (auto* wizard = std::get_if<wizard_statement_t>(&property.entity))
+        {
+            pull_down(wizard->chunk_node, shift);
+        }
+    }
+
+    // graph_container_ refers to the vertex list of this same graph, so it stays valid
+    graph.clear();
+    for (const auto& property : vertices)
+    {
+        boost::add_vertex(property, graph);
+    }
+    for (const auto& [from, to] : edges)
+    {
+        boost::add_edge(from, to, graph);
     }
 }
 
 }// namespace drop_detached
 
 // vertices the root cannot reach and that no index stores are erased.
-// descriptors above each erased vertex move down by one
+// descriptors above the erased vertices move down, all at once
 //
 void language_part_t::drop_detached_vertices()
 {
@@ -470,36 +475,31 @@ void language_part_t::drop_detached_vertices()
         })
         | ranges::to_vector
         ;
-    garbage |= actions::sort(greater{});
-
-    for (const auto removed : garbage)
+    if (garbage.empty())
     {
-        boost::clear_vertex(removed, graph_);
-        // remove_vertex asks the vertex list for iterator stability, which this list does not provide.
-        // the dispatch erases the vertex and moves later edge endpoints down by one
-        boost::detail::remove_vertex_dispatch(graph_, removed, boost::bidirectional_tag{});
-        drop_detached::pull_graph(*this, removed);
-        aggregates_.note_vertex_removed(removed);
-        versions_.note_vertex_removed(removed);
-        version_statements_.note_vertex_removed(removed);
-        ordering_links_.note_vertex_removed(removed);
-        pull_down(root_node_, removed);
-
-        auto stored = wizard_statements_;
-        wizard_statements_ =
-            stored
-            | views::filter([&](const vertex_descriptor_t vd)
-            {
-                return vd != removed;
-            })
-            | views::transform([&](vertex_descriptor_t vd)
-            {
-                pull_down(vd, removed);
-                return vd;
-            })
-            | ranges::to<vertex_descriptors_t>()
-            ;
+        return;
     }
+
+    const vertex_shift_t shift{ std::move(garbage) };
+    drop_detached::rebuild_graph(*this, kept, shift);
+    aggregates_.note_vertices_removed(shift);
+    versions_.note_vertices_removed(shift);
+    version_statements_.note_vertices_removed(shift);
+    ordering_links_.note_vertices_removed(shift);
+    pull_down(root_node_, shift);
+
+    wizard_statements_ =
+        wizard_statements_
+        | views::transform([&](const vertex_descriptor_t vd)
+        {
+            return shift(vd);
+        })
+        | views::filter([](const vertex_descriptor_t vd)
+        {
+            return vd != vertex_descriptor_not_present;
+        })
+        | ranges::to<vertex_descriptors_deque_t>()
+        ;
 }
 
 bool language_part_t::version_names_tag(
@@ -511,6 +511,11 @@ bool language_part_t::version_names_tag(
     return version_statements_.names_tag(vd_aggregate, version_index, name);
 }
 
+vertex_descriptors_vector_t language_part_t::label_statements_named(const name_t& name) const
+{
+    return version_statements_.entities_named(entity_et::LABEL_STATEMENT, name);
+}
+
 index_t language_part_t::next_version_statement_index(
     const vertex_descriptor_t vd_aggregate,
     const index_t version_index
@@ -519,7 +524,7 @@ index_t language_part_t::next_version_statement_index(
     return version_statements_.next_index(vd_aggregate, version_index);
 }
 
-vertex_descriptors_t language_part_t::wizard_statements() const
+vertex_descriptors_deque_t language_part_t::wizard_statements() const
 {
     return wizard_statements_;
 }
@@ -729,7 +734,7 @@ void compiled_part_t::force_resolve_labels()
     const auto unique_vd_labels =
         tag_labels_container_
         | views::filter([](const auto& record){ return record.vd_labels.has_value(); })
-        | views::transform([](const auto& record) -> const vertex_descriptors_t& { return record.vd_labels.value(); })
+        | views::transform([](const auto& record) -> const vertex_descriptors_deque_t& { return record.vd_labels.value(); })
         | views::join
         | to<std::set<vertex_descriptor_t>>
         ;
@@ -739,8 +744,9 @@ void compiled_part_t::force_resolve_labels()
         find_or_get_static_label(vd_label);
     }
 
-    // the refs are resolved into static values; the compiled state does not keep them
-    std::vector<vertex_descriptor_t> tags;
+    // the refs are resolved into static values.
+    // the compiled state does not keep them
+    vertex_descriptors_vector_t tags;
     for (const auto& record : tag_labels_container_)
     {
         tags.push_back(record.vd_tag);
@@ -831,9 +837,9 @@ vertex_descriptor_ot compiled_part_t::try_merged_version(
     return version->second;
 }
 
-aggregated_labels_static_ot compiled_part_t::get_static_labels(const vertex_descriptors_ot& vd_labels)
+aggregated_labels_static_ot compiled_part_t::get_static_labels(const vertex_descriptors_deque_ot& vd_labels)
 {
-    return vd_labels.transform([&](const vertex_descriptors_t& vds) -> aggregated_labels_static_t
+    return vd_labels.transform([&](const vertex_descriptors_deque_t& vds) -> aggregated_labels_static_t
     {
         return
             vds

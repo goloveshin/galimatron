@@ -17,10 +17,15 @@ struct entry_t
     std::string fingerprint;
 };
 
+// the number cpp2xml writes on an element that has user formatting or comments.
+// zero is not a mark
+using layout_mark_t = std::uint64_t;
+using layout_marks_t = std::set<layout_mark_t>;
+
 struct table_t
 {
-    std::uint64_t next = 0;
-    std::unordered_map<std::uint64_t, entry_t> entries;
+    layout_mark_t next = 0;
+    std::unordered_map<layout_mark_t, entry_t> entries;
 
     void clear()
     {

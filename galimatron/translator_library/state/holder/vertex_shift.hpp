@@ -7,33 +7,64 @@
 namespace galimatron::translator::state::holder
 {
 
-// a removed vertex leaves a hole that the next descriptors close.
-// a descriptor that named the removed vertex becomes absent
+// the vertices that leave the graph in one pass. each removed vertex leaves a hole,
+// and a descriptor above it moves down by the number of holes below it.
+// a descriptor that named a removed vertex becomes absent
 //
-inline void pull_down(vertex_descriptor_t& vd, const vertex_descriptor_t removed)
+class vertex_shift_t
 {
-    if (vd == vertex_descriptor_not_present || vd < removed)
+public:
+    // the removed descriptors, in any order. a repeated descriptor counts once
+    //
+    explicit vertex_shift_t(vertex_descriptors_vector_t removed)
+        : removed_(std::move(removed))
     {
-        return;
+        removed_ |= ranges::actions::sort | ranges::actions::unique;
     }
-    if (vd == removed)
+
+    bool is_empty() const
     {
-        vd = vertex_descriptor_not_present;
-        return;
+        return removed_.empty();
     }
-    --vd;
+
+    // the descriptor after the shift
+    //
+    vertex_descriptor_t operator()(const vertex_descriptor_t vd) const
+    {
+        if (vd == vertex_descriptor_not_present)
+        {
+            return vd;
+        }
+        const auto first_not_below = ranges::lower_bound(removed_, vd);
+        if (first_not_below != removed_.end() && *first_not_below == vd)
+        {
+            return vertex_descriptor_not_present;
+        }
+        return vd - static_cast<vertex_descriptor_t>(first_not_below - removed_.begin());
+    }
+
+private:
+    vertex_descriptors_vector_t removed_;
+};
+
+// the shift applied to a descriptor.
+// a descriptor that named a removed vertex becomes absent
+//
+inline void pull_down(vertex_descriptor_t& vd, const vertex_shift_t& shift)
+{
+    vd = shift(vd);
 }
 
 // same shift for an optional descriptor. an empty optional stays empty.
-// a descriptor that named the removed vertex becomes empty
+// a descriptor that named a removed vertex becomes empty
 //
-inline void pull_down(vertex_descriptor_ot& vd, const vertex_descriptor_t removed)
+inline void pull_down(vertex_descriptor_ot& vd, const vertex_shift_t& shift)
 {
     if (!vd)
     {
         return;
     }
-    pull_down(*vd, removed);
+    pull_down(*vd, shift);
     if (*vd == vertex_descriptor_not_present)
     {
         vd.reset();
@@ -42,7 +73,7 @@ inline void pull_down(vertex_descriptor_ot& vd, const vertex_descriptor_t remove
 
 // remembers a descriptor that still names a live vertex
 //
-inline void hold_vertex(std::vector<vertex_descriptor_t>& held, const vertex_descriptor_t vd)
+inline void hold_vertex(vertex_descriptors_vector_t& held, const vertex_descriptor_t vd)
 {
     if (vd != vertex_descriptor_not_present)
     {
@@ -52,7 +83,7 @@ inline void hold_vertex(std::vector<vertex_descriptor_t>& held, const vertex_des
 
 // remembers an optional descriptor that still names a live vertex
 //
-inline void hold_vertex(std::vector<vertex_descriptor_t>& held, const vertex_descriptor_ot& vd)
+inline void hold_vertex(vertex_descriptors_vector_t& held, const vertex_descriptor_ot& vd)
 {
     if (vd)
     {
@@ -60,11 +91,11 @@ inline void hold_vertex(std::vector<vertex_descriptor_t>& held, const vertex_des
     }
 }
 
-// every stored descriptor above the removed vertex moves down by one.
+// assign shifts the descriptors of one record, and the container reindexes it.
 // throws translator_library::holder when two records would share a key
 //
 template <typename Container, typename Assign>
-void rewrite_descriptors(Container& container, const vertex_descriptor_t removed, Assign assign)
+void rewrite_descriptors(Container& container, Assign assign)
 {
     auto iterators =
         container

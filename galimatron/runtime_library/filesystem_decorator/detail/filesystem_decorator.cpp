@@ -23,7 +23,8 @@ Logme::SID SUBSID = Logme::SID::Build(global::log_subsystems::rt_fsd);
 
 namespace
 {
-// to_absolute, split_path_by_parts, and merge_paths are taken from global::filesystem::physically
+// takes only the path calls from global::filesystem::physically:
+// to_absolute, split_path_by_parts, and merge_paths
 // the other calls are empty and throw std::bad_function_call
 //
 const gf::physically::filesystem_t& path_filesystem()
@@ -265,7 +266,8 @@ filesystem_decorator_t::printout_result_t filesystem_decorator_t::printout(const
     {
         old_parts = split_path_by_parts(*old_part_tmp.path);
     }
-    // the result root is always the destination place root, even if the old path was in another place
+    // the result root is always the destination place root,
+    // even if the old path was in another place
     old_parts.root = place.root;
 
     // the given replace_by parts replace the same-named parts of the old path.
@@ -315,12 +317,16 @@ filesystem_decorator_t::printout_result_t filesystem_decorator_t::printout(const
     // the path was rewritten; do not remove it at the end of do_jobs_at_end
     file.remove_at_end = false;
 
-    // without comparison we always write, otherwise only when the new content differs from the current one
+    // without comparison we always write
+    // otherwise we write only when the new content differs from the current one
     const bool is_need_to_do_write = [&]
     {
         if (place.write.if_content_differ)
         {
-            // current content: already known, otherwise the disk, otherwise empty — the file does not exist, we write
+            // current content is taken from the first source that has it:
+            // - already known
+            // - the disk
+            // - empty: the file does not exist, we write
             const auto current_content = [&] -> file_content_ot
             {
                 if (file.content)

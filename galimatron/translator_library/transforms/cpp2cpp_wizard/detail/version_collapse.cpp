@@ -6,6 +6,8 @@
 #include "galimatron/translator_library/state/dynamic_label.hpp"
 #include "galimatron/translator_library/state/entity/entity.hpp"
 #include "galimatron/translator_library/state/gal_and_xml_tags.hpp"
+#include "galimatron/translator_library/state/statement_facts.hpp"
+#include "galimatron/translator_library/state/tag_name_part.hpp"
 
 // global
 #include "global/common_library/utils.hpp"
@@ -37,23 +39,7 @@ void reparent_statement(
     const auto vd_old = graph[vd_child].vd_parent;
     state.forget_version_child(vd_child);
 
-    auto& entity = graph[vd_child].entity;
-    if (auto* tag = std::get_if<tag_statement_t>(&entity))
-    {
-        tag->index_in_version = index_in_version;
-    }
-    else if (auto* label = std::get_if<label_statement_t>(&entity))
-    {
-        label->index_in_version = index_in_version;
-    }
-    else if (auto* ordering = std::get_if<ordering_statement_t>(&entity))
-    {
-        ordering->index_in_version = index_in_version;
-    }
-    else if (auto* operation = std::get_if<operation_statement_t>(&entity))
-    {
-        operation->index_in_version = index_in_version;
-    }
+    set_index_in_version(graph[vd_child].entity, index_in_version);
 
     boost::remove_edge(vd_old, vd_child, graph);
     auto& vertices = state.graph_container();
@@ -75,7 +61,7 @@ void order_child_before(
 )
 {
     auto& graph = state.graph();
-    std::vector<vertex_descriptor_t> children;
+    vertex_descriptors_vector_t children;
     for (const auto vd : subrange(boost::adjacent_vertices(vd_parent, graph)))
     {
         children.push_back(vd);
@@ -112,10 +98,33 @@ void detach_definition(
     state.detach_vertex(vd_parent, vd_definition);
 }
 
-// the static body of the latest label with this name.
-// a later version hides an earlier label
+// the label bodies looked up so far, by label name.
+// the graph stays as it is while one cache is used
 //
-const label_static_t* latest_label_static(
+using label_cache_t = std::map<name_t, const label_static_t*>;
+
+// the static body of a label statement, when that body has tag-name-from
+//
+const label_static_t* naming_body_of(
+    const holder::language_part_t& state,
+    const vertex_descriptor_t vd_label
+)
+{
+    const label_static_t* found = nullptr;
+    for (const auto vd_part : subrange(boost::adjacent_vertices(vd_label, state.graph())))
+    {
+        const auto* body = std::get_if<label_static_t>(&state.graph()[vd_part].entity);
+        if (body && body->tag_name_from)
+        {
+            found = body;
+        }
+    }
+    return found;
+}
+
+// walks every version of every aggregate. the last body found is the latest
+//
+const label_static_t* walk_latest_label_static(
     const holder::language_part_t& state,
     const name_t& name
 )
@@ -130,13 +139,9 @@ const label_static_t* latest_label_static(
             {
                 continue;
             }
-            for (const auto vd_part : subrange(boost::adjacent_vertices(vd_child, state.graph())))
+            if (const auto* body = naming_body_of(state, vd_child))
             {
-                const auto* body = std::get_if<label_static_t>(&state.graph()[vd_part].entity);
-                if (body && body->tag_name_from)
-                {
-                    found = body;
-                }
+                found = body;
             }
         }
     };
@@ -158,12 +163,42 @@ const label_static_t* latest_label_static(
     return found;
 }
 
+// the static body of the latest label with this name.
+// a later version hides an earlier label.
+// a name that one label statement carries needs no walk: that label is the latest
+//
+const label_static_t* latest_label_static(
+    const holder::language_part_t& state,
+    const name_t& name,
+    label_cache_t& cache
+)
+{
+    if (const auto cached = cache.find(name); cached != cache.end())
+    {
+        return cached->second;
+    }
+
+    const auto labels = state.label_statements_named(name);
+    const label_static_t* found = nullptr;
+    if (labels.size() > 1)
+    {
+        found = walk_latest_label_static(state, name);
+    }
+    else if (labels.size() == 1)
+    {
+        found = naming_body_of(state, labels.front());
+    }
+    cache.emplace(name, found);
+    return found;
+}
+
 // an unnamed tag takes the name a label's tag-name-from points at.
 // absent when that label is missing, so the tag is not paired with another
 //
 name_ot name_from_label(
     const holder::language_part_t& state,
-    const tag_statement_t& tag
+    const tag_statement_t& tag,
+    label_cache_t& cache
 )
 {
     name_ot chosen;
@@ -173,32 +208,21 @@ name_ot name_from_label(
         {
             continue;
         }
-        const auto* body = latest_label_static(state, label_name);
-        if (!body || !body->tag_name_from)
+        const auto* body = latest_label_static(state, label_name, cache);
+        if (!body)
         {
             continue;
         }
-        const auto it = ranges::find(body->values, *body->tag_name_from);
-        if (it == ranges::end(body->values))
+        const auto part = tag_name_part(state.graph(), *body, tag);
+        if (part.status != tag_name_part_t::status_et::FOUND || part.value->empty())
         {
             return {};
         }
-        const auto index = ranges::distance(ranges::begin(body->values), it);
-        const auto value = tag.string_values_at_zero_level.find(index);
-        if (value == tag.string_values_at_zero_level.end())
+        if (chosen && *chosen != *part.value)
         {
             return {};
         }
-        const auto& text = get_entity<tag_string_t>(state.graph()[value->second]).value;
-        if (text.empty())
-        {
-            return {};
-        }
-        if (chosen && *chosen != text)
-        {
-            return {};
-        }
-        chosen = text;
+        chosen = *part.value;
     }
     return chosen;
 }
@@ -213,61 +237,75 @@ struct collapse_key_t
     bool operator==(const collapse_key_t&) const = default;
 };
 
+struct collapse_key_hash_t
+{
+    std::size_t operator()(const collapse_key_t& key) const
+    {
+        return std::hash<name_t>{}(key.name) ^ (static_cast<std::size_t>(key.kind) * 0x9e3779b97f4a7c15ULL);
+    }
+};
+
 // absent when this statement does not replace another.
 // a version delete is not parked
 //
 std::optional<collapse_key_t> collapse_key(
     const holder::language_part_t& state,
-    const vertex_descriptor_t vd
+    const vertex_descriptor_t vd,
+    label_cache_t& cache
 )
 {
-    const auto& entity = state.graph()[vd].entity;
-    if (const auto* tag = std::get_if<tag_statement_t>(&entity))
+    const auto& vertex = state.graph()[vd];
+    const auto facts = statement_facts(vertex.entity);
+    if (!facts)
     {
-        if (tag->name)
-        {
-            return collapse_key_t{ entity_et::TAG_STATEMENT, *tag->name };
-        }
-        if (const auto named = name_from_label(state, *tag))
-        {
-            return collapse_key_t{ entity_et::TAG_STATEMENT, *named };
-        }
         return {};
     }
-    if (const auto* label = std::get_if<label_statement_t>(&entity))
+
+    switch (vertex.entity_type)
     {
-        return collapse_key_t{ entity_et::LABEL_STATEMENT, label->name };
-    }
-    if (const auto* ordering = std::get_if<ordering_statement_t>(&entity))
-    {
-        return collapse_key_t{ entity_et::ORDERING_STATEMENT, ordering->name };
-    }
-    if (const auto* operation = std::get_if<operation_statement_t>(&entity))
-    {
-        if (operation->is_version)
-        {
+        case entity_et::TAG_STATEMENT:
+            if (facts->name)
+            {
+                return collapse_key_t{ entity_et::TAG_STATEMENT, *facts->name };
+            }
+            if (const auto named = name_from_label(state, get_entity<tag_statement_t>(vertex), cache))
+            {
+                return collapse_key_t{ entity_et::TAG_STATEMENT, *named };
+            }
             return {};
-        }
-        return collapse_key_t{ entity_et::TAG_STATEMENT, operation->name };
+        case entity_et::LABEL_STATEMENT:
+            return collapse_key_t{ entity_et::LABEL_STATEMENT, *facts->name };
+        case entity_et::ORDERING_STATEMENT:
+            return collapse_key_t{ entity_et::ORDERING_STATEMENT, *facts->name };
+        case entity_et::OPERATION_STATEMENT:
+            if (!facts->names_tag)
+            {
+                return {};
+            }
+            return collapse_key_t{ entity_et::TAG_STATEMENT, *facts->name };
+        default:
+            return {};
     }
-    return {};
 }
 
 struct kept_statement_t
 {
     vertex_descriptor_t vd = vertex_descriptor_not_present;
-    std::optional<collapse_key_t> key;
+    // a later statement of the same name took its place
+    bool is_hidden = false;
 };
 
 // the last statement of each name, in the order that last statement was written.
 // a later statement hides the earlier one. a statement with no name stays
 //
-std::vector<vertex_descriptor_t> last_variants(
+vertex_descriptors_vector_t last_variants(
     const holder::language_part_t& state,
-    const std::vector<vertex_descriptor_t>& sources
+    const vertex_descriptors_vector_t& sources
 )
 {
+    label_cache_t labels;
     std::vector<kept_statement_t> kept;
+    std::unordered_map<collapse_key_t, std::size_t, collapse_key_hash_t> latest;
     for (const auto vd_source : sources)
     {
         if (body_is_only_version_delete(state, vd_source))
@@ -284,27 +322,26 @@ std::vector<vertex_descriptor_t> last_variants(
                     continue;
                 }
             }
-            const auto key = collapse_key(state, vd_child);
-            if (key)
+            if (const auto key = collapse_key(state, vd_child, labels))
             {
-                kept |= ranges::actions::remove_if([&](const kept_statement_t& earlier)
+                if (const auto earlier = latest.find(*key); earlier != latest.end())
                 {
-                    return earlier.key && *earlier.key == *key;
-                });
+                    kept[earlier->second].is_hidden = true;
+                }
+                latest.insert_or_assign(*key, kept.size());
             }
             kept.push_back({
-                .vd = vd_child,
-                .key = key
+                .vd = vd_child
             });
         }
     }
 
-    std::vector<vertex_descriptor_t> parked;
-    for (const auto& statement : kept)
-    {
-        parked.push_back(statement.vd);
-    }
-    return parked;
+    return
+        kept
+        | ranges::views::filter([](const kept_statement_t& statement){ return !statement.is_hidden; })
+        | ranges::views::transform([](const kept_statement_t& statement){ return statement.vd; })
+        | ranges::to_vector
+        ;
 }
 
 void mark_declaration_deleted(
@@ -346,7 +383,8 @@ void mark_declaration_deleted(
     );
 }
 
-// definition links are rebuilt after the bodies move. a version that is left untouched returns before that
+// definition links are rebuilt after the bodies move.
+// a version that is left untouched returns before that
 //
 void collapse_one_aggregate(
     holder::language_part_t& state,
@@ -358,7 +396,7 @@ void collapse_one_aggregate(
     const bool opens_a_version
 )
 {
-    std::vector<vertex_descriptor_t> sources;
+    vertex_descriptors_vector_t sources;
     for (index_t index = first; index <= last; ++index)
     {
         for (const auto& anonymous : state.versions().anonymous_owned_by(vd_aggregate, index))

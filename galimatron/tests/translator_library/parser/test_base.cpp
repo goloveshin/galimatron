@@ -92,7 +92,8 @@ TEST_CASE("lexer tokens")
         const auto& expected_literal, const auto& expected_literal_base64
     )
     {
-        // NOTE: we do not check getDisplayName(), because according to the documentation it is a combination of functions
+        // NOTE: we do not check getDisplayName()
+        // according to the documentation, it is a combination of functions
 
         const auto actual_symbolic = vcb.getSymbolicName(type);
         CHECK(actual_symbolic == expected_symbolic);

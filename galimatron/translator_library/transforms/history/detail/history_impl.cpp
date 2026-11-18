@@ -185,7 +185,8 @@ bool is_first_live(
     return aggregate && aggregate->first_live && *aggregate->first_live == version_index;
 }
 
-// the first listed marker tag present on this aggregate at the end of the version. empty for the root
+// the first listed marker tag present on this aggregate at the end of the version
+// empty for the root
 //
 name_ot group_of(
     holder::compiled_part_t& compiled,

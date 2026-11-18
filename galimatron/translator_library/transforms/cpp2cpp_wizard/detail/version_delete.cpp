@@ -39,7 +39,8 @@ void remove_version(
 }// namespace
 
 // the named versions are removed from every aggregate. no version means the last version.
-// the versions that remain run from 0 without gaps, so a following create version continues that sequence
+// the versions that remain run from 0 without gaps,
+// so a following create version continues that sequence
 //
 void cpp2cpp_wizard_t::apply_wizard_delete_version()
 {

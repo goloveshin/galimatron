@@ -45,7 +45,8 @@ Logme::SID SUBSID = Logme::SID::Build(global::log_subsystems::tr_tsp);
 )
 {
     // path, aggregate, and version are loaded inside the capture.
-    // a load in the caller attaches to captured_leaf_exception, and try_catch unpacks it without them
+    // a load in the caller attaches to captured_leaf_exception,
+    // and try_catch unpacks it without them
     capture_or_rethrow([&]
     {
         const auto location = exception::augment_where(where);
@@ -110,7 +111,8 @@ bool is_deleted(const version_status_oet& status)
     return status == version_status_et::DELETED;
 }
 
-// the definition consists only of delete; — a historical version deletion
+// the definition consists only of delete;
+// that is a historical version deletion
 //
 bool definition_is_only_version_delete(
     const state::holder::language_part_t& language,

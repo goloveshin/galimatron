@@ -51,8 +51,8 @@ transform_t translator_t::get_cpp2xml_transform()
     };
 }
 
-// compiles the current graph when the cache is empty.
-// no root aggregate — nothing to compile
+// compiles the current graph when the cache is empty
+// with no root aggregate there is nothing to compile
 //
 void translator_t::ensure_compiled()
 {
@@ -89,7 +89,8 @@ pugi_document_with_meanful_node_t translator_t::document_cpp2xml(
     const std::string_view description
 )
 {
-    // a compiled document needs the compile. a language document compiles when this run validates or compiles
+    // a compiled document needs the compile.
+    // a language document compiles when this run validates or compiles
     if (as_compiled_document || language_xml_compiles())
     {
         ensure_compiled();

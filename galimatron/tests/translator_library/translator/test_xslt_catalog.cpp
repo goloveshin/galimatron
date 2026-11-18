@@ -12,8 +12,10 @@ namespace
 {
 
 // both cases read bin/../share from this one process.
-// configure can write that folder only once, so it cannot hide the catalog from the first case and show it to the second.
-// the first case deletes share before the run. the second case copies the catalog and gal-functions.xsl back before its run
+// configure can write that folder only once,
+// so it cannot hide the catalog from the first case and show it to the second.
+// the first case deletes share before the run.
+// the second case copies the catalog and gal-functions.xsl back before its run
 //
 path_t installed_share_directory()
 {

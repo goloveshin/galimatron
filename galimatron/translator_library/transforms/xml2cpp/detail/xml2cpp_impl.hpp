@@ -37,8 +37,9 @@ private:
     index_t attribute_index(const pugi::xml_node&) const;
     index_ot attribute_index_if(const pugi::xml_node&) const;
 
-    // once and local. an absent mode inherits
-    // otherwise exception::domain::translator_library, exception::subdomain::translator_library::xml2cpp
+    // the mode is once or local. an absent mode inherits
+    // any other value throws exception::domain::translator_library,
+    // exception::subdomain::translator_library::xml2cpp
     //
     tag_mode_et attribute_mode(const pugi::xml_node&) const;
 

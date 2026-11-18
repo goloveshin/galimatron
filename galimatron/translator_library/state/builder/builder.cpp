@@ -90,7 +90,7 @@ vertex_descriptor_t builder_t::clone_under_impl(const clone_under_impl_t& args)
         args.string_targets->emplace(found->second, vd_new);
     }
 
-    std::vector<vertex_descriptor_t> children;
+    vertex_descriptors_vector_t children;
     for (const auto vd_child : subrange(boost::adjacent_vertices(args.source, graph_)))
     {
         children.push_back(vd_child);
@@ -172,7 +172,7 @@ vertex_descriptor_t builder_t::clone_from_impl(const clone_from_impl_t& args)
         args.string_targets->emplace(found->second, vd_new);
     }
 
-    std::vector<vertex_descriptor_t> children;
+    vertex_descriptors_vector_t children;
     for (const auto vd_child : subrange(boost::adjacent_vertices(args.source, source_graph)))
     {
         children.push_back(vd_child);

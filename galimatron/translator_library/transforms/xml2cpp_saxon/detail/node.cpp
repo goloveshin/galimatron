@@ -1,6 +1,7 @@
 // galimatron
 #include "galimatron/translator_library/transforms/xml2cpp_saxon/detail/node.hpp"
 #include "galimatron/translator_library/transforms/layout_fingerprint.hpp"
+#include "galimatron/translator_library/transforms/layout_table.hpp"
 
 // Saxon
 #include <saxonc/XdmNode.h>
@@ -288,9 +289,43 @@ struct fingerprint_access_t
 
 }// namespace
 
-std::string fingerprint(const node_t& node)
+layout::layout_marks_t unchanged_layout_marks(const node_t& root, const layout::table_t& table)
 {
-    return layout::detail::fingerprint<fingerprint_access_t>(node);
+    layout::layout_marks_t matching;
+    layout::layout_marks_t mismatching;
+    layout::detail::for_each_fingerprint<fingerprint_access_t>(
+        root,
+        [&](const std::string_view mark_text, const std::string_view fingerprint_text)
+        {
+            const std::string text{ mark_text };
+            char* end = nullptr;
+            const auto mark = std::strtoull(text.c_str(), &end, 10);
+            if (text.empty() || !end || *end != '\0' || mark == 0)
+            {
+                return;
+            }
+            const auto found = table.entries.find(mark);
+            if (found == table.entries.end())
+            {
+                return;
+            }
+            if (found->second.fingerprint == fingerprint_text)
+            {
+                matching.insert(mark);
+            }
+            else
+            {
+                mismatching.insert(mark);
+            }
+        }
+    );
+
+    // two elements that carry one mark are a copy: both keep no formatting unless both are unchanged
+    for (const auto mark : mismatching)
+    {
+        matching.erase(mark);
+    }
+    return matching;
 }
 
 }// namespace galimatron::translator::transforms::xml2cpp_saxon

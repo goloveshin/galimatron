@@ -55,7 +55,8 @@ void builder_t::append_transform(const append_transform_t& args)
             .append_child(pugi::node_cdata)
             .set_value(*args.user_data);
     }
-    // an absolute path keeps the native spelling. a relative path is a committed report and uses '/'
+    // an absolute path keeps the native spelling.
+    // a relative path is a committed report and uses '/'
     const auto path_text = [](const path_t& path)
     {
         return path.is_absolute() ? path.string() : path.generic_string();

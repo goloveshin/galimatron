@@ -1,12 +1,10 @@
 ---
 name: coding-style
 description: >-
-  Apply this repository's C++ coding style when writing or editing code:
-  comment separators, the closing parenthesis of multi-line functions,
-  type suffixes, includes, the precompiled header, namespaces, and MSVC constraints.
-  A comment above wizard { in a .gal file ends with a blank //.
-  Use when adding or changing C++ in global, galimatron, examples, or tests,
-  or when the user mentions coding style, comments, naming, formatting, or wizard.
+  Apply this repository's C++ style: readable comments with the blank // rule,
+  the closing parenthesis, type suffixes, includes, the precompiled header,
+  namespaces, MSVC limits. A comment above wizard { in a .gal file ends with a
+  blank //. Use when changing C++ in global, galimatron, examples, or tests.
 ---
 
 # Coding style
@@ -47,7 +45,7 @@ void flush(
 )
 ```
 
-A comment above `wizard {` in a `.gal` file ends with a blank `//`. The generated console keeps that `//` between the description and the commented command.
+A comment above `wizard {` in a `.gal` file ends with a blank `//`. The generated console keeps that `//` between the description and the commented command (`// wizard {`).
 
 ```
 // sea_state_e gains gale. vessel_kind_e gains launch. versions 0, 1, 2, 3, and 4 stay closed.
@@ -55,10 +53,24 @@ A comment above `wizard {` in a `.gal` file ends with a blank `//`. The generate
 wizard {
 ```
 
-```
-// sea_state_e gains gale. vessel_kind_e gains launch. versions 0, 1, 2, 3, and 4 stay closed.
+### Keep a comment easy to read
+
+- The first line says what the code does or checks, in one sentence.
+- Keep a line within 100 columns, indent included. Break a long sentence at a comma or split it. One fact per line.
+- Related rules go in a list, one `- ` item per rule. Do not run several rules together in one line.
+- Use a period or a colon. Do not use a dash as a separator.
+- Name an exception once for a scope: when every member of a class or file throws the same domain and subdomain, say that at the class or at the top of the file. A function gets a `throws:` line only for what differs (the rule, what the message names, or its own domain). Do not repeat `exception::domain::...` on each function.
+- A command or a syntax comment is split into parts, each on its own line: the syntax, then `mode:`, `context:`, `examples:` (indented), and `rules:` (a list).
+- Rewrite a comment without losing a fact. Do not add a fact that the code does not hold.
+
+```cpp
+// checks that the stored hash of each version matches the one computed now
+// throws: HASH_DOES_NOT_MATCH. the message names the aggregates of each differing version
+// - a deleted declaration is left out
+// - aggregate names are not part of the root hash
+// - a version with no hash is not checked
 //
-// wizard {
+bool is_version_hashes_match();
 ```
 
 ## Names

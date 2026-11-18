@@ -43,8 +43,12 @@ namespace
 Logme::SID SUBSID = Logme::SID::Build(global::log_subsystems::tr_tsp);
 }
 
-// versions whose stored hash create hash force or delete hash force does not check.
-// empty when the command is absent. no version means the last version
+// is_version_hashes_match and is_version_hashes_present throw
+// exception::domain::translator_library, exception::subdomain::translator_library::translator
+
+// versions whose stored hash create hash force or delete hash force does not check
+// empty when the command is absent
+// no version means the last version
 //
 indices_t cpp2cpp_validate_t::hash_force_indexes() const
 {
@@ -109,12 +113,15 @@ indices_t cpp2cpp_validate_t::hash_force_indexes() const
     return forced;
 }
 
-// the stored hash of a version declaration matches the one computed the same way as wizard create hash.
-// a deleted declaration is left out. the root hash sorts the content hashes, so only the content is part of it.
-// checked per version and against the root hash. no hash — the declaration is not checked.
-// otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator,
-// validation_error_code_et::HASH_DOES_NOT_MATCH.
-// the message names the aggregates of each differing version, then a version that differs only in the root.
+// the stored hash of a version declaration matches the one computed
+// the same way as wizard create hash
+// - a deleted declaration is left out
+// - the root hash sorts the content hashes, so only the content is part of it
+// - it is checked per version and against the root hash
+// - no hash: the declaration is not checked
+// throws: validation_error_code_et::HASH_DOES_NOT_MATCH
+// the message names the aggregates of each differing version,
+// then a version that differs only in the root
 // a version that already names an aggregate does not name the root
 //
 bool cpp2cpp_validate_t::is_version_hashes_match()
@@ -141,7 +148,7 @@ bool cpp2cpp_validate_t::is_version_hashes_match()
         }
         std::vector<row_t> rows;
 
-        for (const auto& aggregate : aggregate_versions_)
+        for (const auto& aggregate : every_row())
         {
             const auto stored_declaration = language_part_.versions().try_stored(aggregate.vd, index);
             if (!stored_declaration || !stored_declaration->has_declaration || is_deleted(stored_declaration->status))
@@ -236,11 +243,12 @@ bool cpp2cpp_validate_t::is_version_hashes_match()
     ));
 }
 
-// a version that stores a hash stores it on the root and on every aggregate that is not deleted.
-// a deleted declaration stays without a hash.
-// a version with no hashes is not checked.
-// otherwise exception::domain::translator_library, exception::subdomain::translator_library::translator
-// and every declaration where the hash is absent
+// a version that stores a hash stores it on the root
+// and on every aggregate that is not deleted
+// - a deleted declaration stays without a hash
+// - a version with no hashes is not checked
+// throws: validation_error_code_et::HASH_MUST_BE_ON_EVERY_AGGREGATE
+// the message names every declaration where the hash is absent
 //
 bool cpp2cpp_validate_t::is_version_hashes_present()
 {
@@ -265,7 +273,7 @@ bool cpp2cpp_validate_t::is_version_hashes_present()
         }
         std::vector<presence_t> rows;
 
-        for (const auto& aggregate : aggregate_versions_)
+        for (const auto& aggregate : every_row())
         {
             const auto stored_declaration = language_part_.versions().try_stored(aggregate.vd, index);
             if (!stored_declaration || !stored_declaration->has_declaration || is_deleted(stored_declaration->status))

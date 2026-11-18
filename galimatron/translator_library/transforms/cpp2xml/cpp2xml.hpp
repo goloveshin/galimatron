@@ -21,7 +21,8 @@ struct translate_t
     // filled while the document is built; null leaves the document unmarked
     layout::table_t* layout_table = nullptr;
 
-    // the <galimatron> node description attribute. empty leaves <galimatron> node without the attribute
+    // the <galimatron> node description attribute.
+    // empty leaves <galimatron> node without the attribute
     const std::string_view description = {};
 };
 pugi_document_with_meanful_node_t translate(const translate_t&);

@@ -37,11 +37,13 @@ vertex_descriptor_t builder_t::create_operation_statement(const create_operation
     return vd;
 }
 
-// delete; in an aggregate version definition: the version's other vertices are removed, the declaration is marked deleted
+// delete; in an aggregate version definition
+// - the version's other vertices are removed
+// - the declaration is marked deleted
 //
 void builder_t::apply_aggregate_version_delete(const vertex_descriptor_t vd_definition)
 {
-    std::vector<vertex_descriptor_t> children;
+    vertex_descriptors_vector_t children;
     for (const auto vd_child : subrange(boost::adjacent_vertices(vd_definition, graph_)))
     {
         children.push_back(vd_child);
@@ -73,7 +75,8 @@ void builder_t::apply_aggregate_version_delete(const vertex_descriptor_t vd_defi
     }
 
     const auto& definition = std::get<aggregate_version_definition_t>(graph_[vd_definition].entity);
-    // an anonymous body has no declaration. validation requires delete; when its owner is deleted
+    // an anonymous body has no declaration
+    // validation requires delete; when its owner is deleted
     if (!definition.index)
     {
         return;
