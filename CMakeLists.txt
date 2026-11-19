@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 4.0)
 # dynamic CRT: /MD in Release, /MDd in Debug (VCRUNTIME*.dll)
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
 
-project(GalimatronProject VERSION 1.0.0 LANGUAGES CXX C)
+project(GalimatronProject VERSION 1.0.1 LANGUAGES CXX C)
 
 # SaxonC embeds a GraalVM native image. The Windows default reserve is 1MB.
 # Release fills that stack during an XSLT, and the VM cannot enable its yellow zone.

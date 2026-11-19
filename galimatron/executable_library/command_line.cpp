@@ -31,6 +31,7 @@ using catch_command_line_and_parse_with_options_ft = std::function<parsed_option
 command_line_args_t parse(catch_command_line_and_parse_with_options_ft parse_func)
 {
     constexpr char opt_help[] = "help";
+    constexpr char opt_version[] = "version";
     constexpr char opt_log_config_path[] = "log-config-file";
     constexpr char opt_gal_config_path[] = "gal-config-file";
 
@@ -38,6 +39,7 @@ command_line_args_t parse(catch_command_line_and_parse_with_options_ft parse_fun
     {
         options.add_options()
             (opt_help, "produce help message")
+            (opt_version, "print version")
             (opt_log_config_path, po::value<path_t>(), "boost.log config")
             (opt_gal_config_path, po::value<path_t>(), "galimatron config")
             ;
@@ -49,6 +51,9 @@ command_line_args_t parse(catch_command_line_and_parse_with_options_ft parse_fun
     {
         const bool is_help = vm.count(opt_help);
         const bool is_help_only = is_help && (vm.size() == 1);
+        const bool is_version = vm.count(opt_version);
+
+        command_line_args.show_version = is_version;
 
         if (is_help)
         {

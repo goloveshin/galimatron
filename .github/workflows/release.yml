@@ -34,6 +34,12 @@ jobs:
           CXX: g++
         run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 
+      - name: Check the tag matches the project version
+        env:
+          GALIMATRON_RELEASE_TAG: ${{ github.ref_name }}
+          GALIMATRON_CACHE_FILE: build/CMakeCache.txt
+        run: cmake -P cmake/check_release_tag.cmake
+
       - name: Build
         run: cmake --build build --config Release
 
@@ -98,6 +104,12 @@ jobs:
 
       - name: Configure
         run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+
+      - name: Check the tag matches the project version
+        env:
+          GALIMATRON_RELEASE_TAG: ${{ github.ref_name }}
+          GALIMATRON_CACHE_FILE: build/CMakeCache.txt
+        run: cmake -P cmake/check_release_tag.cmake
 
       - name: Build
         run: cmake --build build --config Release

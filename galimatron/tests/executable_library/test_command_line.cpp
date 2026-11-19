@@ -74,6 +74,34 @@ TEST_CASE("parse")
             });
 
             CHECK(actual.help.has_value());
+            CHECK_FALSE(actual.show_version);
+            CHECK_FALSE(actual.log_config_path.has_value());
+            CHECK_FALSE(actual.gal_config_path.has_value());
+        }
+
+        SUBCASE("--version")
+        {
+            const auto actual = parse(
+            {
+                "--version"
+            });
+
+            CHECK_FALSE(actual.help.has_value());
+            CHECK(actual.show_version);
+            CHECK_FALSE(actual.log_config_path.has_value());
+            CHECK_FALSE(actual.gal_config_path.has_value());
+        }
+
+        SUBCASE("--help and --version")
+        {
+            const auto actual = parse(
+            {
+                "--help",
+                "--version"
+            });
+
+            CHECK(actual.help.has_value());
+            CHECK(actual.show_version);
             CHECK_FALSE(actual.log_config_path.has_value());
             CHECK_FALSE(actual.gal_config_path.has_value());
         }
@@ -86,6 +114,7 @@ TEST_CASE("parse")
             });
 
             CHECK_FALSE(actual.help.has_value());
+            CHECK_FALSE(actual.show_version);
             CHECK(actual.log_config_path == path_ot("/root/home/user/project/log.cfg"));
             CHECK_FALSE(actual.gal_config_path.has_value());
         }
@@ -98,6 +127,7 @@ TEST_CASE("parse")
             });
 
             CHECK_FALSE(actual.help.has_value());
+            CHECK_FALSE(actual.show_version);
             CHECK_FALSE(actual.log_config_path.has_value());
             CHECK(actual.gal_config_path == path_ot("/root/home/user/project/gal.cfg"));
         }

@@ -1,0 +1,9 @@
+#pragma once
+
+namespace galimatron
+{
+
+// project() VERSION from the root CMakeLists.txt
+inline constexpr std::string_view version = "@PROJECT_VERSION@";
+
+}// namespace galimatron

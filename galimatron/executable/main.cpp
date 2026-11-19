@@ -1,6 +1,7 @@
 // galimatron
 #include "galimatron/executable_library/command_line.hpp"
 #include "galimatron/runtime_library/translate/translate.hpp"
+#include "galimatron/version.hpp"
 
 // global
 #include "global/common_library/log_subsystems.hpp"
@@ -17,11 +18,18 @@ int main(int argc, char* argv[])
     namespace ex = galimatron::executable;
     namespace rt = galimatron::runtime;
 
-    const auto [help, log_config_path, gal_config_path] = ex::command_line::parse(argc, argv);
+    const auto [help, show_version, log_config_path, gal_config_path] = ex::command_line::parse(argc, argv);
 
+    // --help wins when --version is also present
     if (help)
     {
         std::cout << *help << std::endl;
+        return 0;
+    }
+
+    if (show_version)
+    {
+        std::cout << std::format("galimatron {}", galimatron::version) << std::endl;
         return 0;
     }
 

@@ -10,6 +10,7 @@ namespace galimatron::executable::command_line
 struct command_line_args_t
 {
     content_ot help;
+    bool show_version = false;
     path_ot log_config_path;
     path_ot gal_config_path;
 };
