@@ -1,0 +1,60 @@
+name: Bug report
+description: A run, a package, or the command line did not do what it should
+title: ""
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: The command you ran, and where it stopped. Paste the message from the console or from the log in intermediate/.
+      placeholder: |
+        galimatron --gal-config-file gal.cfg --log-config-file log.cfg
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: The line printed by `galimatron --version`.
+      placeholder: galimatron 1.0.1
+    validations:
+      required: true
+  - type: dropdown
+    id: install
+    attributes:
+      label: How Galimatron was installed
+      options:
+        - Windows setup (exe)
+        - Windows zip
+        - Linux deb
+        - Linux rpm
+        - Linux tar.gz
+        - Built from source
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Operating system
+      placeholder: Windows 11, or Ubuntu 24.04
+    validations:
+      required: true
+  - type: textarea
+    id: gal
+    attributes:
+      label: The .gal text involved
+      description: A short fragment is enough. Leave out anything that is not yours to share.
+      render: text
+  - type: textarea
+    id: config
+    attributes:
+      label: gal.cfg
+      description: Include it when the failure depends on the folders, the XSLT, or the catalog.
+      render: text

@@ -1,0 +1,24 @@
+name: Feature request
+description: Something missing from the language, the Wizard, the checks, or the run
+title: ""
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: missing
+    attributes:
+      label: What is missing
+      description: A Wizard command, a check, a kind of tag or label, or something the run should do.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: What you cannot do without it
+    validations:
+      required: true
+  - type: textarea
+    id: sketch
+    attributes:
+      label: A sketch
+      description: The .gal text, the Wizard command, or the XSLT you wish you could write.
+      render: text
