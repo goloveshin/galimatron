@@ -22,11 +22,11 @@ namespace ex = galimatron::executable;
 
 file_content_with_path_t translate_t::get_log_config_from_file(const path_t& config_path)
 {
-    auto filesystem = ex::filesystem::physically::make_filesystem();
+    auto filesystem = ex::filesystem::make_filesystem();
 
     return {
-        .content = filesystem.read(config_path),
-        .path = filesystem.to_absolute(config_path)
+        .content = make_file_content(filesystem.read(config_path)),
+        .path = filesystem.absolute(config_path)
     };
 }
 

@@ -1,5 +1,6 @@
 // galimatron
 #include "galimatron/runtime_library/filesystem_decorator/filesystem_decorator.hpp"
+#include "galimatron/runtime_library/filesystem/filesystem.hpp"
 #include "galimatron/common_library/exception_augment.hpp"
 #include "galimatron/translator_library/galimatron_config_declaration.hpp"
 
@@ -23,21 +24,12 @@ Logme::SID SUBSID = Logme::SID::Build(global::log_subsystems::rt_fsd);
 
 namespace
 {
-// takes only the path calls from global::filesystem::physically:
-// to_absolute, split_path_by_parts, and merge_paths
-// the other calls are empty and throw std::bad_function_call
+// path calls live on the runtime filesystem.
+// the filesystem injected into the decorator is the place files
 //
-const gf::physically::filesystem_t& path_filesystem()
+const virtual_filesystem::filesystem_t& path_filesystem()
 {
-    static const auto filesystem = []
-    {
-        const auto full = gf::physically::make_filesystem();
-        return gf::physically::filesystem_t{
-            .to_absolute = full.to_absolute,
-            .split_path_by_parts = full.split_path_by_parts,
-            .merge_paths = full.merge_paths
-        };
-    }();
+    static const auto filesystem = filesystem::make_filesystem();
     return filesystem;
 }
 }// namespace
@@ -61,7 +53,7 @@ const place_t& filesystem_decorator_t::get_place(const place_id_t& place_id)
 
 path_t filesystem_decorator_t::make_path(const place_id_t& place_id, const path_t& suffix)
 {
-    return path_filesystem().to_absolute(get_place(place_id).root / suffix);
+    return path_filesystem().absolute(get_place(place_id).root / suffix);
 }
 
 void filesystem_decorator_t::do_jobs_at_begin()
@@ -72,11 +64,11 @@ void filesystem_decorator_t::do_jobs_at_begin()
     {
         auto& place = places_.to_non_const(const_place);
 
-        filesystem_.create_directory(place.root);
+        filesystem_.create_directories(place.root);
 
         auto list_files = [&]
         {
-            return filesystem_.list_files({
+            return filesystem::list_files(filesystem_, {
                 .root = place.root,
                 .extentions = place.extentions
             });
@@ -128,7 +120,10 @@ void filesystem_decorator_t::do_jobs_at_end()
             if (file.pending_write)
             {
                 fLogmeD("write file to disk: '{}' (delayed write flush)", path.string());
-                filesystem_.write(path, *file.content);
+                filesystem_.write({
+                    .path = path,
+                    .bytes = **file.content
+                });
                 file.pending_write = false;
             }
 
@@ -156,7 +151,7 @@ gf::path_by_parts_t filesystem_decorator_t::split_path_by_parts(const path_t& pa
 {
     if (const auto place_by_path = places_.try_find_by_path(path))
     {
-        return path_filesystem().split_path_by_parts({
+        return filesystem::split_path_by_parts(path_filesystem(), {
             .path_root = place_by_path->get().root,
             .path = path
         });
@@ -177,7 +172,7 @@ deferred_file_contents_with_paths_t filesystem_decorator_t::get_place_content(co
 {
     auto& place = places_.find_by_place(place_id);
 
-    return filesystem_.list_files_with_deferred_content(
+    return filesystem::list_files_with_deferred_content(filesystem_,
     {
         .root = place.root,
         .extentions = place.extentions,
@@ -186,7 +181,7 @@ deferred_file_contents_with_paths_t filesystem_decorator_t::get_place_content(co
             return [&place, path, this]
             {
                 fLogmeD("read file from disk: '{}' (deferred content requested)", path.string());
-                const auto& content = filesystem_.read(path);
+                const auto content = make_file_content(filesystem_.read(path));
                 if (place.read.cache)
                 {
                     auto& file = place.files[path];
@@ -271,24 +266,10 @@ filesystem_decorator_t::printout_result_t filesystem_decorator_t::printout(const
     old_parts.root = place.root;
 
     // the given replace_by parts replace the same-named parts of the old path.
-    // no old path: the file is assembled only from replace_by and the place root
+    // no old path: the file is assembled only from replace_by and the place root.
+    // a missing root or file name throws before the path exists
     //
-    // a missing root or file name. the path is not assembled yet
-    //
-    const auto throw_merge = [](const std::string& what)
-    {
-        leaf::throw_exception(
-            exception::domain::runtime_library{},
-            exception::subdomain::runtime_library::filesystem_decorator{},
-            exception::e_what_info{ what }
-        );
-    };
-    const auto finally_path = path_filesystem().merge_paths({
-        .old_parts = old_parts,
-        .new_parts = new_parts,
-        .point_1 = throw_merge,
-        .point_2 = throw_merge
-    });
+    const auto finally_path = filesystem::merge_paths(old_parts, new_parts);
     fLogmeD("incoming path for printout: '{}'", finally_path.string());
 
     auto& file = place.files[finally_path];
@@ -334,10 +315,10 @@ filesystem_decorator_t::printout_result_t filesystem_decorator_t::printout(const
                     fLogmeD("read file content from cache: '{}' (avoid disk read)", finally_path.string());
                     return file.content;
                 }
-                if (filesystem_.exist(finally_path))
+                if (virtual_filesystem::exists(filesystem_, finally_path))
                 {
                     fLogmeD("read file from disk: '{}' (content comparison requires current content)", finally_path.string());
-                    return filesystem_.read(finally_path);
+                    return make_file_content(filesystem_.read(finally_path));
                 }
                 fLogmeD("file not read from disk: '{}' (file does not exist)", finally_path.string());
                 return {};
@@ -361,7 +342,10 @@ filesystem_decorator_t::printout_result_t filesystem_decorator_t::printout(const
         else
         {
             fLogmeD("write file to disk: '{}' (content differs or comparison is disabled)", finally_path.string());
-            filesystem_.write(finally_path, new_content);
+            filesystem_.write({
+                .path = finally_path,
+                .bytes = *new_content
+            });
             file.pending_write = false;
         }
     }

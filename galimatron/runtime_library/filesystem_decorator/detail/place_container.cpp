@@ -133,7 +133,7 @@ detail::record_ot container_t::try_find_by_path(const path_t& path)
     {
         for (const auto& place : *this)
         {
-            if (make_runtime_filesystem().has_same_root_subpath({
+            if (filesystem::has_same_root_subpath(filesystem::make_runtime_filesystem(), {
                 .path = path,
                 .path_root = place.root
             }))

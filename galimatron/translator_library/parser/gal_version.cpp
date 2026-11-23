@@ -2,8 +2,8 @@
 #include "galimatron/translator_library/parser/gal_version.hpp"
 #include "galimatron/common_library/exception_augment.hpp"
 
-// global
-#include "global/filesystem_library/filesystem.hpp"
+// virtual_filesystem
+#include "virtual_filesystem/filesystem.hpp"
 
 // Boost.LEAF
 #include <boost/leaf/exception.hpp>
@@ -78,12 +78,12 @@ index_t from_content(const content_t& text)
 }
 
 index_t from_input_dir(
-    const gf::abstract::filesystem_t& filesystem,
+    const virtual_filesystem::filesystem_t& filesystem,
     const path_t& input_gal_dir
 )
 {
     const auto path = input_gal_dir / std::string{ file_name };
-    if (!filesystem.exist(path))
+    if (!virtual_filesystem::exists(filesystem, path))
     {
         return current;
     }
@@ -94,8 +94,7 @@ index_t from_input_dir(
         exception::e_path_info_for(path)
     );
 
-    const auto content = filesystem.read(path);
-    return from_content(*content);
+    return from_content(filesystem.read(path));
 }
 
 void require_supported(const index_t gal_version)

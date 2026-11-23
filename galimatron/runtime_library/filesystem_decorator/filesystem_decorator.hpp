@@ -4,6 +4,9 @@
 #include "galimatron/common_library/forward.hpp"
 #include "galimatron/runtime_library/filesystem_decorator/detail/place_container.hpp"
 
+// virtual_filesystem
+#include "virtual_filesystem/filesystem.hpp"
+
 
 namespace galimatron::executable::filesystem_decorator
 {
@@ -17,7 +20,7 @@ public:
     //
     struct config_t
     {
-        gf::abstract::filesystem_t filesystem;
+        virtual_filesystem::filesystem_t filesystem;
     };
     filesystem_decorator_t(const config_t& config);
 
@@ -141,7 +144,7 @@ private:
 
 private:
     const config_t config_;
-    const gf::abstract::filesystem_t& filesystem_;
+    const virtual_filesystem::filesystem_t& filesystem_;
     place_container::container_t places_;
 };
 

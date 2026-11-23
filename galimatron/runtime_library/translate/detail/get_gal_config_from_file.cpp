@@ -22,14 +22,19 @@ namespace ex = galimatron::executable;
 
 galimatron_config::config_t translate_t::get_gal_config_from_file(const path_t& config_path)
 {
-    auto filesystem = ex::filesystem::physically::make_filesystem();
+    auto filesystem = ex::filesystem::make_filesystem();
+    // the config reads xslt later, after this filesystem is gone
+    const auto read = filesystem.read;
 
     return galimatron_config::read_from_json(
         {
-            .content = filesystem.read(config_path),
-            .path = filesystem.to_absolute(config_path)
+            .content = make_file_content(read(config_path)),
+            .path = filesystem.absolute(config_path)
         },
-        filesystem.read
+        [read](const path_t& path)
+        {
+            return make_file_content(read(path));
+        }
     );
 }
 

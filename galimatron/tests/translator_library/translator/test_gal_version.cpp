@@ -20,8 +20,7 @@ TEST_CASE("test_gal_version")
         const auto case_root = root / "version_1";
         translate_production(case_root);
 
-        const auto filesystem = executable::filesystem::physically::make_filesystem();
-        CHECK(filesystem.compare_directories({
+        CHECK(executable::filesystem::compare_directories({
             .path_1 = case_root / test_folders::actual_gal,
             .path_2 = case_root / test_folders::expected_gal
         }));

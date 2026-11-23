@@ -5,6 +5,9 @@
 #include "galimatron/runtime_library/galimatron_config/galimatron_config.hpp"
 #include "galimatron/translator_library/translator/translator.hpp"
 
+// virtual_filesystem
+#include "virtual_filesystem/filesystem.hpp"
+
 
 namespace galimatron::runtime
 {
@@ -24,7 +27,7 @@ struct translate_t
     std::optional<translator::translator::detail::testing_t> testing;
 
     // empty: read and write keep the bytes. tests pass the pugixml round-trip
-    gf::abstract::content_filter_ft content_filter = {};
+    virtual_filesystem::content_filter_ft content_filter = {};
 
     static file_content_with_path_t get_log_config_from_file(const path_t&);
     static galimatron_config::config_t get_gal_config_from_file(const path_t&);

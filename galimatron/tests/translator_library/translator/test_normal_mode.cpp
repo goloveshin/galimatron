@@ -25,8 +25,7 @@ TEST_CASE("normal mode deletes a gal file that was not rewritten")
 
     translate_production(root);
 
-    const auto filesystem = executable::filesystem::physically::make_filesystem();
-    CHECK(filesystem.compare_directories({
+    CHECK(executable::filesystem::compare_directories({
         .path_1 = root / test_folders::incoming_gal,
         .path_2 = root / test_folders::expected_gal
     }));

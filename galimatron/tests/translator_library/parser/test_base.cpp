@@ -38,7 +38,7 @@ void parse_file_on_production(const parse_file_production_t& args)
         {
             auto path = prefix_path / args.subpath / args.filename;
             path.replace_extension("gal");
-            auto state = state_t(*executable::filesystem::physically::make_filesystem().read(path));
+            auto state = state_t(executable::filesystem::make_filesystem().read(path));
             state.do_production_parse();
         },
         false // is_print_to_cout = true for debug

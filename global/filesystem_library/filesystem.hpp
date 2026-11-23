@@ -37,6 +37,10 @@ struct path_by_parts_t
 using path_by_parts_ot = std::optional<path_by_parts_t>;
 using split_path_by_parts_ft = std::function<path_by_parts_ot (const path_t&)>;
 
+// reads one file as shared content
+//
+using read_ft = std::function<file_content_t (const path_t&)>;
+
 // git diff --no-index of two directories.
 // - same is true when the trees match
 // - diff is the unified diff when they do not
@@ -57,7 +61,3 @@ struct directory_compare_result_t
 std::ostream& operator<<(std::ostream& stream, const directory_compare_result_t& result);
 
 }// namespace global::filesystem
-
-// include only from global/filesystem_library/filesystem.hpp
-#include "global/filesystem_library/detail/filesystem_abstract.hpp"
-#include "global/filesystem_library/detail/filesystem_physically.hpp"

@@ -15,7 +15,7 @@ config_t read_from_json(
     const file_content_with_path_t&,
     // the file-reading function that will be used
     // to create deferred_content in config_t
-    const global::filesystem::abstract::read_ft&
+    const global::filesystem::read_ft&
 );
 
 // testing: yes (unit)

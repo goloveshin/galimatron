@@ -28,58 +28,80 @@ struct add_place_t
     place_t::remove_t remove = {};
 };
 
+// a file, a recorded directory, or a directory that contains a recorded file
+//
+fs::file_status fake_status(fake_filesystem_t& fake, const path_t& path)
+{
+    if (fake.files.contains(path))
+    {
+        return fs::file_status{ fs::file_type::regular };
+    }
+    if (fake.directories.contains(path))
+    {
+        return fs::file_status{ fs::file_type::directory };
+    }
+
+    for (const auto& [file_path, content] : fake.files)
+    {
+        (void)content;
+        const auto relative = file_path.lexically_relative(path);
+        if (!relative.empty() && *relative.begin() != path_t(".."))
+        {
+            return fs::file_status{ fs::file_type::directory };
+        }
+    }
+    return fs::file_status{ fs::file_type::not_found };
+}
+
 filesystem_decorator_t make_decorator(fake_filesystem_t& fake)
 {
-    gf::abstract::filesystem_t filesystem
+    virtual_filesystem::filesystem_t filesystem
     {
-        .exist = [&](const auto& path)
+        .status = [&](const path_t& path)
         {
-            return fake.files.find(path) != fake.files.end()
-                || fake.directories.find(path) != fake.directories.end();
+            return fake_status(fake, path);
         },
-        .read = [&](const auto& path)
-        {
-            return fake.files.at(path);
-        },
-        .write = [&](const auto& path, const auto& content)
-        {
-            fake.files[path] = content;
-            fake.directories.insert(path.parent_path());
-        },
-        .remove = [&](const auto& path)
-        {
-            fake.files.erase(path);
-        },
-        .create_directory = [&](const auto& path)
+        .create_directories = [&](const path_t& path)
         {
             fake.directories.insert(path);
+            return true;
         },
-        .list_files = [&](const auto& args)
+        .remove = [&](const path_t& path)
         {
-            std::vector<path_t> paths;
-            for (const auto& [file_path, content] : fake.files)
-            {
-                (void)content;
-                const auto relative = file_path.lexically_relative(args.root);
-                if (relative.empty() || *relative.begin() == path_t(".."))
+            return fake.files.erase(path) != 0;
+        },
+        .list = [&](const virtual_filesystem::list_t& args)
+        {
+            auto paths = fake.files | ranges::views::keys | ranges::to_vector;
+            return
+                paths
+                | ranges::views::filter([&](const path_t& file_path)
                 {
-                    continue;
-                }
-                if (!args.extentions.contains(file_path.extension()))
+                    const auto relative = file_path.lexically_relative(args.root);
+                    return !relative.empty() && *relative.begin() != path_t("..");
+                })
+                | ranges::views::transform([](const path_t& file_path)
                 {
-                    continue;
-                }
-                paths.push_back(file_path);
-            }
-            if (args.sort)
-            {
-                paths |= ranges::actions::sort;
-            }
-            return paths;
+                    const auto status = fs::file_status{ fs::file_type::regular };
+                    return virtual_filesystem::entry_t{
+                        .path = file_path,
+                        .status = status,
+                        .symlink_status = status
+                    };
+                })
+                | ranges::to_vector
+                ;
+        },
+        .read = [&](const path_t& path)
+        {
+            return *fake.files.at(path);
+        },
+        .write = [&](const virtual_filesystem::write_t& args)
+        {
+            fake.files[args.path] = make_file_content(args.bytes);
+            fake.directories.insert(args.path.parent_path());
         }
     };
-
-    gf::abstract::assign_list_files_with_deferred_content(filesystem);
 
     return filesystem_decorator_t(
     {
@@ -231,7 +253,7 @@ TEST_CASE("make_path")
     });
 
     const auto suffix = path_t("sub") / "file.txt";
-    const auto expected = gf::physically::make_filesystem().to_absolute(root / suffix);
+    const auto expected = fs::absolute(root / suffix).lexically_normal();
     CHECK(decorator.make_path(place_id, suffix) == expected);
 }
 

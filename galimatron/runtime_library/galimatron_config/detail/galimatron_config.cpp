@@ -26,7 +26,7 @@ replace_path_ft replace_path_func;
 replace_path_ft replace_path_xsl_func;
 replace_path_ft replace_path_xml_func;
 // deferred reading
-global::filesystem::abstract::read_ft read_file_func;
+global::filesystem::read_ft read_file_func;
 
 }// namespace
 
@@ -426,7 +426,7 @@ Logme::SID SUBSID = Logme::SID::Build(global::log_subsystems::rt_cfg);
 
 config_t read_from_json(
     const file_content_with_path_t& file_content_with_path,
-    const gf::abstract::read_ft& read_f
+    const gf::read_ft& read_f
 )
 {
     auto guard = scope_guard_t(
@@ -489,21 +489,27 @@ config_t read_from_json(
         {
             if (!path.is_absolute())
             {
-                path = make_runtime_filesystem().to_absolute(relative_to_config / path);
+                path = executable::filesystem::make_runtime_filesystem().absolute(
+                    relative_to_config / path
+                );
             }
         };
         replace_path_xsl_func = [&](path_t& path)
         {
             if (!path.is_absolute())
             {
-                path = make_runtime_filesystem().to_absolute(relative_to_saxon_dir / path);
+                path = executable::filesystem::make_runtime_filesystem().absolute(
+                    relative_to_saxon_dir / path
+                );
             }
         };
         replace_path_xml_func = [&](path_t& path)
         {
             if (!path.is_absolute())
             {
-                path = make_runtime_filesystem().to_absolute(relative_to_intermediate_xml_dir / path);
+                path = executable::filesystem::make_runtime_filesystem().absolute(
+                    relative_to_intermediate_xml_dir / path
+                );
             }
         };
         read_file_func = read_f;
@@ -513,7 +519,9 @@ config_t read_from_json(
     fLogmeD("Galimatron config after absolute path normalizing:\n{}", write_to_json(config_absolute_corrected));
 
     auto result = config_absolute_corrected;
-    result.config_dir = make_runtime_filesystem().to_absolute(relative_to_config);
+    result.config_dir = executable::filesystem::make_runtime_filesystem().absolute(
+        relative_to_config
+    );
     return result;
 }
 

@@ -19,6 +19,7 @@ target_link_libraries(
         galimatron_translator_library
         leaf_spy::leaf_spy
         global_filesystem_library
+        virtual_filesystem::virtual_filesystem
 )
 
 target_link_libraries(

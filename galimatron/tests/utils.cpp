@@ -30,35 +30,35 @@ translator::translator::detail::testing_t testing_flags(const translate_slice_t&
 // .xml goes through pugixml and back on read and on write, so the bytes match printout.
 // other files stay as they are
 //
-file_content_t xml_through_pugixml(
+virtual_filesystem::bytes_t xml_through_pugixml(
     const path_t& path,
-    const file_content_t& content,
-    const gf::abstract::content_filter_direction_et direction
+    const virtual_filesystem::bytes_t& content,
+    const virtual_filesystem::content_filter_direction_et direction
 )
 {
     switch (direction)
     {
-        case gf::abstract::content_filter_direction_et::READ:
-        case gf::abstract::content_filter_direction_et::WRITE:
+        case virtual_filesystem::content_filter_direction_et::READ:
+        case virtual_filesystem::content_filter_direction_et::WRITE:
             break;
     }
 
-    if (!content || path.extension() != ".xml")
+    if (path.extension() != ".xml")
     {
         return content;
     }
 
     pugi::xml_document document;
     const auto loaded = document.load_buffer(
-        content->data(),
-        content->size(),
+        content.data(),
+        content.size(),
         pugi::parse_default | pugi::parse_declaration | pugi::parse_comments | pugi::parse_pi
     );
     if (!loaded)
     {
         return content;
     }
-    return translator::printout(document);
+    return *translator::printout(document);
 }
 
 // log.cfg and gal.cfg from the case directory

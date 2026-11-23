@@ -30,8 +30,7 @@ TEST_CASE("test_cpp2gal")
             .post_cpp2post_xml = false
         });
 
-        const auto filesystem = executable::filesystem::physically::make_filesystem();
-        CHECK(filesystem.compare_directories({
+        CHECK(executable::filesystem::compare_directories({
             .path_1 = root / test_folders::actual_gal,
             .path_2 = root / test_folders::expected_gal
         }));
@@ -70,8 +69,7 @@ TEST_CASE("default tag layout")
         .drop_tag_user_formatting = true
     });
 
-    const auto filesystem = executable::filesystem::physically::make_filesystem();
-    CHECK(filesystem.compare_directories({
+    CHECK(executable::filesystem::compare_directories({
         .path_1 = root / test_folders::actual_gal,
         .path_2 = root / test_folders::expected_gal
     }));
@@ -108,8 +106,7 @@ TEST_CASE("raw string roundtrip")
         run(true);
     }
 
-    const auto filesystem = executable::filesystem::physically::make_filesystem();
-    CHECK(filesystem.compare_directories({
+    CHECK(executable::filesystem::compare_directories({
         .path_1 = root / test_folders::actual_gal,
         .path_2 = root / test_folders::expected_gal
     }));
@@ -132,8 +129,7 @@ TEST_CASE("user comments roundtrip through cpp2gal")
         .post_cpp2post_xml = false
     });
 
-    const auto filesystem = executable::filesystem::physically::make_filesystem();
-    CHECK(filesystem.compare_directories({
+    CHECK(executable::filesystem::compare_directories({
         .path_1 = root / test_folders::actual_gal,
         .path_2 = root / test_folders::expected_gal
     }));

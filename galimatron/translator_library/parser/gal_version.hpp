@@ -4,10 +4,10 @@
 #include "galimatron/common_library/forward.hpp"
 
 
-namespace global::filesystem::abstract
+namespace virtual_filesystem
 {
 struct filesystem_t;
-}
+}// namespace virtual_filesystem
 
 namespace galimatron::translator::parser::gal_version
 {
@@ -33,7 +33,7 @@ index_t from_content(const content_t&);
 // testing: yes (unit)
 //
 index_t from_input_dir(
-    const gf::abstract::filesystem_t&,
+    const virtual_filesystem::filesystem_t&,
     const path_t& input_gal_dir
 );
 

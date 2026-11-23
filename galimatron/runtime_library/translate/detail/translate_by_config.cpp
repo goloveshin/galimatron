@@ -97,7 +97,7 @@ std::string state_memory_text(const std::size_t bytes)
 
 void translate_impl_t::translate(const galimatron_config::config_t& config)
 {
-    auto filesystem = ex::filesystem::physically::make_filesystem(args_.content_filter);
+    auto filesystem = ex::filesystem::make_filesystem(args_.content_filter);
 
     auto fsd = nfsd::filesystem_decorator_t(
     {
@@ -271,10 +271,10 @@ void translate_impl_t::translate(const galimatron_config::config_t& config)
         },
         [&]{
             // if success, it is reported to summary_xml before this point
-            filesystem.write(
-                summary_file,
-                summary_xml.printout()
-            );
+            filesystem.write({
+                .path = summary_file,
+                .bytes = *summary_xml.printout()
+            });
         }
     );
 
@@ -401,7 +401,10 @@ void translate_impl_t::translate(const galimatron_config::config_t& config)
                         }
                         else
                         {
-                            filesystem.write(path, content_to_write);
+                            filesystem.write({
+                                .path = path,
+                                .bytes = *content_to_write
+                            });
                             produced_files_paths->push_back(path);
                         }
                     }
@@ -473,7 +476,7 @@ void translate_impl_t::translate(const galimatron_config::config_t& config)
                     ),
                     .split_path_by_parts = [&](const path_t& path)
                     {
-                        return filesystem.split_path_by_parts({
+                        return ex::filesystem::split_path_by_parts(filesystem, {
                             .path_root = path,
                             .path = path
                         });
@@ -484,7 +487,10 @@ void translate_impl_t::translate(const galimatron_config::config_t& config)
                     {
                         const auto path = config.galimatron.intermediate_summary_dir
                             / path_t{ translator::taskflow_graph_file_name };
-                        filesystem.write(path, make_file_content(graph));
+                        filesystem.write({
+                            .path = path,
+                            .bytes = graph
+                        });
                     },
                     .notify_state_memory = [&](const std::size_t bytes)
                     {

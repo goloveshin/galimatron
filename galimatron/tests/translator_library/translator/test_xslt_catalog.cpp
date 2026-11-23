@@ -57,8 +57,7 @@ TEST_CASE("a missing catalog does not resolve")
 
     translate_production(root);
 
-    const auto filesystem = executable::filesystem::physically::make_filesystem();
-    CHECK(filesystem.compare_directories({
+    CHECK(executable::filesystem::compare_directories({
         .path_1 = root / test_folders::actual_log,
         .path_2 = root / test_folders::expected_log
     }));
@@ -75,12 +74,11 @@ TEST_CASE("an installed catalog resolves the xslt library")
 
     translate_production(root);
 
-    const auto filesystem = executable::filesystem::physically::make_filesystem();
-    CHECK(filesystem.compare_directories({
+    CHECK(executable::filesystem::compare_directories({
         .path_1 = root / test_folders::actual_log,
         .path_2 = root / test_folders::expected_log
     }));
-    CHECK(filesystem.compare_directories({
+    CHECK(executable::filesystem::compare_directories({
         .path_1 = root / test_folders::actual_gal,
         .path_2 = root / test_folders::expected_gal
     }));

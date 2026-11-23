@@ -52,6 +52,7 @@ target_link_libraries(
         leaf_spy::leaf_spy
     PRIVATE
         Boost::dll_std_fs
+        virtual_filesystem::virtual_filesystem
         SaxonCHE::saxonc-he
         SaxonCCoreHE::saxonc-core-he
         Taskflow::Taskflow

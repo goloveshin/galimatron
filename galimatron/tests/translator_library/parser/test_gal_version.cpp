@@ -82,12 +82,12 @@ TEST_CASE("from_input_dir")
 {
     namespace gal_version = translator::parser::gal_version;
 
-    const auto filesystem = executable::filesystem::physically::make_filesystem();
+    const auto filesystem = executable::filesystem::make_filesystem();
     const auto dir = std::filesystem::temp_directory_path() / "galimatron_gal_version_unit";
     filesystem.create_directory(dir);
 
     const auto path = dir / std::string{ gal_version::file_name };
-    if (filesystem.exist(path))
+    if (virtual_filesystem::exists(filesystem, path))
     {
         filesystem.remove(path);
     }
@@ -99,7 +99,10 @@ TEST_CASE("from_input_dir")
 
     SUBCASE("file content is the version")
     {
-        filesystem.write(path, make_file_content("2\n"));
+        filesystem.write({
+            .path = path,
+            .bytes = "2\n"
+        });
         CHECK(gal_version::from_input_dir(filesystem, dir) == 2);
         filesystem.remove(path);
     }

@@ -18,8 +18,7 @@ TEST_CASE("test_no_xslt")
 
     translate_production(root);
 
-    const auto filesystem = executable::filesystem::physically::make_filesystem();
-    CHECK(filesystem.compare_directories({
+    CHECK(executable::filesystem::compare_directories({
         .path_1 = root / test_folders::actual_log,
         .path_2 = root / test_folders::expected_log
     }));
