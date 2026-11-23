@@ -355,3 +355,29 @@ FetchContent_Declare(
 set(MULTI_INDEX_LOOKUP_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 
 FetchContent_MakeAvailable(multi_index_lookup)
+
+# virtual_filesystem has its own repository.
+# A checkout beside this tree is the copy under development.
+# CI has no sibling, so the declaration below clones main.
+
+set(VIRTUAL_FILESYSTEM_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../virtual_filesystem/CMakeLists.txt")
+    file(REAL_PATH
+        "${CMAKE_CURRENT_SOURCE_DIR}/../virtual_filesystem"
+        virtual_filesystem_sibling
+    )
+    set(FETCHCONTENT_SOURCE_DIR_VIRTUAL_FILESYSTEM
+        "${virtual_filesystem_sibling}"
+        CACHE PATH "" FORCE
+    )
+    unset(virtual_filesystem_sibling)
+endif()
+
+FetchContent_Declare(
+    virtual_filesystem
+    GIT_REPOSITORY https://github.com/goloveshin/virtual_filesystem.git
+    GIT_TAG main
+)
+
+FetchContent_MakeAvailable(virtual_filesystem)

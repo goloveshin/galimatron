@@ -42,12 +42,6 @@ include_directories(
 
 add_subdirectory(externals)
 
-# sibling of this tree. tests stay off because this project is the top level
-add_subdirectory(
-    ${CMAKE_CURRENT_SOURCE_DIR}/../virtual_filesystem
-    ${CMAKE_CURRENT_BINARY_DIR}/virtual_filesystem
-)
-
 # Global library
 
 add_subdirectory(global)
